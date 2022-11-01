@@ -1,2 +1,2 @@
 # TJCP
-The More robust and bowerful version of TJCPre
+The More robust and powerful version of TJCPre
