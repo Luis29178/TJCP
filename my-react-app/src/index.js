@@ -3,11 +3,34 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+} from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element:  <App />,
+  },
+    {
+    path:"/login",
+    element:<div>This is our login page</div>,
+  }
+  // to create a new path add an object like the below one to this Router.
+  // "path" is that page path; ex: tjcp.com/login
+  // "element" is the react component you want to redirect it to
+  // {
+  //   path:"/login",
+  //   element:<div>Hello world!</div>,
+  // }
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
