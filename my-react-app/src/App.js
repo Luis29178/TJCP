@@ -13,8 +13,8 @@ function App() {
         <p>
           Welcome to TJCP "Hello World" Project.
         </p>
-        <p>  <Link to="/login">Login</Link></p>
-        <p>  <Link to="/signup">Signup</Link></p>
+        <p>  <Link to="/login" style={{color:"red"}}>Login</Link></p>
+        <p>  <Link to="/signup" style={{color:"red"}} >Signup</Link></p>
       </header>
     </div>
   );

@@ -9,6 +9,7 @@ import {
   Route,
 } from "react-router-dom";
 import SignUp from './signup';
+import SignIn from './Components/SignIn'
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
   },
     {
     path:"/login",
-    element:<div>This is our login page</div>,
+    element:<SignIn/>,
   },
   {
     path: "signup",
