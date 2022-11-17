@@ -8,6 +8,7 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
+import SignUp from './signup';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
     {
     path:"/login",
     element:<div>This is our login page</div>,
+  },
+  {
+    path: "signup",
+    element: <SignUp/>,
   }
   // to create a new path add an object like the below one to this Router.
   // "path" is that page path; ex: tjcp.com/login

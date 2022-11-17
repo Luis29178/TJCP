@@ -14,6 +14,7 @@ function App() {
           Welcome to TJCP "Hello World" Project.
         </p>
         <p>  <Link to="/login">Login</Link></p>
+        <p>  <Link to="/signup">Signup</Link></p>
       </header>
     </div>
   );
