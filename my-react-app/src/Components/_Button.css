@@ -1,0 +1,101 @@
+:root{
+    --green: #00ff00;
+    --amber: #ffee00;
+    --gray: #2c2c2c;
+    --red: #ff0000;
+    --black: #000000;
+    --white: #ffffff;
+}
+
+
+.btn{
+    /* change to bender once its figured out*/
+    font-family: sans-serif;
+    text-align: center;
+    font-weight: 400;
+    cursor: pointer;
+    transition: transform 0.2s ease-in;
+}
+.btn:hover{
+    transform: translateY(-4px);
+}
+
+/*Button : Styles*/
+
+
+/*Button : Styles : Solid*/
+.btn--green--solid{
+    background-color: var(--green);
+    color: var(--white);
+    border: none;
+}
+.btn--amber--solid{
+    background-color: var(--amber);
+    color: var(--white);
+    border: none;
+}
+.btn--gray--solid{
+    background-color: var(--gray);
+    color: var(--white);
+    border: none;
+}
+.btn--red--solid{
+    background-color: var(--red);
+    color: var(--white);
+    border: none;
+}
+
+/*Button : Styles : Outlined*/
+.btn--green--outline{
+    background-color: none;
+    color: var(--white);
+    border: var(--green);
+}
+
+.btn--amber--outline{
+    background-color: none;
+    color: var(--white);
+    border: var(--amber);
+}
+.btn--gray--outline{
+    background-color: none;
+    color: var(--white);
+    border: var(--gray);
+}
+.btn--red--outline{
+    background-color: none;
+    color: var(--white);
+    border: var(--red);
+}
+/*Button : Styles : Sizes*/
+
+.btn--tiny{
+    padding: 5px 5px;
+    font-size: medium;
+}
+.btn--small{
+    padding: 10px 10px;
+    font-size: small;
+}
+.btn--medium{
+    padding: 10px 20px;
+    font-size: medium;
+}
+.btn--menu{
+    padding: 10px 25px;
+    font-size: large;
+}
+.btn--big{
+    padding: 20px 40px;
+    font-size: large;
+}
+.btn--max{
+    padding: 30px 40px;
+    font-size: larger;
+}
+
+
+
+    
+    
+    
