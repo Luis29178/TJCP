@@ -53,7 +53,7 @@
 }
 
 .btn--amber--outline{
-    background-color: none;
+    background-color: var(--white);
     color: var(--white);
     border: var(--amber);
 }
