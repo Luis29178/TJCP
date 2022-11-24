@@ -1,4 +1,5 @@
-:root{
+:root {
+    --cornercut: .75em;
     --green: #00ff00;
     --amber: #ffee00;
     --gray: #2c2c2c;
@@ -8,7 +9,7 @@
 }
 
 
-.btn{
+.btn {
     /* change to bender once its figured out*/
     font-family: sans-serif;
     text-align: center;
@@ -16,86 +17,140 @@
     cursor: pointer;
     transition: transform 0.2s ease-in;
 }
-.btn:hover{
+
+.btn:hover {
     transform: translateY(-4px);
 }
 
 /*Button : Styles*/
 
-
-/*Button : Styles : Solid*/
-.btn--green--solid{
-    background-color: var(--green);
-    color: var(--white);
-    border: none;
-}
-.btn--amber--solid{
-    background-color: var(--amber);
-    color: var(--white);
-    border: none;
-}
-.btn--gray--solid{
-    background-color: var(--gray);
-    color: var(--white);
-    border: none;
-}
-.btn--red--solid{
-    background-color: var(--red);
-    color: var(--white);
-    border: none;
-}
-
 /*Button : Styles : Outlined*/
-.btn--green--outline{
-    background-color: none;
-    color: var(--white);
-    border: var(--green);
+
+
+.btn--Log--basic {
+    display: inline-grid;
+    position: relative;
+    isolation: isolate;
+    background: var(--gray);
+    color: var(--amber);
+    border: 0;
+    clip-path: polygon(
+            var(--cornercut) 0%,
+            100% 0,
+            100% calc(100% - var(--cornercut)),
+            calc(100% - var(--cornercut)) 100%,
+            0 100%,
+            0% var(--cornercut)
+            );
+
+}
+.btn--Log--basic::after,
+.btn--Log--basic::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+
+
+}
+.btn--Log--basic::before{
+    background: var(--amber);
+    z-index: -2;
+
+}
+.btn--Log--basic::after{
+    background:url(/src/Images/HomePageBacground.png);
+    z-index: -1;
+
+    clip-path: polygon(
+        calc(var(--cornercut) + .1em) .15em,
+        calc(100% - .15em) .15em,
+        calc(100% - .15em) calc(100% - var(--cornercut) - .15em),
+        calc(100% - var(--cornercut) - .15em) calc(100% - .15em),
+        .15em calc(100% - .15em),
+        .15em calc(var(--cornercut) + .1em)
+        );
+
 }
 
-.btn--amber--outline{
-    background-color: var(--white);
-    color: var(--white);
-    border: var(--amber);
+
+.btn--Menu--outline {
+    display: inline-grid;
+    position: relative;
+    isolation: isolate;
+    background: var(--gray);
+    color: var(--green);
+    border: 0;
+    clip-path: polygon(
+            var(--cornercut) 0%,
+            100% 0,
+            100% calc(100% - var(--cornercut)),
+            calc(100% - var(--cornercut)) 100%,
+            0 100%,
+            0% var(--cornercut)
+            );
 }
-.btn--gray--outline{
-    background-color: none;
-    color: var(--white);
-    border: var(--gray);
+.btn--Menu--outline::after,
+.btn--Menu--outline::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+
+
 }
-.btn--red--outline{
-    background-color: none;
-    color: var(--white);
-    border: var(--red);
+.btn--Menu--outline::before{
+    background: var(--green);
+    z-index: -2;
+
 }
+.btn--Menu--outline::after{
+    background:url(/src/Images/HomePageBacground.png);
+    background-size: 1280px, 720px;
+    background-position-y: -400px;
+    background-position-x: -400px ;
+    background-repeat: no-repeat;
+    z-index: -1;
+
+    clip-path: polygon(
+        calc(var(--cornercut) + .1em) .15em,
+        calc(100% - .15em) .15em,
+        calc(100% - .15em) calc(100% - var(--cornercut) - .15em),
+        calc(100% - var(--cornercut) - .15em) calc(100% - .15em),
+        .15em calc(100% - .15em),
+        .15em calc(var(--cornercut) + .1em)
+        );
+
+}
+
+
+
 /*Button : Styles : Sizes*/
 
-.btn--tiny{
+.btn--tiny {
     padding: 5px 5px;
     font-size: medium;
 }
-.btn--small{
+
+.btn--small {
     padding: 10px 10px;
     font-size: small;
 }
-.btn--medium{
+
+.btn--medium {
     padding: 10px 20px;
     font-size: medium;
 }
-.btn--menu{
+
+.btn--menu {
     padding: 10px 25px;
     font-size: large;
 }
-.btn--big{
+
+.btn--big {
     padding: 20px 40px;
     font-size: large;
 }
-.btn--max{
+
+.btn--max {
     padding: 30px 40px;
     font-size: larger;
 }
-
-
-
-    
-    
-    

@@ -3,14 +3,8 @@ import React from 'react'
 import './_Button.css'
 
 const Styles =[
-    "btn--amber--solid",
-    "btn--gray--solid",
-    "btn--green--solid",
-    "btn--red--solid",
-    "btn--amber--outline",
-    "btn--gray--outline",
-    "btn--green--outline",
-    "btn--red--outline",
+    "btn--Log--basic",
+    "btn--Menu--outline",
 ]
 
 const Sizes = [

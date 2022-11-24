@@ -1,80 +1,83 @@
-import { positions } from "@mui/system";
 import React from "react";
-import { Button } from "./Button.js";
+import { Button } from "./Button.jsx";
+import './_HomePage.css';
+
+
 
 
 function HomePage() {
     return (
-        <>
-            <div className="hbtnGroup" >
+        
+            <div className="hcontainer">
+                
+                <div className="hbtnGroup">
+                    <Button
+                        onClick={() => { console.log("escaped from tarkov") }}
+                        type="btn"
+                        buttonStyle="btn--Menu--outline"
+                        size="btn--menu"
+
+                    >
+                        Escape From Tarkov
+                    </Button>
+                    <br></br>
+                    <br></br>
+
+                    <Button
+                        onClick={() => { console.log("To the tracker") }}
+                        type="button"
+                        buttonStyle="btn--Menu--outline"
+                        size="btn--menu"
+                    >
+                        Tracker
+                    </Button>
+                    <br></br>
+                    <br></br>
+
+                    <Button
+                        onClick={() => {
+
+                             console.log("To plan a path") 
+                            
+                            }
+                        }
+                        type="button"
+                        buttonStyle="btn--Menu--outline"
+                        size="btn--menu"
+
+                    >
+                        Paths
+                    </Button>
+                </div>
+                
+                <div className="abtngroup">
                 <Button
-                    onClick={() => { console.log("escaped from tarkov") }}
-                    type="btn"
-                    buttonStyle="btn--gray--outline"
-                    size="btn--menu"
+                        onClick={() => { console.log("Lets gooooo") }}
+                        type="button"
+                        buttonStyle="btn--Log--basic"
+                        size="btn--menu"
+                    >
+                        LogIn
+                    </Button>
                     
-                >
-                    Escape From Tarkov
-                </Button>
-                <br></br>
-                <br></br>
-
-
-                <Button
-                    onClick={() => { console.log("To the tracker") }}
-                    type="button"
-                    buttonStyle="btn--gray--outline"
-                    size="btn--menu"
-                >
-                    Tracker
-                </Button>
-                <br></br>
-                <br></br>
-
-
-                <Button
-                    onClick={() => { console.log("To plan a path") }}
-                    type="button"
-                    buttonStyle="btn--gray--outline"
-                    size="btn--menu"
+                        <div style={{float: "right", marginLeft: 10}}>
+                    <Button
+                        onClick={() => { console.log("leaving so soon") }}
+                        type="button"
+                        buttonStyle="btn--Log--basic"
+                        size="btn--menu"
+                    >
+                        LogOut
+                    </Button>
+                    </div>
+                </div>
                 
-                >
-                    Paths
-                </Button>
-                <br></br>
-                <br></br>
-
-
-                <Button
-                    onClick={() => { console.log("lets log in") }}
-                    type="button"
-                    buttonStyle="btn--gray--outline"
-                    size="btn--menu"
-                
-                >
-                    Login
-                </Button>
-                <br></br>
-                <br></br>
-
-                <Button
-                    onClick={() => { console.log("leaving so soon") }}
-                    type="button"
-                    buttonStyle="btn--gray--outline"
-                    size="btn--menu"
-                
-                >
-                    LogOut
-                </Button>
-
-
             </div>
-        </>
+        
     );
 
 }
 
-const btns = document.querySelectorAll('.hbtnGroup')
 
 
 

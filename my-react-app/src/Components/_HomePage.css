@@ -1,0 +1,47 @@
+:root{
+    --green: #00ff00;
+    --amber: #ffee00;
+    --gray: #2c2c2c;
+    --red: #ff0000;
+    --black: #000000;
+    --white: #ffffff;
+    --height: 720px;
+    --width: 1280px;
+}
+
+
+.hcontainer{
+    height: var(--height);
+    width: var(--width);
+    border: #000000;
+    border-style: solid;
+    position: absolute;
+    overflow: scroll;
+    background: url(/src/Images/HomePageBacground.png);
+    background-size: cover;
+    
+}
+
+
+
+.hbtnGroup{
+    height: fit-content;
+    width: fit-content;
+    top: calc(var(--height)*.5);
+    left: calc(var(--width)*.45);
+    position: absolute;
+    
+    
+
+}
+.abtngroup{
+    height: fit-content;
+    width: fit-content;
+    left: calc(var(--width)*0);
+    top: 673px;
+    padding-left: 5px;
+    position: absolute;
+    
+    
+
+}
