@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "./Button.jsx";
 import './_HomePage.css';
-
+import {Routes, Route, useNavigate} from 'react-router-dom';
 
 
 
@@ -52,7 +52,7 @@ function HomePage() {
                 
                 <div className="abtngroup">
                 <Button
-                        onClick={() => { console.log("Lets gooooo") }}
+                        onClick={() => {window.location.href ="/login"}}
                         type="button"
                         buttonStyle="btn--Log--basic"
                         size="btn--menu"
@@ -62,7 +62,7 @@ function HomePage() {
                     
                         <div style={{float: "right", marginLeft: 10}}>
                     <Button
-                        onClick={() => { console.log("leaving so soon") }}
+                        onClick={() => { window.location.href ="/signup" }}
                         type="button"
                         buttonStyle="btn--Log--basic"
                         size="btn--menu"
