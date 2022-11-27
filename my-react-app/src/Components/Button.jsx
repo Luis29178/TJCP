@@ -5,15 +5,19 @@ import './_Button.css'
 const Styles =[
     "btn--Log--basic",
     "btn--Menu--outline",
+    "btn--Maps--basic",
+    "btn--x--basic",
 ]
 
 const Sizes = [
     "btn--tiny",
+    "btn--maps",
     "btn--small",
     "btn--medium",
     "btn--menu",
     "btn--big",
     "btn--max",
+    "btn--x"
 ]
 
 

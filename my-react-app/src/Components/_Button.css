@@ -121,6 +121,52 @@
 }
 
 
+.btn--x--basic {
+    display: inline-grid;
+    position: relative;
+    isolation: isolate;
+    background: var(--black);
+    color: var(--red);
+    border: 0;
+    font-weight: bolder;
+    height: 50px;
+    width: 50px;
+    clip-path: polygon(
+            var(--cornercut) 0%,
+            100% 0,
+            100% calc(100% - var(--cornercut)),
+            calc(100% - var(--cornercut)) 100%,
+            0 100%,
+            0% var(--cornercut)
+            );
+}
+.btn--x--basic::after,
+.btn--x--basic::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+
+
+}
+.btn--x--basic::before{
+    background: var(--red);
+    z-index: -2;
+
+}
+.btn--x--basic::after{
+    background:var(--black);
+    z-index: -1; 
+    clip-path: polygon(
+        calc(var(--cornercut) + .1em) .15em,
+        calc(100% - .15em) .15em,
+        calc(100% - .15em) calc(100% - var(--cornercut) - .15em),
+        calc(100% - var(--cornercut) - .15em) calc(100% - .15em),
+        .15em calc(100% - .15em),
+        .15em calc(var(--cornercut) + .1em)
+        );
+
+}
+
 
 /*Button : Styles : Sizes*/
 
@@ -152,4 +198,9 @@
 .btn--max {
     padding: 30px 40px;
     font-size: larger;
+}
+.btn--x {
+    padding: 25%;
+    font-size: larger;
+
 }
