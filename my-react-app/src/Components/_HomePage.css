@@ -16,7 +16,6 @@
     border: #000000;
     border-style: solid;
     position: absolute;
-    overflow: scroll;
     background: url(/src/Images/HomePageBacground.png);
     background-size: cover;
     

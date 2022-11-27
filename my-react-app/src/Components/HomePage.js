@@ -1,8 +1,6 @@
 import React from "react";
 import { Button } from "./Button.jsx";
 import './_HomePage.css';
-import {Routes, Route, useNavigate} from 'react-router-dom';
-
 
 
 function HomePage() {
@@ -12,7 +10,7 @@ function HomePage() {
                 
                 <div className="hbtnGroup">
                     <Button
-                        onClick={() => { console.log("escaped from tarkov") }}
+                        onClick={() =>  { window.location.href ="/EFT" }}
                         type="btn"
                         buttonStyle="btn--Menu--outline"
                         size="btn--menu"
