@@ -1,0 +1,67 @@
+:root{
+    --green: #00ff00;
+    --amber: #ffee00;
+    --gray: #2c2c2c;
+    --red: #ff0000;
+    --black: #000000;
+    --white: #ffffff;
+    --height: 720px;
+    --width: 1280px;
+}
+
+.eftpage{
+    height: var(--height);
+    width: var(--width);   
+    overflow: hidden;
+    background: #0b0b0bfd;
+    border: #000000;
+    border-style: solid;
+    position: absolute;
+}
+
+.efttitle{
+    height: 75px;
+    width:  800px;
+    right: 25px;
+    font-weight: bolder;
+    font-size: 54px;
+    margin-right: 1px;
+    margin-top: 2px;
+    margin-bottom: 0px;
+    margin-left: 50px;
+    text-align: center;
+    color:#ffffff;
+    position: absolute;
+    overflow: hidden;
+}
+.eftmapDisplay{
+    position:absolute;
+    height: fit-content;
+    width: fit-content;
+    border: none;
+    background-color: transparent;
+    top: 200px;
+    right:25px;
+}
+.eftmapList {
+    position: absolute;
+    height: fit-content;
+    width: fit-content;
+    top: 150px;
+    left: 25px;
+
+}
+.eftDropDown {
+    position: absolute;
+    height: fit-content;
+    width: fit-content;
+    top: 150px;
+    right: 775px;
+}
+.eftxbtn{
+    position: absolute;
+    height: fit-content;
+    width: fit-content;
+    top:10px;
+    left:10px;
+}

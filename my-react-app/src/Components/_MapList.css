@@ -1,0 +1,16 @@
+button{
+    border: none;
+    background: transparent;
+    color:#ffffff;
+    font-family:unset;
+    float: bottom;
+    font-family: unset;
+    font-size: 4.75em;
+    
+}
+.ls--map--display{
+    height: 475px;
+    width: 450px;
+    background-color: transparent;
+    overflow: scroll;
+}
