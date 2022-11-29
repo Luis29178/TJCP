@@ -10,25 +10,27 @@ import {
 } from "react-router-dom";
 import SignUp from './signup';
 import SignIn from './Components/SignIn'
-import HomePage from './Components/HomePage'
+import HomePage from './Components/HomePage';
+import EFTmaps from './Components/EFTmaps';
 
 const router = createBrowserRouter([
-  {
+ {
     path: "/",
-    element:  <App/>,
+    element: <HomePage/>,
   },
-    {
+  {
     path:"/login",
     element:<SignIn/>,
   },
   {
-    path: "signup",
+    path: "/signup",
     element: <SignUp/>,
   },
   {
-    path: "/home",
-    element: <HomePage/>,
+    path: "/EFT",
+    element: <EFTmaps/>,
   },
+  
   // to create a new path add an object like the below one to this Router.
   // "path" is that page path; ex: tjcp.com/login
   // "element" is the react component you want to redirect it to

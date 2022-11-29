@@ -1,0 +1,73 @@
+:root {
+    --cornercutd: .5em;
+    --green: #00ff00;
+    --amber: #ffee00;
+    --gray: #2c2c2c;
+    --red: #ff0000;
+    --black: #000000;
+    --white: #ffffff;
+    
+    
+}
+select{
+    box-shadow: 0 5px 20px #000000;
+    font-size: 1.75em;
+    background: #2c2c2c;
+    color: #ffffff;
+    
+    border-width: 1px;
+    width: 750px;
+    height: 40px;
+    padding: 0em 2.25em 0em 2.25em ;
+    border:none;
+    appearance: none;
+    clip-path: polygon(
+            var(--cornercutd) 0%,
+            100% 0,
+            100% calc(100% - var(--cornercutd)),
+            calc(100% - var(--cornercutd)) 100%,
+            0 100%,
+            0% var(--cornercutd)
+            );
+}
+.dd--eft--basic{
+    position:absolute;
+}
+.dd-arrow{
+    position: absolute;
+    display: block;
+    background: #2c2c2c;
+    height: 60%;
+    width: 2em;
+    bottom: 5px;
+    right: .5em;
+    pointer-events: none;
+}
+.dd-arrow::before,
+.dd-arrow::after{
+    --ArrowSize: .50em;
+
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    
+    left:50%;
+    
+   
+}
+.dd-arrow::after{
+    position: absolute;
+    border-left:var(--ArrowSize) solid transparent;
+    border-right: var(--ArrowSize) solid transparent;
+    border-top: var(--ArrowSize) solid #2c2c2c;
+    top: 10%;
+    transform: translate(-40%, -0%);
+}
+.dd-arrow::before{
+    border-left:var(--ArrowSize) solid transparent;
+    border-right: var(--ArrowSize) solid transparent;
+    border-top: var(--ArrowSize) solid #ffffff;
+    top: 50%;
+    transform: translate(-40%, -100%);
+}

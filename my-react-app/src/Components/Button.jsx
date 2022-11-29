@@ -1,7 +1,12 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> EFTmenu
 import React from 'react'
 import './_Button.css'
 
 const Styles =[
+<<<<<<< HEAD
     "btn--amber--solid",
     "btn--gray--solid",
     "btn--green--solid",
@@ -10,15 +15,29 @@ const Styles =[
     "btn--gray--outline",
     "btn--green--outline",
     "btn--red--outline",
+=======
+    "btn--Log--basic",
+    "btn--Menu--outline",
+    "btn--Maps--basic",
+    "btn--x--basic",
+>>>>>>> EFTmenu
 ]
 
 const Sizes = [
     "btn--tiny",
+<<<<<<< HEAD
+=======
+    "btn--maps",
+>>>>>>> EFTmenu
     "btn--small",
     "btn--medium",
     "btn--menu",
     "btn--big",
     "btn--max",
+<<<<<<< HEAD
+=======
+    "btn--x"
+>>>>>>> EFTmenu
 ]
 
 
@@ -48,6 +67,7 @@ export const Button = ({
 
     return (
 
+<<<<<<< HEAD
         <Button 
         className={`${checkbtnStyle} ${checkbtnSize}`} 
         onClick = {onClick} 
@@ -55,8 +75,20 @@ export const Button = ({
 
         {children}
         </Button>
+=======
+        <button 
+        className={`btn ${checkbtnStyle} ${checkbtnSize}`} 
+        onClick = {onClick} 
+        type = {type}>
+        {children}
+        </button>
+>>>>>>> EFTmenu
 
     );
 
 
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> EFTmenu
