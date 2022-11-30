@@ -1,0 +1,25 @@
+:root {
+    --cornercutd: .5em;
+    --green: #00ff00;
+    --amber: #ffee00;
+    --gray: #2c2c2c;
+    --red: #ff0000;
+    --black: #000000;
+    --white: #ffffff;
+    --height: 720px;
+    --width: 1280px;
+    
+}
+
+.tmp{
+    height: 200px;
+    width: 200px;
+    background-color: #2c2c2c;
+}
+
+.raidContainer{
+    border:#000000;
+    border-style: solid;
+    height: var(--height);
+    width: var(--width);
+}
