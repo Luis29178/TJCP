@@ -11,10 +11,13 @@
     
 }
 
-.tmp{
-    height: 200px;
-    width: 200px;
-    background-color: #2c2c2c;
+.raidExtra{
+   position: absolute;
+   height: 300px;
+   width: 200px;
+   background: #2c2c2c;
+   margin-top: 395px;
+   left:45px;
 }
 
 .raidContainer{
@@ -22,4 +25,28 @@
     border-style: solid;
     height: var(--height);
     width: var(--width);
+}
+.raidTags{
+    height: fit-content;
+    width: 150px;
+    position: absolute;
+    left:45px;
+    top:50px;
+    padding-left: 50px;
+    padding-top: 40px;
+}
+.raidMap{
+    margin-top:25px;
+    margin-right: 25px;
+    position:relative;
+    left: 265px;
+    float: left;
+}
+.raidUsers{
+    height: 125px;
+    width: 1000px;
+    position: absolute;
+    top:550px;
+    left: 265px;
+    padding-top: 15px;
 }

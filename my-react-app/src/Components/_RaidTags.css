@@ -1,0 +1,10 @@
+.tag {
+    background-color: transparent;
+    height: fit-content;
+    width: fit-content;
+}
+
+.tagbind {
+    margin-left: 20px;
+}
+
