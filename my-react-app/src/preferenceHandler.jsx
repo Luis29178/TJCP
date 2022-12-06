@@ -9,8 +9,8 @@ const db = firebase.firestore();
       console.log(snapshot.data())
     }).catch((e) => console.log(e))
   }
-  function updateKeybinds(){
-    firebase.firestore().collection("userPreferences").doc('mipMcXMiQedEIwki5QBqV00TaXg1').update({"Q": "dead", "W":"star"});
+  function updateKeybinds(updated_keyBinds){
+    firebase.firestore().collection("userPreferences").doc('mipMcXMiQedEIwki5QBqV00TaXg1').update({"keyBinds" : updated_keyBinds});
   }
 
 export {readKeybinds, updateKeybinds} 
