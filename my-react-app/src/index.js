@@ -30,6 +30,10 @@ const router = createBrowserRouter([
     path: "/EFT",
     element: <EFTmaps/>,
   },
+  {
+    path:"/test",
+    element:<App/>
+  }
   
   // to create a new path add an object like the below one to this Router.
   // "path" is that page path; ex: tjcp.com/login
