@@ -1,0 +1,76 @@
+.ibtn{
+    margin-top: 15px;
+    height: 60px;
+    width: 60px;
+}
+
+.itembtn--plus{
+    height: 60px;
+    width: 60px;
+    position: relative;
+    font-size: 50px;
+    padding-top: -10px;
+
+}
+.ibtnBorder--plus{
+    position: relative;
+    font-size: 35px;
+    bottom: 55px;
+    padding-left: 15px;
+    padding-bottom: 9px;
+    align-content: center;
+    color: aliceblue;
+    pointer-events: none;
+    border: #ffffff;
+    border-style: solid;
+    border-radius: 100%;
+}
+
+.itembtn--minus{
+    height: 60px;
+    width: 60px;
+    position: relative;
+    font-size: 50px;
+    padding-top: -10px;
+
+}
+.ibtnBorder--minus{
+    position: relative;
+    font-size: 35px;
+    bottom: 55px;
+    padding-left: 19px;
+    padding-bottom: 9px;
+    align-content: center;
+    color: aliceblue;
+    pointer-events: none;
+    border: #ffffff;
+    border-style: solid;
+    border-radius: 100%;
+}
+.itembtn--info{
+    height: 30px;
+    width: 30px;
+    margin-top: 20px;
+    margin-left: 10px;
+    position: relative;
+    font-size: 50px;
+
+
+}
+.ibtnBorder--info{
+    position: relative;
+    height: 30px;
+    width: 30px;
+    bottom: 32px;
+    left: 7px;
+    font-size: 20px;
+    font-style: bold;
+    text-align: center;
+    align-content: center;
+    color: aliceblue;
+    pointer-events: none;
+    border: #ffffff;
+    border-style: solid;
+    border-radius: 100%;
+
+}

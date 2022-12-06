@@ -30,7 +30,6 @@
 img{
     height: var(--MDhight);
     width: var(--MDwidth);
-    background-image: url(../Images/custumsmapog.png);
     background-clip: unset;
     background-size:contain;
     background-position: center;

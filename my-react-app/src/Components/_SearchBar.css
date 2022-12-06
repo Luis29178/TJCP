@@ -1,0 +1,68 @@
+
+
+
+.Sbar {
+    margin-left: 60px;
+    margin-top: -2px;
+    position: absolute;
+    width: 500px;
+    height: 50px;
+    background-color: transparent;
+
+}
+
+.Sbar input {
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 32px;
+
+
+
+}
+
+.Sbarborder {
+    --xpx: 20px;
+    --ypx: 2px;
+    position: absolute;
+    width: 600px;
+    height: 60px;
+    background-color: #ffffff79;
+    clip-path: polygon(
+            /*8*/
+            50% 100%,
+            /*7*/
+            calc(0% + var(--xpx)) 100%,
+            /*6*/
+            0 calc(100% - var(--xpx)),
+            /*5*/
+            0% 0%,
+            /*4*/
+            calc(100% - var(--xpx)) 0,
+            /*3*/
+            100% calc(0% + var(--xpx)),
+            /*2*/
+            100% 100%,
+            /*1*/
+            50% 100%,
+            /*16*/
+            50% calc(100% - var(--ypx)),
+            /*15*/
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            /*14*/
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            /*13*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            /*12*/
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)),
+            /*11*/
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            /*10*/
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            /*9*/
+            50% calc(100% - var(--ypx)));
+
+}
