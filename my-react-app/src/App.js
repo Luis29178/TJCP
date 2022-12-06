@@ -8,7 +8,7 @@ import {
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import React, { useEffect, useState } from 'react';
-import {preferences, readDoc} from './preferenceHandler';
+import {readKeybinds, updateKeybinds} from './preferenceHandler';
 
 function App() {
 
@@ -33,14 +33,15 @@ function App() {
     return (
       <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        
         <p>
           Welcome to TJCP "Hello World" Project. 
         </p>
         <p>
         {isAnon?  <span> You are a Resigtered User </span> : <span>You are currently a Guest</span> }
         </p>
-        <button onClick={() => preferences()}>Default</button>;
+        <button onClick={() => readKeybinds()}>Read Keybinds</button>
+        <button onClick={() => updateKeybinds()}>Update Keybinds</button>
         <p> <Link style={{color:"red"}} onClick={() =>firebase.auth().signOut()} > SignOut</Link></p>
       </header>
     </div>
