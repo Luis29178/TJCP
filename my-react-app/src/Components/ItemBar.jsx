@@ -6,6 +6,36 @@ import ItemButton from "./ItemButtons"
 
 class ItemBar extends React.Component {
 
+    state = {
+        _iCount: this.props.iCount
+
+    }
+
+    countUp = () => {{
+        
+        console.log("counting")
+        var adjustedCount = this.state._iCount + 1;
+        console.log("added")
+        this.setState({
+            _iCount: adjustedCount
+        });
+        console.log("setState")
+        console.log("done")
+
+    }}
+    countDown = () => {{
+        
+        console.log("counting")
+        var adjustedCount = this.state._iCount - 1;
+        console.log("added")
+        this.setState({
+            _iCount: adjustedCount
+        });
+        console.log("setState")
+        console.log("done")
+
+    }}
+
 
     render() {
         return (
@@ -15,11 +45,11 @@ class ItemBar extends React.Component {
 
                     <Grid item xs={8}><div style={itemName}>{this.props.iName}</div></Grid>
 
-                    <Grid item xs={1}><div style={btns}><ItemButton btnStyle="itembtn--plus" borderStyle="ibtnBorder--plus" onClick={() => {console.log(`incrament in firebase based on ${this.props.iName}s true value within [itemBar.jsx]`)}}>{"+"}</ItemButton></div></Grid>
+                    <Grid item xs={1}><div style={btns}><ItemButton btnStyle="itembtn--plus" borderStyle="ibtnBorder--plus" onClick={this.countUp.bind(this)}>{"+"}</ItemButton></div></Grid>
 
-                    <Grid item xs={1}><div style={itemCount}>{this.props.iCount}</div></Grid>
+                    <Grid item xs={1}><div style={itemCount}>{this.state._iCount}</div></Grid>
 
-                    <Grid item xs={1}><div style={btns}><ItemButton btnStyle="itembtn--minus" borderStyle="ibtnBorder--minus" onClick={() => {console.log(`decrament in firebase based on ${this.props.iName}s true value within [itemBar.jsx]`)}}>{"-"}</ItemButton></div></Grid>
+                    <Grid item xs={1}><div style={btns}><ItemButton btnStyle="itembtn--minus" borderStyle="ibtnBorder--minus" onClick={this.countDown.bind(this)}>{"-"}</ItemButton></div></Grid>
 
                     <Grid item xs={1}><div style={btns}><ItemButton btnStyle="itembtn--info" borderStyle="ibtnBorder--info" onClick={() => {console.log(`send to info in based on ${this.props.iName}s true value within [itemBar.jsx]`)}}>{"i"}</ItemButton></div></Grid>
 
