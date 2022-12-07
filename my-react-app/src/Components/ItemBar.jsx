@@ -13,22 +13,26 @@ class ItemBar extends React.Component {
 
     countUp = () => {{
         
+        console.log("counting")
         var adjustedCount = this.state._iCount + 1;
-
+        console.log("added")
         this.setState({
             _iCount: adjustedCount
         });
-
+        console.log("setState")
+        console.log("done")
 
     }}
     countDown = () => {{
         
+        console.log("counting")
         var adjustedCount = this.state._iCount - 1;
-
+        console.log("added")
         this.setState({
             _iCount: adjustedCount
         });
-
+        console.log("setState")
+        console.log("done")
 
     }}
 
