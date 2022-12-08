@@ -12,6 +12,9 @@ import SignUp from './signup';
 import SignIn from './Components/SignIn'
 import HomePage from './Components/HomePage';
 import EFTmaps from './Components/EFTmaps';
+import Raid from './Components/RaidPage'
+import EFTmapst from './Components/EFTmapstests'
+import TrackerPage from './Components/TrackerPage';
 
 const router = createBrowserRouter([
  {
@@ -28,8 +31,16 @@ const router = createBrowserRouter([
   },
   {
     path: "/EFT",
-    element: <EFTmaps/>,
+    element: <EFTmapst/>,
   },
+  {
+    path: "/tempRaid",
+    element: <Raid/>,
+  },
+  {
+    path: "/Traker",
+    element: <TrackerPage/>,
+  }
   
   // to create a new path add an object like the below one to this Router.
   // "path" is that page path; ex: tjcp.com/login

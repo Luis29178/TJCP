@@ -1,0 +1,44 @@
+:root{
+    --theight: 720px;
+    --twidth: 1280px;
+}
+
+
+.Tpage{
+    height: var(--theight);
+    width: var(--twidth);
+    background: black;
+}
+
+.Idiplay{
+
+    background: transparent;
+    border: 15px;
+
+
+}
+.Ttitle{
+    height: fit-content;
+    width: fit-content;
+    background: transparent;
+    color: white;
+    font-size: 60px;
+    text-align: center;
+
+}
+.Tserchbar{
+    height: 60px;
+    width: 600px;
+}
+.Titemlist{
+    height:550px;
+    width: calc(var(--twidth) * .90);
+    overflow: scroll;
+}
+.backButton{
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    margin-top: 10px;
+    margin-left: 10px;
+}

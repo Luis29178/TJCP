@@ -1,8 +1,8 @@
-import { useOnDraw } from "./hooks";
+import { useOnDraw } from "./MapCanvasHook";
 import map from '../Images/custumsmapog.png'
 import { useState } from "react";
 
-const Canvas = ({
+const MapCanvas = ({
     width,
     height,
     
@@ -54,7 +54,7 @@ const Canvas = ({
 
 }
 
-export default Canvas;
+export default MapCanvas;
 
 var canvasStyle = {
     

@@ -25,12 +25,11 @@
     background-size:contain;
     clip-path: none;
     border: none;
+    overflow: scroll;
     
 }
-img{
-    height: var(--MDhight);
-    width: var(--MDwidth);
-    background-image: url(../Images/custumsmapog.png);
+.img{
+    min-width: var(--MDwidth);
     background-clip: unset;
     background-size:contain;
     background-position: center;

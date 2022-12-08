@@ -78,11 +78,9 @@ export function useOnDraw(onDraw, clear){
 
         isDrawingRef.current = false;
         prevPointRef.current = null;
-        console.log("in befor reset");
         const ctx = canRef.current.getContext('2d');
         if(clear) clear(ctx);
         
-        console.log("in after reset");
         
     }
     mouseUpListenerRef.current = muListener;
