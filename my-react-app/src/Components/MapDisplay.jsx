@@ -21,7 +21,7 @@ export const MapDisplay = ({
 
     return (
         <div className={`dd ${checkbtnStyle} `}>
-            <img src={Imgsorce}></img>
+            <img className="mapImg" src={Imgsorce}></img>
         </div>
     );
 

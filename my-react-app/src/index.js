@@ -38,7 +38,7 @@ const router = createBrowserRouter([
     element: <Raid/>,
   },
   {
-    path: "/Traker",
+    path: "/Tracker",
     element: <TrackerPage/>,
   }
   

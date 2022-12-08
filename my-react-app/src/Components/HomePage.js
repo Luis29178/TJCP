@@ -38,7 +38,7 @@ function HomePage() {
                     <br></br>
 
                     <Button
-                        onClick={() => { console.log("To the tracker") }}
+                        onClick={() => {  window.location.href ="/Tracker" }}
                         type="button"
                         buttonStyle="btn--Menu--outline"
                         size="btn--menu"

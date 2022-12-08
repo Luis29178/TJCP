@@ -6,15 +6,6 @@
     --red: #ff0000;
     --black: #000000;
     --white: #ffffff;
-    --PolyClip: polygon(
-        var(--cornercutm) 0%,
-        100% 0,
-        100% calc(100% - var(--cornercutm)),
-        calc(100% - var(--cornercutm)) 100%,
-        0 100%,
-        0% var(--cornercutm)
-        );
-        background: transparent;
     --MDhight:425px;
     --MDwidth:750px;
     
@@ -28,10 +19,9 @@
     overflow: scroll;
     
 }
-.img{
+.mapImg{
+    max-width: calc(var(--MDwidth) * 1.5) ;
     min-width: var(--MDwidth);
-    background-clip: unset;
-    background-size:contain;
     background-position: center;
     background-color: #000000;
     background-repeat: no-repeat;
