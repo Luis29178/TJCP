@@ -7,7 +7,6 @@ import { auth as firebaseuiAuth } from 'firebaseui';
 import  { Redirect } from 'react-router-dom'
 import '../App.css';
 
-// Configure Firebase.
 const config = {
   apiKey: "AIzaSyC4hztlkCki_2pnq93Rgf7cgncHC1V61N0",
   authDomain: "capstone-eeab2.firebaseapp.com",

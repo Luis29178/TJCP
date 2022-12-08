@@ -5,6 +5,7 @@ import './_HomePage.css';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 
+  
 
 function HomePage() {
     const [isSignedIn, setIsSignedIn] = useState(false); // Local signed-in state.

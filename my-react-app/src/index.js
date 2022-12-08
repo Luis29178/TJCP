@@ -16,6 +16,10 @@ import Raid from './Components/RaidPage'
 import EFTmapst from './Components/EFTmapstests'
 import TrackerPage from './Components/TrackerPage';
 
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+
+
 const router = createBrowserRouter([
  {
     path: "/",
@@ -33,6 +37,10 @@ const router = createBrowserRouter([
     path: "/EFT",
     element: <EFTmapst/>,
   },
+  {
+    path:"/test",
+    element:<App/>
+  }
   {
     path: "/tempRaid",
     element: <Raid/>,

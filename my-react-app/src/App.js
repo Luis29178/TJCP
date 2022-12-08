@@ -8,8 +8,10 @@ import {
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import React, { useEffect, useState } from 'react';
+import {readKeybinds, updateKeybinds} from './preferenceHandler';
 
 function App() {
+
 
   const [isSignedIn, setIsSignedIn] = useState(false); // Local signed-in state.
   const [isAnon, setIsAnon] = useState(false);
@@ -18,8 +20,9 @@ function App() {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
       setIsSignedIn(!!user);
       var email = user.email;
-      console.log(email === null ? true : false);
-      //setIsAnon()
+      //console.log(user.email);
+      //console.log(email == null ? true : false)
+      setIsAnon(email == null ? false : true)
       //console.log(isAnon)
     });
     return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
@@ -29,14 +32,16 @@ function App() {
     return (
       <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        
         <p>
           Welcome to TJCP "Hello World" Project. 
         </p>
         <p>
         {isAnon?  <span> You are a Resigtered User </span> : <span>You are currently a Guest</span> }
         </p>
-        <p> <Link style={{color:"red"}} onClick={() => firebase.auth().signOut()} > SignOut</Link></p>
+        <button onClick={() => readKeybinds()}>Read Keybinds</button>
+        <button onClick={() => updateKeybinds({"Q":'money'})}>Update Keybinds</button>
+        <p> <Link style={{color:"red"}} onClick={() =>firebase.auth().signOut()} > SignOut</Link></p>
       </header>
     </div>
     );
