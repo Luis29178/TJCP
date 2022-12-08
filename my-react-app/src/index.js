@@ -40,7 +40,7 @@ const router = createBrowserRouter([
   {
     path:"/test",
     element:<App/>
-  }
+  },
   {
     path: "/tempRaid",
     element: <Raid/>,
