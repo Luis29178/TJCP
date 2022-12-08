@@ -2,15 +2,32 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 
+const config = {
+  apiKey: "AIzaSyC4hztlkCki_2pnq93Rgf7cgncHC1V61N0",
+  authDomain: "capstone-eeab2.firebaseapp.com",
+  projectId: "capstone-eeab2",
+  storageBucket: "capstone-eeab2.appspot.com",
+  messagingSenderId: "779758566575",
+  appId: "1:779758566575:web:fa8755a005fed7dd23a85a",
+  measurementId: "G-55B1P13PP9"
+
+};
+firebase.initializeApp(config); 
+
 const db = firebase.firestore();
 
+const userPreferencesDB = "userPreferences";
+
+
   function readKeybinds(){
-    firebase.firestore().collection("userPreferences").doc('mipMcXMiQedEIwki5QBqV00TaXg1').get().then((snapshot) => {
+    var user = firebase.auth().currentUser;
+    firebase.firestore().collection(userPreferencesDB).doc(user.uid).get().then((snapshot) => {
       console.log(snapshot.data())
     }).catch((e) => console.log(e))
   }
   function updateKeybinds(updated_keyBinds){
-    firebase.firestore().collection("userPreferences").doc('mipMcXMiQedEIwki5QBqV00TaXg1').update({"keyBinds" : updated_keyBinds});
+    var user = firebase.auth().currentUser;
+    firebase.firestore().collection(userPreferencesDB).doc(user.uid).update({"keyBinds" : updated_keyBinds}).then(()=>console.log("Edited"));
   }
 
 export {readKeybinds, updateKeybinds} 
