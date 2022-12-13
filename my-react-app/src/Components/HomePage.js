@@ -26,11 +26,10 @@ function HomePage() {
                 
                 <div className="hbtnGroup">
                     <Button
-                        onClick={() =>  { window.location.href ="/EFT" }}
+                        onClick={() =>  { window.location.href ="/SelectMode" }}
                         type="btn"
                         buttonStyle="btn--Menu--outline"
                         size="btn--menu"
-
                     >
                         Escape From Tarkov
                     </Button>
@@ -50,9 +49,7 @@ function HomePage() {
 
                     <Button
                         onClick={() => {
-
-                             console.log("To plan a path") 
-                            
+                            window.location.href ="/Paths"
                             }
                         }
                         type="button"

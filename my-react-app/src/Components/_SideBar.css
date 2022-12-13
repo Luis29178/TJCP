@@ -1,9 +1,10 @@
 .sbar {
-    position: absolute;
+    position: fixed;
     --bpx: 15px;
     height: 680px;
     width: 40px;
     background: #2c2c2c;
+    z-index: 50;
     clip-path: polygon(
             /*2*/
             calc(100% - var(--bpx)) 0%,
@@ -21,7 +22,8 @@
 }
 
 .sbarOpen {
-    position: absolute;
+    position: fixed;
+    z-index: 50;
     --bpx: 15px;
     height: 680px;
     width: 220px;
@@ -43,7 +45,8 @@
 }
 
 .arrowcont{
-    position: absolute;
+    z-index: 51;
+    position: fixed;
     margin-left: 2.5px;
     margin-top: 312px;
     height: 50px;
@@ -51,7 +54,8 @@
     transition: margin 1.5s;
 }
 .arrowcontOpen{
-    position: absolute;
+    z-index: 51;
+    position: fixed;
     margin-left: 2.5px;
     margin-top: 312px;
     height: 50px;
@@ -63,7 +67,8 @@
 
 
 .sarrow {
-    position: absolute;
+    z-index: 52;
+    position: fixed;
     margin-left: 10px;
     margin-top: 315px;
     --txp: 10px;
@@ -89,7 +94,8 @@
 
 }
 .sarrowOpen {
-    position: absolute;
+    z-index: 52;
+    position: fixed;
     margin-left: 185px;
     margin-top: 315px;
     --txp: 10px;
@@ -114,21 +120,26 @@
 
 }
 .sbcontent{
+    z-index: 53;
+    position: fixed;
     visibility: hidden;
-
     height: 680px;
     width: 180px;
     overflow: hidden;
+    transition: visibility 100ms;
+    
     
 
 }
 .sbcontentOpen{
+    position: fixed;
+    z-index: 53;
     visibility:  visible;
-    border: #000000;
-    border-style: solid;
     height: 680px;
     width: 180px;
     overflow: hidden;
+    
+    
     
 
 }

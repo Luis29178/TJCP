@@ -3,6 +3,7 @@ import MapCanvas from "./MapCanvas.js"
 import { Tags } from "./RaidTags.jsx"
 import React from "react";
 import SideBar from "./SideBar.jsx";
+import "./_PathPage.css"
 
 
 
@@ -17,21 +18,21 @@ class PathPage extends React.Component {
         return (
             <>
                 <div style={_container}>
-                <Grid container direction="row" spacing={1}>
+                <Grid container direction="row" spacing={1} z={10}>
 
-                    <Grid item xs={.5}>
+                    <Grid item xs={.7}>
                         <SideBar></SideBar>
                     </Grid>
 
 
-                    <Grid item xs={11.5}>
+                    <Grid item xs={11.3}>
                     <Grid container direction="row" spacing={-70}>
 
                         <Grid item xs={3}>
                             <Grid container direction="column">
 
                                 <Grid item xs={6}>
-                                    <div style={tagsCont}>
+                                    <div className="tagscont">
                                     <Tags style={"raid--tg--basic"}
                                         size={"raid--tg-medium"} />
                                     </div>
@@ -39,7 +40,8 @@ class PathPage extends React.Component {
                                 </Grid>
 
                                 <Grid item xs={6}>
-                                    tools
+                                    <div className="toolscont">tools</div>
+                                    
 
                                 </Grid>
 
@@ -81,20 +83,14 @@ var _container = {
     padding: "30px 0px 0px 0px",
     height: "720px",
     width: "1280px",
-    border: "#ffffff",
-    border: "solid"
+    background: "#0b0b0bfd"
+
 
 }
 var tagsCont = {
-    margin: "30px 0px 0px 0px",
+    margin: "30px 0px 0px 15px",
 }
 
-var tempsb = {
-    height: "720px",
-    width: "50px",
-    position: "relative",
-    float: "left"
 
-}
 
 

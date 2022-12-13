@@ -1,12 +1,11 @@
 import {Grid } from "@mui/material";
-import { Button } from "./Button";
 import React from "react";
-
-import { Children } from "react";
+import PathButtons from './pathBtnGroup'
 import './_SideBar.css'
 
 class PathMenu extends React.Component {
     state = {
+        
 
     }
 
@@ -15,33 +14,17 @@ class PathMenu extends React.Component {
         return (
 
                 
-                <Grid container direction="column"  justifyContent="space-between"  alignItems="center" >
-                    <Grid item xs ={4}>
-                        <div>Menu</div>
+                <Grid container direction="column" justifyContent="space-between"  alignItems="center" >
+                    <Grid item xs ={12} marginBottom ={4}>
+                        <div style={tittel}>Path Creator</div>
 
                     </Grid>
-                    <Grid item xs={4}>
-                        <div>Path Name :</div>
+                    <Grid item xs={12} marginTop={25} marginBottom={25} maxHeight={50}>
+                        <div style={pathname}>Path Name : sample</div>
 
                     </Grid>
-                    <Grid item xs={4}>
-                        <Grid container direction="column" spacing={1}>
-                            <Grid item xs={4}>
-                                <Button >
-                                    Take To Raid
-                                </Button >
-                            </Grid>
-                            <Grid item xs={4}>
-                                <Button >
-                                    Save
-                                </Button>
-                            </Grid>
-                            <Grid item xs={4}>
-                                <Button >
-                                    Discard
-                                </Button>
-                            </Grid>
-                        </Grid>
+                    <Grid item xs={12}>
+                        <PathButtons/>
                     </Grid>
                 </Grid>
 
@@ -52,3 +35,10 @@ class PathMenu extends React.Component {
 
 }
 export default PathMenu;
+var tittel ={
+    fontSize: "30px",
+
+}
+var pathname = {
+    fontSize: "20px",
+}

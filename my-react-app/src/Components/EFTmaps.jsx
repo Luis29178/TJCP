@@ -75,7 +75,7 @@ class EFTmaps extends React.Component {
                     </div>
                     </Grid>
                     
-                    <Grid item xs={5} columns= {{xs:11}}>
+                    <Grid item xs={5} >
                     <div className="eftmapList">
                         <MapList style="ls--map--display" func={this.mapChange.bind(this)}></MapList>
                     </div>

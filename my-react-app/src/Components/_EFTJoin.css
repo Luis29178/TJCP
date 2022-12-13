@@ -1,0 +1,10 @@
+.EFTJoin{
+    grid-template-columns: [BCS] 70px [BCE] fit-content [SBCS] auto [LastC];
+    grid-template-rows: [HRS] 70px [HRE] 20% [SHRE] fit-content [SRE] auto [LastR] ;
+    height: 100vh;
+    background: #0c0c0c;
+
+}
+.BackBtn {
+    grid-column-start: SBCS;
+}

@@ -14,6 +14,8 @@ import EFTmaps from './Components/EFTmaps';
 import Raid from './Components/RaidPage'
 import TrackerPage from './Components/TrackerPage';
 import PathPage from './Components/PathPage';
+import SelectMode from './Components/EFTSelectMode';
+import JoinRaid from './Components/EFTJoin';
 
 const router = createBrowserRouter([
  {
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
   {
     path: "/Paths",
     element: <PathPage/>
+  },
+  {
+    path:"/SelectMode",
+    element: <SelectMode/>
+  },
+  {
+    path: "/Join",
+    element: <JoinRaid/>
   }
   
   // to create a new path add an object like the below one to this Router.
