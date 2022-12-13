@@ -2,6 +2,8 @@ import { useOnDraw } from "./MapCanvasHook";
 import map from '../Images/custumsmapog.png'
 import { useState } from "react";
 
+import cursor from "./Tags/cursor.png";
+
 const MapCanvas = ({
     width,
     height,
@@ -60,6 +62,6 @@ var canvasStyle = {
     
     border: "1px solid black",
     backgroundImage: `url(${map})`,
-    backgroundSize: "cover"
+    backgroundSize: "cover",
     
 }
