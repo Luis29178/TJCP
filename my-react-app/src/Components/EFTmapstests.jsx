@@ -55,28 +55,25 @@ class EFTmapst extends React.Component {
     render(){
         return (
 
-            <>
+            
                 <div className="eftpage">
-                <Grid container spacing={2} >
 
-                    <Grid item xs={11}>
-                    <div className="efttitle">Maps</div>
-                    </Grid>
-
-                    <Grid item xs={1}>
-                    <div className="eftxbtn">
-                        <Button onClick={() => { window.location.href = "/" }}
-                            type="button"
-                            buttonStyle="btn--x--basic"
-                            size="btn--x">{"<"}</Button>
+                    <div className="title">
+                        <div className="eftxbtn">
+                            <Button onClick={() => { window.location.href = "/" }}
+                                type="button"
+                                buttonStyle="btn--x--basic"
+                                size="btn--x">{"<"}</Button>
+                        </div>
+                        <div className="efttitle">Maps</div>
                     </div>
-                    </Grid>
+
                     
-                    <Grid item xs={5} columns= {{xs:11}}>
+                    
                     <div className="eftmapList">
                         <MapList style={"ls--map--display"} func={this.mapChange.bind(this)}></MapList>
                     </div>
-                    </Grid>
+                    
 
                     <div className="eftmapDisplay">
                         <MapDisplay mdstyle={"map--menu--display"} Imgsorce={this.state.map} ></MapDisplay>
@@ -86,9 +83,9 @@ class EFTmapst extends React.Component {
                     <div className="eftDropDown">
                         <DropDown ddstyle={"dd--eft--basic"}></DropDown>
                     </div>
-                </Grid>
+
                 </div>
-            </>
+            
     
         );
 
