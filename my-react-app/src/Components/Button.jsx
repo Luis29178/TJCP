@@ -6,6 +6,7 @@ const Styles =[
     "btn--Menu--outline",
     "btn--Maps--basic",
     "btn--x--basic",
+    "btn--new--yellow"
 ]
 
 const Sizes = [
@@ -25,7 +26,8 @@ export const Button = ({
     type,
     onClick,
     buttonStyle,
-    size
+    size,
+
 }) => {
 
 
@@ -45,13 +47,16 @@ export const Button = ({
 
 
     return (
-
+        <>
         <button 
         className={`btn ${checkbtnStyle} ${checkbtnSize}`} 
         onClick = {onClick} 
         type = {type}>
         {children}
         </button>
+        
+        </>
+    
 
     );
 

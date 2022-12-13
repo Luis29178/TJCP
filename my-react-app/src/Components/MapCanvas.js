@@ -5,6 +5,8 @@ import { useState } from "react";
 const MapCanvas = ({
     width,
     height,
+
+    
     
 }) => {
 
@@ -61,5 +63,6 @@ var canvasStyle = {
     border: "1px solid black",
     backgroundImage: `url(${map})`,
     backgroundSize: "cover"
+    
     
 }

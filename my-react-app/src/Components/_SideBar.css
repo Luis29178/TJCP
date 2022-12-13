@@ -1,0 +1,134 @@
+.sbar {
+    position: absolute;
+    --bpx: 15px;
+    height: 680px;
+    width: 40px;
+    background: #2c2c2c;
+    clip-path: polygon(
+            /*2*/
+            calc(100% - var(--bpx)) 0%,
+            /*3*/
+            100% calc(0% + var(--bpx)),
+            /*4*/
+            100% 100%,
+            /*5*/
+            calc(0% + var(--bpx)) 100%,
+            /*6*/
+            0% calc(100% - var(--bpx)),
+            /*1*/
+            0 0);
+            transition: width 1.5s;
+}
+
+.sbarOpen {
+    position: absolute;
+    --bpx: 15px;
+    height: 680px;
+    width: 220px;
+    background: #2c2c2c;
+    clip-path: polygon(
+            /*2*/
+            calc(100% - var(--bpx)) 0%,
+            /*3*/
+            100% calc(0% + var(--bpx)),
+            /*4*/
+            100% 100%,
+            /*5*/
+            calc(0% + var(--bpx)) 100%,
+            /*6*/
+            0% calc(100% - var(--bpx)),
+            /*1*/
+            0 0);
+    transition: width 1s;
+}
+
+.arrowcont{
+    position: absolute;
+    margin-left: 2.5px;
+    margin-top: 312px;
+    height: 50px;
+    width: 40px;
+    transition: margin 1.5s;
+}
+.arrowcontOpen{
+    position: absolute;
+    margin-left: 2.5px;
+    margin-top: 312px;
+    height: 50px;
+    width: 40px;  
+    transition: margin 1s;
+    transform: translateX(170px);
+}
+
+
+
+.sarrow {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 315px;
+    --txp: 10px;
+    height: 50px;
+    width: 50px;
+    background: #454545;
+    clip-path: polygon(
+            /*1*/
+            0% 0%,
+            /*6*/
+            0 calc(0% + var(--txp)),
+            /*5*/
+            calc(50% - var(--txp)) 50%,
+            /*4*/
+            0 calc(100% - var(--txp)),
+            /*3*/
+            0% 100%,
+            /*2*/
+            50% 50%);
+            transition: margin 1.5s;
+
+
+
+}
+.sarrowOpen {
+    position: absolute;
+    margin-left: 185px;
+    margin-top: 315px;
+    --txp: 10px;
+    height: 50px;
+    width: 50px;
+    background: #454545;
+    clip-path: polygon(
+            /*1*/
+            0% 0%,
+            /*6*/
+            0 calc(0% + var(--txp)),
+            /*5*/
+            calc(50% - var(--txp)) 50%,
+            /*4*/
+            0 calc(100% - var(--txp)),
+            /*3*/
+            0% 100%,
+            /*2*/
+            50% 50%);
+            transition: margin 1s;
+            transform: rotate(180deg) translateX(25px);
+
+}
+.sbcontent{
+    visibility: hidden;
+
+    height: 680px;
+    width: 180px;
+    overflow: hidden;
+    
+
+}
+.sbcontentOpen{
+    visibility:  visible;
+    border: #000000;
+    border-style: solid;
+    height: 680px;
+    width: 180px;
+    overflow: hidden;
+    
+
+}
