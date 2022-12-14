@@ -80,7 +80,6 @@ class EFTmaps extends React.Component {
                         <MapList style="ls--map--display" func={this.mapChange.bind(this)}></MapList>
                     </div>
                     </Grid>
-
                     <div className="eftmapDisplay">
                         <MapDisplay mdstyle={"map--menu--display"} Imgsorce={this.state.map} ></MapDisplay>
                     </div>
@@ -89,6 +88,7 @@ class EFTmaps extends React.Component {
                     <div className="eftDropDown">
                         <DropDown ddstyle={"dd--eft--basic"}></DropDown>
                     </div>
+                    
                 </Grid>
                 </div>
             </>
