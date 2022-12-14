@@ -88,11 +88,14 @@ const ImageOnKeyPress = (props) => {
       skullPos0.y.set(params.offset[1]);
   })
 
+  const mockPosX = position.x;
+  const mockPosY = position.y;
+
   return (<>
         {showImage && <animated.div {...bindSkullPos0()} id="item0" className='tag' style={{
             position: "absolute",
-            left: position.x,
-            top: position.y,
+            left: mockPosX - 35,
+            top: mockPosY - 35,
             zIndex: "10"
             }}>                      
             <canvas style={canvasStyle}></canvas>   
