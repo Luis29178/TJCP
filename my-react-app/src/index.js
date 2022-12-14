@@ -13,6 +13,7 @@ import SignIn from './Components/SignIn'
 import HomePage from './Components/HomePage';
 import EFTmaps from './Components/EFTmaps';
 import Raid from './Components/RaidPage'
+import { Tags } from './Components/RaidTags';
 
 const router = createBrowserRouter([
  {
@@ -47,9 +48,7 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <Raid/>
 );
 
 // If you want to start measuring performance in your app, pass a function
