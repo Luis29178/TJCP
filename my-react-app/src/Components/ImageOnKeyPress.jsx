@@ -4,25 +4,32 @@ import {useSpring, animated} from "react-spring"
 import {useDrag} from "react-use-gesture"
 import tag1 from './Tags/SkullTag.png'
 
-function useCursorPosition() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+// function useCursorPosition() {
+//   const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  useEffect(() => {
-    const updatePosition = (e) => {
-      setPosition({
-        x: e.clientX,
-        y: e.clientY
-      });
-    }
-    document.addEventListener('mousemove', updatePosition);
-    return () => {
-      document.removeEventListener('mousemove', updatePosition);
-    }
-  });
+//   useEffect(() => {
+//     const updatePosition = (e) => {
+//       setPosition({
+//         x: e.clientX,
+//         y: e.clientY
+//       });
+//     }
+//     document.addEventListener('mousemove', updatePosition);
+//     return () => {
+//       document.removeEventListener('mousemove', updatePosition);
+//     }
+//   });
 
-  return position;
+//   return position;
 
-}
+// }
+
+
+
+
+
+
+
 
 
     var canvasStyle = {
@@ -38,8 +45,15 @@ function useCursorPosition() {
 
 
 
+
+
+
+
+
+
 const ImageOnKeyPress = (props) => {
   const [showImage, setShowImage] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
   useEffect(() => {
       const keyDownHandler = (e) => {
           if (e.key === 'w') {
@@ -53,6 +67,19 @@ const ImageOnKeyPress = (props) => {
           document.removeEventListener('keydown', keyDownHandler);
       }
   }, [showImage]);
+
+  useEffect(() => {
+    const updatePosition = (e) => {
+      setPosition({
+        x: e.clientX,
+        y: e.clientY
+      });
+    }
+    document.addEventListener('mousemove', updatePosition);
+    return () => {
+      document.removeEventListener('mousemove', updatePosition);
+    }
+  });
 
   const skullPos0 = useSpring({x: 0, y:0});
 
@@ -70,6 +97,7 @@ const ImageOnKeyPress = (props) => {
             }}>                      
             <canvas style={canvasStyle}></canvas>   
             </animated.div>}
+            <div> x: {position.x} y: {position.y}</div>
           {/* {showImage && <img style={{
             position: "absolute",
             width: "50px",

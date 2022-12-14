@@ -39,7 +39,7 @@ function Raid() {
     return (
 
         <div className="raidContainer">
-
+            {<ImageOnKeyPress/>}
             {/* <div className="menuBar">
 
             </div> */}
@@ -53,7 +53,7 @@ function Raid() {
                 </div>
             </div>
             <div className="raidMap">
-            {<ImageOnKeyPress/>}
+            
                 <MapCanvas
                     width={1000}
                     height={500}
