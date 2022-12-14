@@ -91,8 +91,8 @@ const ImageOnKeyPress = (props) => {
   return (<>
         {showImage && <animated.div {...bindSkullPos0()} id="item0" className='tag' style={{
             position: "absolute",
-            left: skullPos0.x,
-            top: skullPos0.y,
+            left: position.x,
+            top: position.y,
             zIndex: "10"
             }}>                      
             <canvas style={canvasStyle}></canvas>   
