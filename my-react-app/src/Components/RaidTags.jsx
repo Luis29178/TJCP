@@ -133,14 +133,6 @@ export const Tags = ({
         }
     }
 
-
-
-    // function keydownevent()
-	// {
-	// 	document.getElementById("test");
-	// 	alert("Pressed a key");
-	// }
-
     return (
 
         
