@@ -6,6 +6,7 @@ const Styles =[
     "save",
     "discard",
     "back",
+    "join",
     "eft--create",
     "eft--join",
     "eft--spectate",

@@ -17,7 +17,7 @@ class JoinRaid extends React.Component {
     render() {
 
         return (
-            <div class="grid" className="EFTJoin">
+            <div className="EFTJoin">
 
 
                 <div className="BackBtn">
@@ -28,6 +28,9 @@ class JoinRaid extends React.Component {
                 <div className="ImputGroup">
                     <div className="Prompt">Enter Code: </div>
                     <InputBar></InputBar>
+                    <div className="joinbtn">
+                    <Buttonnew borderStyle="join">Join</Buttonnew>
+                    </div>
 
                 </div>
 
