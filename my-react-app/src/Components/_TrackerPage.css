@@ -11,6 +11,7 @@
 }
 
 .Idiplay{
+    height: fit-content;
 
     background: transparent;
     border: 15px;

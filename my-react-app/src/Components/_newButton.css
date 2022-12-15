@@ -1,0 +1,571 @@
+.ttRaid {
+    visibility: inherit;
+    position: relative;
+    height: 45px;
+    width: 150px;
+    background: #707070;
+    --xpx: 15px;
+    --ypx: 4px;
+    clip-path: polygon(
+            /*8*/
+            50% 100%,
+            /*7*/
+            calc(0% + var(--xpx)) 100%,
+            /*6*/
+            0 calc(100% - var(--xpx)),
+            /*5*/
+            0% 0%,
+            /*4*/
+            calc(100% - var(--xpx)) 0,
+            /*3*/
+            100% calc(0% + var(--xpx)),
+            /*2*/
+            100% 100%,
+            /*1*/
+            50% 100%,
+            /*16*/
+            50% calc(100% - var(--ypx)),
+            /*15*/
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            /*14*/
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            /*13*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            /*12*/
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)),
+            /*11*/
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            /*10*/
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            /*9*/
+            50% calc(100% - var(--ypx)));
+
+}
+
+.ttRaid--insidenew {
+    visibility: inherit;
+    position: absolute;
+    background: transparent;
+
+    height: 45px;
+    width: 150px;
+    color: #000000;
+    font-size: 15px;
+    font: bolder;
+}
+
+.ttRaid--insidenew:hover {
+    --xpx: 15px;
+    --ypx: 4px;
+    background-color: #b4b4b43a;
+    transition: all ease-in .2s;
+    clip-path: polygon(
+            /*1*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)));
+}
+
+.save {
+    visibility: inherit;
+    position: relative;
+    height: 45px;
+    width: 150px;
+    background: #00ff00;
+    --xpx: 15px;
+    --ypx: 4px;
+    clip-path: polygon(
+            /*8*/
+            50% 100%,
+            /*7*/
+            calc(0% + var(--xpx)) 100%,
+            /*6*/
+            0 calc(100% - var(--xpx)),
+            /*5*/
+            0% 0%,
+            /*4*/
+            calc(100% - var(--xpx)) 0,
+            /*3*/
+            100% calc(0% + var(--xpx)),
+            /*2*/
+            100% 100%,
+            /*1*/
+            50% 100%,
+            /*16*/
+            50% calc(100% - var(--ypx)),
+            /*15*/
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            /*14*/
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            /*13*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            /*12*/
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)),
+            /*11*/
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            /*10*/
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            /*9*/
+            50% calc(100% - var(--ypx)));
+
+}
+
+.save--insidenew {
+    visibility: inherit;
+    position: absolute;
+    background: transparent;
+
+    height: 45px;
+    width: 150px;
+    color: #00ff00;
+    font-size: 15px;
+    font: bolder;
+}
+
+.save--insidenew:hover {
+    --xpx: 15px;
+    --ypx: 4px;
+    background-color: #00ff003a;
+    transition: all ease-in .2s;
+    clip-path: polygon(
+            /*1*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)));
+}
+
+.discard {
+    visibility: inherit;
+    position: relative;
+    height: 45px;
+    width: 150px;
+    background: #ffcc00;
+    --xpx: 15px;
+    --ypx: 4px;
+    clip-path: polygon(
+            /*8*/
+            50% 100%,
+            /*7*/
+            calc(0% + var(--xpx)) 100%,
+            /*6*/
+            0 calc(100% - var(--xpx)),
+            /*5*/
+            0% 0%,
+            /*4*/
+            calc(100% - var(--xpx)) 0,
+            /*3*/
+            100% calc(0% + var(--xpx)),
+            /*2*/
+            100% 100%,
+            /*1*/
+            50% 100%,
+            /*16*/
+            50% calc(100% - var(--ypx)),
+            /*15*/
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            /*14*/
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            /*13*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            /*12*/
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)),
+            /*11*/
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            /*10*/
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            /*9*/
+            50% calc(100% - var(--ypx)));
+
+}
+
+.discard--insidenew {
+    visibility: inherit;
+    position: absolute;
+    background: transparent;
+
+    height: 45px;
+    width: 150px;
+    color: #ffcc00;
+    font-size: 15px;
+    font: bolder;
+}
+
+.discard--insidenew:hover {
+
+    --xpx: 15px;
+    --ypx: 4px;
+    background-color: #ffcc003a;
+    transition: all ease-in .2s;
+    clip-path: polygon(
+            /*1*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)));
+}
+
+.eft--create {
+    visibility: inherit;
+    position: relative;
+    height: 75px;
+    width: 400px;
+    background: #c5c5c5;
+    --xpx: 25px;
+    --ypx: 5px;
+    clip-path: polygon(
+            /*8*/
+            50% 100%,
+            /*7*/
+            calc(0% + var(--xpx)) 100%,
+            /*6*/
+            0 calc(100% - var(--xpx)),
+            /*5*/
+            0% 0%,
+            /*4*/
+            calc(100% - var(--xpx)) 0,
+            /*3*/
+            100% calc(0% + var(--xpx)),
+            /*2*/
+            100% 100%,
+            /*1*/
+            50% 100%,
+            /*16*/
+            50% calc(100% - var(--ypx)),
+            /*15*/
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            /*14*/
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            /*13*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            /*12*/
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)),
+            /*11*/
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            /*10*/
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            /*9*/
+            50% calc(100% - var(--ypx)));
+}
+
+.eft--create--insidenew {
+    visibility: inherit;
+    position: absolute;
+    background: transparent;
+
+    height: 75px;
+    width: 400px;
+    color: #4f4f4f;
+    font-size: 40px;
+    font: bolder;
+}
+
+.eft--create--insidenew:hover {
+
+    --xpx: 25px;
+    --ypx: 5px;
+    background-color: #c5c5c53a;
+    transition: all ease-in .2s;
+    clip-path: polygon(
+            /*1*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)));
+}
+
+
+.eft--join {
+    visibility: inherit;
+    position: relative;
+    height: 75px;
+    width: 400px;
+    background: #c5c5c5;
+    --xpx: 25px;
+    --ypx: 5px;
+    clip-path: polygon(
+            /*8*/
+            50% 100%,
+            /*7*/
+            calc(0% + var(--xpx)) 100%,
+            /*6*/
+            0 calc(100% - var(--xpx)),
+            /*5*/
+            0% 0%,
+            /*4*/
+            calc(100% - var(--xpx)) 0,
+            /*3*/
+            100% calc(0% + var(--xpx)),
+            /*2*/
+            100% 100%,
+            /*1*/
+            50% 100%,
+            /*16*/
+            50% calc(100% - var(--ypx)),
+            /*15*/
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            /*14*/
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            /*13*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            /*12*/
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)),
+            /*11*/
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            /*10*/
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            /*9*/
+            50% calc(100% - var(--ypx)));
+}
+
+.eft--join--insidenew {
+    visibility: inherit;
+    position: absolute;
+    background: transparent;
+
+    height: 75px;
+    width: 400px;
+    color: #4f4f4f;
+    font-size: 40px;
+    font: bolder;
+}
+
+.eft--join--insidenew:hover {
+
+    --xpx: 25px;
+    --ypx: 5px;
+    background-color: #c5c5c53a;
+    transition: all ease-in .2s;
+    clip-path: polygon(
+            /*1*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)));
+}
+
+.eft--spectate {
+    visibility: inherit;
+    position: relative;
+    height: 75px;
+    width: 400px;
+    background: #c5c5c5;
+    --xpx: 25px;
+    --ypx: 5px;
+    clip-path: polygon(
+            /*8*/
+            50% 100%,
+            /*7*/
+            calc(0% + var(--xpx)) 100%,
+            /*6*/
+            0 calc(100% - var(--xpx)),
+            /*5*/
+            0% 0%,
+            /*4*/
+            calc(100% - var(--xpx)) 0,
+            /*3*/
+            100% calc(0% + var(--xpx)),
+            /*2*/
+            100% 100%,
+            /*1*/
+            50% 100%,
+            /*16*/
+            50% calc(100% - var(--ypx)),
+            /*15*/
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            /*14*/
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            /*13*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            /*12*/
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)),
+            /*11*/
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            /*10*/
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            /*9*/
+            50% calc(100% - var(--ypx)));
+}
+
+.eft--spectate--insidenew {
+    visibility: inherit;
+    position: absolute;
+    background: transparent;
+
+    height: 75px;
+    width: 400px;
+    color: #4f4f4f;
+    font-size: 40px;
+    font: bolder;
+}
+
+.eft--spectate--insidenew:hover {
+
+    --xpx: 25px;
+    --ypx: 5px;
+    background-color: #c5c5c53a;
+    transition: all ease-in .2s;
+    clip-path: polygon(
+            /*1*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)));
+}
+
+.back {
+   
+    visibility: inherit;
+    position: relative;
+    height: 60px;
+    width: 60px;
+    background: #ff0000;
+    --xpx: 15px;
+    --ypx: 5px;
+    clip-path: polygon(
+            /*8*/
+            50% 100%,
+            /*7*/
+            calc(0% + var(--xpx)) 100%,
+            /*6*/
+            0 calc(100% - var(--xpx)),
+            /*5*/
+            0% 0%,
+            /*4*/
+            calc(100% - var(--xpx)) 0,
+            /*3*/
+            100% calc(0% + var(--xpx)),
+            /*2*/
+            100% 100%,
+            /*1*/
+            50% 100%,
+            /*16*/
+            50% calc(100% - var(--ypx)),
+            /*15*/
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            /*14*/
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            /*13*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            /*12*/
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)),
+            /*11*/
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            /*10*/
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            /*9*/
+            50% calc(100% - var(--ypx)));
+}
+
+.back--insidenew {
+    
+    visibility: inherit;
+    position: absolute;
+    background: transparent;
+    height: 60px;
+    width: 60px;
+    color: #ff0000;
+    font-size: 30px;
+    font: bolder;
+}
+
+.back--insidenew:hover {
+
+    --xpx: 15px;
+    --ypx: 5px;
+    background-color: #ff00003a;
+    transition: all ease-in .2s;
+    clip-path: polygon(
+            /*1*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)));
+}
+
+.join {
+   
+    visibility: inherit;
+    position: relative;
+    height: 50px;
+    width: 200px;
+    background: #00ff00;
+    --xpx: 15px;
+    --ypx: 5px;
+    clip-path: polygon(
+            /*8*/
+            50% 100%,
+            /*7*/
+            calc(0% + var(--xpx)) 100%,
+            /*6*/
+            0 calc(100% - var(--xpx)),
+            /*5*/
+            0% 0%,
+            /*4*/
+            calc(100% - var(--xpx)) 0,
+            /*3*/
+            100% calc(0% + var(--xpx)),
+            /*2*/
+            100% 100%,
+            /*1*/
+            50% 100%,
+            /*16*/
+            50% calc(100% - var(--ypx)),
+            /*15*/
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            /*14*/
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            /*13*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            /*12*/
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)),
+            /*11*/
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            /*10*/
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            /*9*/
+            50% calc(100% - var(--ypx)));
+}
+
+.join--insidenew {
+    
+    visibility: inherit;
+    position: absolute;
+    background: transparent;
+    height: 50px;
+    width: 200px;
+    color: #00ff00;
+    font-size: 30px;
+    font: bolder;
+}
+
+.join--insidenew:hover {
+
+    --xpx: 15px;
+    --ypx: 5px;
+    background-color: #00ff003a;
+    transition: all ease-in .2s;
+    clip-path: polygon(
+            /*1*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)));
+}
