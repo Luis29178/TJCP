@@ -142,8 +142,9 @@ export const Tags = ({
         }        
     }
     const handleClick = () => {
-        ref.current.style.backgroundImage = `url(${greenlight})`;
-      };
+        // ref.current.style.backgroundImage = ref.current.style.backgroundImage !== `url(${greenlight})` ? ref.current.style.backgroundImage = `url(${greenlight})` : ref.current.style.backgroundImage =`url(${greenlight})`;
+      
+    };
     
 
     return (
@@ -158,7 +159,8 @@ export const Tags = ({
                             backgroundImage:`url(${tag1})`, backgroundSize: "cover", height: "50px", width: "50px",
                             top: "50px", left: "50px", zIndex: "10px", backgroundColor: "transparent" 
                         }} 
-                        onClick={handleClick} 
+                        onClick={() => {document.getElementById('item0').style.backgroundImage = `url(${greenlight})`}} 
+                        id="item0"
                         >
                         </canvas>
                         <p className='tagbind'>{keyBinds[0]}</p>     
