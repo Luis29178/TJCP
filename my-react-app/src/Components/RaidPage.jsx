@@ -7,6 +7,9 @@ import { UserWheel } from "./UserWheel.jsx"
 import { Grid } from "@mui/material";
 import {useSpring, animated} from 'react-spring'
 import {useDrag} from 'react-use-gesture'
+import RaidMap from "./RaidMap";
+
+import cursor from "./Tags/cursor.png";
 
 function Raid() {
 
@@ -50,13 +53,7 @@ function Raid() {
                 </div>
 
             </div>
-            <div className="raidMap">
-                <MapCanvas
-                    width={1000}
-                    height={500}
-                    className={"Canvas"}>
-                </MapCanvas>
-            </div>
+                <RaidMap/>
             <div className="raidUsers">
                 <Grid container 
                 direction={"row"}

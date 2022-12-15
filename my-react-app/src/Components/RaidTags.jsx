@@ -130,7 +130,16 @@ export const Tags = ({
             // skullPos0.x.set(e.offset[0]);
             // skullPos0.y.set(e.offset[1]);
             console.log('clicked: q');
+            const customEvent = new CustomEvent('build', { detail: { keyP: e.key } });
+            document.dispatchEvent(customEvent);
         }
+        if(e.key === "w"){
+            console.log('pressed: W')
+            const customEvent = new CustomEvent('build', { detail: { keyP: e.key } });
+            document.dispatchEvent(customEvent);
+        }
+
+        
     }
 
 
