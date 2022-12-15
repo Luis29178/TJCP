@@ -39,10 +39,6 @@ const router = createBrowserRouter([
     element: <EFTmaps/>,
   },
   {
-    path:"/test",
-    element:<App/>
-  },
-  {
     path: "/tempRaid",
     element: <Raid/>,
   },
