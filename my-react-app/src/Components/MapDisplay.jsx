@@ -2,6 +2,7 @@ import React from "react";
 import "./_MapDisplay.css"
 
 
+
 const Styles =[
         "map--menu--display",
     ]

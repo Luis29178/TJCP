@@ -19,7 +19,9 @@ import JoinRaid from './Components/EFTJoin';
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import App from './App'
 
+import { Tags } from './Components/RaidTags';
 
 const router = createBrowserRouter([
  {
@@ -74,7 +76,7 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-
+  
     <RouterProvider router={router} />
 );
 

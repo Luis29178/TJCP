@@ -1,6 +1,7 @@
 //import firebase from 'firebase';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
+import { collection } from 'firebase/firestore';
 
 const config = {
   apiKey: "AIzaSyC4hztlkCki_2pnq93Rgf7cgncHC1V61N0",
@@ -16,6 +17,8 @@ firebase.initializeApp(config);
 
 const db = firebase.firestore();
 
+const playerStatusCollection = collection(db, 'Raids/mSUXqyXwthl8Vz0X5atU/playerStatus')
+
 const userPreferencesDB = "userPreferences";
 
 
@@ -30,5 +33,5 @@ const userPreferencesDB = "userPreferences";
     firebase.firestore().collection(userPreferencesDB).doc(user.uid).update({"keyBinds" : updated_keyBinds}).then(()=>console.log("Edited"));
   }
 
-export {readKeybinds, updateKeybinds} 
+export {readKeybinds, updateKeybinds, playerStatusCollection} 
 
