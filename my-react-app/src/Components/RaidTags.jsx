@@ -6,7 +6,7 @@ import './_RaidTags.css'
 //import useSpring, useDrag, animate
 import {useSpring, animated} from "react-spring"
 import {useDrag} from "react-use-gesture"
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 
 const Styles = [
@@ -25,7 +25,8 @@ export const Tags = ({
     keybinds
 }) => {
 
-    const [image, setImage] = useState("");
+    const [image, setImage] = useState({tag1});
+    const ref = useRef()
     const checkbtnStyle =
         /* checks if passed in _buttonStyle is included in List [Styles] */
         Styles.includes(style)
@@ -138,14 +139,12 @@ export const Tags = ({
             console.log('pressed: W')
             const customEvent = new CustomEvent('build', { detail: { keyP: e.key } });
             document.dispatchEvent(customEvent);
-        }
-
-        const handleClick = e => {
-            setImage(e.target.backgroundImage = {greenlight});
-          };
-
-        
+        }        
     }
+    const handleClick = () => {
+        ref.current.style.backgroundImage = `url(${greenlight})`;
+      };
+    
 
     return (
 
@@ -154,12 +153,13 @@ export const Tags = ({
                 <Grid container item spacing={3}>
                     
                     <animated.div {...bindSkullPos0()} className='tag' style={{x: skullPos0.x, y: skullPos0.y}}>                      
-                        <canvas style=
+                        <canvas ref={ref} style=
                         {{
                             backgroundImage:`url(${tag1})`, backgroundSize: "cover", height: "50px", width: "50px",
                             top: "50px", left: "50px", zIndex: "10px", backgroundColor: "transparent" 
-                        }}  
-                        onClick={() =>  { console.log("[1]") }}>
+                        }} 
+                        onClick={handleClick} 
+                        >
                         </canvas>
                         <p className='tagbind'>{keyBinds[0]}</p>     
                     </animated.div>
