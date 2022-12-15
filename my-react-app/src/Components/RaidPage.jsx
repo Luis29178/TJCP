@@ -1,15 +1,17 @@
 import React from "react";
-import "./_RaidPage.css"
-import MapCanvas from "./MapCanvas.js"
-import { Tags } from "./RaidTags.jsx"
-import UserInfoBar from "./UserInfoBar"
-import { UserWheel } from "./UserWheel.jsx"
+import "./_RaidPage.css";
+import MapCanvas from "./MapCanvas.js";
+import { Tags } from "./RaidTags.jsx";
+import UserInfoBar from "./UserInfoBar";
+import { UserWheel } from "./UserWheel.jsx";
 import { Grid } from "@mui/material";
 import {useSpring, animated} from 'react-spring'
 import {useDrag} from 'react-use-gesture'
 import RaidMap from "./RaidMap";
 
 import cursor from "./Tags/cursor.png";
+import ImageOnKeyPress from "./ImageOnKeyPress";
+
 
 function Raid() {
 
@@ -40,20 +42,28 @@ function Raid() {
     return (
 
         <div className="raidContainer">
+            {<ImageOnKeyPress/>}
+            {/* <div className="menuBar">
 
-            <div className="menuBar">
-
-            </div>
+            </div> */}
             <div  className="raidTags">
                 <div className="raidTags--tags">
-                <Tags  style={"raid--tg--basic"}
-                    size={"raid--tg-medium"}>
+                <Tags  style={"raid--tg--basic"} size={"raid--tg-medium"}>
+                    
                 
                 </Tags>
+                
                 </div>
-
             </div>
                 <RaidMap/>
+            <div className="raidMap">
+            
+                <MapCanvas
+                    width={1000}
+                    height={500}
+                    className={"Canvas"}>
+                </MapCanvas>
+            </div>
             <div className="raidUsers">
                 <Grid container 
                 direction={"row"}

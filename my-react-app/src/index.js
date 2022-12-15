@@ -21,6 +21,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import App from './App'
 
+import { Tags } from './Components/RaidTags';
 
 const router = createBrowserRouter([
  {
