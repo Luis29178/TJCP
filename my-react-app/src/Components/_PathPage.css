@@ -1,0 +1,43 @@
+.tagscont{
+    margin-right: 15px;
+    margin-left: -15px;
+    padding-left: 30px;
+    padding-top: 50px;
+
+    height: 310px;
+    --xpx: 15px;
+    --ypx: 4px;
+    background-color: #2c2c2c;
+    transition: all ease-in .2s ;
+    clip-path: polygon(
+            /*1*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)));
+}
+
+.toolscont{
+
+    margin-right: 15px;
+    margin-left: -15px;
+    padding-left: 15px;
+    padding-top: 10px;
+
+    height: 312px;
+    --xpx: 15px;
+    --ypx: 4px;
+    background-color: #2c2c2c;
+    transition: all ease-in .2s ;
+    clip-path: polygon(
+            /*1*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)));
+}
+

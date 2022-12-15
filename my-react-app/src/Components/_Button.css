@@ -21,6 +21,48 @@
     transform: translateY(-4px);
 }
 
+
+
+.btn--new--yellow{
+    --bxpx: 12px;
+    --bypx: 3px;
+    background-color: var(--amber);
+    clip-path: polygon(
+            /*8*/
+            50% 100%,
+            /*7*/
+            calc(0% + var(--bxpx)) 100%,
+            /*6*/
+            0 calc(100% - var(--bxpx)),
+            /*5*/
+            0% 0%,
+            /*4*/
+            calc(100% - var(--bxpx)) 0,
+            /*3*/
+            100% calc(0% + var(--bxpx)),
+            /*2*/
+            100% 100%,
+            /*1*/
+            50% 100%,
+            /*16*/
+            50% calc(100% - var(--bypx)),
+            /*15*/
+            calc(100% - var(--bypx)) calc(100% - var(--bypx)),
+            /*14*/
+            calc(100% - var(--bypx)) calc(0% + var(--bxpx)),
+            /*13*/
+            calc(100% - var(--bxpx)) calc(0% + var(--bypx)),
+            /*12*/
+            calc(0% + var(--bypx)) calc(0% + var(--bypx)),
+            /*11*/
+            calc(0% + var(--bypx)) calc(100% - var(--bxpx)),
+            /*10*/
+            calc(0% + var(--bxpx)) calc(100% - var(--bypx)),
+            /*9*/
+            50% calc(100% - var(--bypx)));
+    
+}
+
 /*Button : Styles*/
 
 /*Button : Styles : Outlined*/
@@ -168,6 +210,8 @@
 }
 
 
+
+
 /*Button : Styles : Sizes*/
 
 .btn--tiny {
@@ -204,3 +248,4 @@
     font-size: larger;
 
 }
+

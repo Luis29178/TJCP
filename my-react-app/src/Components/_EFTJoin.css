@@ -1,0 +1,40 @@
+.EFTJoin{
+    display: grid;
+    gap: 15px;
+    grid-template-areas: 
+    "x title "
+    "spacer body "
+    "spacer body";
+    grid-template-columns: 65px calc(100% - 65px);
+    grid-template-rows: 65px calc(100% - 65px);
+    height: 100vh;
+    width: 100vw;
+    background: #0c0c0c;
+
+}
+
+.BackBtn {
+    margin-top: 10px;
+    margin-left: 10px;
+    grid-area: x;
+
+}
+
+.ImputGroup{
+    width: fit-content;
+    margin-top: 5%;
+    margin-left: 5%;
+    grid-area: body;
+   
+
+}
+
+.Prompt{
+     font-size: 42px;
+     color: aliceblue;
+}
+.joinbtn{
+    margin-top: 75px;
+    margin-left: 400px;
+    float: right;
+}

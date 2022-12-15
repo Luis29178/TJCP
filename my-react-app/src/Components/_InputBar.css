@@ -1,17 +1,16 @@
 
 
-
-.Sbar {
+.Ibar {
     margin-left: 60px;
     margin-top: -2px;
-
+    position: absolute;
     width: 500px;
     height: 50px;
     background-color: transparent;
 
 }
 
-.Sbar input {
+.Ibar input {
     width: 100%;
     padding: 10px;
     background-color: transparent;
@@ -24,13 +23,13 @@
 
 }
 
-.Sbarborder {
+.Ibarborder{
     --xpx: 20px;
     --ypx: 2px;
     position: absolute;
     width: 600px;
     height: 60px;
-    background-color: #ffffff79;
+    background-color: #ffffff;
     clip-path: polygon(
             /*8*/
             50% 100%,
@@ -64,5 +63,4 @@
             calc(0% + var(--xpx)) calc(100% - var(--ypx)),
             /*9*/
             50% calc(100% - var(--ypx)));
-
 }
