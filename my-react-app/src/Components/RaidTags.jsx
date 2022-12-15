@@ -1,11 +1,12 @@
 import { DialogContent, Grid } from '@mui/material';
 import React from 'react'
-import tag1 from './Tags/SkullTag.png'
+import tag1 from './Tags/SkullTag.png';
+import greenlight from './Tags/green_light.png';
 import './_RaidTags.css'
 //import useSpring, useDrag, animate
 import {useSpring, animated} from "react-spring"
 import {useDrag} from "react-use-gesture"
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 
 const Styles = [
@@ -24,7 +25,7 @@ export const Tags = ({
     keybinds
 }) => {
 
-
+    const [image, setImage] = useState("");
     const checkbtnStyle =
         /* checks if passed in _buttonStyle is included in List [Styles] */
         Styles.includes(style)
@@ -139,6 +140,10 @@ export const Tags = ({
             document.dispatchEvent(customEvent);
         }
 
+        const handleClick = e => {
+            setImage(e.target.backgroundImage = {greenlight});
+          };
+
         
     }
 
@@ -148,8 +153,13 @@ export const Tags = ({
             <Grid container spacing={2}>
                 <Grid container item spacing={3}>
                     
-                    <animated.div {...bindSkullPos0()} id="item0" className='tag' style={{x: skullPos0.x, y: skullPos0.y}}>                      
-                        <canvas style={canvasStyle}  onClick={() =>  { console.log("[0]") }}></canvas>
+                    <animated.div {...bindSkullPos0()} className='tag' style={{x: skullPos0.x, y: skullPos0.y}}>                      
+                        <canvas style={{backgroundImage:`url(${tag1})`,        backgroundSize: "cover",
+        height: "50px",
+        width: "50px",
+        top: "50px",
+        left: "50px", zIndex: "10px",
+        backgroundColor: "transparent" }}  onClick={() =>  { console.log("[1]") }}></canvas>
                         <p className='tagbind'>{keyBinds[0]}</p>     
                     </animated.div>
 
