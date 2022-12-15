@@ -154,12 +154,13 @@ export const Tags = ({
                 <Grid container item spacing={3}>
                     
                     <animated.div {...bindSkullPos0()} className='tag' style={{x: skullPos0.x, y: skullPos0.y}}>                      
-                        <canvas style={{backgroundImage:`url(${tag1})`,        backgroundSize: "cover",
-        height: "50px",
-        width: "50px",
-        top: "50px",
-        left: "50px", zIndex: "10px",
-        backgroundColor: "transparent" }}  onClick={() =>  { console.log("[1]") }}></canvas>
+                        <canvas style=
+                        {{
+                            backgroundImage:`url(${tag1})`, backgroundSize: "cover", height: "50px", width: "50px",
+                            top: "50px", left: "50px", zIndex: "10px", backgroundColor: "transparent" 
+                        }}  
+                        onClick={() =>  { console.log("[1]") }}>
+                        </canvas>
                         <p className='tagbind'>{keyBinds[0]}</p>     
                     </animated.div>
 
