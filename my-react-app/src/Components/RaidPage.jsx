@@ -56,14 +56,14 @@ function Raid() {
                 </div>
             </div>
                 <RaidMap/>
-            <div className="raidMap">
+            {/* <div className="raidMap">
             
                 <MapCanvas
                     width={1000}
                     height={500}
                     className={"Canvas"}>
                 </MapCanvas>
-            </div>
+            </div> */}
             <div className="raidUsers">
                 <Grid container 
                 direction={"row"}

@@ -100,7 +100,7 @@ const ImageOnKeyPress = (props) => {
             }}>                      
             <canvas style={canvasStyle}></canvas>   
             </animated.div>}
-            <div> x: {position.x} y: {position.y}</div>
+            <div className='position'> x: {position.x} y: {position.y}</div>
           {/* {showImage && <img style={{
             position: "absolute",
             width: "50px",
