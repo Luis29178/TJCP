@@ -9,8 +9,7 @@ button{
     
 }
 .ls--map--display{
-    height: 475px;
-    width: 450px;
+    display: grid;
     background-color: transparent;
-    overflow: scroll;
+    overflow-y: hidden;
 }

@@ -12,9 +12,8 @@ import Lighthouse from '../Images/lighthousemap.png';
 import Reserve from '../Images/reservemap.png';
 import Shoreline from '../Images/shorelinemap.png';
 import Woods from '../Images/woodsmap.png';
-import { Grid } from "@mui/material";
 
-class EFTmapsTest extends React.Component {
+class EFTmapst extends React.Component {
 
     state = {
         map:'',
@@ -47,9 +46,6 @@ class EFTmapsTest extends React.Component {
             case 8:
                 this.setState({map: Woods});
                 break;
-            default :
-                this.setState({map:''})
-                break;
         }
 
 
@@ -58,35 +54,37 @@ class EFTmapsTest extends React.Component {
     render(){
         return (
 
-            <div className="eftpage">
+            
+                <div className="eftpage">
 
-            <div className="title">
-                <div className="eftxbtn">
-                    <Button onClick={() => { window.location.href = "/" }}
-                        type="button"
-                        buttonStyle="btn--x--basic"
-                        size="btn--x">{"<"}</Button>
+                    <div className="title">
+                        <div className="eftxbtn">
+                            <Button onClick={() => { window.location.href = "/" }}
+                                type="button"
+                                buttonStyle="btn--x--basic"
+                                size="btn--x">{"<"}</Button>
+                        </div>
+                        <div className="efttitle">Maps</div>
+                    </div>
+
+                    
+                    
+                    <div className="eftmapList">
+                        <MapList style={"ls--map--display"} func={this.mapChange.bind(this)}></MapList>
+                    </div>
+                    
+
+                    <div className="eftmapDisplay">
+                        <MapDisplay mdstyle={"map--menu--display"} Imgsorce={this.state.map} ></MapDisplay>
+                    </div>
+
+                    
+                    <div className="eftDropDown">
+                        <DropDown ddstyle={"dd--eft--basic"}></DropDown>
+                    </div>
+
                 </div>
-                <div className="efttitle">Maps</div>
-            </div>
-
             
-            
-            <div className="eftmapList">
-                <MapList style={"ls--map--display"} func={this.mapChange.bind(this)}></MapList>
-            </div>
-            
-
-            <div className="eftmapDisplay">
-                <MapDisplay mdstyle={"map--menu--display"} Imgsorce={this.state.map} ></MapDisplay>
-            </div>
-
-            
-            <div className="eftDropDown">
-                <DropDown ddstyle={"dd--eft--basic"}></DropDown>
-            </div>
-
-        </div>
     
         );
 
@@ -100,4 +98,4 @@ class EFTmapsTest extends React.Component {
 
 }
 
-export default EFTmapsTest;
+export default EFTmapst;

@@ -10,19 +10,18 @@
 }
 
 .eftpage{
-    height: var(--height);
-    width: var(--width);   
-    overflow: hidden;
+    min-height: 100vh;
     background: #0b0b0bfd;
-    border: #000000;
-    border-style: solid;
-    position: absolute;
+    display: grid;
+    grid-template-areas:   "header  header header"
+                        "content2  sidebar2 sidebar2"
+                        "content  sidebar sidebar"
+                        "footer  footer footer";
 }
 
 .efttitle{
-    height: 75px;
-    width:  800px;
-    right: 25px;
+    display: grid;
+    align-content: center;
     font-weight: bolder;
     font-size: 54px;
     margin-right: 1px;
@@ -31,37 +30,31 @@
     margin-left: 50px;
     text-align: center;
     color:#ffffff;
-    position: absolute;
-    overflow: hidden;
 }
 .eftmapDisplay{
-    position:absolute;
-    height: fit-content;
-    width: fit-content;
+    display: grid;
+    align-content: center;
+    grid-area: sidebar;
     border: none;
     background-color: transparent;
-    top: 200px;
-    right:25px;
 }
 .eftmapList {
-    position: absolute;
-    height: fit-content;
-    width: fit-content;
-    top: 150px;
-    left: 25px;
-
+    display: grid;
+    justify-content: center;
+    grid-area: content;
+    width: 100%;
 }
 .eftDropDown {
-    position: absolute;
-    height: fit-content;
-    width: fit-content;
-    top: 150px;
-    right: 775px;
+    grid-area: sidebar2;
+
 }
 .eftxbtn{
-    position: absolute;
-    height: fit-content;
-    width: fit-content;
-    top:10px;
-    left:10px;
+    align-self: center;
+    justify-self: start;
+}
+.title{
+    display: grid;
+    justify-content: center;
+    grid-auto-flow: column;
+    grid-area: header;
 }

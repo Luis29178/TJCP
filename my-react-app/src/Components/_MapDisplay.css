@@ -11,17 +11,16 @@
     
 }
 .map--menu--display{
-    height: var(--MDhight);
-    width: var(--MDwidth);
-    background-size:contain;
+    width: 500px;
+    height: 500px;
     clip-path: none;
     border: none;
-    overflow: scroll;
+
     
 }
 .mapImg{
-    max-width: calc(var(--MDwidth) * 1.5) ;
-    min-width: var(--MDwidth);
+    width: 100%;
+    max-height: 100%;
     background-position: center;
     background-color: #000000;
     background-repeat: no-repeat;
