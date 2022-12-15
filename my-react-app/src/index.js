@@ -51,8 +51,12 @@ const router = createBrowserRouter([
     element: <SelectMode/>
   },
   {
-    path: "/Join",
-    element: <JoinRaid/>
+    path: "/JoinPlayer",
+    element: <JoinRaid player={true}/>
+  },
+  {
+    path: "/JoinSpectator",
+    element: <JoinRaid player={false}/>
   }
   
   // to create a new path add an object like the below one to this Router.

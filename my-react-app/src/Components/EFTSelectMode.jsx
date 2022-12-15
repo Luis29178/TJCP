@@ -33,11 +33,11 @@ class SelectMode extends React.Component {
 
                     </Grid>
                     <Grid item xs={12}>
-                        <Buttonnew borderStyle="eft--join" >Join</Buttonnew>
+                        <Buttonnew borderStyle="eft--join" onClick={() => {window.location.href = "/JoinPlayer"}} >Join</Buttonnew>
 
                     </Grid>
                     <Grid item xs={12}>
-                        <Buttonnew borderStyle="eft--spectate"> Spectate</Buttonnew>
+                        <Buttonnew borderStyle="eft--spectate" onClick={() => {window.location.href = "/JoinSpectator"}}> Spectate</Buttonnew>
 
                     </Grid>
                 </Grid>
