@@ -5,7 +5,8 @@ import './_RaidTags.css'
 //import useSpring, useDrag, animate
 import {useSpring, animated} from "react-spring"
 import {useDrag} from "react-use-gesture"
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import RaidTagKeybinds from './RaidTagKeybinds';
 
 
 const Styles = [
@@ -46,15 +47,16 @@ export const Tags = ({
         
 
     }
-    
+
     let keyBinds = ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"];
 
     if(keybinds == undefined)
     {
-        
     }
     else{
+
         keyBinds = keybinds;
+
     }
 
     const skullPos0 = useSpring({x: 0, y:0});
@@ -119,6 +121,7 @@ export const Tags = ({
         skullPos8.x.set(params.offset[0]);
         skullPos8.y.set(params.offset[1]);
     })
+
 
     useEffect(() => {
         document.addEventListener('keydown', detectKeyDown, true)
@@ -188,7 +191,11 @@ export const Tags = ({
                     </animated.div>
                     <animated.div {...bindSkullPos8()} className='tag' style={{x: skullPos8.x, y: skullPos8.y}}>                      
                         <canvas style={canvasStyle}  onClick={() =>  { console.log("[8]") }}></canvas>
-                        <p className='tagbind'>{keyBinds[8]}</p>     
+
+                       <RaidTagKeybinds keyBind={keyBinds[8]}></RaidTagKeybinds>
+                        
+                        
+                           
                     </animated.div>
                 </Grid>
             </Grid>
