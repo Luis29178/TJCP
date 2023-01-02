@@ -26,7 +26,6 @@ class RaidTagKeybinds extends React.Component{
         }.bind(this));
 
         document.addEventListener('keydown', function(e) {
-            
             if(this.state.isEditing == true && this.state.editingKeybind == this.state.currentKeyBind){
                 console.log("listen for changed key")
                 
@@ -35,11 +34,19 @@ class RaidTagKeybinds extends React.Component{
                     currentKeyBind: e.key,
                     currentKeyBindDisplay: e.key.toUpperCase()
                 })
+                console.log('keyChanged')
             }else{
-                //console.log('not you')
+                if(e.key == this.state.currentKeyBind.toLowerCase()){
+                    console.log('clicked: ' + e.key);
+                    const customEvent = new CustomEvent('build', { detail: { keyP: e.key } });
+                    document.dispatchEvent(customEvent);
+                }
             }
             
         }.bind(this));
+    
+            
+        
     }
 
     keybindClick = (event, pos) => {
