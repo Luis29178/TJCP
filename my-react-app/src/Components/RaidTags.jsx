@@ -153,41 +153,41 @@ export const Tags = ({
                     
                     <animated.div {...bindSkullPos0()} id="item0" className='tag' style={{x: skullPos0.x, y: skullPos0.y}}>                      
                         <canvas style={canvasStyle}  onClick={() =>  { console.log("[0]") }}></canvas>
-                        <p className='tagbind'>{keyBinds[0]}</p>     
+                        <RaidTagKeybinds keyBind={keyBinds[0]}></RaidTagKeybinds>    
                     </animated.div>
 
 
                     <animated.div {...bindSkullPos1()} className='tag' style={{x: skullPos1.x, y: skullPos1.y}}>                      
                         <canvas style={canvasStyle}  onClick={() =>  { console.log("[1]") }}></canvas>
-                        <p className='tagbind'>{keyBinds[1]}</p>     
+                        <RaidTagKeybinds keyBind={keyBinds[1]}></RaidTagKeybinds>     
                     </animated.div>
                     <animated.div {...bindSkullPos2()} className='tag' style={{x: skullPos2.x, y: skullPos2.y}}>                      
                         <canvas style={canvasStyle}  onClick={() =>  { console.log("[2]") }}></canvas>
-                        <p className='tagbind'>{keyBinds[2]}</p>     
+                        <RaidTagKeybinds keyBind={keyBinds[2]}></RaidTagKeybinds>   
                     </animated.div>
                 </Grid>
                 <Grid container item spacing={3}>
                 <animated.div {...bindSkullPos3()} className='tag' style={{x: skullPos3.x, y: skullPos3.y}}>                      
                         <canvas style={canvasStyle}  onClick={() =>  { console.log("[3]") }}></canvas>
-                        <p className='tagbind'>{keyBinds[3]}</p>     
+                        <RaidTagKeybinds keyBind={keyBinds[3]}></RaidTagKeybinds>   
                     </animated.div>
                     <animated.div {...bindSkullPos4()} className='tag' style={{x: skullPos4.x, y: skullPos4.y}}>                      
                         <canvas style={canvasStyle}  onClick={() =>  { console.log("[4]") }}></canvas>
-                        <p className='tagbind'>{keyBinds[4]}</p>     
+                        <RaidTagKeybinds keyBind={keyBinds[4]}></RaidTagKeybinds>   
                     </animated.div>
                     <animated.div {...bindSkullPos5()} className='tag' style={{x: skullPos5.x, y: skullPos5.y}}>                      
                         <canvas style={canvasStyle}  onClick={() =>  { console.log("[5]") }}></canvas>
-                        <p className='tagbind'>{keyBinds[5]}</p>     
+                        <RaidTagKeybinds keyBind={keyBinds[5]}></RaidTagKeybinds>    
                     </animated.div>
                 </Grid>
                 <Grid container item spacing={3}>
                 <animated.div {...bindSkullPos6()} className='tag' style={{x: skullPos6.x, y: skullPos6.y}}>                      
                         <canvas style={canvasStyle}  onClick={() =>  { console.log("[6]") }}></canvas>
-                        <p className='tagbind'>{keyBinds[6]}</p>     
+                        <RaidTagKeybinds keyBind={keyBinds[6]}></RaidTagKeybinds>   
                     </animated.div>
                     <animated.div {...bindSkullPos7()} className='tag' style={{x: skullPos7.x, y: skullPos7.y}}>                      
                         <canvas style={canvasStyle}  onClick={() =>  { console.log("[7]") }}></canvas>
-                        <p className='tagbind'>{keyBinds[7]}</p>     
+                        <RaidTagKeybinds keyBind={keyBinds[7]}></RaidTagKeybinds>  
                     </animated.div>
                     <animated.div {...bindSkullPos8()} className='tag' style={{x: skullPos8.x, y: skullPos8.y}}>                      
                         <canvas style={canvasStyle}  onClick={() =>  { console.log("[8]") }}></canvas>
