@@ -56,9 +56,9 @@ const ImageOnKeyPress = (props) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   useEffect(() => {
       const keyDownHandler = (e) => {
-          if (e.key === 'w') {
-              setShowImage(true);
-          }
+          //if (e.key === 'w') {
+            //  setShowImage(true);
+          //}
       };
 
       document.addEventListener('keydown', keyDownHandler);

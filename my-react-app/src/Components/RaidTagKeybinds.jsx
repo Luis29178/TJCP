@@ -45,7 +45,7 @@ class RaidTagKeybinds extends React.Component{
             }else{
                 if(e.key == this.state.currentKeyBind.toLowerCase()){
                     console.log('clicked: ' + e.key);
-                    const customEvent = new CustomEvent('build', { detail: { keyP: e.key } });
+                    const customEvent = new CustomEvent('build', { detail: { tag: this.state.tagID } });
                     document.dispatchEvent(customEvent);
                 }
             }
