@@ -43,9 +43,7 @@ class RaidTagKeybinds extends React.Component{
                 }
             }
             
-        }.bind(this));
-    
-            
+        }.bind(this));      
         
     }
 
@@ -77,7 +75,7 @@ class RaidTagKeybinds extends React.Component{
     render(){
         return <a onClick={this.keybindClick}>
 
-        <p className='tagbind'>{this.state.currentKeyBindDisplay}</p> 
+        <p className='tagbind'>{this.state.currentKeyBindDisplay.toUpperCase()}</p> 
         </a>
     }
 

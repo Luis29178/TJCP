@@ -2,6 +2,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { collection } from 'firebase/firestore';
+import 'firebase/compat/auth';
 
 const config = {
   apiKey: "AIzaSyC4hztlkCki_2pnq93Rgf7cgncHC1V61N0",
@@ -24,9 +25,9 @@ const userPreferencesDB = "userPreferences";
 
   function readKeybinds(){
     var user = firebase.auth().currentUser;
-    firebase.firestore().collection(userPreferencesDB).doc(user.uid).get().then((snapshot) => {
-      console.log(snapshot.data())
-    }).catch((e) => console.log(e))
+    console.log(user)
+    var data
+    return firebase.firestore().collection(userPreferencesDB).doc(user.uid).get()
   }
   function updateKeybinds(updated_keyBinds){
     var user = firebase.auth().currentUser;
