@@ -1,4 +1,6 @@
 import React from "react";
+import { update } from "react-spring";
+import { updateKeybinds } from "../preferenceHandler";
 
 class RaidTagKeybinds extends React.Component{
 
@@ -8,7 +10,8 @@ class RaidTagKeybinds extends React.Component{
             currentKeyBind: this.props.keyBind,
             currentKeyBindDisplay : this.props.keyBind,
             isEditing: false,
-            editingKeybind: this.props.keyBind
+            editingKeybind: this.props.keyBind,
+            tagID: this.props.tagID
         }
         this.keybindClick = this.keybindClick.bind(this);
 
@@ -34,6 +37,10 @@ class RaidTagKeybinds extends React.Component{
                     currentKeyBind: e.key,
                     currentKeyBindDisplay: e.key.toUpperCase()
                 })
+
+                var updateObject = {}
+                updateObject[this.state.tagID] = e.key
+                updateKeybinds(updateObject)
                 console.log('keyChanged')
             }else{
                 if(e.key == this.state.currentKeyBind.toLowerCase()){

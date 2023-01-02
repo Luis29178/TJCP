@@ -29,9 +29,9 @@ const userPreferencesDB = "userPreferences";
     var data
     return firebase.firestore().collection(userPreferencesDB).doc(user.uid).get()
   }
-  function updateKeybinds(updated_keyBinds){
+  function updateKeybinds(updated_keyBind){
     var user = firebase.auth().currentUser;
-    firebase.firestore().collection(userPreferencesDB).doc(user.uid).update({"keyBinds" : updated_keyBinds}).then(()=>console.log("Edited"));
+    firebase.firestore().collection(userPreferencesDB).doc(user.uid).update(updated_keyBind).then(()=>console.log("Edited"));
   }
 
 export {readKeybinds, updateKeybinds, playerStatusCollection} 
