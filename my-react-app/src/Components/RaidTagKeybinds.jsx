@@ -1,6 +1,6 @@
 import React from "react";
 import { update } from "react-spring";
-import { updateKeybinds } from "../preferenceHandler";
+import { updateKeybinds , readKeybinds } from "../preferenceHandler";
 
 class RaidTagKeybinds extends React.Component{
 
@@ -30,18 +30,37 @@ class RaidTagKeybinds extends React.Component{
 
         document.addEventListener('keydown', function(e) {
             if(this.state.isEditing == true && this.state.editingKeybind == this.state.currentKeyBind){
+
+                var data = readKeybinds().then((snapshot) => {
+                    
+                    var keyBinds = snapshot.data()
+                    var canUpdate = false;
+                    for (const [key, value] of Object.entries(keyBinds)) {
+                        //console.log(`${key}: ${value} to ${e.key}`);
+                        canUpdate = (value == e.key);
+                        //console.log(canUpdate)
+                        if(canUpdate)
+                            break;
+                      }
+                      if(!canUpdate){
+                        this.setState({
+                            isEditing: false,
+                            currentKeyBind: e.key,
+                            currentKeyBindDisplay: e.key.toUpperCase()
+                        })
+        
+                        var updateObject = {}
+                        updateObject[this.state.tagID] = e.key
+        
+                        updateKeybinds(updateObject)
+                        console.log('keyChanged')
+                      }else{
+                        console.log("Key already in use")
+                      }
+
+                  }).catch((e) => e)
                 console.log("listen for changed key")
                 
-                this.setState({
-                    isEditing: false,
-                    currentKeyBind: e.key,
-                    currentKeyBindDisplay: e.key.toUpperCase()
-                })
-
-                var updateObject = {}
-                updateObject[this.state.tagID] = e.key
-                updateKeybinds(updateObject)
-                console.log('keyChanged')
             }else{
                 if(e.key == this.state.currentKeyBind.toLowerCase()){
                     console.log('clicked: ' + e.key);
@@ -82,7 +101,7 @@ class RaidTagKeybinds extends React.Component{
     render(){
         return <a onClick={this.keybindClick}>
 
-        <p className='tagbind'>{this.state.currentKeyBindDisplay.toUpperCase()}</p> 
+        <p style={ {color: (this.state.isEditing && this.state.editingKeybind == this.state.currentKeyBind) && "red"}} className='tagbind'>{this.state.currentKeyBindDisplay.toUpperCase()}</p> 
         </a>
     }
 

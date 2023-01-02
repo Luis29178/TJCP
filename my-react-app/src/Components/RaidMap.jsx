@@ -19,7 +19,6 @@ class RaidMap extends React.Component{
             let changeCursor = cursor;
             switch(detail.tag){
                 case "tag1":   
-                    
                     changeCursor = this.state.cursor === cursor? "wait" : cursor;
                     break;
                 case "tag2":
