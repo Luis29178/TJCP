@@ -25,6 +25,7 @@ export const Tags = ({
     keybinds
 }) => {
 
+    
     const [image, setImage] = useState({tag1});
     const ref = useRef()
     const checkbtnStyle =
@@ -142,19 +143,23 @@ export const Tags = ({
         }        
     }
     const handleClick = () => {
-        // ref.current.style.backgroundImage = ref.current.style.backgroundImage !== `url(${greenlight})` ? ref.current.style.backgroundImage = `url(${greenlight})` : ref.current.style.backgroundImage =`url(${greenlight})`;
+
+        // only handle the click if
+
+        ref.current.style.backgroundImage = ref.current.style.backgroundImage !== `url(${greenlight})` ? ref.current.style.backgroundImage = `url(${greenlight})` : ref.current.style.backgroundImage =`url(${greenlight})`;
       
     };
-    
-
+    const value = 'option2';
+    // const [count, updateCount] = useState(0);
+    let count = 0;
     return (
 
         
             <Grid container spacing={2}>
                 <Grid container item spacing={3}>
-                    
-                    <animated.div {...bindSkullPos0()} className='tag' style={{x: skullPos0.x, y: skullPos0.y}}>                      
-                        <canvas ref={ref} style=
+
+                    <animated.div {...bindSkullPos0()} className='tag' style={{x: skullPos0.x, y: skullPos0.y}}>       
+                    {count === 0 && <canvas ref={ref} style=
                         {{
                             backgroundImage:`url(${tag1})`, backgroundSize: "cover", height: "50px", width: "50px",
                             top: "50px", left: "50px", zIndex: "10px", backgroundColor: "transparent" 
@@ -162,45 +167,67 @@ export const Tags = ({
                         onClick={() => {document.getElementById('item0').style.backgroundImage = `url(${greenlight})`}} 
                         id="item0"
                         >
-                        </canvas>
+                        </canvas>}               
                         <p className='tagbind'>{keyBinds[0]}</p>     
                     </animated.div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <animated.div {...bindSkullPos1()} className='tag' style={{x: skullPos1.x, y: skullPos1.y}}>                      
-                        <canvas style={canvasStyle}  onClick={() =>  { console.log("[1]") }}></canvas>
+                        <canvas style={canvasStyle}   onClick={() => {document.getElementById('item1').style.backgroundImage = `url(${greenlight})`}} 
+                        id="item1"
+                        ></canvas>
                         <p className='tagbind'>{keyBinds[1]}</p>     
                     </animated.div>
                     <animated.div {...bindSkullPos2()} className='tag' style={{x: skullPos2.x, y: skullPos2.y}}>                      
-                        <canvas style={canvasStyle}  onClick={() =>  { console.log("[2]") }}></canvas>
+                        <canvas style={canvasStyle}   onClick={() => {document.getElementById('item2').style.backgroundImage = `url(${greenlight})`}} 
+                        id="item2"></canvas>
                         <p className='tagbind'>{keyBinds[2]}</p>     
                     </animated.div>
                 </Grid>
                 <Grid container item spacing={3}>
                 <animated.div {...bindSkullPos3()} className='tag' style={{x: skullPos3.x, y: skullPos3.y}}>                      
-                        <canvas style={canvasStyle}  onClick={() =>  { console.log("[3]") }}></canvas>
+                        <canvas style={canvasStyle}   onClick={() => {document.getElementById('item3').style.backgroundImage = `url(${greenlight})`}} 
+                        id="item3"></canvas>
                         <p className='tagbind'>{keyBinds[3]}</p>     
                     </animated.div>
                     <animated.div {...bindSkullPos4()} className='tag' style={{x: skullPos4.x, y: skullPos4.y}}>                      
-                        <canvas style={canvasStyle}  onClick={() =>  { console.log("[4]") }}></canvas>
+                        <canvas style={canvasStyle}  onClick={() => {document.getElementById('item4').style.backgroundImage = `url(${greenlight})`}} 
+                        id="item4"></canvas>
                         <p className='tagbind'>{keyBinds[4]}</p>     
                     </animated.div>
                     <animated.div {...bindSkullPos5()} className='tag' style={{x: skullPos5.x, y: skullPos5.y}}>                      
-                        <canvas style={canvasStyle}  onClick={() =>  { console.log("[5]") }}></canvas>
+                        <canvas style={canvasStyle}  onClick={() => {document.getElementById('item5').style.backgroundImage = `url(${greenlight})`}} 
+                        id="item5"></canvas>
                         <p className='tagbind'>{keyBinds[5]}</p>     
                     </animated.div>
                 </Grid>
                 <Grid container item spacing={3}>
                 <animated.div {...bindSkullPos6()} className='tag' style={{x: skullPos6.x, y: skullPos6.y}}>                      
-                        <canvas style={canvasStyle}  onClick={() =>  { console.log("[6]") }}></canvas>
+                        <canvas style={canvasStyle}  onClick={() => {document.getElementById('item6').style.backgroundImage = `url(${greenlight})`}} 
+                        id="item6"></canvas>
                         <p className='tagbind'>{keyBinds[6]}</p>     
                     </animated.div>
                     <animated.div {...bindSkullPos7()} className='tag' style={{x: skullPos7.x, y: skullPos7.y}}>                      
-                        <canvas style={canvasStyle}  onClick={() =>  { console.log("[7]") }}></canvas>
+                        <canvas style={canvasStyle}  onClick={() => {document.getElementById('item7').style.backgroundImage = `url(${greenlight})`}} 
+                        id="item7"></canvas>
                         <p className='tagbind'>{keyBinds[7]}</p>     
                     </animated.div>
                     <animated.div {...bindSkullPos8()} className='tag' style={{x: skullPos8.x, y: skullPos8.y}}>                      
-                        <canvas style={canvasStyle}  onClick={() =>  { console.log("[8]") }}></canvas>
+                        <canvas style={canvasStyle}  onClick={() => {document.getElementById('item8').style.backgroundImage = `url(${greenlight})`}} 
+                        id="item8"></canvas>
                         <p className='tagbind'>{keyBinds[8]}</p>     
                     </animated.div>
                 </Grid>
