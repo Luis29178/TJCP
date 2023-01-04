@@ -10,7 +10,7 @@ class RaidTagKeybinds extends React.Component{
             currentKeyBind: this.props.keyBind,
             currentKeyBindDisplay : this.props.keyBind,
             isEditing: false,
-            editingKeybind: this.props.keyBind,
+            editingKeybind: "",
             tagID: this.props.tagID
         }
         this.keybindClick = this.keybindClick.bind(this);
@@ -20,7 +20,13 @@ class RaidTagKeybinds extends React.Component{
 
             if(detail.task == "Editing"){
                 this.setState({isEditing: true})
+                console.log("Editing:" + detail.key)
             }
+            if(detail.task == "Finished"){
+                this.setState({isEditing: false, editingKeybind: ""})
+                console.log("Finished:" + detail.key)
+            }
+
             if(detail.key == this.state.currentKeyBind){
                 this.setState({editingKeybind: detail.key})
                 console.log(detail)
@@ -46,13 +52,17 @@ class RaidTagKeybinds extends React.Component{
                         this.setState({
                             isEditing: false,
                             currentKeyBind: e.key,
-                            currentKeyBindDisplay: e.key.toUpperCase()
+                            currentKeyBindDisplay: e.key.toUpperCase(),
+
                         })
         
                         var updateObject = {}
                         updateObject[this.state.tagID] = e.key
         
                         updateKeybinds(updateObject)
+                        const customEvent = new CustomEvent('keyBindEditing', { detail: { task : "Finished", key: ""} });
+      
+                        document.dispatchEvent(customEvent);
                         console.log('keyChanged')
                       }else{
                         console.log("Key already in use")
@@ -74,7 +84,7 @@ class RaidTagKeybinds extends React.Component{
     }
 
     keybindClick = (event, pos) => {
-        if(this.state.editingKeybind == this.state.currentKeyBind){
+        if(this.state.isEditing == false){
             if (event.detail === 2) {
                 console.log('double click ');
                 //let tagClickedIndex = keyBinds.indexOf(event.target.innerHTML);
@@ -91,6 +101,7 @@ class RaidTagKeybinds extends React.Component{
 
         }else{
             console.log("Cant edit current key")
+            console.log("Editing?"+ this.state.isEditing + "  CurrentEditingKeybind: " + this.state.editingKeybind)
         }
         
       };
