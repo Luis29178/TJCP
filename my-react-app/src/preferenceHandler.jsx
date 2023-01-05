@@ -36,7 +36,8 @@ const raidDB = "Raids";
 
   function createRaid(){
     var user = firebase.auth().currentUser;
-    firebase.firestore().collection(raidDB).doc().set({leader: firebase.auth().currentUser.uid, p1:firebase.auth().currentUser.uid, p2:"", p3:"",p4:""});
+    console.log(user.uid)
+    firebase.firestore().collection(raidDB).doc().set({leader: user.uid, p1:firebase.auth().currentUser.uid, p2:"", p3:"",p4:""});
   }
 
   function joinRaid(raid_id){

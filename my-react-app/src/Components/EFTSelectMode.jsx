@@ -1,6 +1,8 @@
 import { Grid } from "@mui/material";
 import React from "react";
 import { Buttonnew } from "./newButton";
+import { createRaid} from "../preferenceHandler";
+import 'firebase/compat/auth';
 
 
 class SelectMode extends React.Component {
@@ -29,7 +31,10 @@ class SelectMode extends React.Component {
                 </div>
                 <Grid container direction="column" spacing={4} justifyContent =  'center' alignItems="center">
                     <Grid item xs={12}>
-                        <Buttonnew borderStyle="eft--create" onClick={() => {window.location.href ="/EFT"}}> Create</Buttonnew>
+                        <Buttonnew borderStyle="eft--create" onClick={() =>{createRaid();
+                            //window.location.href ="/EFT"
+                            }}> 
+                            Create</Buttonnew>
 
                     </Grid>
                     <Grid item xs={12}>
