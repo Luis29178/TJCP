@@ -69,12 +69,16 @@ const raidDB = "Raids";
           console.log("Position 4 FREE")
         }
 
-        const customEvent = new CustomEvent('joinedRaid', { detail: "" });
+        if(placed){
+          const customEvent = new CustomEvent('joinedRaid', { detail: "" });
       
-        document.dispatchEvent(customEvent);
-        //console.log(docSnap.docs[0].data().p1)
-        //firebase.firestore().collection(raidDB).doc(raid_id).update({p1: user.uid})
-        console.log('Joined raid')
+          document.dispatchEvent(customEvent);
+          //console.log(docSnap.docs[0].data().p1)
+          //firebase.firestore().collection(raidDB).doc(raid_id).update({p1: user.uid})
+          console.log('Joined raid')
+        }else{
+          console.log("RAID FULL")
+        }
       }else{
         console.log("Cant join the Raid")
       }
