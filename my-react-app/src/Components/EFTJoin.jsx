@@ -20,6 +20,15 @@ class JoinRaid extends React.Component {
         document.addEventListener('joinedRaid', function({}) {
             this.redirectToPage()
         }.bind(this));
+
+        this.state = {
+            joinCode: '' 
+        }
+    }
+    
+    handleJoinCodeChange(e) {
+        this.setState({joinCode: e.target.value})
+        console.log(e.target.value)
     }
 
     redirectToPage = () =>
@@ -27,10 +36,10 @@ class JoinRaid extends React.Component {
         this.props.navigate('/tempRaid')
     }
 
-    onJoinPlayer = () =>{
+    onJoinPlayer = (code) =>{
         console.log("PLAYER")
         //createRaid()
-        joinRaid("qa7kQPFnzPjoHZxSEhm2")
+        joinRaid(this.state.joinCode)
 
     }
     onJoinSpectator = () =>{
@@ -53,7 +62,7 @@ class JoinRaid extends React.Component {
 
                 <div className="ImputGroup">
                     <div className="Prompt">Enter Code: </div>
-                    <InputBar></InputBar>
+                    <InputBar handleChange={this.handleJoinCodeChange.bind(this)}></InputBar>
                     <div className="joinbtn">
                     <Buttonnew borderStyle="join" onClick={this.onJoinPlayer.bind(this)}>Join</Buttonnew>
                     </div>
@@ -78,7 +87,7 @@ class JoinRaid extends React.Component {
     
                     <div className="ImputGroup">
                         <div className="Prompt">Enter Code: </div>
-                        <InputBar></InputBar>
+                        <InputBar handleChange={this.handleJoinCodeChange.bind(this)} ></InputBar>
                         <div className="joinbtn">
                         <Buttonnew borderStyle="join" onClick={this.onJoinSpectator.bind(this)}>Join</Buttonnew>
                         </div>

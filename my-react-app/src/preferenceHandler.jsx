@@ -41,8 +41,10 @@ const raidDB = "Raids";
 
   function joinRaid(raid_id){
     var user = firebase.auth().currentUser;
-    firebase.firestore().collection(raidDB).where(firebase.firestore.FieldPath.documentId(), '==', raid_id).get().then((docSnap)=>{
+    firebase.firestore().collection(raidDB).where(firebase.firestore.FieldPath.documentId(), '>', raid_id).get().then((docSnap)=>{
       if(!docSnap.empty){
+        var docID = docSnap.docs[0].id;
+
         var placed = false
 
         if(docSnap.docs[0].data().p1 == "" && !placed){
@@ -52,17 +54,17 @@ const raidDB = "Raids";
         }
         if(docSnap.docs[0].data().p2 == "" && !placed){
           placed = true;
-          firebase.firestore().collection(raidDB).doc(raid_id).update({p2: user.uid})
+          firebase.firestore().collection(raidDB).doc(docID).update({p2: user.uid})
           console.log("Position 2 FREE")
         }
         if(docSnap.docs[0].data().p3 == "" && !placed){
           placed = true;
-          firebase.firestore().collection(raidDB).doc(raid_id).update({p3: user.uid})
+          firebase.firestore().collection(raidDB).doc(docID).update({p3: user.uid})
           console.log("Position 3 FREE")
         }
         if(docSnap.docs[0].data().p4 == "" && !placed){
           placed = true;
-          firebase.firestore().collection(raidDB).doc(raid_id).update({p4: user.uid})
+          firebase.firestore().collection(raidDB).doc(docID).update({p4: user.uid})
           console.log("Position 4 FREE")
         }
 
