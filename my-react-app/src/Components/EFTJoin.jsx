@@ -4,16 +4,33 @@ import InputBar from "./InputBar.jsx"
 import "./_EFTJoin.css"
 import { createRaid, joinRaid } from "../preferenceHandler";
 import 'firebase/compat/auth';
+import { Redirect } from 'react-router-dom';
+import { withRouter } from "./withRouter";
 
 
 
 
 class JoinRaid extends React.Component {
 
+    constructor(props){
+        super(props)
+
+        this.redirectToPage = this.redirectToPage.bind(this);
+        
+        document.addEventListener('joinedRaid', function({}) {
+            this.redirectToPage()
+        }.bind(this));
+    }
+
+    redirectToPage = () =>
+    {
+        this.props.navigate('/tempRaid')
+    }
+
     onJoinPlayer = () =>{
         console.log("PLAYER")
-        createRaid()
-        //joinRaid("ofuL4KioYwatODLYBRvh");
+        //createRaid()
+        joinRaid("qa7kQPFnzPjoHZxSEhm2")
 
     }
     onJoinSpectator = () =>{
@@ -21,7 +38,7 @@ class JoinRaid extends React.Component {
     }
     
 
-
+    
     render() {
         if(this.props.player){
             return (
@@ -82,4 +99,4 @@ class JoinRaid extends React.Component {
 
 }
 
-export default JoinRaid;
+export default withRouter(JoinRaid);

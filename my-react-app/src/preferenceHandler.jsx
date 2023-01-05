@@ -36,15 +36,41 @@ const raidDB = "Raids";
 
   function createRaid(){
     var user = firebase.auth().currentUser;
-    firebase.firestore().collection(raidDB).doc().set({leader: firebase.auth().currentUser.uid, p1:"", p2:"", p3:"",p4:""});
+    firebase.firestore().collection(raidDB).doc().set({leader: firebase.auth().currentUser.uid, p1:firebase.auth().currentUser.uid, p2:"", p3:"",p4:""});
   }
 
   function joinRaid(raid_id){
     var user = firebase.auth().currentUser;
     firebase.firestore().collection(raidDB).where(firebase.firestore.FieldPath.documentId(), '==', raid_id).get().then((docSnap)=>{
       if(!docSnap.empty){
-        //loop on current player and check if you can join as each player
-        firebase.firestore().collection(raidDB).doc(raid_id).update({p1: user.uid})
+        var placed = false
+
+        if(docSnap.docs[0].data().p1 == "" && !placed){
+          console.log("Position 1 FREE")
+        }else{
+          console.log("Position 1 FULL")
+        }
+        if(docSnap.docs[0].data().p2 == "" && !placed){
+          placed = true;
+          firebase.firestore().collection(raidDB).doc(raid_id).update({p2: user.uid})
+          console.log("Position 2 FREE")
+        }
+        if(docSnap.docs[0].data().p3 == "" && !placed){
+          placed = true;
+          firebase.firestore().collection(raidDB).doc(raid_id).update({p3: user.uid})
+          console.log("Position 3 FREE")
+        }
+        if(docSnap.docs[0].data().p4 == "" && !placed){
+          placed = true;
+          firebase.firestore().collection(raidDB).doc(raid_id).update({p4: user.uid})
+          console.log("Position 4 FREE")
+        }
+
+        const customEvent = new CustomEvent('joinedRaid', { detail: "" });
+      
+        document.dispatchEvent(customEvent);
+        //console.log(docSnap.docs[0].data().p1)
+        //firebase.firestore().collection(raidDB).doc(raid_id).update({p1: user.uid})
         console.log('Joined raid')
       }else{
         console.log("Cant join the Raid")
