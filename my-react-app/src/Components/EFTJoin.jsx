@@ -2,6 +2,8 @@ import React from "react";
 import { Buttonnew } from "./newButton";
 import InputBar from "./InputBar.jsx"
 import "./_EFTJoin.css"
+import { createRaid, joinRaid } from "../preferenceHandler";
+import 'firebase/compat/auth';
 
 
 
@@ -10,6 +12,8 @@ class JoinRaid extends React.Component {
 
     onJoinPlayer = () =>{
         console.log("PLAYER")
+        createRaid()
+        //joinRaid("ofuL4KioYwatODLYBRvh");
 
     }
     onJoinSpectator = () =>{
