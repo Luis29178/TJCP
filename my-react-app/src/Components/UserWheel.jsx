@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from "react";
 import "./_UserWheel.css"
 import {onSnapshot} from 'firebase/firestore';
-import {playerStatusCollection} from '../preferenceHandler'
+import { getPlayerStatusCollection} from '../preferenceHandler'
 
 export const UserWheel = ({
     onClick,
     GARBarr,
     User,
+    player
 
 }) => {
 
@@ -14,9 +15,11 @@ export const UserWheel = ({
 
 
     useEffect(() => {
-        const unsubscribe = onSnapshot(playerStatusCollection, snapshot => {
-            
-            setPlayerInfo(snapshot.docs.map(doc => ({id:doc.id, data:doc.data()})))
+        const unsubscribe = onSnapshot(getPlayerStatusCollection(), async snapshot => {
+
+             var doc = snapshot.docs[player - 1];
+             console.log(doc.id)
+             setPlayerInfo([{id:doc.id, data:doc.data()}])
         
         });
         return () => {

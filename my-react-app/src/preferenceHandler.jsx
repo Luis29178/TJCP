@@ -17,10 +17,13 @@ firebase.initializeApp(config);
 
 const db = firebase.firestore();
 
-const playerStatusCollection = collection(db, 'Raids/mSUXqyXwthl8Vz0X5atU/playerStatus')
+var playerStatusCollection = "";
+var playerNumber = 0;
 
 const userPreferencesDB = "userPreferences";
 const raidDB = "Raids";
+
+var raidID;
 
 
   function readKeybinds(){
@@ -34,10 +37,37 @@ const raidDB = "Raids";
     firebase.firestore().collection(userPreferencesDB).doc(user.uid).update({"keyBinds" : updated_keyBinds}).then(()=>console.log("Edited"));
   }
 
+  function getPlayerStatusCollection(){
+    console.log(playerStatusCollection)
+
+    return playerStatusCollection;
+  }
   function createRaid(){
     var user = firebase.auth().currentUser;
     console.log(user.uid)
-    firebase.firestore().collection(raidDB).doc().set({leader: user.uid, p1:firebase.auth().currentUser.uid, p2:"", p3:"",p4:""});
+    var doc = firebase.firestore().collection(raidDB).doc();
+
+    //playerStatusCollection = collection(db, 'Raids/'+ doc.id + '/playerStatus');
+
+
+    console.log(doc.id.slice(0,4))
+    doc.set({leader: user.uid, p1:"", p2:"", p3:"",p4:""}).then(()=>{
+      firebase.firestore().collection('Raids/'+ doc.id + '/playerStatus').doc("1").set(
+        { ammo : 3, armor: 3, health:3}
+      );
+      firebase.firestore().collection('Raids/'+ doc.id + '/playerStatus').doc("2").set(
+        { ammo : 3, armor: 3, health:3}
+      );
+      firebase.firestore().collection('Raids/'+ doc.id + '/playerStatus').doc("3").set(
+        { ammo : 3, armor: 3, health:3}
+      );
+      firebase.firestore().collection('Raids/'+ doc.id + '/playerStatus').doc("4").set(
+        { ammo : 3, armor: 3, health:3}
+      );
+
+      //joinRaid(doc.id.slice(0,4))
+    });
+    //playerNumber = 1;
   }
 
   function joinRaid(raid_id){
@@ -45,11 +75,15 @@ const raidDB = "Raids";
     firebase.firestore().collection(raidDB).where(firebase.firestore.FieldPath.documentId(), '>', raid_id).get().then((docSnap)=>{
       if(!docSnap.empty){
         var docID = docSnap.docs[0].id;
+        playerStatusCollection =  playerStatusCollection = collection(db, 'Raids/'+ docID + '/playerStatus');
 
         var placed = false
 
         if(docSnap.docs[0].data().p1 == "" && !placed){
           console.log("Position 1 FREE")
+          placed= true;
+          firebase.firestore().collection(raidDB).doc(docID).update({p1: user.uid})
+          playerNumber = 1;
         }else{
           console.log("Position 1 FULL")
         }
@@ -57,16 +91,19 @@ const raidDB = "Raids";
           placed = true;
           firebase.firestore().collection(raidDB).doc(docID).update({p2: user.uid})
           console.log("Position 2 FREE")
+          playerNumber = 2;
         }
         if(docSnap.docs[0].data().p3 == "" && !placed){
           placed = true;
           firebase.firestore().collection(raidDB).doc(docID).update({p3: user.uid})
           console.log("Position 3 FREE")
+          playerNumber = 3;
         }
         if(docSnap.docs[0].data().p4 == "" && !placed){
           placed = true;
           firebase.firestore().collection(raidDB).doc(docID).update({p4: user.uid})
           console.log("Position 4 FREE")
+          playerNumber = 3;
         }
 
         if(placed){
@@ -87,5 +124,5 @@ const raidDB = "Raids";
     
   }
 
-export {readKeybinds, updateKeybinds, playerStatusCollection, createRaid, joinRaid} 
+export {readKeybinds, updateKeybinds, getPlayerStatusCollection, createRaid, joinRaid} 
 
