@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import "./_UserWheel.css"
 import {onSnapshot} from 'firebase/firestore';
-import { getPlayerStatusCollection} from '../preferenceHandler'
+import { getPlayerStatusCollection, playerNumber} from '../preferenceHandler'
 
 export const UserWheel = ({
     onClick,
@@ -12,13 +12,16 @@ export const UserWheel = ({
 }) => {
 
     const [playerInfo, setPlayerInfo] = useState([])
+    const [infoSnap, setInfoSnap] = useState(getPlayerStatusCollection())
 
 
     useEffect(() => {
-        const unsubscribe = onSnapshot(getPlayerStatusCollection(), async snapshot => {
+
+
+        const unsubscribe = onSnapshot(infoSnap, async snapshot => {
 
              var doc = snapshot.docs[player - 1];
-             console.log(doc.id)
+             console.log({id:doc.id, data:doc.data()})
              setPlayerInfo([{id:doc.id, data:doc.data()}])
         
         });
@@ -30,7 +33,7 @@ export const UserWheel = ({
     function parseStatus(statusInfo){
         let status = "lowStatus";
 
-        switch(statusInfo){
+        switch(String(statusInfo)){
             case "1":
                 status = "outStatus"
                 break;

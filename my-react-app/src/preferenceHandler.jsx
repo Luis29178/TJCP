@@ -38,7 +38,7 @@ var raidID;
   }
 
   function getPlayerStatusCollection(){
-    console.log(playerStatusCollection)
+    //console.log(playerStatusCollection)
 
     return playerStatusCollection;
   }
@@ -124,5 +124,5 @@ var raidID;
     
   }
 
-export {readKeybinds, updateKeybinds, getPlayerStatusCollection, createRaid, joinRaid} 
+export {readKeybinds, updateKeybinds, getPlayerStatusCollection, createRaid, joinRaid, playerNumber} 
 
