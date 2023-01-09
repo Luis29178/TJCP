@@ -13,7 +13,7 @@ const config = {
   measurementId: "G-55B1P13PP9"
 
 };
-firebase.initializeApp(config); 
+firebase.initializeApp(config);
 
 const db = firebase.firestore();
 
@@ -22,16 +22,16 @@ const playerStatusCollection = collection(db, 'Raids/mSUXqyXwthl8Vz0X5atU/player
 const userPreferencesDB = "userPreferences";
 
 
-  function readKeybinds(){
-    var user = firebase.auth().currentUser;
-    firebase.firestore().collection(userPreferencesDB).doc(user.uid).get().then((snapshot) => {
-      console.log(snapshot.data())
-    }).catch((e) => console.log(e))
-  }
-  function updateKeybinds(updated_keyBinds){
-    var user = firebase.auth().currentUser;
-    firebase.firestore().collection(userPreferencesDB).doc(user.uid).update({"keyBinds" : updated_keyBinds}).then(()=>console.log("Edited"));
-  }
+function readKeybinds() {
+  var user = firebase.auth().currentUser;
+  firebase.firestore().collection(userPreferencesDB).doc(user.uid).get().then((snapshot) => {
+    console.log(snapshot.data())
+  }).catch((e) => console.log(e))
+}
+function updateKeybinds(updated_keyBinds) {
+  var user = firebase.auth().currentUser;
+  firebase.firestore().collection(userPreferencesDB).doc(user.uid).update({ "keyBinds": updated_keyBinds }).then(() => console.log("Edited"));
+}
 
-export {readKeybinds, updateKeybinds, playerStatusCollection} 
+export { readKeybinds, updateKeybinds, playerStatusCollection }
 
