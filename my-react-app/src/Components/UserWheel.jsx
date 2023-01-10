@@ -1,7 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import "./_UserWheel.css"
 import {onSnapshot} from 'firebase/firestore';
-import { getPlayerStatusCollection, playerNumber} from '../preferenceHandler'
+import { RaidContext } from "..";
+import firebase from 'firebase/compat/app';
+import { collection, doc } from 'firebase/firestore';
+
 
 export const UserWheel = ({
     onClick,
@@ -11,13 +14,22 @@ export const UserWheel = ({
 
 }) => {
 
+    const RaidController = React.useContext(RaidContext); 
     const [playerInfo, setPlayerInfo] = useState([])
-    const [infoSnap, setInfoSnap] = useState(getPlayerStatusCollection())
+    var raidPath = localStorage.getItem("raidCol");
+    var playerNumber = localStorage.getItem("playerNumber");
+    const [infoSnap, setInfoSnap] = useState(collection(firebase.firestore(), raidPath)) //collection(firebase.firestore(), 'Raids/'+ "zx14tOGVttsAzbLCCs0A" + '/playerStatus'))
 
 
     useEffect(() => {
 
-
+        document.getElementById('player' + player).addEventListener('click', function(e){
+            if(player == playerNumber){
+                RaidController.setPlayerInfo(raidPath);
+                console.log("Changed info for Player " + playerNumber)
+            }
+            
+        })
         const unsubscribe = onSnapshot(infoSnap, async snapshot => {
 
              var doc = snapshot.docs[player - 1];
@@ -53,7 +65,7 @@ export const UserWheel = ({
         <button onClick={onClick}>
             <div className="ContainerBorder">
                 <div className="Container">
-                    <div className="CenterDot"></div>
+                    <div id={"player" + player} className={player == playerNumber? "MyCenterDot" : "CenterDot"}></div>
                     <div className="Sectioner"></div>
                     {
                         playerInfo.map(info => (

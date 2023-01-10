@@ -1,55 +1,35 @@
-import React from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { Buttonnew } from "./newButton";
 import InputBar from "./InputBar.jsx"
 import "./_EFTJoin.css"
-import { createRaid, joinRaid } from "../preferenceHandler";
 import 'firebase/compat/auth';
-import { Redirect } from 'react-router-dom';
-import { withRouter } from "./withRouter";
+import { RaidContext } from "..";
 
 
+function JoinRaid(props) {
+    const RaidController = React.useContext(RaidContext); 
 
-
-class JoinRaid extends React.Component {
-
-    constructor(props){
-        super(props)
-
-        this.redirectToPage = this.redirectToPage.bind(this);
-        
-        document.addEventListener('joinedRaid', function({}) {
-            this.redirectToPage()
-        }.bind(this));
-
-        this.state = {
-            joinCode: '' 
-        }
-    }
+    const [joinCode, setJoincCode] = useState([]);
     
-    handleJoinCodeChange(e) {
-        this.setState({joinCode: e.target.value})
+    var handleJoinCodeChange = (e) => {
+        setJoincCode(e.target.value);
         console.log(e.target.value)
     }
 
-    redirectToPage = () =>
-    {
-        this.props.navigate('/tempRaid')
-    }
 
-    onJoinPlayer = (code) =>{
+   var onJoinPlayer = (code) =>{
         console.log("PLAYER")
         //createRaid()
-        joinRaid(this.state.joinCode)
+        RaidController.joinRaid(joinCode)
+        
 
     }
-    onJoinSpectator = () =>{
+   var  onJoinSpectator = () =>{
         console.log("SPECTATOR")
     }
     
 
-    
-    render() {
-        if(this.props.player){
+        if(props.player){
             return (
 
             <div className="EFTJoin">
@@ -62,9 +42,9 @@ class JoinRaid extends React.Component {
 
                 <div className="ImputGroup">
                     <div className="Prompt">Enter Code: </div>
-                    <InputBar handleChange={this.handleJoinCodeChange.bind(this)}></InputBar>
+                    <InputBar handleChange={handleJoinCodeChange}></InputBar>
                     <div className="joinbtn">
-                    <Buttonnew borderStyle="join" onClick={this.onJoinPlayer.bind(this)}>Join</Buttonnew>
+                    <Buttonnew borderStyle="join" onClick={onJoinPlayer}>Join</Buttonnew>
                     </div>
 
                 </div>
@@ -87,9 +67,9 @@ class JoinRaid extends React.Component {
     
                     <div className="ImputGroup">
                         <div className="Prompt">Enter Code: </div>
-                        <InputBar handleChange={this.handleJoinCodeChange.bind(this)} ></InputBar>
+                        <InputBar handleChange={handleJoinCodeChange} ></InputBar>
                         <div className="joinbtn">
-                        <Buttonnew borderStyle="join" onClick={this.onJoinSpectator.bind(this)}>Join</Buttonnew>
+                        <Buttonnew borderStyle="join" onClick={onJoinSpectator}>Join</Buttonnew>
                         </div>
     
                     </div>
@@ -102,10 +82,10 @@ class JoinRaid extends React.Component {
         }
 
         
-    }
+    
 
 
 
 }
 
-export default withRouter(JoinRaid);
+export default JoinRaid;

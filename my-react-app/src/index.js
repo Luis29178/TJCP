@@ -22,6 +22,9 @@ import 'firebase/compat/auth';
 import App from './App'
 
 import { Tags } from './Components/RaidTags';
+import RaidController from './raidController';
+
+export const RaidContext = React.createContext(new RaidController())
 
 const router = createBrowserRouter([
  {

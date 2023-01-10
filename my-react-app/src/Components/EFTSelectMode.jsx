@@ -1,14 +1,14 @@
 import { Grid } from "@mui/material";
 import React from "react";
 import { Buttonnew } from "./newButton";
-import { createRaid} from "../preferenceHandler";
 import 'firebase/compat/auth';
+import { RaidContext } from "..";
 
 
-class SelectMode extends React.Component {
+function SelectMode() {
 
-
-    render() {
+    const value = React.useContext(RaidContext)
+    //console.log(value);
 
         return (
             <div
@@ -31,7 +31,7 @@ class SelectMode extends React.Component {
                 </div>
                 <Grid container direction="column" spacing={4} justifyContent =  'center' alignItems="center">
                     <Grid item xs={12}>
-                        <Buttonnew borderStyle="eft--create" onClick={() =>{createRaid();
+                        <Buttonnew borderStyle="eft--create" onClick={() =>{ value.createRaid()
                             //window.location.href ="/EFT"
                             }}> 
                             Create</Buttonnew>
@@ -49,7 +49,7 @@ class SelectMode extends React.Component {
             </div>
 
         )
-    }
+    
 
 
 
