@@ -1,0 +1,89 @@
+.container{
+    height: 100vh;
+    width: 100vw;
+
+
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr 1fr 2fr;
+    grid-template-areas: "ammo spacerA health spacerB armor";
+}
+
+
+.SpacerA{
+    color: white;
+
+    grid-area: spacerA ;
+
+}
+
+.SpacerB{
+    color: white;
+
+    grid-area: spacerB;
+
+}
+
+
+
+.Ammo-green{
+    color: green;
+
+    grid-area: ammo;
+}
+.Ammo-amber{
+    color: darkgoldenrod;
+
+    grid-area: ammo;
+}
+.Ammo-red{
+    color: red;
+
+    grid-area: ammo;
+}
+.Ammo-black{
+    color: black;
+
+    grid-area: ammo;
+}
+
+.Health-green{
+    color: green;
+    
+     grid-area: health;
+}
+.Health-amber{
+    color: darkgoldenrod;
+
+     grid-area: health;
+}
+.Health-red{
+    color: red;
+
+     grid-area: health;
+}
+.Health-black{
+    color: black;
+
+     grid-area: health;
+}
+
+.Armor-green{
+    color: green;
+    
+     grid-area: armor;
+}
+.Armor-amber{
+    color: darkgoldenrod;
+
+     grid-area: armor;
+}
+.Armor-red{
+    color: red;
+
+     grid-area: armor;
+}
+.Armor-black{
+    color: black;
+
+     grid-area: armor;
+}

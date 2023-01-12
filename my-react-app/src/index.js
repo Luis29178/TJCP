@@ -16,12 +16,15 @@ import TrackerPage from './Components/TrackerPage';
 import PathPage from './Components/PathPage';
 import SelectMode from './Components/EFTSelectMode';
 import JoinRaid from './Components/EFTJoin';
+import DropDownBar from './Components/DropDownBar_improved';
+
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import App from './App'
 
 import { Tags } from './Components/RaidTags';
+
 
 const router = createBrowserRouter([
  {
@@ -63,6 +66,10 @@ const router = createBrowserRouter([
   {
     path: "/JoinSpectator",
     element: <JoinRaid player={false}/>
+  },
+  {
+    path: "/test",
+    element: <DropDownBar></DropDownBar>
   }
   
   // to create a new path add an object like the below one to this Router.
