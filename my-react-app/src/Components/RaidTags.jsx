@@ -161,13 +161,62 @@ export const Tags = ({
     let currentIndex7 = 1;
     let currentIndex8 = 1;
 
+    const [showDiv1, setShowDiv1] = useState(true);
+    const toggleDiv1 = () => {
+        setShowDiv1(!showDiv1);
+    }
+    const [showDiv2, setShowDiv2] = useState(true);
+    const toggleDiv2 = () => {
+        setShowDiv2(!showDiv2);
+    }
+    const [showDiv3, setShowDiv3] = useState(true);
+    const toggleDiv3 = () => {
+        setShowDiv3(!showDiv3);
+    }
+    const [showDiv4, setShowDiv4] = useState(true);
+    const toggleDiv4 = () => {
+        setShowDiv4(!showDiv4);
+    }
+    const [showDiv5, setShowDiv5] = useState(true);
+    const toggleDiv5 = () => {
+        setShowDiv5(!showDiv5);
+    }
+    const [showDiv6, setShowDiv6] = useState(true);
+    const toggleDiv6 = () => {
+        setShowDiv6(!showDiv6);
+    }
+    const [showDiv7, setShowDiv7] = useState(true);
+    const toggleDiv7 = () => {
+        setShowDiv7(!showDiv7);
+    }
+    const [showDiv8, setShowDiv8] = useState(true);
+    const toggleDiv8 = () => {
+        setShowDiv8(!showDiv8);
+    }
+    const [showDiv9, setShowDiv9] = useState(true);
+    const toggleDiv9 = () => {
+        setShowDiv9(!showDiv9);
+    }
+
     return (
 
         
             <Grid container spacing={2}>
                 <Grid container item spacing={3}>
 
-                    <animated.div {...bindSkullPos0()} className='tag' style={{x: skullPos0.x, y: skullPos0.y}}>       
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv1}>remove Q</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv2}>remove W</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv3}>remove E</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv4}>remove A</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv5}>remove S</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv6}>remove D</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv7}>remove Z</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv8}>remove X</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv9}>remove C</button>
+
+
+
+                    {showDiv1 ? <animated.div {...bindSkullPos0()} className='tag' style={{x: skullPos0.x, y: skullPos0.y}}>       
                     <canvas ref={ref} style=
                         {{
                             backgroundImage:`url(${src})`, backgroundSize: "cover", height: "50px", width: "50px",
@@ -178,54 +227,55 @@ export const Tags = ({
                         >
                         </canvas>               
                         <p className='tagbind'>{keyBinds[0]}</p>     
-                    </animated.div>
+                    </animated.div> : null}
 
-                    <animated.div {...bindSkullPos1()} className='tag' style={{x: skullPos1.x, y: skullPos1.y}}>                      
+
+                    {showDiv2 ? <animated.div {...bindSkullPos1()} className='tag' style={{x: skullPos1.x, y: skullPos1.y}}>                      
                         <canvas style={canvasStyle} onClick={() => {document.getElementById('item1').style.backgroundImage = `url(${images[currentIndex1]})`; currentIndex1 = currentIndex1 + 1; if(currentIndex1 === 5){currentIndex1=0};}}
  
                         id="item1"
                         ></canvas>
                         <p className='tagbind'>{keyBinds[1]}</p>     
-                    </animated.div>
-                    <animated.div {...bindSkullPos2()} className='tag' style={{x: skullPos2.x, y: skullPos2.y}}>                      
+                    </animated.div>: null}
+                    { showDiv3 ? <animated.div {...bindSkullPos2()} className='tag' style={{x: skullPos2.x, y: skullPos2.y}}>                      
                     <canvas style={canvasStyle} onClick={() => {document.getElementById('item2').style.backgroundImage = `url(${images[currentIndex2]})`; currentIndex2 = currentIndex2 + 1;  if(currentIndex2 === 5){currentIndex2=0};}}
                         id="item2"></canvas>
                         <p className='tagbind'>{keyBinds[2]}</p>     
-                    </animated.div>
+                    </animated.div>: null}
                 </Grid>
                 <Grid container item spacing={3}>
-                <animated.div {...bindSkullPos3()} className='tag' style={{x: skullPos3.x, y: skullPos3.y}}>                      
+                { showDiv4 ?<animated.div {...bindSkullPos3()} className='tag' style={{x: skullPos3.x, y: skullPos3.y}}>                      
                 <canvas style={canvasStyle} onClick={() => {document.getElementById('item3').style.backgroundImage = `url(${images[currentIndex3]})`; currentIndex3 = currentIndex3 + 1;  if(currentIndex3 === 5){currentIndex3=0};}}
                         id="item3"></canvas>
                         <p className='tagbind'>{keyBinds[3]}</p>     
-                    </animated.div>
-                    <animated.div {...bindSkullPos4()} className='tag' style={{x: skullPos4.x, y: skullPos4.y}}>                      
+                    </animated.div>: null}
+                    { showDiv5 ? <animated.div {...bindSkullPos4()} className='tag' style={{x: skullPos4.x, y: skullPos4.y}}>                      
                     <canvas style={canvasStyle} onClick={() => {document.getElementById('item4').style.backgroundImage = `url(${images[currentIndex4]})`; currentIndex4 = currentIndex4 + 1;  if(currentIndex4 === 5){currentIndex4=0};}}
                         id="item4"></canvas>
                         <p className='tagbind'>{keyBinds[4]}</p>     
-                    </animated.div>
-                    <animated.div {...bindSkullPos5()} className='tag' style={{x: skullPos5.x, y: skullPos5.y}}>                      
+                    </animated.div>: null}
+                    { showDiv6 ? <animated.div {...bindSkullPos5()} className='tag' style={{x: skullPos5.x, y: skullPos5.y}}>                      
                     <canvas style={canvasStyle} onClick={() => {document.getElementById('item5').style.backgroundImage = `url(${images[currentIndex5]})`; currentIndex5 = currentIndex5 + 1;  if(currentIndex5 === 5){currentIndex5=0};}}
                         id="item5"></canvas>
                         <p className='tagbind'>{keyBinds[5]}</p>     
-                    </animated.div>
+                    </animated.div>: null}
                 </Grid>
                 <Grid container item spacing={3}>
-                <animated.div {...bindSkullPos6()} className='tag' style={{x: skullPos6.x, y: skullPos6.y}}>                      
+                { showDiv7 ? <animated.div {...bindSkullPos6()} className='tag' style={{x: skullPos6.x, y: skullPos6.y}}>                      
                 <canvas style={canvasStyle} onClick={() => {document.getElementById('item6').style.backgroundImage = `url(${images[currentIndex6]})`; currentIndex6 = currentIndex6 + 1;  if(currentIndex6 === 5){currentIndex6=0};}}
                         id="item6"></canvas>
                         <p className='tagbind'>{keyBinds[6]}</p>     
-                    </animated.div>
-                    <animated.div {...bindSkullPos7()} className='tag' style={{x: skullPos7.x, y: skullPos7.y}}>                      
+                    </animated.div>: null}
+                    { showDiv8 ? <animated.div {...bindSkullPos7()} className='tag' style={{x: skullPos7.x, y: skullPos7.y}}>                      
                     <canvas style={canvasStyle} onClick={() => {document.getElementById('item7').style.backgroundImage = `url(${images[currentIndex7]})`; currentIndex7 = currentIndex7 + 1;  if(currentIndex7 === 5){currentIndex7=0};}}
                         id="item7"></canvas>
                         <p className='tagbind'>{keyBinds[7]}</p>     
-                    </animated.div>
-                    <animated.div {...bindSkullPos8()} className='tag' style={{x: skullPos8.x, y: skullPos8.y}}>                      
+                    </animated.div>: null}
+                    { showDiv9 ? <animated.div {...bindSkullPos8()} className='tag' style={{x: skullPos8.x, y: skullPos8.y}}>                      
                     <canvas style={canvasStyle} onClick={() => {document.getElementById('item8').style.backgroundImage = `url(${images[currentIndex8]})`; currentIndex8 = currentIndex8 + 1;  if(currentIndex8 === 5){currentIndex8=0};}}
                         id="item8"></canvas>
                         <p className='tagbind'>{keyBinds[8]}</p>     
-                    </animated.div>
+                    </animated.div>: null}
                 </Grid>
             </Grid>
            
