@@ -1,8 +1,7 @@
-import { Grid } from "@mui/material";
 import React from "react";
 import SerchBar from "./SerchBar";
 import ItemList from "./ItemList";
-import {Button} from "./Button";
+import { Button } from "./Button";
 import './_TrackerPage.css';
 
 
@@ -29,26 +28,16 @@ class TrackerPage extends React.Component {
                     </div>
 
 
-                    <Grid container direction="column" justifyContent="center" alignItems="center" xs={12}>
 
-                        <Grid item xs={2}>
-                            <div className="Ttitle">{this.state.Title}</div>
-                        </Grid>
+                    <div className="Ttitle">{this.state.Title}</div>
 
-                        <Grid item xs={2} >
-                            <div className="Tserchbar">
-                                <SerchBar placeholder="Search Item" />
-                            </div>
-                        </Grid>
+                    <div className="Tserchbar">
+                        <SerchBar placeholder="Search Item" />
+                    </div>
 
-                        <Grid item xs={8}>
-                            <div className="Titemlist">
-                                <ItemList />
-                            </div>
-                        </Grid>
-
-                    </Grid>
-
+                    <div className="Titemlist">
+                        <ItemList />
+                    </div>
 
 
 

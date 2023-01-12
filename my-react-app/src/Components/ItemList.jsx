@@ -8,8 +8,7 @@ import 'firebase/compat/database';
 import 'firebase/compat/firestore';
 
 import { ref, set, get, update, remove, child, onValue } from "firebase/database"
-import { async } from "@firebase/util";
-import { doc } from "firebase/firestore";
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyC4hztlkCki_2pnq93Rgf7cgncHC1V61N0",
@@ -50,11 +49,7 @@ class ItemList extends React.Component {
 
 
     }
-    componentDidUpdate() {
-
-        this.UploadAll();
-
-    }
+  
 
 
     render() {
@@ -110,36 +105,12 @@ class ItemList extends React.Component {
 
     }
 
-    UploadAll() {
-        var count = 0;
-
-        this.state.fireBaseRef.forEach(item => {
-
-            var docName = item.Name
-            if (docName === "Maxim Defence CQB collapsing/telescoping MCX/MPX stock") {
-                docName = "Maxim Defence CQB collapsing-telescoping MCX-MPX stock";
-            }
-            if (docName === "Maxim Defence CQB collapsing/telescoping MCX/MPX stock") {
-                docName = "Maxim Defence CQB collapsing-telescoping MCX-MPX stock";
-            }
-            docName = docName.replaceAll("/", "-");
 
 
 
 
 
-
-
-
-            this.state.dbf.collection("DefaultInfo").doc(docName).set(item, { merge: true });
-            console.log(`${count} : ${docName}`);
-            count = count + 1;
-        });
-
-
-
-
-    }
+    
 
 
 

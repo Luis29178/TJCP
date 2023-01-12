@@ -5,41 +5,51 @@
 
 
 .Tpage{
-    height: var(--theight);
-    width: var(--twidth);
+    height: 100vh;
+    width: 100vw;
     background: black;
+
+    display: grid;
+    grid-template-columns: 60px auto;
+    grid-template-rows: 60px 150px auto;
+    grid-template-areas:   
+    "xbtn title"
+    "searchbar searchbar"
+    "Lsit List ";
 }
 
-.Idiplay{
-    height: fit-content;
 
-    background: transparent;
-    border: 15px;
-
-
-}
 .Ttitle{
     height: fit-content;
     width: fit-content;
     background: transparent;
     color: white;
     font-size: 60px;
-    text-align: center;
+    justify-self: center;
+    grid-area: title;
+
+    
 
 }
 .Tserchbar{
     height: 60px;
     width: 600px;
+    justify-self: center;
+
+    grid-area: searchbar;
 }
 .Titemlist{
-    height:550px;
-    width: calc(var(--twidth) * .90);
+    height:auto;
+    width: auto;
     overflow: scroll;
+    justify-self: start;
+
+    grid-area: List;
 }
 .backButton{
-    position: absolute;
     height: 50px;
     width: 50px;
     margin-top: 10px;
     margin-left: 10px;
+    grid-area: xbtn;
 }
