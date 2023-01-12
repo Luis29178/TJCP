@@ -3,51 +3,10 @@ import image from './Tags/skull.jpg';
 import {useSpring, animated} from "react-spring"
 import {useDrag} from "react-use-gesture"
 import tag1 from './Tags/SkullTag.png'
-
-// function useCursorPosition() {
-//   const [position, setPosition] = useState({ x: 0, y: 0 });
-
-//   useEffect(() => {
-//     const updatePosition = (e) => {
-//       setPosition({
-//         x: e.clientX,
-//         y: e.clientY
-//       });
-//     }
-//     document.addEventListener('mousemove', updatePosition);
-//     return () => {
-//       document.removeEventListener('mousemove', updatePosition);
-//     }
-//   });
-
-//   return position;
-
-// }
-
-
-
-
-
-
-
-
-
-    var canvasStyle = {
-
-        backgroundImage: `url(${tag1})`,
-        backgroundSize: "cover",
-        height: "50px",
-        width: "50px",
-        // top: "50px",
-        // left: "50px"
-        
-}
-
-
-
-
-
-
+import greenlight from './Tags/green_light.png';
+import loot from './Tags/loot_icon.png';
+import money from './Tags/money_icon.png';
+import redlight from './Tags/red_light.png';
 
 
 
@@ -81,35 +40,33 @@ const ImageOnKeyPress = (props) => {
     }
   });
 
-  const skullPos0 = useSpring({x: 0, y:0});
-
-  const bindSkullPos0 = useDrag((params) => {
-      skullPos0.x.set(params.offset[0]);
-      skullPos0.y.set(params.offset[1]);
-  })
 
   const mockPosX = position.x;
   const mockPosY = position.y;
 
+  const [src, setSrc] = useState(tag1);
+  const images = [tag1, greenlight, money, redlight , loot];
+  let currentIndex0 = 1;
+  var canvasStyle = {
+
+    backgroundImage: `url(${src})`,
+    backgroundSize: "cover",
+    height: "50px",
+    width: "50px",  
+}
   return (<>
-        {showImage && <animated.div {...bindSkullPos0()} id="item0" className='tag' style={{
+        {showImage && <animated.div className='tag' style={{
             position: "absolute",
-            left: mockPosX - 35,
+            left: mockPosX - 25,
             top: mockPosY - 35,
             zIndex: "10"
-            }}>                      
-            <canvas style={canvasStyle}></canvas>   
+            }}                         
+            >                      
+            <canvas onClick={() => {document.getElementById('item9').style.backgroundImage = `url(${images[currentIndex0]})`; currentIndex0 = currentIndex0 + 1; if(currentIndex0 === 5){currentIndex0=0};}} 
+            style={canvasStyle}
+            id="item9"></canvas>   
             </animated.div>}
             <div className='position'> x: {position.x} y: {position.y}</div>
-          {/* {showImage && <img style={{
-            position: "absolute",
-            width: "50px",
-            height: "50px",
-            top: "100px",
-            left: "400px",
-            zIndex: "10",
-            borderRadius: "5px",
-          }}src={image} alt="Image" />} */}
 </>);
 }
 

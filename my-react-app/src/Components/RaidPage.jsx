@@ -42,7 +42,7 @@ function Raid() {
     return (
 
         <div className="raidContainer">
-            {<ImageOnKeyPress/>}
+            {<ImageOnKeyPress/>} 
             {/* <div className="menuBar">
 
             </div> */}
