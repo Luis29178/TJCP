@@ -65,22 +65,29 @@ class Raid extends React.Component{
                 alignItems="center"
                 >
                     <Grid>
-                        <animated.div {...bindWheelPos1()}style={{x: wheelPos1.x, y: wheelPos1.y}}>
+                    <UserWheel player={1} onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
+                        {/* <animated.div {...bindWheelPos1()}style={{x: wheelPos1.x, y: wheelPos1.y}}>
                         <UserWheel player={1} onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
-                        </animated.div>
+                        </animated.div> */}
                     </Grid>
                     <Grid>
-                    <animated.div {...bindWheelPos2()}style={{x: wheelPos2.x, y: wheelPos2.y}}>
+                    <UserWheel player={2} onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
+                    {/* <animated.div {...bindWheelPos2()}style={{x: wheelPos2.x, y: wheelPos2.y}}>
                         <UserWheel player={2} onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
-                        </animated.div>                    </Grid>
+                        </animated.div>                     */}
+                        </Grid>
                     <Grid>
-                    <animated.div {...bindWheelPos3()}style={{x: wheelPos3.x, y: wheelPos3.y}}>
+                    <UserWheel player={3} onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
+                    {/* <animated.div {...bindWheelPos3()}style={{x: wheelPos3.x, y: wheelPos3.y}}>
                         <UserWheel player={3} onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
-                        </animated.div>                    </Grid>
+                        </animated.div>                     */}
+                        </Grid>
                     <Grid>
-                    <animated.div {...bindWheelPos4()}style={{x: wheelPos4.x, y: wheelPos4.y}}>
+                    <UserWheel player={4} onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
+                    {/* <animated.div {...bindWheelPos4()}style={{x: wheelPos4.x, y: wheelPos4.y}}>
                         <UserWheel player={4} onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
-                        </animated.div>                    </Grid>
+                        </animated.div>                     */}
+                        </Grid>
                 </Grid>
 
 

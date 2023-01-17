@@ -9,7 +9,7 @@ import './_RaidTags.css'
 //import useSpring, useDrag, animate
 import {useSpring, animated} from "react-spring"
 import {useDrag} from "react-use-gesture"
-import { useEffect, useState, useRef, useState } from 'react';
+import { useEffect, useState, useRef} from 'react';
 import { red } from '@mui/material/colors';
 import RaidTagKeybinds from './RaidTagKeybinds';
 
