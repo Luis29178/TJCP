@@ -1,22 +1,40 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import "./_UserWheel.css"
 import {onSnapshot} from 'firebase/firestore';
-import {playerStatusCollection} from '../preferenceHandler'
+import { RaidContext } from "..";
+import firebase from 'firebase/compat/app';
+import { collection, doc } from 'firebase/firestore';
+
 
 export const UserWheel = ({
     onClick,
     GARBarr,
     User,
+    player
 
 }) => {
 
+    const RaidController = React.useContext(RaidContext); 
     const [playerInfo, setPlayerInfo] = useState([])
+    var raidPath = localStorage.getItem("raidCol");
+    var playerNumber = localStorage.getItem("playerNumber");
+    const [infoSnap, setInfoSnap] = useState(collection(firebase.firestore(), raidPath)) //collection(firebase.firestore(), 'Raids/'+ "zx14tOGVttsAzbLCCs0A" + '/playerStatus'))
 
 
     useEffect(() => {
-        const unsubscribe = onSnapshot(playerStatusCollection, snapshot => {
+
+        document.getElementById('player' + player).addEventListener('click', function(e){
+            if(player == playerNumber){
+                RaidController.setPlayerInfo({armor:1});
+                console.log("Changed info for Player " + playerNumber)
+            }
             
-            setPlayerInfo(snapshot.docs.map(doc => ({id:doc.id, data:doc.data()})))
+        })
+        const unsubscribe = onSnapshot(infoSnap, async snapshot => {
+
+             var doc = snapshot.docs[player - 1];
+             console.log({id:doc.id, data:doc.data()})
+             setPlayerInfo([{id:doc.id, data:doc.data()}])
         
         });
         return () => {
@@ -27,7 +45,7 @@ export const UserWheel = ({
     function parseStatus(statusInfo){
         let status = "lowStatus";
 
-        switch(statusInfo){
+        switch(String(statusInfo)){
             case "1":
                 status = "outStatus"
                 break;
@@ -47,7 +65,7 @@ export const UserWheel = ({
         <button onClick={onClick}>
             <div className="ContainerBorder">
                 <div className="Container">
-                    <div className="CenterDot"></div>
+                    <div id={"player" + player} className={player == playerNumber? "MyCenterDot" : "CenterDot"}></div>
                     <div className="Sectioner"></div>
                     {
                         playerInfo.map(info => (

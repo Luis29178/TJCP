@@ -1,25 +1,35 @@
-import React from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { Buttonnew } from "./newButton";
 import InputBar from "./InputBar.jsx"
 import "./_EFTJoin.css"
+import 'firebase/compat/auth';
+import { RaidContext } from "..";
 
 
+function JoinRaid(props) {
+    const RaidController = React.useContext(RaidContext); 
+
+    const [joinCode, setJoincCode] = useState([]);
+    
+    var handleJoinCodeChange = (e) => {
+        setJoincCode(e.target.value);
+        console.log(e.target.value)
+    }
 
 
-class JoinRaid extends React.Component {
-
-    onJoinPlayer = () =>{
+   var onJoinPlayer = (code) =>{
         console.log("PLAYER")
+        //createRaid()
+        RaidController.joinRaid(joinCode)
+        
 
     }
-    onJoinSpectator = () =>{
+   var  onJoinSpectator = () =>{
         console.log("SPECTATOR")
     }
     
 
-
-    render() {
-        if(this.props.player){
+        if(props.player){
             return (
 
             <div className="EFTJoin">
@@ -32,9 +42,9 @@ class JoinRaid extends React.Component {
 
                 <div className="ImputGroup">
                     <div className="Prompt">Enter Code: </div>
-                    <InputBar></InputBar>
+                    <InputBar handleChange={handleJoinCodeChange}></InputBar>
                     <div className="joinbtn">
-                    <Buttonnew borderStyle="join" onClick={this.onJoinPlayer.bind(this)}>Join</Buttonnew>
+                    <Buttonnew borderStyle="join" onClick={onJoinPlayer}>Join</Buttonnew>
                     </div>
 
                 </div>
@@ -57,9 +67,9 @@ class JoinRaid extends React.Component {
     
                     <div className="ImputGroup">
                         <div className="Prompt">Enter Code: </div>
-                        <InputBar></InputBar>
+                        <InputBar handleChange={handleJoinCodeChange} ></InputBar>
                         <div className="joinbtn">
-                        <Buttonnew borderStyle="join" onClick={this.onJoinSpectator.bind(this)}>Join</Buttonnew>
+                        <Buttonnew borderStyle="join" onClick={onJoinSpectator}>Join</Buttonnew>
                         </div>
     
                     </div>
@@ -72,7 +82,7 @@ class JoinRaid extends React.Component {
         }
 
         
-    }
+    
 
 
 
