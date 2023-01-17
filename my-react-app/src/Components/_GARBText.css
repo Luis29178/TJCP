@@ -1,89 +1,168 @@
-.container{
-    height: 100vh;
-    width: 100vw;
-
-
+.container {
+    height: auto;
+    width: auto;
+    margin-left: 15%;
+    margin-bottom: 20px;
+    
     display: grid;
-    grid-template-columns: 2fr 1fr 2fr 1fr 2fr;
-    grid-template-areas: "ammo spacerA health spacerB armor";
+    grid-template-columns: 4fr 3fr 2fr 3fr 2fr 3fr;
+    grid-template-areas: "user ammo spacerA health spacerB armor";
+    
 }
 
 
-.SpacerA{
-    color: white;
+.SpacerA {
 
-    grid-area: spacerA ;
+    color: white;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+    
+
+    grid-area: spacerA;
 
 }
 
-.SpacerB{
+.SpacerB {
     color: white;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+
+    
 
     grid-area: spacerB;
 
 }
 
+.garb-user{
+    color: white;
+    font-size: 10vh;
+
+    grid-area: user;
+    justify-self: center;
+
+}
 
 
-.Ammo-green{
+
+.Ammo-green {
     color: green;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
 
     grid-area: ammo;
+
 }
-.Ammo-amber{
+
+.Ammo-amber {
     color: darkgoldenrod;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
 
     grid-area: ammo;
+
 }
-.Ammo-red{
+
+.Ammo-red {
     color: red;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
 
     grid-area: ammo;
+
 }
-.Ammo-black{
+
+.Ammo-black {
     color: black;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
 
     grid-area: ammo;
+
 }
 
-.Health-green{
+.Health-green {
     color: green;
-    
-     grid-area: health;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+
+    grid-area: health;
+
 }
-.Health-amber{
+
+.Health-amber {
     color: darkgoldenrod;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
 
-     grid-area: health;
+    grid-area: health;
+
 }
-.Health-red{
+
+.Health-red {
     color: red;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
 
-     grid-area: health;
+
+    grid-area: health;
+
 }
-.Health-black{
+
+.Health-black {
     color: black;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
 
-     grid-area: health;
+    grid-area: health;
+
 }
 
-.Armor-green{
+.Armor-green {
     color: green;
-    
-     grid-area: armor;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+
+    grid-area: armor;
+
 }
-.Armor-amber{
+
+.Armor-amber {
     color: darkgoldenrod;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
 
-     grid-area: armor;
+    grid-area: armor;
+
 }
-.Armor-red{
+
+.Armor-red {
     color: red;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
 
-     grid-area: armor;
+    grid-area: armor;
+
 }
-.Armor-black{
-    color: black;
 
-     grid-area: armor;
+.Armor-black {
+    color: black;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+
+    grid-area: armor;
+
 }

@@ -1,4 +1,11 @@
 import React from "react";
+import { GARBText } from "./GARBText.jsx"
+import { Button } from "./Button";
+import { GarbCircle } from "./GarbCircle.jsx";
+
+
+
+import "./_GARBset.css";
 
 
 export class GARBAdvanced extends React.Component {
@@ -36,24 +43,26 @@ export class GARBAdvanced extends React.Component {
     render() {
 
         return (
-            <>
+
+            <div className="containerA">
                 <div className="xbtn">
-                    <Button
-                        onClick={() => { window.location.href = "/" }}
+                    <Button onClick={() => { window.location.href = "/" }}
                         type="button"
                         buttonStyle="btn--x--basic"
-                        size="btn--x">
-                        {"<"}
-                    </Button>
+                        size="btn--x--basic">{"<"}</Button>
                 </div>
-                <div classname="GARBlist">
-                    {this.state.tempPlayers.map(player => (
-                        <GARBText Player={player}></GARBText>
-                    ))}
-                </div>
-                <div className="GARBoverall"></div>
 
-            </>
+                    <div className="GARBList">
+                        {this.state.tempPlayers.map(player => (
+                            <GARBText Player={player}></GARBText>
+                        ))}
+                    </div>
+                
+                <div className="GARBoverall"><GarbCircle></GarbCircle></div>
+
+            </div>
+
+
         );
 
 
@@ -64,26 +73,6 @@ export class GARBAdvanced extends React.Component {
 
 }
 
-export class GARBPlayer extends React.Component {
-    state = {
 
-
-    }
-
-    render() {
-
-        return (
-            <>
-
-            </>
-        );
-
-
-    }
-
-
-
-
-}
 
 

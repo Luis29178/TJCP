@@ -24,6 +24,8 @@ import 'firebase/compat/auth';
 import App from './App'
 
 import { Tags } from './Components/RaidTags';
+import { GARBAdvanced } from './Components/GARBset';
+import { GarbCircle } from './Components/GarbCircle';
 
 
 const router = createBrowserRouter([
@@ -70,6 +72,18 @@ const router = createBrowserRouter([
   {
     path: "/test",
     element: <DropDownBar></DropDownBar>
+  },
+  {
+    path: "/test2",
+    element: <GARBAdvanced></GARBAdvanced>
+  },
+  {
+    path: "/test3",
+    element: <GarbCircle></GarbCircle>
+  },
+  {
+    path: "test4",
+    element: <JoinRaid></JoinRaid>
   }
   
   // to create a new path add an object like the below one to this Router.

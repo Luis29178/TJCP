@@ -1,0 +1,202 @@
+.container-Closed{
+    height: 100px;
+    width: 1200px;
+    background: #2c2c2c;
+    --bpx: 25px;
+    pointer-events: none;
+
+    clip-path: polygon(
+            /*2*/
+            calc(100% - var(--bpx)) 0%,
+            /*3*/
+            100% calc(0% + var(--bpx)),
+            /*4*/
+            100% 100%,
+            /*5*/
+            calc(0% + var(--bpx)) 100%,
+            /*6*/
+            0% calc(100% - var(--bpx)),
+            /*1*/
+            0 0);
+    transition: width  1.5s;
+
+    display: grid;
+    grid-template-columns: 8fr 1fr;
+    grid-template-areas:   
+    "Path Arrow";
+
+
+    transition: all 1.5s;
+
+
+}
+.sPath{
+    
+    height: 100px;
+    width: 400px;
+
+    grid-area: Path;
+
+    font-size: 56px;
+    margin-left:20px ;
+}
+.arrowCont-Closed{
+    
+   
+
+    grid-area: Arrow;
+    align-self: end;
+    z-index: 10;
+    height: 100px;
+    width: 100px;
+    pointer-events: all;
+    transition: align-self 1.5s;
+    
+
+
+
+}
+
+.arrow-Closed{
+    
+    height: 50px;
+    width: 50px;
+
+    grid-area: Arrow;
+
+    border: rgb(0, 0, 255);
+    border-style: solid;
+
+    margin-top: 35px;
+    margin-left: 25px;
+
+
+    background-color: rgb(0, 0, 255) ;
+
+    transform: rotate(90deg);
+
+    --txp: 10px;    
+    clip-path: polygon(
+            /*1*/
+            0% 0%,
+            /*6*/
+            0 calc(0% + var(--txp)),
+            /*5*/
+            calc(50% - var(--txp)) 50%,
+            /*4*/
+            0 calc(100% - var(--txp)),
+            /*3*/
+            0% 100%,
+            /*2*/
+            50% 50%);
+    
+
+
+}
+.pathList-Closed{
+    position: absolute;
+    margin-left: 200px;
+    height: 100px;
+    width: 100px;
+    visibility: hidden;
+
+    border: rgb(255, 0, 0);
+    border-style: solid;
+
+
+}
+
+
+
+.container-Open{
+    height: 700px;
+    width: 1200px;
+    background: #2c2c2c;
+    --bpx: 25px;
+    pointer-events: none;
+    clip-path: polygon(
+            /*2*/
+            calc(100% - var(--bpx)) 0%,
+            /*3*/
+            100% calc(0% + var(--bpx)),
+            /*4*/
+            100% 100%,
+            /*5*/
+            calc(0% + var(--bpx)) 100%,
+            /*6*/
+            0% calc(100% - var(--bpx)),
+            /*1*/
+            0 0);
+    transition: width 1.5s;
+    display: grid;
+    grid-template-columns: 8fr 1fr;
+    grid-template-rows: 100px 1fr 100px ;
+    grid-template-areas:   
+    "Path Arrow"
+    "List Arrow"
+    ".    Arrow";
+
+    transition: height 1.5s;
+
+}
+.arrowCont-Open{
+    
+    grid-area: Arrow;
+    align-self: end;
+    z-index: 10;
+    height: 100px;
+    width: 100px;
+    pointer-events: all;
+    transition: all 1.5s;
+    
+
+}
+
+.arrow-Open{
+    height: 50px;
+    width: 50px;
+
+    border: rgb(0, 0, 255);
+    border-style: solid;
+    
+    margin-top: 10px;
+    margin-left: 25px;
+
+
+    background-color: rgb(0, 0, 255) ;
+
+    transform: rotate(270deg);
+
+    --txp: 10px;    
+    clip-path: polygon(
+            /*1*/
+            0% 0%,
+            /*6*/
+            0 calc(0% + var(--txp)),
+            /*5*/
+            calc(50% - var(--txp)) 50%,
+            /*4*/
+            0 calc(100% - var(--txp)),
+            /*3*/
+            0% 100%,
+            /*2*/
+            50% 50%);
+    transition: margin 1.5s;
+    
+
+
+}
+.pathList-Open{
+    
+    height: auto;
+    width: auto;
+    visibility: visible;
+
+    grid-area: List;
+
+    border: rgb(255, 0, 0);
+    border-style: solid;
+
+
+}
+

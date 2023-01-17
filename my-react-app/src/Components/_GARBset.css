@@ -1,0 +1,37 @@
+.containerA {
+    height: 100vh;
+    width: 100vw;
+
+    display: grid;
+    grid-template-columns: 60px 2fr 1fr;
+    grid-template-rows: 60px 1fr;
+    grid-template-areas:
+        "xbtn . ."
+        "List List Overall";
+
+}
+
+
+.xbtn {
+    height: fit-content;
+    width: fit-content;
+
+    grid-area: xbtn;
+    justify-content: center;
+}
+
+.GARBList {
+    height: auto;
+    grid-area: List;
+    justify-content: center;
+    align-self: center;
+    
+}
+
+.GARBoverall {
+    margin-left: 45px;
+
+    justify-content: center;
+    align-self: center;
+    grid-area: Overall;
+}

@@ -22,8 +22,9 @@
 
 .ImputGroup{
     width: fit-content;
-    margin-top: 5%;
-    margin-left: 5%;
+    justify-self: center;
+    align-self: center;
+
     grid-area: body;
    
 

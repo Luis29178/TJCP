@@ -1,4 +1,5 @@
-import { amber } from "@mui/material/colors";
+import React from "react";
+import "./_GARBText.css";
 
 export class GARBText extends React.Component {
 
@@ -76,15 +77,19 @@ export class GARBText extends React.Component {
             <>
             <div className="container">
 
+            <div className={`garb-user`} onClick={this.changeAmmoColor.bind(this)}>{this.state.user}</div>
+
             <div className={`Ammo-${this.state.ammo}`} onClick={this.changeAmmoColor.bind(this)}>A</div>
 
-            <div className="SpacerA"></div>
+            <div className="SpacerA">:</div>
 
             <div className={`Health-${this.state.health}`} onClick={this.changeHealthColor.bind(this)}>H</div>
 
-            <div className="SpacerB"></div>
+            <div className="SpacerB">:</div>
 
             <div className={`Armor-${this.state.armor}`} onClick={this.changeArmorColor.bind(this)}>AR</div>
+
+            
 
             </div>
 
