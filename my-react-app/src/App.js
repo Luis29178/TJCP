@@ -20,6 +20,8 @@ function App() {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
       setIsSignedIn(!!user);
       var email = user.email;
+      console.log(user)
+      window.localStorage.setItem('uid', user.uid)
       //console.log(user.email);
       //console.log(email == null ? true : false)
       setIsAnon(email == null ? false : true)

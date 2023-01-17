@@ -11,6 +11,7 @@ import RaidMap from "./RaidMap";
 
 import cursor from "./Tags/cursor.png";
 import ImageOnKeyPress from "./ImageOnKeyPress";
+import MapHistory from "./MapHistory";
 
 
 function Raid() {
@@ -91,8 +92,8 @@ function Raid() {
 
 
             </div>
-            <div className="raidExtra">wtf
-
+            <div className="raidExtra">
+            <MapHistory></MapHistory>
             </div>
 
 

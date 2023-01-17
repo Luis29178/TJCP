@@ -25,7 +25,7 @@ export const UserWheel = ({
 
         document.getElementById('player' + player).addEventListener('click', function(e){
             if(player == playerNumber){
-                RaidController.setPlayerInfo(raidPath);
+                RaidController.setPlayerInfo({armor:1});
                 console.log("Changed info for Player " + playerNumber)
             }
             

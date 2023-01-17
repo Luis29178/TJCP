@@ -9,7 +9,9 @@ import { create } from '@mui/material/styles/createTransitions';
 
 export default class RaidController {
 
+
   constructor(props){
+    var user = firebase.auth().currentUser;
     //super(props);
     this.state = {
       config: {
@@ -41,8 +43,13 @@ export default class RaidController {
   
   };
 
-  setPlayerInfo = (raidPath) =>{
-   firebase.firestore().collection(raidPath).doc(localStorage.getItem("playerNumber")).update({ammo: 1})
+  placeOnMap = (tagInfo)=>{
+    var mapStatePath = localStorage.getItem("mapState")
+    firebase.firestore().collection(mapStatePath).doc().set(tagInfo)
+  }
+
+  setPlayerInfo = (info) =>{
+   firebase.firestore().collection(localStorage.getItem("raidCol")).doc(localStorage.getItem("playerNumber")).update(info)
   }
  readKeybinds = () => {
     var user = firebase.auth().currentUser;
@@ -63,27 +70,35 @@ export default class RaidController {
   }
 
   createRaid = () => {
-    var user = firebase.auth().currentUser;
+    //var user = firebase.auth().currentUser;
+    var user = window.localStorage.getItem('uid')
     console.log(user.uid)
     var doc = firebase.firestore().collection(this.state.raidDB).doc();
 
     //playerStatusCollection = collection(db, 'Raids/'+ doc.id + '/playerStatus');
 
-
     console.log(doc.id.slice(0,4))
-    doc.set({leader: user.uid, p1:user.id, p2:"", p3:"",p4:""}).then(()=>{
-      firebase.firestore().collection('Raids/'+ doc.id + '/playerStatus').doc("1").set(
+    doc.set({leader: user, p1:user, p2:"", p3:"",p4:""}).then(async ()=>{
+
+      window.localStorage.setItem("raidCol", 'Raids/'+ doc.id + '/playerStatus');
+      window.localStorage.setItem("mapState", 'Raids/'+ doc.id + '/mapState');
+      window.localStorage.setItem("playerNumber", "1");
+
+      await firebase.firestore().collection('Raids/'+ doc.id + '/playerStatus').doc("1").set(
         { ammo : 3, armor: 3, health:3}
       );
-      firebase.firestore().collection('Raids/'+ doc.id + '/playerStatus').doc("2").set(
+      await firebase.firestore().collection('Raids/'+ doc.id + '/playerStatus').doc("2").set(
         { ammo : 3, armor: 3, health:3}
       );
-      firebase.firestore().collection('Raids/'+ doc.id + '/playerStatus').doc("3").set(
+      await firebase.firestore().collection('Raids/'+ doc.id + '/playerStatus').doc("3").set(
         { ammo : 3, armor: 3, health:3}
       );
-      firebase.firestore().collection('Raids/'+ doc.id + '/playerStatus').doc("4").set(
+      await firebase.firestore().collection('Raids/'+ doc.id + '/playerStatus').doc("4").set(
         { ammo : 3, armor: 3, health:3}
       );
+
+
+      window.location.href = "/tempRaid"
 
       //joinRaid(doc.id.slice(0,4))
     });
@@ -99,6 +114,7 @@ export default class RaidController {
 
         //console.log(collection(firebase.firestore(), 'Raids/'+ docID + '/playerStatus'));
         window.localStorage.setItem("raidCol", 'Raids/'+ docID + '/playerStatus');
+        window.localStorage.setItem("mapState", 'Raids/'+ docID + '/mapState');
         
         console.log("status");
         //console.log(JSON.parse(window.localStorage.getItem("raidCol")));
