@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./_RaidPage.css";
 import MapCanvas from "./MapCanvas.js";
 import { Tags } from "./RaidTags.jsx";
@@ -12,50 +12,43 @@ import RaidMap from "./RaidMap";
 import cursor from "./Tags/cursor.png";
 import ImageOnKeyPress from "./ImageOnKeyPress";
 import MapHistory from "./MapHistory";
+import { readKeybinds } from "../preferenceHandler";
+import firebase from 'firebase/compat/app';
 
+class Raid extends React.Component{
 
-function Raid() {
+    constructor(props){
+        super(props)
+        this.state = {
+            keyBindArray: [],
+            showKeys: false
+        }
 
-    const wheelPos1 = useSpring({x: 0, y: 0});
-    const bindWheelPos1 = useDrag((params) => {
-        wheelPos1.x.set(params.offset[0]);
-        wheelPos1.y.set(params.offset[1]);
-    })
+        const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
+            
+            var data = readKeybinds().then((snapshot) => {
+                console.log(snapshot.data().keyBinds)
+                var keyBinds = snapshot.data()
+                this.setState({keyBindArray: [keyBinds.tag1, keyBinds.tag2, keyBinds.tag3, keyBinds.tag4,keyBinds.tag5,keyBinds.tag6,keyBinds.tag7,keyBinds.tag8,keyBinds.tag9] })
+                this.setState({showKeys: true})
+              }).catch((e) => e)
+          });
 
-    const wheelPos2 = useSpring({x: 0, y: 0});
-    const bindWheelPos2 = useDrag((params) => {
-        wheelPos2.x.set(params.offset[0]);
-        wheelPos2.y.set(params.offset[1]);
-    })
+    }
 
-    const wheelPos3 = useSpring({x: 0, y: 0});
-    const bindWheelPos3 = useDrag((params) => {
-        wheelPos3.x.set(params.offset[0]);
-        wheelPos3.y.set(params.offset[1]);
-    })
+    render() {
+           return  <div className="raidContainer">
+                {<ImageOnKeyPress/>}
 
-    const wheelPos4 = useSpring({x: 0, y: 0});
-    const bindWheelPos4 = useDrag((params) => {
-        wheelPos4.x.set(params.offset[0]);
-        wheelPos4.y.set(params.offset[1]);
-    })
+                <div  className="raidTags">
+                    <div className="raidTags--tags">
 
-    return (
-
-        <div className="raidContainer">
-            {<ImageOnKeyPress/>} 
-            {/* <div className="menuBar">
-
-            </div> */}
-            <div  className="raidTags">
-                <div className="raidTags--tags">
-                <Tags  style={"raid--tg--basic"} size={"raid--tg-medium"}>
+                    {this.state.showKeys && <Tags  style={"raid--tg--basic"} size={"raid--tg-medium"} keybinds={this.state.keyBindArray}>
+                    </Tags>}
                     
-                
-                </Tags>
-                
+                    </div>
                 </div>
-            </div>
+            
                 <RaidMap/>
             {/* <div className="raidMap">
             
@@ -99,7 +92,7 @@ function Raid() {
 
         </div>
 
-    );
-
 }
+}
+
 export default Raid;
