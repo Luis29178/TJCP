@@ -17,12 +17,11 @@ class RaidMap extends React.Component{
 
         document.addEventListener('build', function({ detail }) {
             let changeCursor = cursor;
-            switch(detail.keyP){
-                case "q":   
-                    
+            switch(detail.tag){
+                case "tag1":   
                     changeCursor = this.state.cursor === cursor? "wait" : cursor;
                     break;
-                case "w":
+                case "tag2":
                     changeCursor = this.state.cursor === cursor2? "wait" : cursor2;
                     break;
             }

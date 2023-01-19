@@ -30,6 +30,17 @@
     clip-path: circle(50% at 50% 50%);
 
 }
+.MyCenterDot{
+    z-index: 5;
+    height: 60px;
+    width: 60px;
+    margin-left: 20px;
+    margin-top: 20px;
+    background: blue;
+    position: absolute;
+    clip-path: circle(50% at 50% 50%);
+
+}
 .CenterDot::before,
 .CenterDot::after{
     content: '';

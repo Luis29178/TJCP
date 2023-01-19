@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./_RaidPage.css";
 import MapCanvas from "./MapCanvas.js";
 import { Tags } from "./RaidTags.jsx";
@@ -11,50 +11,44 @@ import RaidMap from "./RaidMap";
 
 import cursor from "./Tags/cursor.png";
 import ImageOnKeyPress from "./ImageOnKeyPress";
+import MapHistory from "./MapHistory";
+import { readKeybinds } from "../preferenceHandler";
+import firebase from 'firebase/compat/app';
 
+class Raid extends React.Component{
 
-function Raid() {
+    constructor(props){
+        super(props)
+        this.state = {
+            keyBindArray: [],
+            showKeys: false
+        }
 
-    const wheelPos1 = useSpring({x: 0, y: 0});
-    const bindWheelPos1 = useDrag((params) => {
-        wheelPos1.x.set(params.offset[0]);
-        wheelPos1.y.set(params.offset[1]);
-    })
+        const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
+            
+            var data = readKeybinds().then((snapshot) => {
+                console.log(snapshot.data().keyBinds)
+                var keyBinds = snapshot.data()
+                this.setState({keyBindArray: [keyBinds.tag1, keyBinds.tag2, keyBinds.tag3, keyBinds.tag4,keyBinds.tag5,keyBinds.tag6,keyBinds.tag7,keyBinds.tag8,keyBinds.tag9] })
+                this.setState({showKeys: true})
+              }).catch((e) => e)
+          });
 
-    const wheelPos2 = useSpring({x: 0, y: 0});
-    const bindWheelPos2 = useDrag((params) => {
-        wheelPos2.x.set(params.offset[0]);
-        wheelPos2.y.set(params.offset[1]);
-    })
+    }
 
-    const wheelPos3 = useSpring({x: 0, y: 0});
-    const bindWheelPos3 = useDrag((params) => {
-        wheelPos3.x.set(params.offset[0]);
-        wheelPos3.y.set(params.offset[1]);
-    })
+    render() {
+           return  <div className="raidContainer">
+                {<ImageOnKeyPress/>}
 
-    const wheelPos4 = useSpring({x: 0, y: 0});
-    const bindWheelPos4 = useDrag((params) => {
-        wheelPos4.x.set(params.offset[0]);
-        wheelPos4.y.set(params.offset[1]);
-    })
+                <div  className="raidTags">
+                    <div className="raidTags--tags">
 
-    return (
-
-        <div className="raidContainer">
-            {<ImageOnKeyPress/>} 
-            {/* <div className="menuBar">
-
-            </div> */}
-            <div  className="raidTags">
-                <div className="raidTags--tags">
-                <Tags  style={"raid--tg--basic"} size={"raid--tg-medium"}>
+                    {this.state.showKeys && <Tags  style={"raid--tg--basic"} size={"raid--tg-medium"} keybinds={this.state.keyBindArray}>
+                    </Tags>}
                     
-                
-                </Tags>
-                
+                    </div>
                 </div>
-            </div>
+            
                 <RaidMap/>
             {/* <div className="raidMap">
             
@@ -71,34 +65,41 @@ function Raid() {
                 alignItems="center"
                 >
                     <Grid>
-                        <animated.div {...bindWheelPos1()}style={{x: wheelPos1.x, y: wheelPos1.y}}>
-                        <UserWheel onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
-                        </animated.div>
+                    <UserWheel player={1} onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
+                        {/* <animated.div {...bindWheelPos1()}style={{x: wheelPos1.x, y: wheelPos1.y}}>
+                        <UserWheel player={1} onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
+                        </animated.div> */}
                     </Grid>
                     <Grid>
-                    <animated.div {...bindWheelPos2()}style={{x: wheelPos2.x, y: wheelPos2.y}}>
-                        <UserWheel onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
-                        </animated.div>                    </Grid>
+                    <UserWheel player={2} onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
+                    {/* <animated.div {...bindWheelPos2()}style={{x: wheelPos2.x, y: wheelPos2.y}}>
+                        <UserWheel player={2} onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
+                        </animated.div>                     */}
+                        </Grid>
                     <Grid>
-                    <animated.div {...bindWheelPos3()}style={{x: wheelPos3.x, y: wheelPos3.y}}>
-                        <UserWheel onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
-                        </animated.div>                    </Grid>
+                    <UserWheel player={3} onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
+                    {/* <animated.div {...bindWheelPos3()}style={{x: wheelPos3.x, y: wheelPos3.y}}>
+                        <UserWheel player={3} onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
+                        </animated.div>                     */}
+                        </Grid>
                     <Grid>
-                    <animated.div {...bindWheelPos4()}style={{x: wheelPos4.x, y: wheelPos4.y}}>
-                        <UserWheel onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
-                        </animated.div>                    </Grid>
+                    <UserWheel player={4} onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
+                    {/* <animated.div {...bindWheelPos4()}style={{x: wheelPos4.x, y: wheelPos4.y}}>
+                        <UserWheel player={4} onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
+                        </animated.div>                     */}
+                        </Grid>
                 </Grid>
 
 
             </div>
-            <div className="raidExtra">wtf
-
+            <div className="raidExtra">
+            <MapHistory></MapHistory>
             </div>
 
 
         </div>
 
-    );
-
 }
+}
+
 export default Raid;
