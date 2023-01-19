@@ -21,7 +21,7 @@ export const UserWheel = ({
     var wheelName = localStorage.getItem("userNames");
     var playerNumber = localStorage.getItem("playerNumber");
     const [infoSnap, setInfoSnap] = useState(collection(firebase.firestore(), raidPath))
-    const [userNamesSnap, setUserNamesSnap] = useState(firebase.firestore().collection("Raids").where(firebase.firestore.FieldPath.documentId(), "==", "stKZB96E7WxNk2GXXtRG")) //collection(firebase.firestore(), 'Raids/'+ "zx14tOGVttsAzbLCCs0A" + '/playerStatus'))
+    const [userNamesSnap, setUserNamesSnap] = useState(firebase.firestore().collection("Raids").where(firebase.firestore.FieldPath.documentId(), "==", wheelName)) //collection(firebase.firestore(), 'Raids/'+ "zx14tOGVttsAzbLCCs0A" + '/playerStatus'))
 
 
     useEffect(() => {

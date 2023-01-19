@@ -78,10 +78,11 @@ export default class RaidController {
     //playerStatusCollection = collection(db, 'Raids/'+ doc.id + '/playerStatus');
 
     console.log(doc.id.slice(0,4))
-    doc.set({leader: user, p1:user, p2:"", p3:"",p4:""}).then(async ()=>{
+    doc.set({leader: user, p1:user, p1_name:"", p2:"", p2_name:"", p3:"", p3_name:"",p4:"", p4_name:""}).then(async ()=>{
 
       window.localStorage.setItem("raidCol", 'Raids/'+ doc.id + '/playerStatus');
       window.localStorage.setItem("mapState", 'Raids/'+ doc.id + '/mapState');
+      window.localStorage.setItem("userNames", doc.id);
       window.localStorage.setItem("playerNumber", "1");
 
       await firebase.firestore().collection('Raids/'+ doc.id + '/playerStatus').doc("1").set(
@@ -117,7 +118,7 @@ export default class RaidController {
 
         //console.log(collection(firebase.firestore(), 'Raids/'+ docID + '/playerStatus'));
         window.localStorage.setItem("raidCol", 'Raids/'+ docID + '/playerStatus');
-        window.localStorage.setItem("userNames", 'Raids/'+ docID);
+        window.localStorage.setItem("userNames", docID);
         window.localStorage.setItem("mapState", 'Raids/'+ docID + '/mapState');
         //window.localStorage.setItem("mapState", 'Raids/'+ docID + '/mapState');
         
