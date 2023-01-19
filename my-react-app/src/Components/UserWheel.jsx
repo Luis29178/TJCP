@@ -16,9 +16,12 @@ export const UserWheel = ({
 
     const RaidController = React.useContext(RaidContext); 
     const [playerInfo, setPlayerInfo] = useState([])
+    const [playerNames, setPlayerNames] = useState([])
     var raidPath = localStorage.getItem("raidCol");
+    var wheelName = localStorage.getItem("userNames");
     var playerNumber = localStorage.getItem("playerNumber");
-    const [infoSnap, setInfoSnap] = useState(collection(firebase.firestore(), raidPath)) //collection(firebase.firestore(), 'Raids/'+ "zx14tOGVttsAzbLCCs0A" + '/playerStatus'))
+    const [infoSnap, setInfoSnap] = useState(collection(firebase.firestore(), raidPath))
+    const [userNamesSnap, setUserNamesSnap] = useState(firebase.firestore().collection("Raids").where(firebase.firestore.FieldPath.documentId(), "==", "stKZB96E7WxNk2GXXtRG")) //collection(firebase.firestore(), 'Raids/'+ "zx14tOGVttsAzbLCCs0A" + '/playerStatus'))
 
 
     useEffect(() => {
@@ -37,8 +40,45 @@ export const UserWheel = ({
              setPlayerInfo([{id:doc.id, data:doc.data()}])
         
         });
+        const uunsubscribe = onSnapshot(userNamesSnap, async snapshot => {
+            console.log("HERE IS THE USERNAME SNAPSHOT");
+            var doc = snapshot.docs[0].data();
+            
+            var playerName = [];
+            Object.keys(doc).forEach((key, index) => {
+                console.log(key)
+                switch(String(key)){
+                    case "p1_name":
+                        if(player == 1){
+                            playerName.push(doc.p1_name)
+                            console.log(doc.p1_name);
+                        }
+                        
+                        break;
+                    case "p2_name":
+                        if(player == 2){
+                            playerName.push(doc.p2_name)
+                        }
+                        break;
+                    case "p3_name":
+                        if(player == 3){
+                            playerName.push(doc.p3_name)
+                        }
+                        break;
+                    case "p4_name":
+                        if(player == 4){
+                            playerName.push(doc.p4_name)
+                        }
+                        break;
+                }
+            })
+            setPlayerNames(playerName)
+            //console.log(doc[0].data())
+       });
+
         return () => {
             unsubscribe()
+            uunsubscribe()
         }
     },[])
 
@@ -63,7 +103,13 @@ export const UserWheel = ({
 
     return (
         <button onClick={onClick}>
+            {playerNames.map( name => (
+                <div className="playerName">{name}</div>
+            ))
+            }
+            
             <div className="ContainerBorder">
+                
                 <div className="Container">
                     <div id={"player" + player} className={player == playerNumber? "MyCenterDot" : "CenterDot"}></div>
                     <div className="Sectioner"></div>

@@ -10,9 +10,15 @@ function JoinRaid(props) {
     const RaidController = React.useContext(RaidContext); 
 
     const [joinCode, setJoincCode] = useState([]);
+    const [playerName, setPlayerName] = useState("");
     
     var handleJoinCodeChange = (e) => {
         setJoincCode(e.target.value);
+        console.log(e.target.value)
+    }
+
+    var handleNameChange = (e) =>{
+        setPlayerName(e.target.value);
         console.log(e.target.value)
     }
 
@@ -20,7 +26,7 @@ function JoinRaid(props) {
    var onJoinPlayer = (code) =>{
         console.log("PLAYER")
         //createRaid()
-        RaidController.joinRaid(joinCode)
+        RaidController.joinRaid(joinCode, playerName)
         
 
     }
@@ -35,10 +41,18 @@ function JoinRaid(props) {
             <div className="EFTJoin">
 
 
-                <div className="BackBtn">
+<div className="BackBtn">
                     <Buttonnew borderStyle="back" onClick={() => {window.location.href = "/SelectMode"}}>{'<'}</Buttonnew>
                 </div>
+                <div>
+                <div className="ImputGroup">
+                    <div className="Prompt">Pick your username</div>
+                    <InputBar handleChange={handleNameChange}></InputBar>
+                    <div className="joinbtn">
+                    {/* <Buttonnew borderStyle="join" onClick={onJoinPlayer}>Join</Buttonnew> */}
+                    </div>
 
+                </div>
 
                 <div className="ImputGroup">
                     <div className="Prompt">Enter Code: </div>
@@ -46,6 +60,8 @@ function JoinRaid(props) {
                     <div className="joinbtn">
                     <Buttonnew borderStyle="join" onClick={onJoinPlayer}>Join</Buttonnew>
                     </div>
+                </div>
+
 
                 </div>
 

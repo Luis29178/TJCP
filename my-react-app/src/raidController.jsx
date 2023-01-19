@@ -105,16 +105,21 @@ export default class RaidController {
     //playerNumber = 1;
   }
 
-  joinRaid = (raid_id) =>{
+  joinRaid = (raid_id, username) =>{
     var raidDB = "Raids"
     var user = firebase.auth().currentUser;
     firebase.firestore().collection(raidDB).where(firebase.firestore.FieldPath.documentId(), '>', raid_id).get().then(async (docSnap)=>{
       if(!docSnap.empty){
         var docID = docSnap.docs[0].id;
+        
+        console.log("DOC ID")
+        console.log(docSnap.docs[0].data().p1_name)
 
         //console.log(collection(firebase.firestore(), 'Raids/'+ docID + '/playerStatus'));
         window.localStorage.setItem("raidCol", 'Raids/'+ docID + '/playerStatus');
+        window.localStorage.setItem("userNames", 'Raids/'+ docID);
         window.localStorage.setItem("mapState", 'Raids/'+ docID + '/mapState');
+        //window.localStorage.setItem("mapState", 'Raids/'+ docID + '/mapState');
         
         console.log("status");
         //console.log(JSON.parse(window.localStorage.getItem("raidCol")));
@@ -127,7 +132,8 @@ export default class RaidController {
           placed = true;
           this.state.playerNumber = 1
           window.localStorage.setItem("playerNumber", "1");
-          await firebase.firestore().collection(raidDB).doc(docID).update({p1: user.uid})
+          await firebase.firestore().collection(raidDB).doc(docID).update({p1: user.uid, p1_name: username})
+          //await firebase.firestore().collection(raidDB).doc(docID).update({p1: user.uid})
           window.location.href = "/tempRaid"
 
 
@@ -139,7 +145,7 @@ export default class RaidController {
           placed = true;
           this.state.playerNumber = 2
           window.localStorage.setItem("playerNumber", "2");
-          await firebase.firestore().collection(raidDB).doc(docID).update({p2: user.uid})
+          await firebase.firestore().collection(raidDB).doc(docID).update({p2: user.uid, p2_name: username})
           window.location.href = "/tempRaid"
 
 
@@ -149,7 +155,7 @@ export default class RaidController {
           placed = true;
           this.state.playerNumber = 3
           window.localStorage.setItem("playerNumber", "3");
-          await firebase.firestore().collection(raidDB).doc(docID).update({p3: user.uid})
+          await firebase.firestore().collection(raidDB).doc(docID).update({p3: user.uid, p3_name: username})
           window.location.href = "/tempRaid"
           
 
@@ -159,7 +165,7 @@ export default class RaidController {
           placed = true;
           this.state.playerNumber = 4
           window.localStorage.setItem("playerNumber", "4");
-          await firebase.firestore().collection(raidDB).doc(docID).update({p4: user.uid})
+          await firebase.firestore().collection(raidDB).doc(docID).update({p4: user.uid}, {p4_name: username})
           window.location.href = "/tempRaid"
 
 
