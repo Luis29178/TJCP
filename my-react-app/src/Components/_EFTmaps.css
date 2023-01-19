@@ -58,3 +58,8 @@
     grid-auto-flow: column;
     grid-area: header;
 }
+.bottomF{
+    display: grid;
+    justify-content: center;
+    grid-area: footer;
+}

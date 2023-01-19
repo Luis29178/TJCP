@@ -5,7 +5,7 @@ function InputBar (props) {
 
 
     return (
-        <>
+        <div>
             
             
                 <div className="Ibar">
@@ -16,7 +16,7 @@ function InputBar (props) {
                 
             
             
-        </>
+        </div>
 
 
     )

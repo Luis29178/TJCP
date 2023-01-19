@@ -68,6 +68,7 @@ function MapHistory(){
     }
 
     return (<div id="hist" style={{overflowY: 'scroll',height: "300px"}}> 
+        <div>Join Code: {window.localStorage.getItem("joinCode")}</div>
         <button onClick={placeTag}>T-</button>
         <button onClick={placePath}>L</button>
         {mapHist.map(hist =>(

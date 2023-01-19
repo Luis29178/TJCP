@@ -30,9 +30,10 @@ function SelectMode() {
                     <Buttonnew borderStyle="back">{'<'}</Buttonnew>
                 </div>
                 <Grid container direction="column" spacing={4} justifyContent =  'center' alignItems="center">
+                    
                     <Grid item xs={12}>
-                        <Buttonnew borderStyle="eft--create" onClick={() =>{ value.createRaid()
-                            //window.location.href ="/EFT"
+                        <Buttonnew borderStyle="eft--create" onClick={() =>{ //value.createRaid()
+                            window.location.href ="/EFT"
                             }}> 
                             Create</Buttonnew>
 
@@ -45,6 +46,7 @@ function SelectMode() {
                         <Buttonnew borderStyle="eft--spectate" onClick={() => {window.location.href = "/JoinSpectator"}}> Spectate</Buttonnew>
 
                     </Grid>
+                    
                 </Grid>
             </div>
 

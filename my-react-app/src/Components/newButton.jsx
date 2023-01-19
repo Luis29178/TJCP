@@ -36,7 +36,7 @@ export const Buttonnew = ({
 
 
     return (
-        <> 
+        <div> 
         
         <button
         className={`${checkborderStyle}--insidenew`}
@@ -45,7 +45,7 @@ export const Buttonnew = ({
         {children}
         </button>
         <div className={`${checkborderStyle}`}></div>
-        </>
+        </div>
     
 
     );

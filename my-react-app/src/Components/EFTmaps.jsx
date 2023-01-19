@@ -13,12 +13,20 @@ import Reserve from '../Images/reservemap.png';
 import Shoreline from '../Images/shorelinemap.png';
 import Woods from '../Images/woodsmap.png';
 import { Grid } from "@mui/material";
+import { Buttonnew } from "./newButton";
+import InputBar from "./InputBar.jsx"
+import RaidController from "../raidController";
 
 class EFTmapsTest extends React.Component {
 
+    //RaidController = React.useContext(RaidContext); 
+
     state = {
         map:'',
+        userName: ""
     }
+
+    Raid = new RaidController();
     
 
     mapChange(_map) {
@@ -55,6 +63,11 @@ class EFTmapsTest extends React.Component {
 
     }
 
+    handleNameChange = (e) =>{
+        this.setState({userName: e.target.value})
+        console.log(e.target.value)
+    }
+
     render(){
         return (
 
@@ -84,7 +97,19 @@ class EFTmapsTest extends React.Component {
             
             <div className="eftDropDown">
                 <DropDown ddstyle={"dd--eft--basic"}></DropDown>
+                
             </div>
+
+            <div className="bottomF">
+            <div className="Prompt">Pick your username</div>
+
+            <InputBar handleChange={this.handleNameChange}></InputBar>
+
+            
+            <Buttonnew borderStyle="join" onClick={(val)=> {this.Raid.createRaid(this.state.userName, this.state.map)}}>Start Raid</Buttonnew>
+            </div>
+
+            
 
         </div>
     

@@ -69,7 +69,7 @@ export default class RaidController {
     return this.state.playerStatusCollection;
   }
 
-  createRaid = () => {
+  createRaid = (username, map) => {
     //var user = firebase.auth().currentUser;
     var user = window.localStorage.getItem('uid')
     console.log(user.uid)
@@ -78,8 +78,8 @@ export default class RaidController {
     //playerStatusCollection = collection(db, 'Raids/'+ doc.id + '/playerStatus');
 
     console.log(doc.id.slice(0,4))
-    doc.set({leader: user, p1:user, p1_name:"", p2:"", p2_name:"", p3:"", p3_name:"",p4:"", p4_name:""}).then(async ()=>{
-
+    doc.set({leader: user, p1:user, p1_name: username, p2:"", p2_name:"", p3:"", p3_name:"",p4:"", p4_name:"", raid_map: map}).then(async ()=>{
+      window.localStorage.setItem("joinCode", doc.id.slice(0,4));
       window.localStorage.setItem("raidCol", 'Raids/'+ doc.id + '/playerStatus');
       window.localStorage.setItem("mapState", 'Raids/'+ doc.id + '/mapState');
       window.localStorage.setItem("userNames", doc.id);
