@@ -1,0 +1,36 @@
+.mapPrevCont{
+    height: 100vh;
+
+
+
+}
+
+.mapPrev{
+    margin-top: 5%;
+    justify-self: center;
+
+
+}
+
+.dropDown{
+    height: 50px;
+    width: auto;
+
+    font-size: 20px;
+
+    background-color: white;
+    margin-top: 5%;
+    justify-self: center;
+
+    --xpx: 15px;
+    --ypx: 4px;
+    clip-path: polygon(
+        /*1*/
+        calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+        calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+        calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+        calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+        calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+        calc(0% + var(--ypx)) calc(0% + var(--ypx)));
+    
+}

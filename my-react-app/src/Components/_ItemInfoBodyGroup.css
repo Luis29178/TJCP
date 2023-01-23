@@ -1,0 +1,43 @@
+.segmentContainer{
+    background-color: black;
+
+    border: #ffffff;
+    border-style: solid ;
+    border-width: 5px;
+    border-radius: 5px;
+    margin-left: 10vh;
+    margin-right: 10vh;
+
+
+    display: grid;
+
+    grid-template-rows: 2fr 9fr;
+    grid-template-areas: "title"
+    "body";
+}
+
+.segTitle{
+    margin-top: 2vh;
+    font-size: 5vh;
+    color: white;
+    padding-left: 5vw;
+    
+
+
+
+    grid-area: title;
+}
+
+.segBody{
+    margin-top: 4vh ;
+    font-size: 4vh;
+    color: white;
+    padding-left: 10vw;
+    padding-right: 10px;
+
+    overflow: scroll;
+
+  
+
+    grid-area: body;
+}

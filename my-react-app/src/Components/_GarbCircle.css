@@ -2,8 +2,7 @@
     --OvColor: #00ff00;
 }
 .ovcontainer{
-    height: fit-content;
-    width: fit-content;
+
 
 
     display: grid;

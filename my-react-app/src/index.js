@@ -26,6 +26,9 @@ import App from './App'
 import { Tags } from './Components/RaidTags';
 import { GARBAdvanced } from './Components/GARBset';
 import { GarbCircle } from './Components/GarbCircle';
+import { ItemInfoDisplay } from './Components/ItemInfoDisplay';
+import { UserListTrackerPage } from './Components/UserListTrackerPage';
+import { SpectatorSideBar } from './Components/SpectatorSideBar';
 
 
 const router = createBrowserRouter([
@@ -70,10 +73,6 @@ const router = createBrowserRouter([
     element: <JoinRaid player={false}/>
   },
   {
-    path: "/test",
-    element: <DropDownBar></DropDownBar>
-  },
-  {
     path: "/test2",
     element: <GARBAdvanced></GARBAdvanced>
   },
@@ -82,9 +81,19 @@ const router = createBrowserRouter([
     element: <GarbCircle></GarbCircle>
   },
   {
-    path: "test4",
-    element: <JoinRaid></JoinRaid>
+    path: "/test",
+    element: <ItemInfoDisplay></ItemInfoDisplay>
+  },
+  {
+    path: "/test1",
+    element: <UserListTrackerPage/>
+  },
+  {
+    path: "/test5",
+    element: <SpectatorSideBar></SpectatorSideBar>
+
   }
+
   
   // to create a new path add an object like the below one to this Router.
   // "path" is that page path; ex: tjcp.com/login
