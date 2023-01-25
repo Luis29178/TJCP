@@ -120,6 +120,7 @@ export default class RaidController {
         window.localStorage.setItem("raidCol", 'Raids/'+ docID + '/playerStatus');
         window.localStorage.setItem("userNames", docID);
         window.localStorage.setItem("mapState", 'Raids/'+ docID + '/mapState');
+        window.localStorage.setItem("raidMap", docSnap.docs[0].data().raid_map )
         //window.localStorage.setItem("mapState", 'Raids/'+ docID + '/mapState');
         
         console.log("status");

@@ -30,36 +30,41 @@ class EFTmapsTest extends React.Component {
     
 
     mapChange(_map) {
+        var newMap = "";
         switch (_map) {
             case 1:
-                this.setState({map: Customs});
+                newMap = Customs;
                 break;
             case 2:
-                this.setState({map: Factory });
+                newMap = Factory;
                 break;
             case 3:
-                this.setState({map: Interchange });
+                newMap = Interchange;
                 break;
             case 4:
-                this.setState({map: Labs });
+                newMap = Labs;
                 break;
             case 5:
-                this.setState({map: Lighthouse});
+                newMap = Lighthouse;
                 break;
             case 6:
-                this.setState({map: Reserve});
+                newMap = Reserve;
                 break;
             case 7:
-                this.setState({map: Shoreline});
+                newMap = Shoreline;
+
                 break;
             case 8:
-                this.setState({map: Woods});
+                newMap = Woods;
+
                 break;
             default :
-                this.setState({map:''})
+            newMap = ""
+
                 break;
         }
-
+        this.setState({map:newMap})
+        window.localStorage.setItem("raidMap", newMap )
 
     }
 
