@@ -101,6 +101,8 @@ class EFTmapsTest extends React.Component {
             </div>
 
             <div className="bottomF">
+
+                
             <div className="Prompt">Pick your username</div>
 
             <InputBar handleChange={this.handleNameChange}></InputBar>

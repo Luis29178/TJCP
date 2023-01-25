@@ -62,4 +62,6 @@
     display: grid;
     justify-content: center;
     grid-area: footer;
+    grid-auto-flow: column;
+    gap:20px
 }

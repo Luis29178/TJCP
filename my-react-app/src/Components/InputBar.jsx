@@ -5,7 +5,7 @@ function InputBar (props) {
 
 
     return (
-        <div>
+        <div style={{width:600}}>
             
             
                 <div className="Ibar">
