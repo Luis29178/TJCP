@@ -45,8 +45,9 @@ export const UserWheel = ({
             var doc = snapshot.docs[0].data();
             
             var playerName = [];
+            detectRaidState(doc.raidState)
             Object.keys(doc).forEach((key, index) => {
-                console.log(key)
+                //console.log(key)
                 switch(String(key)){
                     case "p1_name":
                         if(player == 1){
@@ -81,6 +82,13 @@ export const UserWheel = ({
             uunsubscribe()
         }
     },[])
+
+    function detectRaidState(raidState){
+        const customEvent = new CustomEvent('raidStateChanged', { detail: { newState: raidState } });
+        document.dispatchEvent(customEvent);
+        console.log('RAID STATE');
+        console.log(raidState);
+    }
 
     function parseStatus(statusInfo){
         let status = "lowStatus";

@@ -113,7 +113,7 @@ class EFTmapsTest extends React.Component {
             <InputBar handleChange={this.handleNameChange}></InputBar>
 
             
-            <Buttonnew borderStyle="join" onClick={(val)=> {this.Raid.createRaid(this.state.userName, this.state.map)}}>Start Raid</Buttonnew>
+            <Buttonnew borderStyle="join" onClick={(val)=> {this.Raid.createRaid(this.state.userName, this.state.map)}}>Create Raid</Buttonnew>
             </div>
 
             

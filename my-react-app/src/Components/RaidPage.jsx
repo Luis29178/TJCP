@@ -14,6 +14,7 @@ import ImageOnKeyPress from "./ImageOnKeyPress";
 import MapHistory from "./MapHistory";
 import { readKeybinds } from "../preferenceHandler";
 import firebase from 'firebase/compat/app';
+import RaidStateButton from "./raidStateButton";
 
 class Raid extends React.Component{
 
@@ -58,6 +59,7 @@ class Raid extends React.Component{
                     className={"Canvas"}>
                 </MapCanvas>
             </div> */}
+            
             <div className="raidUsers">
                 <Grid container 
                 direction={"row"}
@@ -94,6 +96,7 @@ class Raid extends React.Component{
             </div>
             <div className="raidExtra">
             <MapHistory></MapHistory>
+            <RaidStateButton/>
             </div>
 
 
