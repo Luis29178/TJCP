@@ -7,54 +7,87 @@
     --red: #ff0000;
     --black: #000000;
     --white: #ffffff;
-    --height: 720px;
-    --width: 1280px;
+
     
 }
-
-.raidExtra{
-   position: absolute;
-   height: 300px;
-   width: 200px;
-   background: #2c2c2c;
-   margin-top: 395px;
-   left:45px;
-}
-
 .raidContainer{
     border:#000000;
     border-style: solid;
-    height: var(--height);
-    width: var(--width);
+    height: 100vh;
+    width: 100vw;
+
+    display: grid;
+
+    grid-template-columns: 60px 250px auto;
+    grid-template-rows: 1fr 150px 1fr 150px ;
+
+    grid-template-areas: 
+    "sidebar tags map"
+    "sidebar tags map"
+    "sidebar tools map"
+    "sidebar tools users";
+
+
+
 }
+.raidExtra{
+   height: 300px;
+   width: 200px;
+   background: #2c2c2c;
+   justify-self: center;
+   align-self: center;
+
+   grid-area: tools;
+}
+
+
 .raidTags{
+    margin-top: 20px;
     height: fit-content;
-    width: 150px;
-    position: absolute;
-    left:45px;
-    top:50px;
-    padding-left: 50px;
-    padding-top: 40px;
+    width: 200px;
+    justify-self: center;
+    align-self: center;
+   
+
+    grid-area: tags;
 }
 .raidMap{
-    margin-top:25px;
-    margin-right: 25px;
-    position:relative;
-    left: 265px;
-    float: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: scroll;
+    
+
+
+
+    grid-area: map;
 }
 .raidUsers{
-    height: 125px;
-    width: 1000px;
-    position: absolute;
-    top:550px;
-    left: 265px;
-    padding-top: 15px;
+  
+
+
+
+    grid-area: users;
+}
+.SideBar{
+
+    grid-area: sidebar;
 }
 
 .position {
-    position: relative;
     width: 100px;
     height: 10;
     background-color: #00ff00;
+}
+.GARBpopUp{
+    
+    z-index: 50;
+    position: absolute;
+
+}
+.GARBpopUpClosed{
+    visibility: hidden;
+    
+    z-index: 50;
+    position: absolute;
+
 }

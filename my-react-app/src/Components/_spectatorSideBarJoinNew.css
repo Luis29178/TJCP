@@ -1,0 +1,23 @@
+.JoinContainer {
+    height: 35%;
+    width: 50%;
+
+    grid-template-rows: 1fr 1fr;
+
+    grid-template-areas: 
+    "searchbar"
+    "joinbtn";
+
+
+}
+
+.inputBar{
+
+    grid-area: searchbar;
+}
+
+.joinbtn{
+    padding-left: 35%;
+
+    grid-area: joinbtn;
+}

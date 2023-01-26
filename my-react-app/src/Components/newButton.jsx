@@ -10,6 +10,7 @@ const Styles =[
     "eft--create",
     "eft--join",
     "eft--spectate",
+    "specLeave",
 ]
 
 

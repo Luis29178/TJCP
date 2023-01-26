@@ -1,0 +1,38 @@
+:root{
+    --OvColor: #00ff00;
+}
+.ovcontainer{
+
+
+
+    display: grid;
+
+    grid-template-rows: 1fr 4fr;
+    grid-template-areas: 
+    "ov "
+    "circl ";
+
+
+}
+
+.OvCircle{
+
+    height: 50vh;
+    width: 50vh; 
+    
+    background: var(--OvColor);
+    clip-path: circle(50% at 50% 50%);
+
+    grid-area: circl;
+    justify-self: center;
+    align-self: center;
+    
+}
+.Overall{
+    font-size: 10vh;
+
+    grid-area: ov;
+    justify-self: center;
+    align-self: center;
+
+}

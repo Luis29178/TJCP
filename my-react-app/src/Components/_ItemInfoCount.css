@@ -1,0 +1,143 @@
+.counterContainer{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "title title title"
+    "plus count minus";
+
+
+
+}
+
+
+.infoPlus{
+
+    height: 7vh;
+    width: 7vh;
+    
+    justify-self: end;
+    align-self: center;
+    user-select: none;
+
+    border: #ffffff;
+    border-style: solid;
+    border-radius: 100%;
+    border-width: 5px;
+
+    grid-area: plus;
+
+    display: grid;
+    grid-template-areas: "plus";
+
+}
+
+.subinfoPlus{
+    height: fit-content;
+    width: fit-content;
+
+    justify-self: center;
+    align-self: center;
+
+    color: #ffffff;
+    transform: translatey(-23%) translateX(1%);
+    
+    
+
+    font-size: 7vh;
+
+    grid-area: plus;
+
+
+}
+
+.infoMinus{
+    height: 7vh;
+    width: 7vh;
+
+    justify-self: start;
+    align-self: center;
+    user-select: none;
+    
+    border: #ffffff;
+    border-style: solid;
+    border-radius: 100%;
+    border-width: 5px;
+
+    
+
+    grid-area: minus;
+
+    display: grid;
+    grid-template-areas: "minus";
+
+}
+.subinfoMinus{
+    height: fit-content;
+    width: fit-content;
+
+    justify-self: center;
+    align-self: center;
+
+    color: #ffffff;
+    transform: translatey(-23%) translateX(1%);
+    
+    
+
+    font-size: 7vh;
+
+    grid-area: minus;
+
+}
+
+.infoCount{
+    height: 9vh;
+    width: 9vh;
+
+    justify-self: center;
+    align-self: center;
+
+    
+
+    
+    border: #ffffff;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 5px;
+    
+
+    grid-area: count;
+
+    display: grid;
+    grid-template-areas: "count";
+
+}
+.subinfoCount{
+    height: 9vh;
+    width: 9vh;
+
+    font-size: 9vh;
+    color: #ffffff;
+    transform: translatey(-23%) translateX(23%);
+    
+    
+
+
+    grid-area: count;
+
+
+}
+
+.infoItemName{
+    justify-self: center;
+    align-self: center;
+
+    font-size: max(calc(((4vh + 4vw) / 2)));
+    color: #ffffff;
+
+    
+    grid-area: title;
+
+}

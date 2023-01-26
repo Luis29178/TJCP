@@ -1,0 +1,25 @@
+.btnGrouCont{
+
+    height: 100%;
+    width: 100%;
+
+    display: grid;
+    grid-template-areas: 
+    "ttRaid"
+    "save"
+    "discard";
+    grid-template-rows: 1fr 1fr 1fr;
+}
+.btn1{
+
+    grid-area: ttRaid;
+}
+.btn2{
+
+    grid-area: save;
+}
+.btn3{
+
+    grid-area: discard;
+}
+

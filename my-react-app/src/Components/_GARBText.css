@@ -1,0 +1,168 @@
+.container {
+    height: auto;
+    width: auto;
+    margin-left: 15%;
+    margin-bottom: 20px;
+    
+    display: grid;
+    grid-template-columns: 4fr 3fr 2fr 3fr 2fr 3fr;
+    grid-template-areas: "user ammo spacerA health spacerB armor";
+    
+}
+
+
+.SpacerA {
+
+    color: white;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+    
+
+    grid-area: spacerA;
+
+}
+
+.SpacerB {
+    color: white;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+
+    
+
+    grid-area: spacerB;
+
+}
+
+.garb-user{
+    color: white;
+    font-size: 10vh;
+
+    grid-area: user;
+    justify-self: center;
+
+}
+
+
+
+.Ammo-green {
+    color: green;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+
+    grid-area: ammo;
+
+}
+
+.Ammo-amber {
+    color: darkgoldenrod;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+
+    grid-area: ammo;
+
+}
+
+.Ammo-red {
+    color: red;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+
+    grid-area: ammo;
+
+}
+
+.Ammo-black {
+    color: black;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+
+    grid-area: ammo;
+
+}
+
+.Health-green {
+    color: green;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+
+    grid-area: health;
+
+}
+
+.Health-amber {
+    color: darkgoldenrod;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+
+    grid-area: health;
+
+}
+
+.Health-red {
+    color: red;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+
+
+    grid-area: health;
+
+}
+
+.Health-black {
+    color: black;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+
+    grid-area: health;
+
+}
+
+.Armor-green {
+    color: green;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+
+    grid-area: armor;
+
+}
+
+.Armor-amber {
+    color: darkgoldenrod;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+
+    grid-area: armor;
+
+}
+
+.Armor-red {
+    color: red;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+
+    grid-area: armor;
+
+}
+
+.Armor-black {
+    color: black;
+    user-select: none;
+    justify-self: center;
+    font-size: 10vh;
+
+    grid-area: armor;
+
+}

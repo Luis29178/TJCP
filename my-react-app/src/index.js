@@ -16,12 +16,21 @@ import TrackerPage from './Components/TrackerPage';
 import PathPage from './Components/PathPage';
 import SelectMode from './Components/EFTSelectMode';
 import JoinRaid from './Components/EFTJoin';
+import DropDownBar from './Components/DropDownBar_improved';
+import { Buttonnew } from './Components/newButton';
+
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import App from './App'
 
 import { Tags } from './Components/RaidTags';
+import { GARBAdvanced } from './Components/GARBset';
+import { GarbCircle } from './Components/GarbCircle';
+import { ItemInfoDisplay } from './Components/ItemInfoDisplay';
+import { UserListTrackerPage } from './Components/UserListTrackerPage';
+import { SpectatorSideBar } from './Components/SpectatorSideBar';
+
 
 const router = createBrowserRouter([
  {
@@ -50,7 +59,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/Paths",
-    element: <PathPage/>
+    element: <PathPage map={2}/>
   },
   {
     path:"/SelectMode",
@@ -63,7 +72,29 @@ const router = createBrowserRouter([
   {
     path: "/JoinSpectator",
     element: <JoinRaid player={false}/>
+  },
+  {
+    path: "/test2",
+    element: <GARBAdvanced></GARBAdvanced>
+  },
+  {
+    path: "/test3",
+    element: <GarbCircle></GarbCircle>
+  },
+  {
+    path: "/test",
+    element: <ItemInfoDisplay></ItemInfoDisplay>
+  },
+  {
+    path: "/test1",
+    element: <UserListTrackerPage/>
+  },
+  {
+    path: "/test5",
+    element: <Buttonnew borderStyle={"ttRaid"} onClick={() => { console.log("to Raid") }}> Take To Raid</Buttonnew>
+
   }
+
   
   // to create a new path add an object like the below one to this Router.
   // "path" is that page path; ex: tjcp.com/login

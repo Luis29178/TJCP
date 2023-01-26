@@ -1,0 +1,42 @@
+.UserWheelGroup{
+    height: 100%;
+    width:100%;
+    
+
+    display: grid;
+    grid-template-areas: "u1 u2 u3 u4";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100%;
+}
+.User1cont{
+
+    justify-self: center;
+    align-self: center;
+
+    grid-area: u1;
+
+}
+.User2cont{
+    
+    justify-self: center;
+    align-self: center;
+
+    grid-area: u2;
+
+}
+.User3cont{
+
+    justify-self: center;
+    align-self: center;
+
+    grid-area: u3;
+
+}
+.User4cont{
+
+    justify-self: center;
+    align-self: center;
+
+    grid-area: u4;
+
+}

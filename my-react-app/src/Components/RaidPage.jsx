@@ -2,103 +2,132 @@ import React from "react";
 import "./_RaidPage.css";
 import MapCanvas from "./MapCanvas.js";
 import { Tags } from "./RaidTags.jsx";
-import UserInfoBar from "./UserInfoBar";
 import { UserWheel } from "./UserWheel.jsx";
 import { Grid } from "@mui/material";
-import {useSpring, animated} from 'react-spring'
-import {useDrag} from 'react-use-gesture'
-import RaidMap from "./RaidMap";
+import Customs from '../Images/custumsmapog.png';
+import Factory from '../Images/factorymap.png';
+import Interchange from '../Images/interchangemap.png';
+import Labs from '../Images/labsmap.png';
+import Lighthouse from '../Images/lighthousemap.png';
+import Reserve from '../Images/reservemap.png';
+import Shoreline from '../Images/shorelinemap.png';
+import Woods from '../Images/woodsmap.png';
 
-import cursor from "./Tags/cursor.png";
-import ImageOnKeyPress from "./ImageOnKeyPress";
+import SideBar from "./SideBar";
+
+import { useDrag } from "react-use-gesture";
+
+import "./_UserWheelGroup.css"
+import { GARBpopUp } from "./GarbPopUp";
+
+import { PopUpWindow } from "./PopUpComponent";
 
 
-function Raid() {
 
-    const wheelPos1 = useSpring({x: 0, y: 0});
-    const bindWheelPos1 = useDrag((params) => {
-        wheelPos1.x.set(params.offset[0]);
-        wheelPos1.y.set(params.offset[1]);
-    })
+class Raid extends React.Component {
+    constructor(props) {
+        super(props)
 
-    const wheelPos2 = useSpring({x: 0, y: 0});
-    const bindWheelPos2 = useDrag((params) => {
-        wheelPos2.x.set(params.offset[0]);
-        wheelPos2.y.set(params.offset[1]);
-    })
+        this.state = {
 
-    const wheelPos3 = useSpring({x: 0, y: 0});
-    const bindWheelPos3 = useDrag((params) => {
-        wheelPos3.x.set(params.offset[0]);
-        wheelPos3.y.set(params.offset[1]);
-    })
+            GarbState: false,
+            garbClass:"GARBpopUpClosed"
 
-    const wheelPos4 = useSpring({x: 0, y: 0});
-    const bindWheelPos4 = useDrag((params) => {
-        wheelPos4.x.set(params.offset[0]);
-        wheelPos4.y.set(params.offset[1]);
-    })
 
-    return (
+        }
 
-        <div className="raidContainer">
-            {<ImageOnKeyPress/>} 
-            {/* <div className="menuBar">
+    }
 
-            </div> */}
-            <div  className="raidTags">
-                <div className="raidTags--tags">
-                <Tags  style={"raid--tg--basic"} size={"raid--tg-medium"}>
-                    
-                
-                </Tags>
-                
+    popUpStateOpen() {
+       
+            this.setState({
+                GarbState:true,
+                garbClass:"GARBpopUp"
+            })
+
+
+
+    }
+
+    popUpStateClose = () =>{
+        this.setState({
+            GarbState:false,
+            garbClass:"GARBpopUpClosed"
+        })
+
+    }
+    
+
+
+
+
+
+
+
+    render() {
+        return (
+            <>
+            <div className={this.state.garbClass}>
+                <PopUpWindow Window ={<GARBpopUp OnClick={()=> this.popUpStateClose()}></GARBpopUp>}></PopUpWindow>
                 </div>
-            </div>
-                <RaidMap/>
-            {/* <div className="raidMap">
-            
-                <MapCanvas
-                    width={1000}
-                    height={500}
-                    className={"Canvas"}>
-                </MapCanvas>
+
+                <div className="raidContainer">
+                    {/*<ImageOnKeyPress />*/}
+                    {/* <div className="menuBar">
+
             </div> */}
-            <div className="raidUsers">
-                <Grid container 
-                direction={"row"}
-                justifyContent="space-around"
-                alignItems="center"
-                >
-                    <Grid>
-                        <animated.div {...bindWheelPos1()}style={{x: wheelPos1.x, y: wheelPos1.y}}>
-                        <UserWheel onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
-                        </animated.div>
-                    </Grid>
-                    <Grid>
-                    <animated.div {...bindWheelPos2()}style={{x: wheelPos2.x, y: wheelPos2.y}}>
-                        <UserWheel onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
-                        </animated.div>                    </Grid>
-                    <Grid>
-                    <animated.div {...bindWheelPos3()}style={{x: wheelPos3.x, y: wheelPos3.y}}>
-                        <UserWheel onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
-                        </animated.div>                    </Grid>
-                    <Grid>
-                    <animated.div {...bindWheelPos4()}style={{x: wheelPos4.x, y: wheelPos4.y}}>
-                        <UserWheel onClick={() =>  { console.log("userWheel clicked") }}></UserWheel>
-                        </animated.div>                    </Grid>
-                </Grid>
+                    <div className="raidTags">
+                        <Tags style={"raid--tg--basic"} size={"raid--tg-medium"}>
 
 
-            </div>
-            <div className="raidExtra">wtf
+                        </Tags>
+                    </div>
+                    {/*<RaidMap />*/}
+                    <div className="raidMap">
 
-            </div>
+                        <MapCanvas
+                            height={2142}
+                            width={4097}
+                            map={Customs}
+                            className={"Canvas"}>
+                        </MapCanvas>
+                    </div>
+                    <div className="raidUsers">
+                        <div className="UserWheelGroup">
+                            <div className="User1cont">
+
+                                <UserWheel onClick={() => { this.popUpStateOpen().bind(this) }}></UserWheel>
+                            </div>
+                            <div className="User2cont">
+                                <UserWheel onClick={() => { this.popUpStateOpen().bind(this) }}></UserWheel>
+                            </div>
+                            <div className="User3cont">
+                                <UserWheel onClick={() => { this.popUpStateOpen().bind(this) }}></UserWheel>
+                            </div>
+                            <div className="User4cont">
+                                <UserWheel onClick={() => { this.popUpStateOpen().bind(this) }}></UserWheel>
+                            </div>
+
+                        </div>
 
 
-        </div>
+                    </div>
+                    <div className="raidExtra">wtf
 
-    );
+                    </div>
+                    <div className="SideBar">
+                        <SideBar></SideBar>
+                    </div>
+
+
+
+                </div>
+
+                
+            </>
+
+        );
+    }
 
 }
 export default Raid;

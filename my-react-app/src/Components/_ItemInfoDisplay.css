@@ -1,0 +1,45 @@
+.iInfoContainer{
+    height: 100vh;
+    width: 100vw;
+    background: black;
+
+    display: grid;
+    grid-template-columns: 65px 2fr 1fr 2fr;
+    grid-template-rows: 25vh auto;
+    grid-template-areas: "xbtn dropBar imgCont itemCount"
+                         "Info Info    Info    Info";
+
+}
+
+
+.xButton{
+
+    grid-area: xbtn;
+
+}
+
+.DropBar{
+    color: rgba(255, 255, 255, 0.45);
+    margin-top: 3%;
+    margin-left: 3%;
+    grid-area: dropBar;
+}
+
+.ItemImageIco{
+    justify-self: center;
+    align-self: center;
+
+    grid-area: imgCont;
+}
+
+.ItemCount{
+    
+
+    grid-area: itemCount;
+}
+
+.BodyText{
+    overflow: scroll;
+
+    grid-area: Info;
+}

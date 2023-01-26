@@ -184,6 +184,7 @@
 }
 .btn--x--basic::after,
 .btn--x--basic::before{
+    
     content: '';
     position: absolute;
     inset: 0;

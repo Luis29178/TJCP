@@ -14,7 +14,7 @@ class SideBar extends React.Component {
     }
 
     barOpen = () => {
-        if(this.state.isOpen){
+        if (this.state.isOpen) {
             this.setState({
                 isOpen: false,
                 bar: "sbar",
@@ -23,7 +23,7 @@ class SideBar extends React.Component {
                 menuContent: "sbcontent",
                 isClickable: this.doNothing
             })
-        }else{
+        } else {
             this.setState({
                 isOpen: true,
                 bar: "sbarOpen",
@@ -38,7 +38,7 @@ class SideBar extends React.Component {
 
     }
 
-    
+
 
 
 
@@ -46,15 +46,16 @@ class SideBar extends React.Component {
     render() {
         return (
             <>
-                
+
                 <div className={this.state.bar} >
                     <div className={this.state.menuContent}>
-                        <PathMenu></PathMenu>
+                        <PathMenu title ={"Path Creator"} info={"Path Name: Smaple"}></PathMenu>
                     </div>
+                    <div className={this.state.btn} onClick={this.barOpen.bind(this)} />
+
+                    <div className={this.state.arrow} onClick={this.barOpen.bind(this)} />
                 </div>
-                <div  className={this.state.btn} onClick={this.barOpen.bind(this)}>
-                </div>
-                <div className={this.state.arrow} onClick={this.barOpen.bind(this)} />
+
             </>
         );
     }

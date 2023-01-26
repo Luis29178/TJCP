@@ -1,10 +1,10 @@
 .sbar {
-    position: fixed;
+
     --bpx: 15px;
-    height: 680px;
+    height: 100%;
     width: 40px;
     background: #2c2c2c;
-    z-index: 50;
+
     clip-path: polygon(
             /*2*/
             calc(100% - var(--bpx)) 0%,
@@ -18,15 +18,19 @@
             0% calc(100% - var(--bpx)),
             /*1*/
             0 0);
-            transition: width 1.5s;
+    transition: width 1.5s;
+
+    display: grid;
+    grid-template-columns: 40px;
+    grid-template-rows: 100%;
+    grid-template-areas: "arrow";
+
 }
 
 .sbarOpen {
-    position: fixed;
-    z-index: 50;
     --bpx: 15px;
-    height: 680px;
-    width: 220px;
+    height: 100%;
+    width: 300px;
     background: #2c2c2c;
     clip-path: polygon(
             /*2*/
@@ -42,35 +46,48 @@
             /*1*/
             0 0);
     transition: width 1s;
+
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    grid-template-rows: 100%;
+
+    grid-template-areas:
+        "menu arrow";
 }
 
-.arrowcont{
-    z-index: 51;
-    position: fixed;
-    margin-left: 2.5px;
-    margin-top: 312px;
+.arrowcont {
+
     height: 50px;
     width: 40px;
     transition: margin 1.5s;
+
+    align-self: center;
+    justify-self: center;
+
+
+    grid-area: arrow;
+
 }
-.arrowcontOpen{
-    z-index: 51;
-    position: fixed;
-    margin-left: 2.5px;
-    margin-top: 312px;
+
+.arrowcontOpen {
+
     height: 50px;
-    width: 40px;  
-    transition: margin 1s;
-    transform: translateX(170px);
+    width: 40px;
+    transition: all 1s;
+
+    align-self: center;
+    justify-self: center;
+
+    grid-area: arrow;
+
 }
 
 
 
 .sarrow {
-    z-index: 52;
-    position: fixed;
-    margin-left: 10px;
-    margin-top: 315px;
+    grid-area: arrow;
+    align-self: center;
+    margin: 15%;
     --txp: 10px;
     height: 50px;
     width: 50px;
@@ -88,16 +105,14 @@
             0% 100%,
             /*2*/
             50% 50%);
-            transition: margin 1.5s;
+    transition: all 1.5s;
 
 
 
 }
+
 .sarrowOpen {
-    z-index: 52;
-    position: fixed;
-    margin-left: 185px;
-    margin-top: 315px;
+
     --txp: 10px;
     height: 50px;
     width: 50px;
@@ -115,31 +130,37 @@
             0% 100%,
             /*2*/
             50% 50%);
-            transition: margin 1s;
-            transform: rotate(180deg) translateX(25px);
+    transition: all 1s;
+    transform: rotate(180deg);
+
+    grid-area: arrow;
+    align-self: center;
+    margin-left: -35%;
+
+
 
 }
-.sbcontent{
-    z-index: 53;
-    position: fixed;
+
+.sbcontent {
     visibility: hidden;
-    height: 680px;
-    width: 180px;
+    height: 100%;
+    width: 100%;
     overflow: hidden;
     transition: visibility 100ms;
-    
-    
+
+
 
 }
-.sbcontentOpen{
-    position: fixed;
-    z-index: 53;
-    visibility:  visible;
-    height: 680px;
-    width: 180px;
+
+.sbcontentOpen {
+    visibility: visible;
+    height: 100%;
+    width: 100%;
     overflow: hidden;
-    
-    
-    
+
+    grid-area: menu;
+
+
+
 
 }

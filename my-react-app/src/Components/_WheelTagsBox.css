@@ -1,0 +1,22 @@
+.container{
+    
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    grid-template-areas: "u1 u2 u3 u4";
+
+
+}
+.U1{
+    grid-area: u1;
+}
+.U2{
+    grid-area: u2;
+}
+.U3{
+    grid-area: u3;
+}
+.U4{
+    grid-area: u4;
+}

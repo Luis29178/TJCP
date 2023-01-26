@@ -9,7 +9,7 @@ button{
     
 }
 .ls--map--display{
-    display: grid;
+    max-height: 100vh;
     background-color: transparent;
-    overflow-y: hidden;
+    overflow: scroll;
 }

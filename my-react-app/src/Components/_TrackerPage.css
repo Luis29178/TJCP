@@ -1,7 +1,18 @@
-:root{
-    --theight: 720px;
-    --twidth: 1280px;
+
+.InfoPopUp{
+    visibility: visible;
+    z-index: 60;
+    position: absolute;
+
 }
+.InfoPopUpClosed{
+
+    visibility: hidden;
+    z-index: 60;
+    position: absolute;
+
+}
+
 
 
 .Tpage{

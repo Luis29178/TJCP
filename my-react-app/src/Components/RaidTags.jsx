@@ -7,8 +7,8 @@ import money from './Tags/money_icon.png';
 import redlight from './Tags/red_light.png';
 import './_RaidTags.css'
 //import useSpring, useDrag, animate
-import {useSpring, animated} from "react-spring"
-import {useDrag} from "react-use-gesture"
+import { useSpring, animated } from "react-spring"
+import { useDrag } from "react-use-gesture"
 import { useEffect, useState, useRef } from 'react';
 import { red } from '@mui/material/colors';
 
@@ -50,77 +50,76 @@ export const Tags = ({
         width: "50px",
         top: "50px",
         left: "50px"
-        
+
 
     }
-    
+
     let keyBinds = ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"];
 
-    if(keybinds == undefined)
-    {
-        
+    if (keybinds == undefined) {
+
     }
-    else{
+    else {
         keyBinds = keybinds;
     }
 
-    const skullPos0 = useSpring({x: 0, y:0});
+    const skullPos0 = useSpring({ x: 0, y: 0 });
 
     const bindSkullPos0 = useDrag((params) => {
         skullPos0.x.set(params.offset[0]);
         skullPos0.y.set(params.offset[1]);
     })
 
-    const skullPos1 = useSpring({x: 0, y:0});
+    const skullPos1 = useSpring({ x: 0, y: 0 });
 
     const bindSkullPos1 = useDrag((params) => {
         skullPos1.x.set(params.offset[0]);
         skullPos1.y.set(params.offset[1]);
     })
 
-    const skullPos2 = useSpring({x: 0, y:0});
+    const skullPos2 = useSpring({ x: 0, y: 0 });
 
     const bindSkullPos2 = useDrag((params) => {
         skullPos2.x.set(params.offset[0]);
         skullPos2.y.set(params.offset[1]);
     })
 
-    const skullPos3 = useSpring({x: 0, y:0});
+    const skullPos3 = useSpring({ x: 0, y: 0 });
 
     const bindSkullPos3 = useDrag((params) => {
         skullPos3.x.set(params.offset[0]);
         skullPos3.y.set(params.offset[1]);
     })
 
-    const skullPos4 = useSpring({x: 0, y:0});
+    const skullPos4 = useSpring({ x: 0, y: 0 });
 
     const bindSkullPos4 = useDrag((params) => {
         skullPos4.x.set(params.offset[0]);
         skullPos4.y.set(params.offset[1]);
     })
 
-    const skullPos5 = useSpring({x: 0, y:0});
+    const skullPos5 = useSpring({ x: 0, y: 0 });
 
     const bindSkullPos5 = useDrag((params) => {
         skullPos5.x.set(params.offset[0]);
         skullPos5.y.set(params.offset[1]);
     })
 
-    const skullPos6 = useSpring({x: 0, y:0});
+    const skullPos6 = useSpring({ x: 0, y: 0 });
 
     const bindSkullPos6 = useDrag((params) => {
         skullPos6.x.set(params.offset[0]);
         skullPos6.y.set(params.offset[1]);
     })
 
-    const skullPos7 = useSpring({x: 0, y:0});
+    const skullPos7 = useSpring({ x: 0, y: 0 });
 
     const bindSkullPos7 = useDrag((params) => {
         skullPos7.x.set(params.offset[0]);
         skullPos7.y.set(params.offset[1]);
     })
 
-    const skullPos8 = useSpring({x: 0, y:0});
+    const skullPos8 = useSpring({ x: 0, y: 0 });
 
     const bindSkullPos8 = useDrag((params) => {
         skullPos8.x.set(params.offset[0]);
@@ -135,15 +134,15 @@ export const Tags = ({
 
 
     const detectKeyDown = (e) => {
-        if(e.key === "q"){
-            
+        if (e.key === "q") {
+
             // skullPos0.x.set(e.offset[0]);
             // skullPos0.y.set(e.offset[1]);
             console.log('clicked: q');
             const customEvent = new CustomEvent('build', { detail: { keyP: e.key } });
             document.dispatchEvent(customEvent);
         }
-        if(e.key === "w"){
+        if (e.key === "w") {
             console.log('pressed: W')
             const customEvent = new CustomEvent('build', { detail: { keyP: e.key } });
             document.dispatchEvent(customEvent);
@@ -229,6 +228,13 @@ export const Tags = ({
                         <p className='tagbind'>{keyBinds[0]}</p>     
                     </animated.div> : null}
 
+        <>
+            <div className='tagcontainer'>
+                <div className='tagcon-1'>
+                    <animated.div {...bindSkullPos0()} id="item0" className='tag' style={{ x: skullPos0.x, y: skullPos0.y }}>
+                        <canvas style={canvasStyle} onClick={() => { console.log("[0]") }}></canvas>
+                        <p className='tagbind'>{keyBinds[0]}</p>
+                    </animated.div></div>
 
                     {showDiv2 ? <animated.div {...bindSkullPos1()} className='tag' style={{x: skullPos1.x, y: skullPos1.y}}>                      
                         <canvas style={canvasStyle} onClick={() => {document.getElementById('item1').style.backgroundImage = `url(${images[currentIndex1]})`; currentIndex1 = currentIndex1 + 1; if(currentIndex1 === 5){currentIndex1=0};}}

@@ -1,0 +1,183 @@
+.border {
+
+    background: #000000;
+
+    height: calc(100% - 5px);
+    width: calc(100% - 5px);
+
+
+    display: grid;
+    grid-template-columns: 7fr 1fr;
+    grid-template-rows: 1fr 0fr;
+    grid-template-areas: "selectedList arrow";
+
+    --xpx: 12px;
+    --ypx: 4px;
+    clip-path: polygon(
+            /*1*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)));
+
+            transition: all 1.5s;
+
+
+}
+
+.borderOpen {
+
+    background: #000000;
+
+    height: calc(100% - 5px);
+    width: calc(100% - 5px);
+
+    display: grid;
+    grid-template-columns: 7fr 1fr;
+    grid-template-rows: 45px 1fr;
+    grid-template-areas:
+        "selectedList arrow"
+        "list         arrow";
+
+
+    --xpx: 12px;
+    --ypx: 4px;
+    clip-path: polygon(
+            /*1*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)));
+
+            transition: all 1.5s;
+
+
+
+}
+
+.infoContainer {
+    height: 45px;
+    width: 100%;
+    background: #2b2b2b;
+    padding-top: 5px;
+    padding-left: 5px;
+
+
+    --xpx: 15px;
+    --ypx: 4px;
+    clip-path: polygon(
+            /*1*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)));
+
+            transition: all 1.5s;
+
+
+
+
+}
+
+.infoContainerOpen {
+    height: 100%;
+    width: 100%;
+    background: #2b2b2b;
+    padding-top: 5px;
+    padding-left: 5px;
+
+
+
+    --xpx: 15px;
+    --ypx: 4px;
+    clip-path: polygon(
+            /*1*/
+            calc(100% - var(--xpx)) calc(0% + var(--ypx)),
+            calc(100% - var(--ypx)) calc(0% + var(--xpx)),
+            calc(100% - var(--ypx)) calc(100% - var(--ypx)),
+            calc(0% + var(--xpx)) calc(100% - var(--ypx)),
+            calc(0% + var(--ypx)) calc(100% - var(--xpx)),
+            calc(0% + var(--ypx)) calc(0% + var(--ypx)));
+
+            transition: all 1.5s;
+
+
+}
+
+.selected {
+    margin-left: 15px;
+    margin-top: 2.5px;
+    font-size: 150%;
+    font-weight: bolder;
+    color: azure;
+
+    grid-area: selectedList;
+
+    transition: all 1.5s;
+
+}
+
+.dropArrow {
+    height: 45px;
+    width:45px;
+
+    align-self: start;
+    justify-self: end;
+
+    grid-area: arrow;
+    border-color: #2b2b2b;
+    border-style: solid;
+
+    transition: all 1.5s;
+
+}
+.dropArrowOpen {
+    height: 45px;
+    width:45px;
+
+    align-self: end;
+
+    grid-area: arrow;
+    border-color: #2b2b2b;
+    border-style: solid;
+
+    transition: all 1.5s;
+
+}
+
+
+.List {
+    visibility: hidden;
+
+    transition: all 1.5s;
+}
+
+.ListOpen {
+    visibility: visible;
+    height: 100%;
+    width: 100%;
+    
+
+
+    overflow: scroll;
+    grid-area: list;
+
+    transition: all 1.5s;
+}
+
+.ListItem {
+    visibility: inherit;
+    font-size: 150%;
+
+    margin-left: 20px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+
+    transition: all 1.5s;
+}

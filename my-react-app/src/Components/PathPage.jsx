@@ -1,93 +1,133 @@
-import { Grid } from "@mui/material";
 import MapCanvas from "./MapCanvas.js"
 import { Tags } from "./RaidTags.jsx"
 import React from "react";
 import SideBar from "./SideBar.jsx";
+import Customs from '../Images/custumsmapog.png';
+import Factory from '../Images/factorymap.png';
+import Interchange from '../Images/interchangemap.png';
+import Labs from '../Images/labsmap.png';
+import Lighthouse from '../Images/lighthousemap.png';
+import Reserve from '../Images/reservemap.png';
+import Shoreline from '../Images/shorelinemap.png';
+import Woods from '../Images/woodsmap.png';
 import "./_PathPage.css"
 
 
 
-class PathPage extends React.Component {
-    state = {
 
+class PathPage extends React.Component {
+    constructor(props){
+        super(props)
+        
+        this.state ={
+            height: 1200,
+            width: "auto",
+            map: ""
+        }
+       
+
+
+        
+ 
+        
     }
+
+
+    
+    
 
 
 
     render() {
+
+        
+
+        
         return (
             <>
-                <div style={_container}>
-                <Grid container direction="row" spacing={1} z={10}>
+                <div className="pathContainer">
+                    {/*<ImageOnKeyPress />*/}
+                    {/* <div className="menuBar">
 
-                    <Grid item xs={.7}>
+            </div> */}
+                    <div className="pathTags">
+                        <Tags style={"raid--tg--basic"} size={"raid--tg-medium"}>
+
+
+                        </Tags>
+                    </div>
+                    {/*<RaidMap />*/}
+                    <div className="pathMap">
+                        <MapCanvas
+                            height={2142}
+                            width={4097}
+                            map={Customs}
+                            className={"Canvas"}>
+                        </MapCanvas>
+                    </div>
+                    <div className="pathExtra">wtf
+
+                    </div>
+                    <div className="pathSideBar">
                         <SideBar></SideBar>
-                    </Grid>
+                    </div>
 
 
-                    <Grid item xs={11.3}>
-                    <Grid container direction="row" spacing={-70}>
-
-                        <Grid item xs={3}>
-                            <Grid container direction="column">
-
-                                <Grid item xs={6}>
-                                    <div className="tagscont">
-                                    <Tags style={"raid--tg--basic"}
-                                        size={"raid--tg-medium"} />
-                                    </div>
-
-                                </Grid>
-
-                                <Grid item xs={6}>
-                                    <div className="toolscont">tools</div>
-                                    
-
-                                </Grid>
-
-                            </Grid>
-                        </Grid>
-
-                        <Grid item xs={9}>
-                            <div style={_mapContainer}>
-                                <MapCanvas
-                                    width={1280}
-                                    height={720}
-                                >
-                                </MapCanvas>
-                            </div>
-                        </Grid>
-
-                    </Grid>
-                    </Grid>
-
-                </Grid>
                 </div>
+
             </>
         );
     }
+    componentDidMount(){
+        var elmnt = document.getElementsByClassName("pathMap")[0];
+        console.log(elmnt.offsetHeight);
+        console.log(elmnt.offsetWidth);
+
+        
+
+        this.setState({
+            height: elmnt.offsetHeight,
+            width: elmnt.offsetWidth
+        })
+
+        // switch (this.props.map) {
+        //     case 1:
+        //         this.setState({ map: Customs });
+        //         break;
+        //     case 2:
+        //         this.setState({ map: Factory });
+        //         break;
+        //     case 3:
+        //         this.setState({ map: Interchange });
+        //         break;
+        //     case 4:
+        //         this.setState({ map: Labs });
+        //         break;
+        //     case 5:
+        //         this.setState({ map: Lighthouse });
+        //         break;
+        //     case 6:
+        //         this.setState({ map: Reserve });
+        //         break;
+        //     case 7:
+        //         this.setState({ map: Shoreline });
+        //         break;
+        //     case 8:
+        //         this.setState({ map: Woods });
+        //         break;
+        //     default:
+        //         this.setState({ map: '' })
+        //         break;
+        // }
+
+
+        console.log(this.props.map);
+    }
+
+    
+
+
 }
 export default PathPage;
-
-
-var _mapContainer = {
-    height: "675px",
-    width: "1025px",
-    overflow: "scroll",
-    scrollbars:"none",
-    border: "#000000",
-    border: "solid"
-
-}
-var _container = {
-    padding: "30px 0px 0px 0px",
-    height: "720px",
-    width: "1280px",
-    background: "#0b0b0bfd"
-
-
-}
-
-
 
 

@@ -25,7 +25,7 @@ class SelectMode extends React.Component {
                     alignSelf: "flex-start",
                     margin: "10px 0px 0px 10px"
                 }}>
-                    <Buttonnew borderStyle="back">{'<'}</Buttonnew>
+                    <Buttonnew borderStyle="back" onClick={() => {window.location.href = "/"}}>{'<'}</Buttonnew>
                 </div>
                 <Grid container direction="column" spacing={4} justifyContent =  'center' alignItems="center">
                     <Grid item xs={12}>

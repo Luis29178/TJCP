@@ -1,11 +1,12 @@
-import {Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import React from "react";
-import PathButtons from './pathBtnGroup'
-import './_SideBar.css'
+import { Buttonnew } from "./newButton";
+import './_PathMenu.css'
+import "./_sidebarBtnGrp.css"
 
 class PathMenu extends React.Component {
     state = {
-        
+
 
     }
 
@@ -13,29 +14,37 @@ class PathMenu extends React.Component {
 
         return (
 
-                
-                <Grid container direction="column" justifyContent="space-between"  alignItems="center" >
-                    <Grid item xs ={12} marginBottom ={4}>
-                        <div style={tittel}>Path Creator</div>
 
-                    </Grid>
-                    <Grid item xs={12} marginTop={25} marginBottom={25} maxHeight={50}>
-                        <div style={pathname}>Path Name : sample</div>
+            <div className="SideBarContent">
 
-                    </Grid>
-                    <Grid item xs={12}>
-                        <PathButtons/>
-                    </Grid>
-                </Grid>
+                <div className="SideBarContentTitle">{this.props.title}</div>
 
 
-            
+                <div className="SideBarContentInfo">{this.props.info}</div>
+
+                <div className="SideBarContentBtnGrp">
+                    <div className="btnGrouCont">
+
+                        <div className="btn1">
+                            <Buttonnew borderStyle={"ttRaid"} onClick={() => { console.log("to Raid") }}> Take To Raid</Buttonnew>
+                        </div>
+                        <div className="btn2">
+                            <Buttonnew borderStyle={"save"} onClick={() => { console.log("save") }}> Save</Buttonnew>
+                        </div>
+                        <div className="btn3">
+                            <Buttonnew borderStyle={"discard"} onClick={() => { console.log("discard") }}> Discard</Buttonnew>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         )
     }
 
 }
 export default PathMenu;
-var tittel ={
+var tittel = {
     fontSize: "30px",
 
 }

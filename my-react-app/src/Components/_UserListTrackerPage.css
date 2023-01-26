@@ -1,0 +1,50 @@
+
+.Tpage{
+    height: 100vh;
+    width: 100vw;
+    background: black;
+
+    display: grid;
+    grid-template-columns: 60px auto;
+    grid-template-rows: 60px 150px auto;
+    grid-template-areas:   
+    "xbtn title"
+    "searchbar searchbar"
+    "Lsit List ";
+}
+
+
+.Ttitle{
+    height: fit-content;
+    width: fit-content;
+    background: transparent;
+    color: white;
+    font-size: 60px;
+    justify-self: center;
+    grid-area: title;
+
+    
+
+}
+.Tserchbar{
+    height: 60px;
+    width: 600px;
+    justify-self: center;
+
+    grid-area: searchbar;
+}
+.Titemlist{
+    height:auto;
+    width: 100%;
+    overflow: scroll;
+    justify-self: start;
+
+    grid-area: List;
+}
+.backButton{
+    height: 50px;
+    width: 50px;
+    margin-top: 10px;
+    margin-left: 10px;
+    grid-area: xbtn;
+}

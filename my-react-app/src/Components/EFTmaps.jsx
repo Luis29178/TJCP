@@ -17,77 +17,79 @@ import { Grid } from "@mui/material";
 class EFTmapsTest extends React.Component {
 
     state = {
-        map:'',
+        map: '',
     }
-    
+
 
     mapChange(_map) {
         switch (_map) {
             case 1:
-                this.setState({map: Customs});
+                this.setState({ map: Customs });
                 break;
             case 2:
-                this.setState({map: Factory });
+                this.setState({ map: Factory });
                 break;
             case 3:
-                this.setState({map: Interchange });
+                this.setState({ map: Interchange });
                 break;
             case 4:
-                this.setState({map: Labs });
+                this.setState({ map: Labs });
                 break;
             case 5:
-                this.setState({map: Lighthouse});
+                this.setState({ map: Lighthouse });
                 break;
             case 6:
-                this.setState({map: Reserve});
+                this.setState({ map: Reserve });
                 break;
             case 7:
-                this.setState({map: Shoreline});
+                this.setState({ map: Shoreline });
                 break;
             case 8:
-                this.setState({map: Woods});
+                this.setState({ map: Woods });
                 break;
-            default :
-                this.setState({map:''})
+            default:
+                this.setState({ map: '' })
                 break;
         }
 
 
     }
 
-    render(){
+    render() {
         return (
 
             <div className="eftpage">
 
-            <div className="title">
                 <div className="eftxbtn">
                     <Button onClick={() => { window.location.href = "/" }}
                         type="button"
                         buttonStyle="btn--x--basic"
                         size="btn--x">{"<"}</Button>
                 </div>
+
+
+
                 <div className="efttitle">Maps</div>
+
+
+
+
+                <div className="eftmapList">
+                    <MapList style={"ls--map--display"} func={this.mapChange.bind(this)}></MapList>
+                </div>
+
+
+                <div className="eftmapDisplay">
+                    <MapDisplay mdstyle={"map--menu--display"} Imgsorce={this.state.map} ></MapDisplay>
+                </div>
+
+
+                <div className="eftDropDown">
+                    <DropDown ddstyle={"dd--eft--basic"}></DropDown>
+                </div>
+
             </div>
 
-            
-            
-            <div className="eftmapList">
-                <MapList style={"ls--map--display"} func={this.mapChange.bind(this)}></MapList>
-            </div>
-            
-
-            <div className="eftmapDisplay">
-                <MapDisplay mdstyle={"map--menu--display"} Imgsorce={this.state.map} ></MapDisplay>
-            </div>
-
-            
-            <div className="eftDropDown">
-                <DropDown ddstyle={"dd--eft--basic"}></DropDown>
-            </div>
-
-        </div>
-    
         );
 
 
