@@ -207,16 +207,6 @@ export const Tags = ({
             <Grid container spacing={2}>
                 <Grid container item spacing={3}>
 
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv1}>remove Q</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv2}>remove W</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv3}>remove E</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv4}>remove A</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv5}>remove S</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv6}>remove D</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv7}>remove Z</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv8}>remove X</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv9}>remove C</button>
-
 
 
                     {showDiv1 ? <animated.div {...bindSkullPos0()} className='tag' style={{x: skullPos0.x, y: skullPos0.y}}>       
@@ -280,6 +270,15 @@ export const Tags = ({
                         <p className='tagbind'>{keyBinds[8]}</p>     
                     </animated.div>: null}
                 </Grid>
+                <button style={{fontSize: '0.8rem'}} onClick={toggleDiv1}>remove Q</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv2}>remove W</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv3}>remove E</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv4}>remove A</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv5}>remove S</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv6}>remove D</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv7}>remove Z</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv8}>remove X</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv9}>remove C</button>
             </Grid>
            
        

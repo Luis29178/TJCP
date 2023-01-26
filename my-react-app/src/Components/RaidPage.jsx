@@ -91,11 +91,6 @@ function Raid() {
 
 
             </div>
-            <div className="raidExtra">wtf
-
-            </div>
-
-
         </div>
 
     );
