@@ -84,6 +84,7 @@ export default class RaidController {
       window.localStorage.setItem("mapState", 'Raids/'+ doc.id + '/mapState');
       window.localStorage.setItem("userNames", doc.id);
       window.localStorage.setItem("playerNumber", "1");
+      window.localStorage.setItem("raidLeader", user )
 
       await firebase.firestore().collection('Raids/'+ doc.id + '/playerStatus').doc("1").set(
         { ammo : 3, armor: 3, health:3}
