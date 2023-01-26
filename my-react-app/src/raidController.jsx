@@ -114,13 +114,15 @@ export default class RaidController {
         var docID = docSnap.docs[0].id;
         
         console.log("DOC ID")
+        var raidState = docSnap.docs[0].data(); 
         console.log(docSnap.docs[0].data().p1_name)
 
         //console.log(collection(firebase.firestore(), 'Raids/'+ docID + '/playerStatus'));
         window.localStorage.setItem("raidCol", 'Raids/'+ docID + '/playerStatus');
         window.localStorage.setItem("userNames", docID);
         window.localStorage.setItem("mapState", 'Raids/'+ docID + '/mapState');
-        window.localStorage.setItem("raidMap", docSnap.docs[0].data().raid_map )
+        window.localStorage.setItem("raidMap", raidState.raid_map )
+        window.localStorage.setItem("raidLeader", raidState.leader )
         //window.localStorage.setItem("mapState", 'Raids/'+ docID + '/mapState');
         
         console.log("status");
