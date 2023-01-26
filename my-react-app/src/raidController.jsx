@@ -95,7 +95,7 @@ export default class RaidController {
     //playerStatusCollection = collection(db, 'Raids/'+ doc.id + '/playerStatus');
 
     console.log(doc.id.slice(0,4))
-    doc.set({leader: user, p1:user, p1_name: username, p2:"", p2_name:"", p3:"", p3_name:"",p4:"", p4_name:"", raid_map: map, raidStete : 0}).then(async ()=>{
+    doc.set({leader: user, p1:user, p1_name: username, p2:"", p2_name:"", p3:"", p3_name:"",p4:"", p4_name:"", raid_map: map, raidState : "0"}).then(async ()=>{
       window.localStorage.setItem("joinCode", doc.id.slice(0,4));
       window.localStorage.setItem("raidCol", 'Raids/'+ doc.id + '/playerStatus');
       window.localStorage.setItem("mapState", 'Raids/'+ doc.id + '/mapState');

@@ -80,7 +80,7 @@ class EFTmapsTest extends React.Component {
 
             <div className="title">
                 <div className="eftxbtn">
-                    <Button onClick={() => { window.location.href = "/" }}
+                    <Button onClick={() => { window.location.href = "/SelectMode" }}
                         type="button"
                         buttonStyle="btn--x--basic"
                         size="btn--x">{"<"}</Button>
