@@ -1,0 +1,30 @@
+.SideBarContent{
+    height: 100%;
+    width: 100%;
+
+    display: grid;
+
+    grid-template-areas: 
+    "title"
+    "info"
+    "btnGrp";
+    grid-template-rows: 1fr 9fr 3fr;
+}
+.SideBarContentTitle{
+    font-size: 4vh;
+    font-weight: bolder;
+
+    grid-area: title;
+}
+.SideBarContentInfo{
+
+    font-size: 3vh;
+    justify-self: center;
+    align-self: center;
+
+    grid-area: info;
+}
+.SideBarContentBtnGrp{
+
+    grid-area: btnGrp;
+}

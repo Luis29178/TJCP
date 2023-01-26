@@ -1,8 +1,8 @@
 .ttRaid {
     visibility: inherit;
     position: relative;
-    height: 45px;
-    width: 150px;
+    height: 50px;
+    width: 250px;
     background: #707070;
     --xpx: 15px;
     --ypx: 4px;
@@ -47,10 +47,10 @@
     position: absolute;
     background: transparent;
 
-    height: 45px;
-    width: 150px;
+    height: 50px;
+    width: 250px;
     color: #000000;
-    font-size: 15px;
+    font-size: 25px;
     font: bolder;
 }
 
@@ -72,8 +72,8 @@
 .save {
     visibility: inherit;
     position: relative;
-    height: 45px;
-    width: 150px;
+    height: 50px;
+    width: 250px;
     background: #00ff00;
     --xpx: 15px;
     --ypx: 4px;
@@ -117,11 +117,10 @@
     visibility: inherit;
     position: absolute;
     background: transparent;
-
-    height: 45px;
-    width: 150px;
+    height: 50px;
+    width: 250px;
     color: #00ff00;
-    font-size: 15px;
+    font-size: 25px;
     font: bolder;
 }
 
@@ -143,8 +142,8 @@
 .discard {
     visibility: inherit;
     position: relative;
-    height: 45px;
-    width: 150px;
+    height: 50px;
+    width: 250px;
     background: #ffcc00;
     --xpx: 15px;
     --ypx: 4px;
@@ -189,10 +188,10 @@
     position: absolute;
     background: transparent;
 
-    height: 45px;
-    width: 150px;
+    height: 50px;
+    width: 250px;
     color: #ffcc00;
-    font-size: 15px;
+    font-size: 25px;
     font: bolder;
 }
 

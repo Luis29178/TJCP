@@ -17,6 +17,7 @@ import PathPage from './Components/PathPage';
 import SelectMode from './Components/EFTSelectMode';
 import JoinRaid from './Components/EFTJoin';
 import DropDownBar from './Components/DropDownBar_improved';
+import { Buttonnew } from './Components/newButton';
 
 
 import firebase from 'firebase/compat/app';
@@ -58,7 +59,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/Paths",
-    element: <PathPage/>
+    element: <PathPage map={2}/>
   },
   {
     path:"/SelectMode",
@@ -90,7 +91,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/test5",
-    element: <SpectatorSideBar></SpectatorSideBar>
+    element: <Buttonnew borderStyle={"ttRaid"} onClick={() => { console.log("to Raid") }}> Take To Raid</Buttonnew>
 
   }
 

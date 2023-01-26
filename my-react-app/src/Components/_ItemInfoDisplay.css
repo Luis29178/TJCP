@@ -1,7 +1,7 @@
 .iInfoContainer{
     height: 100vh;
     width: 100vw;
-    background-color: black;
+    background: black;
 
     display: grid;
     grid-template-columns: 65px 2fr 1fr 2fr;
@@ -19,8 +19,9 @@
 }
 
 .DropBar{
-    color: white;
-
+    color: rgba(255, 255, 255, 0.45);
+    margin-top: 3%;
+    margin-left: 3%;
     grid-area: dropBar;
 }
 

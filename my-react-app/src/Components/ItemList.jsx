@@ -56,7 +56,7 @@ class ItemList extends React.Component {
         return (
             <>
                 {this.state.items.map(item => (
-                    <ItemDisplay imgSrc={item.imgSrc} iCount={item.iCount} iName={item.iName} />
+                    <ItemDisplay OnClick={() => this.props.OnClick(item.iName)} imgSrc={item.imgSrc} iCount={item.iCount} iName={item.iName} />
                 ))}
 
 
@@ -74,16 +74,18 @@ class ItemList extends React.Component {
             let itemsRef = [];
             let fbRef = new Map();
             let infoSkip = true;
+            var count= 0;
             if (snapshot.exists()) {
+                
 
                 snapshot.forEach(childSnap => {
 
+                    if(count <= 10){
 
                     if (infoSkip) {
                         infoSkip = !infoSkip
                     }
                     else {
-                        let keyName = childSnap.key;
                         let Name = childSnap.val().Name;
 
 
@@ -92,6 +94,9 @@ class ItemList extends React.Component {
                         fbRef.set(`${Name}`, { "Name": Name, "Count": 0 });
 
                     }
+                }
+                count = count +1;
+
 
                 });
                 this.setState({ items: itemsRef })

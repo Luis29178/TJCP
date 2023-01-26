@@ -72,7 +72,7 @@ export class InfoDropBar extends React.Component {
 
                         <div className={this.state.arrow} onClick={this.barInteract.bind(this)}/>
                         <div className={this.state.userList}>
-                            {this.state.Lists.map(List => (<div className="ListItem" onClick={() => this.Select(List).bind(this)}>{List.toString()}</div>))}
+                            {this.state.Lists.map(List => (<div key={List.toString()} className="ListItem" onClick={() => this.Select(List).bind(this)}>{List.toString()}</div>))}
                         </div>
                     </div>
                 </div>

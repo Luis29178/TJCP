@@ -19,7 +19,6 @@ export class ItemInfoDisplay extends React.Component {
                 req: `1 needs to be found in raid for the quest Collector`,
                 locations: `create listing script`
             },
-            ItemName: "Loot Lord"
 
 
         }
@@ -36,7 +35,7 @@ export class ItemInfoDisplay extends React.Component {
             <>
                 <div className="iInfoContainer">
                     <div className="xButton">
-                        <Buttonnew borderStyle="back" onClick={() => { /*window.location.href = "/SelectMode"*/ console.log("return") }}>{'<'}</Buttonnew>
+                        <Buttonnew borderStyle="back" onClick={() => this.props.OnClick().bind(this)}>{'<'}</Buttonnew>
                     </div>
 
                     <div className="DropBar">
@@ -49,7 +48,7 @@ export class ItemInfoDisplay extends React.Component {
                     </div>
 
                     <div className="ItemCount">
-                        <InfoCounter itemName={this.state.ItemName}></InfoCounter>
+                        <InfoCounter itemName={this.props.Name}></InfoCounter>
                     </div>
 
                     <div className="BodyText">

@@ -46,7 +46,7 @@ export class GARBAdvanced extends React.Component {
 
             <div className="containerA">
                 <div className="xbtn">
-                    <Button onClick={() => { window.location.href = "/" }}
+                    <Button onClick={() => this.props.OnClick().bind(this)}
                         type="button"
                         buttonStyle="btn--x--basic"
                         size="btn--x--basic">{"<"}</Button>

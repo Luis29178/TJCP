@@ -1,8 +1,12 @@
 import { Grid } from "@mui/material";
 import React from "react";
-import ItemBar from "./ItemBar";
+import {ItemBar} from "./ItemBar";
 
 class ItemDisplay extends React.Component {
+    constructor(props){
+        super(props)
+
+    }
 
 
 
@@ -17,7 +21,7 @@ class ItemDisplay extends React.Component {
                         <img  style={itemICO} src={this.props.imgSrc}></img>
                     </Grid>
                     <Grid item xs={10}>
-                        <ItemBar iCount={this.props.iCount} iName={this.props.iName}></ItemBar>
+                        <ItemBar OnClick={() => this.props.OnClick()} iCount={this.props.iCount} iName={this.props.iName}></ItemBar>
                     </Grid>
 
                 </Grid>

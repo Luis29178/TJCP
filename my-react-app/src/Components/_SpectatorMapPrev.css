@@ -13,12 +13,12 @@
 }
 
 .dropDown{
-    height: 50px;
+    height: auto;
     width: auto;
+    color: white;
 
     font-size: 20px;
 
-    background-color: white;
     margin-top: 5%;
     justify-self: center;
 

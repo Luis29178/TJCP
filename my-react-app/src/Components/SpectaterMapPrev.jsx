@@ -1,5 +1,6 @@
 import React from "react";
 import MapCanvas from "./MapCanvas";
+import { SpectDropBar } from "./SpctMatchDropBar";
 
 import "./_SpectatorMapPrev.css"
 
@@ -28,7 +29,7 @@ export class MapPrev extends React.Component {
 
                     </div>
                     <div className="dropDown">
-                        "Spectators recent Maches dd"
+                        <SpectDropBar/>
                     </div>
                 </div>
 

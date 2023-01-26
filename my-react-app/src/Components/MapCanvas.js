@@ -1,15 +1,24 @@
 import { useOnDraw } from "./MapCanvasHook";
-import map from '../Images/custumsmapog.png'
+import Customs from '../Images/custumsmapog.png';
+import Factory from '../Images/factorymap.png';
+import Interchange from '../Images/interchangemap.png';
+import Labs from '../Images/labsmap.png';
+import Lighthouse from '../Images/lighthousemap.png';
+import Reserve from '../Images/reservemap.png';
+import Shoreline from '../Images/shorelinemap.png';
+import Woods from '../Images/woodsmap.png';
 
 import "./_MapCanvas.css"
+
+
 
 const MapCanvas = ({
     width,
     height,
-
-
+    map,
 
 }) => {
+
 
 
     const setCanvasRef = useOnDraw(onDraw, clear);
@@ -43,15 +52,35 @@ const MapCanvas = ({
     }
 
 
+
+    
+
+    var canvasStyle = {
+
+        backgroundImage: `url(${map})`,
+        border: "1px solid black",
+        backgroundSize: "cover",
+    
+    
+    }
+    
+
+
+
+
     return (
-        <>
+    
+     
             <canvas
-                className="mapCan"
+                
+                height={2142}
+                width={4097}
                 style={canvasStyle}
                 ref={setCanvasRef}
 
             />
-        </>
+     
+        
     );
 
 
@@ -60,11 +89,4 @@ const MapCanvas = ({
 
 export default MapCanvas;
 
-var canvasStyle = {
 
-    border: "1px solid black",
-    backgroundImage: `url(${map})`,
-    backgroundSize: "cover",
-
-
-}

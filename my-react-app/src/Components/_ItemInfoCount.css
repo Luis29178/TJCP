@@ -134,7 +134,7 @@
     justify-self: center;
     align-self: center;
 
-    font-size: max(calc(((8vh + 8vw) / 2)));
+    font-size: max(calc(((4vh + 4vw) / 2)));
     color: #ffffff;
 
     
