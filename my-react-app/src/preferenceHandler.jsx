@@ -2,6 +2,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { collection } from 'firebase/firestore';
+import 'firebase/compat/auth';
 
 const config = {
   apiKey: "AIzaSyC4hztlkCki_2pnq93Rgf7cgncHC1V61N0",
@@ -22,16 +23,16 @@ const playerStatusCollection = collection(db, 'Raids/mSUXqyXwthl8Vz0X5atU/player
 const userPreferencesDB = "userPreferences";
 
 
-function readKeybinds() {
-  var user = firebase.auth().currentUser;
-  firebase.firestore().collection(userPreferencesDB).doc(user.uid).get().then((snapshot) => {
-    console.log(snapshot.data())
-  }).catch((e) => console.log(e))
-}
-function updateKeybinds(updated_keyBinds) {
-  var user = firebase.auth().currentUser;
-  firebase.firestore().collection(userPreferencesDB).doc(user.uid).update({ "keyBinds": updated_keyBinds }).then(() => console.log("Edited"));
-}
+  function readKeybinds(){
+    var user = firebase.auth().currentUser;
+    console.log(user)
+    var data
+    return firebase.firestore().collection(userPreferencesDB).doc(user.uid).get()
+  }
+  function updateKeybinds(updated_keyBind){
+    var user = firebase.auth().currentUser;
+    firebase.firestore().collection(userPreferencesDB).doc(user.uid).update(updated_keyBind).then(()=>console.log("Edited"));
+  }
 
 export { readKeybinds, updateKeybinds, playerStatusCollection }
 

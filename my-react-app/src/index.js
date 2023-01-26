@@ -25,12 +25,14 @@ import 'firebase/compat/auth';
 import App from './App'
 
 import { Tags } from './Components/RaidTags';
+import RaidController from './raidController';
 import { GARBAdvanced } from './Components/GARBset';
 import { GarbCircle } from './Components/GarbCircle';
 import { ItemInfoDisplay } from './Components/ItemInfoDisplay';
 import { UserListTrackerPage } from './Components/UserListTrackerPage';
 import { SpectatorSideBar } from './Components/SpectatorSideBar';
 
+export const RaidContext = React.createContext(new RaidController())
 
 const router = createBrowserRouter([
  {

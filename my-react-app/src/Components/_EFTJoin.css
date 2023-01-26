@@ -1,22 +1,21 @@
 .EFTJoin{
     display: grid;
+    grid-auto-flow: row;
     gap: 15px;
-    grid-template-areas: 
-    "x title "
-    "spacer body "
-    "spacer body";
-    grid-template-columns: 65px calc(100% - 65px);
-    grid-template-rows: 65px calc(100% - 65px);
     height: 100vh;
     width: 100vw;
     background: #0c0c0c;
+    align-items: center;
+    justify-content: center;
 
 }
 
 .BackBtn {
+    position: absolute;
     margin-top: 10px;
     margin-left: 10px;
     grid-area: x;
+    align-self: baseline;
 
 }
 

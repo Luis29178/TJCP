@@ -60,3 +60,10 @@
     justify-content: center;
     grid-area: header;
 }
+.bottomF{
+    display: grid;
+    justify-content: center;
+    grid-area: footer;
+    grid-auto-flow: column;
+    gap:20px
+}

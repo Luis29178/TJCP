@@ -19,6 +19,14 @@ const MapCanvas = ({
 
 }) => {
 
+    var canvasStyle = {
+    
+        border: "1px solid black",
+        backgroundImage: `url(${window.localStorage.getItem("raidMap")})`,
+        backgroundSize: "cover",
+        
+        
+    }
 
 
     const setCanvasRef = useOnDraw(onDraw, clear);

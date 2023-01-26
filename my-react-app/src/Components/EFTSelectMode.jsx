@@ -1,12 +1,14 @@
 import { Grid } from "@mui/material";
 import React from "react";
 import { Buttonnew } from "./newButton";
+import 'firebase/compat/auth';
+import { RaidContext } from "..";
 
 
-class SelectMode extends React.Component {
+function SelectMode() {
 
-
-    render() {
+    const value = React.useContext(RaidContext)
+    //console.log(value);
 
         return (
             <div
@@ -28,8 +30,12 @@ class SelectMode extends React.Component {
                     <Buttonnew borderStyle="back" onClick={() => {window.location.href = "/"}}>{'<'}</Buttonnew>
                 </div>
                 <Grid container direction="column" spacing={4} justifyContent =  'center' alignItems="center">
+                    
                     <Grid item xs={12}>
-                        <Buttonnew borderStyle="eft--create" onClick={() => {window.location.href ="/EFT"}}> Create</Buttonnew>
+                        <Buttonnew borderStyle="eft--create" onClick={() =>{ //value.createRaid()
+                            window.location.href ="/EFT"
+                            }}> 
+                            Create</Buttonnew>
 
                     </Grid>
                     <Grid item xs={12}>
@@ -40,11 +46,12 @@ class SelectMode extends React.Component {
                         <Buttonnew borderStyle="eft--spectate" onClick={() => {window.location.href = "/JoinSpectator"}}> Spectate</Buttonnew>
 
                     </Grid>
+                    
                 </Grid>
             </div>
 
         )
-    }
+    
 
 
 

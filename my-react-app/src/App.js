@@ -8,7 +8,7 @@ import {
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import React, { useEffect, useState } from 'react';
-import {readKeybinds, updateKeybinds} from './preferenceHandler';
+import RaidController from './raidController';
 
 function App() {
 
@@ -20,6 +20,8 @@ function App() {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
       setIsSignedIn(!!user);
       var email = user.email;
+      console.log(user)
+      window.localStorage.setItem('uid', user.uid)
       //console.log(user.email);
       //console.log(email == null ? true : false)
       setIsAnon(email == null ? false : true)
@@ -39,8 +41,8 @@ function App() {
         <p>
         {isAnon?  <span> You are a Resigtered User </span> : <span>You are currently a Guest</span> }
         </p>
-        <button onClick={() => readKeybinds()}>Read Keybinds</button>
-        <button onClick={() => updateKeybinds({"Q":'money'})}>Update Keybinds</button>
+        <button onClick={() => RaidController.readKeybinds()}>Read Keybinds</button>
+        <button onClick={() => RaidController.updateKeybinds({"Q":'money'})}>Update Keybinds</button>
         <p> <Link style={{color:"red"}} onClick={() =>firebase.auth().signOut()} > SignOut</Link></p>
       </header>
     </div>

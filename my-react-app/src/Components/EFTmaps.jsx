@@ -13,50 +13,70 @@ import Reserve from '../Images/reservemap.png';
 import Shoreline from '../Images/shorelinemap.png';
 import Woods from '../Images/woodsmap.png';
 import { Grid } from "@mui/material";
+import { Buttonnew } from "./newButton";
+import InputBar from "./InputBar.jsx"
+import RaidController from "../raidController";
 
 class EFTmapsTest extends React.Component {
 
+    //RaidController = React.useContext(RaidContext); 
+
     state = {
         map: '',
+        userName: ""
     }
+
+    Raid = new RaidController();
+    
 
 
     mapChange(_map) {
+        var newMap = "";
         switch (_map) {
             case 1:
-                this.setState({ map: Customs });
+                newMap = Customs;
                 break;
             case 2:
-                this.setState({ map: Factory });
+                newMap = Factory;
                 break;
             case 3:
-                this.setState({ map: Interchange });
+                newMap = Interchange;
                 break;
             case 4:
-                this.setState({ map: Labs });
+                newMap = Labs;
                 break;
             case 5:
-                this.setState({ map: Lighthouse });
+                newMap = Lighthouse;
                 break;
             case 6:
-                this.setState({ map: Reserve });
+                newMap = Reserve;
                 break;
             case 7:
-                this.setState({ map: Shoreline });
+                newMap = Shoreline;
+
                 break;
             case 8:
-                this.setState({ map: Woods });
+                newMap = Woods;
+
                 break;
-            default:
-                this.setState({ map: '' })
+            default :
+            newMap = ""
+
                 break;
         }
+        this.setState({map:newMap})
+        window.localStorage.setItem("raidMap", newMap )
 
+    }
 
+    handleNameChange = (e) =>{
+        this.setState({userName: e.target.value})
+        console.log(e.target.value)
     }
 
     render() {
         return (
+            <>
 
             <div className="eftpage">
 
@@ -88,8 +108,24 @@ class EFTmapsTest extends React.Component {
                     <DropDown ddstyle={"dd--eft--basic"}></DropDown>
                 </div>
 
+                
             </div>
 
+            <div className="bottomF">
+
+                
+            <div className="Prompt">Pick your username</div>
+
+            <InputBar handleChange={this.handleNameChange}></InputBar>
+
+            
+            <Buttonnew borderStyle="join" onClick={(val)=> {this.Raid.createRaid(this.state.userName, this.state.map)}}>Start Raid</Buttonnew>
+            </div>
+
+            
+
+        </>
+    
         );
 
 
