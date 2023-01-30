@@ -11,38 +11,40 @@ import Reserve from '../Images/reservemap.png';
 import Shoreline from '../Images/shorelinemap.png';
 import Woods from '../Images/woodsmap.png';
 import "./_PathPage.css"
+import { RaidTools } from "./RaidTool.jsx";
+import { Buttonnew } from "./newButton.jsx";
 
 
 
 
 class PathPage extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
-        
-        this.state ={
+
+        this.state = {
             height: 1200,
             width: "auto",
             map: ""
         }
-       
 
 
-        
- 
-        
+
+
+
+
     }
 
 
-    
-    
+
+
 
 
 
     render() {
 
-        
 
-        
+
+
         return (
             <>
                 <div className="pathContainer">
@@ -65,11 +67,30 @@ class PathPage extends React.Component {
                             className={"Canvas"}>
                         </MapCanvas>
                     </div>
-                    <div className="pathExtra">wtf
+                    <div className="pathExtra">
+                        <RaidTools>
 
+                        </RaidTools>
                     </div>
                     <div className="pathSideBar">
-                        <SideBar></SideBar>
+                        <SideBar
+                            title={"Path Creator"}
+                            info={"Path Name: Smaple"}
+                            btnGroup={<>
+
+                                <div className="btn1">
+                                    <Buttonnew borderStyle={"ttRaid"} onClick={() => { console.log("to Raid") }}> Take To Raid</Buttonnew>
+                                </div>
+                                <div className="btn2">
+                                    <Buttonnew borderStyle={"save"} onClick={() => { console.log("save") }}> Save</Buttonnew>
+                                </div>
+                                <div className="btn3">
+                                    <Buttonnew borderStyle={"discard"} onClick={() => { console.log("discard") }}> Discard</Buttonnew>
+                                </div>
+                            </>
+                            }>
+
+                        </SideBar>
                     </div>
 
 
@@ -78,12 +99,12 @@ class PathPage extends React.Component {
             </>
         );
     }
-    componentDidMount(){
+    componentDidMount() {
         var elmnt = document.getElementsByClassName("pathMap")[0];
         console.log(elmnt.offsetHeight);
         console.log(elmnt.offsetWidth);
 
-        
+
 
         this.setState({
             height: elmnt.offsetHeight,
@@ -124,7 +145,7 @@ class PathPage extends React.Component {
         console.log(this.props.map);
     }
 
-    
+
 
 
 }

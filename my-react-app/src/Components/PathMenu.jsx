@@ -24,16 +24,7 @@ class PathMenu extends React.Component {
 
                 <div className="SideBarContentBtnGrp">
                     <div className="btnGrouCont">
-
-                        <div className="btn1">
-                            <Buttonnew borderStyle={"ttRaid"} onClick={() => { console.log("to Raid") }}> Take To Raid</Buttonnew>
-                        </div>
-                        <div className="btn2">
-                            <Buttonnew borderStyle={"save"} onClick={() => { console.log("save") }}> Save</Buttonnew>
-                        </div>
-                        <div className="btn3">
-                            <Buttonnew borderStyle={"discard"} onClick={() => { console.log("discard") }}> Discard</Buttonnew>
-                        </div>
+                        {this.props.btnGroup}
                     </div>
                 </div>
             </div>
@@ -44,10 +35,4 @@ class PathMenu extends React.Component {
 
 }
 export default PathMenu;
-var tittel = {
-    fontSize: "30px",
 
-}
-var pathname = {
-    fontSize: "20px",
-}

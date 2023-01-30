@@ -49,7 +49,7 @@ class SideBar extends React.Component {
 
                 <div className={this.state.bar} >
                     <div className={this.state.menuContent}>
-                        <PathMenu title ={"Path Creator"} info={"Path Name: Smaple"}></PathMenu>
+                        <PathMenu title ={this.props.title} info={this.props.info} btnGroup={this.props.btnGroup}></PathMenu>
                     </div>
                     <div className={this.state.btn} onClick={this.barOpen.bind(this)} />
 

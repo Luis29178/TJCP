@@ -31,17 +31,22 @@ export default class RaidController {
       raidID : ""
 
     };
-
+    this.placeLineOnMap = this.placeLineOnMap.bind(this);
     this.createRaid = this.createRaid.bind(this);
     this.joinRaid = this.joinRaid.bind(this);
     this.getPlayerStatusCollection = this.getPlayerStatusCollection.bind(this);
     this.readKeybinds = this.readKeybinds.bind(this);
-    this.updateKeybinds = this.updateKeybinds.bind(this)
-    this.setPlayerInfo = this.setPlayerInfo.bind(this)
+    this.updateKeybinds = this.updateKeybinds.bind(this);
+    this.setPlayerInfo = this.setPlayerInfo.bind(this);
     firebase.initializeApp(this.state.config); 
 
   
   };
+
+  placeLineOnMap = (linePath) =>{
+    var mapStatePath = localStorage.getItem("mapState")
+    firebase.firestore().collection(mapStatePath).doc("DrawnLine").set(linePath)
+  }
 
   placeOnMap = (tagInfo)=>{
     var mapStatePath = localStorage.getItem("mapState")

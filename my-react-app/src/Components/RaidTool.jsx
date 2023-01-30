@@ -11,7 +11,6 @@ export class RaidTools extends React.Component{
         return(
             <>
             <div className="ToolsBorder">
-
             </div>
             <div className="theTool">{this.props.tool}</div>
             </>
