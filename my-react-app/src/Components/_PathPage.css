@@ -73,6 +73,7 @@
     grid-area: users;
 }
 .pathSideBar{
+    z-index: 300;
 
     grid-area: sidebar;
 }

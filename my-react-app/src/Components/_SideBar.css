@@ -1,5 +1,5 @@
 .sbar {
-
+    z-index: 270;
     --bpx: 15px;
     height: 100%;
     width: 40px;
@@ -28,6 +28,7 @@
 }
 
 .sbarOpen {
+    z-index: 270;
     --bpx: 15px;
     height: 100%;
     width: 300px;
