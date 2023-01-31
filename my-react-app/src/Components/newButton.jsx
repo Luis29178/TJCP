@@ -37,7 +37,7 @@ export const Buttonnew = ({
 
 
     return (
-        <div> 
+        <div > 
         
         <button
         className={`${checkborderStyle}--insidenew`}

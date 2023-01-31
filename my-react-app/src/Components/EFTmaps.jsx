@@ -81,7 +81,7 @@ class EFTmapsTest extends React.Component {
             <div className="eftpage">
 
                 <div className="eftxbtn">
-                    <Button onClick={() => { window.location.href = "/" }}
+                    <Button onClick={() => { window.location.href = "/SelectMode" }}
                         type="button"
                         buttonStyle="btn--x--basic"
                         size="btn--x">{"<"}</Button>
@@ -119,7 +119,7 @@ class EFTmapsTest extends React.Component {
             <InputBar handleChange={this.handleNameChange}></InputBar>
 
             
-            <Buttonnew borderStyle="join" onClick={(val)=> {this.Raid.createRaid(this.state.userName, this.state.map)}}>Start Raid</Buttonnew>
+            <Buttonnew borderStyle="join" onClick={(val)=> {this.Raid.createRaid(this.state.userName, this.state.map)}}>Create Raid</Buttonnew>
             </div>
 
             

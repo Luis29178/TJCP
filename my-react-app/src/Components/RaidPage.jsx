@@ -22,6 +22,12 @@ import { GARBpopUp } from "./GarbPopUp";
 
 import { PopUpWindow } from "./PopUpComponent";
 
+import cursor from "./Tags/cursor.png";
+import ImageOnKeyPress from "./ImageOnKeyPress";
+import MapHistory from "./MapHistory";
+import { readKeybinds } from "../preferenceHandler";
+import firebase from 'firebase/compat/app';
+import RaidStateButton from "./raidStateButton";
 
 
 class Raid extends React.Component {
@@ -111,13 +117,11 @@ class Raid extends React.Component {
                         </div>
 
 
-                    </div>
-                    <div className="raidExtra">wtf
-
-                    </div>
-                    <div className="SideBar">
-                        <SideBar></SideBar>
-                    </div>
+            </div>
+            <div className="raidExtra">
+            <MapHistory></MapHistory>
+            <RaidStateButton/>
+            </div>
 
 
 

@@ -45,12 +45,29 @@ export default class RaidController {
 
   placeOnMap = (tagInfo)=>{
     var mapStatePath = localStorage.getItem("mapState")
-    firebase.firestore().collection(mapStatePath).doc().set(tagInfo)
+    var canPlace = localStorage.getItem("raidState")
+    if(canPlace == "1"){
+      firebase.firestore().collection(mapStatePath).doc().set(tagInfo)
+    }else{
+      console.log('RAID NOT STARTED CANT PLACE ANYTHING ON MAP');
+    }
+    
   }
 
   setPlayerInfo = (info) =>{
-   firebase.firestore().collection(localStorage.getItem("raidCol")).doc(localStorage.getItem("playerNumber")).update(info)
+    var canPlace = localStorage.getItem("raidState")
+    if(canPlace == "1"){
+      firebase.firestore().collection(localStorage.getItem("raidCol")).doc(localStorage.getItem("playerNumber")).update(info)
+    }else{
+      console.log('RAID NOT STARTED CANT EDIT PLAYER INFO');
+    }
+   
   }
+
+  changeRaidState = (state) =>{
+    firebase.firestore().collection("Raids").doc(localStorage.getItem("userNames")).update({raidState : state})
+  }
+
  readKeybinds = () => {
     var user = firebase.auth().currentUser;
     firebase.firestore().collection(this.state.userPreferencesDB).doc(user.uid).get().then((snapshot) => {
@@ -78,13 +95,14 @@ export default class RaidController {
     //playerStatusCollection = collection(db, 'Raids/'+ doc.id + '/playerStatus');
 
     console.log(doc.id.slice(0,4))
-    doc.set({leader: user, p1:user, p1_name: username, p2:"", p2_name:"", p3:"", p3_name:"",p4:"", p4_name:"", raid_map: map}).then(async ()=>{
+    doc.set({leader: user, p1:user, p1_name: username, p2:"", p2_name:"", p3:"", p3_name:"",p4:"", p4_name:"", raid_map: map, raidState : "0"}).then(async ()=>{
       window.localStorage.setItem("joinCode", doc.id.slice(0,4));
       window.localStorage.setItem("raidCol", 'Raids/'+ doc.id + '/playerStatus');
       window.localStorage.setItem("mapState", 'Raids/'+ doc.id + '/mapState');
       window.localStorage.setItem("userNames", doc.id);
       window.localStorage.setItem("playerNumber", "1");
       window.localStorage.setItem("raidLeader", user )
+      window.localStorage.setItem("raidState", "0" )
 
       await firebase.firestore().collection('Raids/'+ doc.id + '/playerStatus').doc("1").set(
         { ammo : 3, armor: 3, health:3}
@@ -124,6 +142,7 @@ export default class RaidController {
         window.localStorage.setItem("mapState", 'Raids/'+ docID + '/mapState');
         window.localStorage.setItem("raidMap", raidState.raid_map )
         window.localStorage.setItem("raidLeader", raidState.leader )
+        window.localStorage.setItem("raidState", raidState.raidState )
         //window.localStorage.setItem("mapState", 'Raids/'+ docID + '/mapState');
         
         console.log("status");
