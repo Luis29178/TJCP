@@ -13,12 +13,14 @@ import redlight from './Tags/red_light.png';
 const ImageOnKeyPress = (props) => {
   const [showImage, setShowImage] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [mount, setMount] = useState(true);
   useEffect(() => {
-      const keyDownHandler = (e) => {
-          //if (e.key === 'w') {
-            //  setShowImage(true);
-          //}
-      };
+    const keyDownHandler = (e) => {
+      if (e.key === 't') {
+          setShowImage(!showImage);
+      }
+      setMount(!mount);
+  };
 
       document.addEventListener('keydown', keyDownHandler);
 
@@ -28,6 +30,9 @@ const ImageOnKeyPress = (props) => {
   }, [showImage]);
 
   useEffect(() => {
+    if (!mount) {
+      return;
+    }
     const updatePosition = (e) => {
       setPosition({
         x: e.clientX,
