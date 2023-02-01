@@ -36,14 +36,6 @@ const MapCanvas = ({
         drawLine(prevPoint, point, ctx, '#000000', 5);
     }
 
-    function handleClearKey(event){
-        var key = event.key;
-        console.log("You pressed a key: " + key);
-
-    
-    }
-
-
     function clear(ctx) {
         
         ctx.clearRect(0, 0, width, height)
@@ -89,7 +81,7 @@ const MapCanvas = ({
     
      
             <canvas
-                onKeyDown={(event) => handleClearKey(event).bind(this)}
+                tabIndex="0"
                 height={2142}
                 width={4097}
                 style={canvasStyle}

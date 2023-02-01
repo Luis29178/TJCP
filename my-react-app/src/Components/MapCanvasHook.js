@@ -6,7 +6,7 @@ import { RaidContext } from "..";
 
 var prevduple = true;
 
-export function useOnDraw(onDraw, clearKey) {
+export function useOnDraw(onDraw, clear) {
 
     const RaidController = React.useContext(RaidContext);
     var line = [];
@@ -51,7 +51,7 @@ export function useOnDraw(onDraw, clearKey) {
             canRef.current.removeEventListener("mousedown", mouseDownListenerRef.current);
             canRef.current.removeEventListener("mouseup", mouseUpListenerRef.current);
             canRef.current.removeEventListener("mousemove", mouseMoveListenerRef.current);
-            canRef.current.removeEventListener("clearkey", handleClearKeyRef.current);
+            canRef.current.removeEventListener("keydown", handleClearKeyRef.current);
 
         }
 
@@ -72,7 +72,7 @@ export function useOnDraw(onDraw, clearKey) {
             console.log(`you pressed: ${key}`)
         }
         handleClearKeyRef.current = handleClearKey;
-        window.addEventListener("clearkey", handleClearKey);
+        window.addEventListener("keydown", handleClearKey);
 
     
     }
