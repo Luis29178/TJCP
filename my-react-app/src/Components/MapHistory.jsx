@@ -50,21 +50,10 @@ function MapHistory(){
     }
 
     function placeTag(){
-        RaidController.placeOnMap({
-            player: playerNumber,
-            type: "tag",
-            post: "200,453",
-            tag : 2,
-            timestamp:Date.now()
-        })
+        RaidController.placeTagOnMap(5,"200,453")
     }
     function placePath(){
-        RaidController.placeOnMap({
-            player: playerNumber,
-            type: "path",
-            path: ["200,200", "202,203"],
-            timestamp:Date.now()
-        })
+        RaidController.placePathOnMap(["200,200", "202,203"])
     }
 
     return (<div id="hist" style={{overflowY: 'scroll',height: "300px"}}> 

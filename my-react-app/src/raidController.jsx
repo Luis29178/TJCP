@@ -43,16 +43,49 @@ export default class RaidController {
   
   };
 
-  placeOnMap = (tagInfo)=>{
+  placeTagOnMap =(tagID, point) => {
     var mapStatePath = localStorage.getItem("mapState")
     var canPlace = localStorage.getItem("raidState")
-    if(canPlace == "1"){
-      firebase.firestore().collection(mapStatePath).doc().set(tagInfo)
-    }else{
-      console.log('RAID NOT STARTED CANT PLACE ANYTHING ON MAP');
-    }
-    
+    var playerNumber = localStorage.getItem("playerNumber");
+
+    var tagState = {
+      player: playerNumber,
+      type: "tag",
+      point: point,
+      tag : tagID,
+      timestamp:Date.now()
   }
+
+  if(canPlace == "1"){
+    firebase.firestore().collection(mapStatePath).doc().set(tagState)
+  }else{
+    console.log('RAID NOT STARTED CANT PLACE ANYTHING ON MAP');
+  }
+
+
+  }
+
+  placePathOnMap = (pathArray) =>{
+
+    var mapStatePath = localStorage.getItem("mapState")
+    var canPlace = localStorage.getItem("raidState")
+    var playerNumber = localStorage.getItem("playerNumber");
+
+    var tagState = {
+      player: playerNumber,
+      type: "path",
+      point: pathArray,
+      timestamp:Date.now()
+  }
+
+  if(canPlace == "1"){
+    firebase.firestore().collection(mapStatePath).doc().set(tagState)
+  }else{
+    console.log('RAID NOT STARTED CANT PLACE ANYTHING ON MAP');
+  }
+
+  }
+
 
   setPlayerInfo = (info) =>{
     var canPlace = localStorage.getItem("raidState")
