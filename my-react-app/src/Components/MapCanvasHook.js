@@ -5,15 +5,18 @@ import { RaidContext } from "..";
 
 
 var prevduple = true;
+var lineRef = [];
 
-export function useOnDraw(onDraw, clear) {
+export function useOnDraw(onDraw, clear, clearKey) {
 
     const RaidController = React.useContext(RaidContext);
-    var line = [];
+
 
     const canRef = useRef(null);
 
     const isDrawingRef = useRef(false);
+
+    var line = [];
 
 
 
@@ -26,16 +29,60 @@ export function useOnDraw(onDraw, clear) {
     const prevPointRef = useRef(null);
 
     function UploadPath() {
-        
-        if (prevduple) {
-            var templine = line;
+
+        function retunComp() {
+
+            if (line.length === lineRef.length) {
+
+                for (let index = 0; index < line.length; index++) {
+                    const lineElement = line[index];
+                    const lineRefElement = lineRef[index];
+
+                    if (lineElement[0] === lineRefElement[0]) {
+                        if (lineElement[1] !== lineRefElement[1]) {
+                            return true;
+                        }
+
+                    }
+                    else {
+                        return true;
+                    }
+
+
+                }
+                return false;
+
+
+
+            }
+            return true;
+        }
+
+        var comp = retunComp()
+
+        if (comp) {
+            lineRef = [...line];
             console.log(line.length);
-            line = [];
 
+            line = []
+
+
+
+
+            RaidController.placeLineOnMap({ lineRef });
+        } else {
+
+        }
+
+    }
+
+    function ClearMap() {
+
+
+        if (prevduple) {
             prevduple = !prevduple;
-
-            RaidController.placeLineOnMap({ templine });
-        }else{
+            RaidController.clearMap();
+        } else {
             prevduple = !prevduple
         }
 
@@ -63,18 +110,19 @@ export function useOnDraw(onDraw, clear) {
 
     }
 
-    function inithandleClearKey(){
+    function inithandleClearKey() {
         const handleClearKey = (e) => {
             var key = e.key;
             const ctx = canRef.current.getContext('2d');
-            if (key === "k") clear(ctx);
-
-            console.log(`you pressed: ${key}`)
+            if (key === clearKey) {
+                clear(ctx);
+                ClearMap();
+            }
         }
         handleClearKeyRef.current = handleClearKey;
         window.addEventListener("keydown", handleClearKey);
 
-    
+
     }
 
 
@@ -107,6 +155,11 @@ export function useOnDraw(onDraw, clear) {
         const mdListener = () => {
 
             isDrawingRef.current = true;
+
+            if (line.length > 0) {
+                line = []
+
+            }
 
         }
         mouseDownListenerRef.current = mdListener;
