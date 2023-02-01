@@ -45,7 +45,7 @@ export default class RaidController {
 
   placeLineOnMap = (linePath) =>{
     var mapStatePath = localStorage.getItem("mapState")
-    firebase.firestore().collection(mapStatePath).doc("DrawnLine").set(linePath)
+    firebase.firestore().collection(mapStatePath).doc(`Line-${Date.now()}`).set(linePath)
   }
 
   placeOnMap = (tagInfo)=>{
@@ -137,7 +137,7 @@ export default class RaidController {
 
         var placed = false
 
-        if(docSnap.docs[0].data().p1 == "" && !placed){
+        if(docSnap.docs[0].data().p1 === "" && !placed){
           console.log("Position 1 FREE")
           placed = true;
           this.state.playerNumber = 1
@@ -150,7 +150,7 @@ export default class RaidController {
         }else{
           console.log("Position 1 FULL")
         }
-        if(docSnap.docs[0].data().p2 == "" && !placed){
+        if(docSnap.docs[0].data().p2 === "" && !placed){
           console.log("Position 2 FREE")
           placed = true;
           this.state.playerNumber = 2
@@ -160,7 +160,7 @@ export default class RaidController {
 
 
         }
-        if(docSnap.docs[0].data().p3 == "" && !placed){
+        if(docSnap.docs[0].data().p3 === "" && !placed){
           console.log("Position 3 FREE")
           placed = true;
           this.state.playerNumber = 3
@@ -170,7 +170,7 @@ export default class RaidController {
           
 
         }
-        if(docSnap.docs[0].data().p4 == "" && !placed){
+        if(docSnap.docs[0].data().p4 === "" && !placed){
           console.log("Position 4 FREE")
           placed = true;
           this.state.playerNumber = 4

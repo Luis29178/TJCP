@@ -68,7 +68,10 @@ class PathPage extends React.Component {
                         </MapCanvas>
                     </div>
                     <div className="pathExtra">
-                        <RaidTools>
+                        <RaidTools tool = {<Tags style={"raid--tg--basic"} size={"raid--tg-medium"}>
+
+
+</Tags>}>
 
                         </RaidTools>
                     </div>

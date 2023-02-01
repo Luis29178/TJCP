@@ -2,11 +2,11 @@ import React, { useEffect, useRef } from 'react'
 
 
 import { RaidContext } from "..";
-import firebase from 'firebase/compat/app';
-import { collection, query, orderBy } from 'firebase/firestore';
 
 
-export function useOnDraw(onDraw, clear) {
+var prevduple = true;
+
+export function useOnDraw(onDraw, clearKey) {
 
     const RaidController = React.useContext(RaidContext);
     var line = [];
@@ -21,17 +21,26 @@ export function useOnDraw(onDraw, clear) {
     const mouseMoveListenerRef = useRef(null);
     const mouseUpListenerRef = useRef(null);
     const mouseDownListenerRef = useRef(null);
+    const handleClearKeyRef = useRef(null);
 
     const prevPointRef = useRef(null);
 
-    function UploadPath(){
-        var templine = line
-        console.log(line.length)
-        line = [];
-
-        RaidController.placeLineOnMap({templine});
+    function UploadPath() {
         
+        if (prevduple) {
+            var templine = line;
+            console.log(line.length);
+            line = [];
+
+            prevduple = !prevduple;
+
+            RaidController.placeLineOnMap({ templine });
+        }else{
+            prevduple = !prevduple
+        }
+
     }
+
 
 
     function setCanvasRef(ref) {
@@ -40,6 +49,9 @@ export function useOnDraw(onDraw, clear) {
         if (canRef.current) {
 
             canRef.current.removeEventListener("mousedown", mouseDownListenerRef.current);
+            canRef.current.removeEventListener("mouseup", mouseUpListenerRef.current);
+            canRef.current.removeEventListener("mousemove", mouseMoveListenerRef.current);
+            canRef.current.removeEventListener("clearkey", handleClearKeyRef.current);
 
         }
 
@@ -47,7 +59,22 @@ export function useOnDraw(onDraw, clear) {
         initMouseMoveListener();
         initMouseDownListener();
         initMouseuUpListener();
+        inithandleClearKey();
 
+    }
+
+    function inithandleClearKey(){
+        const handleClearKey = (e) => {
+            var key = e.key;
+            const ctx = canRef.current.getContext('2d');
+            if (key === "k") clear(ctx);
+
+            console.log(`you pressed: ${key}`)
+        }
+        handleClearKeyRef.current = handleClearKey;
+        window.addEventListener("clearkey", handleClearKey);
+
+    
     }
 
 
@@ -62,7 +89,7 @@ export function useOnDraw(onDraw, clear) {
                 if (onDraw) onDraw(ctx, point, prevPointRef.current);
                 prevPointRef.current = point;
 
-                
+
                 line.push(point);
 
             }
@@ -95,18 +122,16 @@ export function useOnDraw(onDraw, clear) {
 
             isDrawingRef.current = false;
             prevPointRef.current = null;
-            const ctx = canRef.current.getContext('2d');
-            if (clear) clear(ctx);
             UploadPath();
 
 
 
         }
 
-        
+
         mouseUpListenerRef.current = muListener;
         window.addEventListener("mouseup", muListener);
-        
+
 
 
     }
