@@ -56,6 +56,8 @@ class Raid extends React.Component {
     }
 
     popUpStateClose = () =>{
+
+        
         this.setState({
             GarbState:false,
             garbClass:"GARBpopUpClosed"
