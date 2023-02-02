@@ -12,7 +12,7 @@ import {useDrag} from "react-use-gesture"
 import { useEffect, useState, useRef} from 'react';
 import { red } from '@mui/material/colors';
 import RaidTagKeybinds from './RaidTagKeybinds';
-
+import RaidController from '../raidController';
 
 const Styles = [
     "raid--tg--basic",
@@ -208,6 +208,24 @@ export const Tags = ({
     const toggleDiv9 = () => {
         skullPos8.x.set(0);
         skullPos8.y.set(0);
+    }
+
+    function placeTag(){
+        RaidController.placeOnMap({
+            player: playerNumber,
+            type: "tag",
+            post: "200,453",
+            tag : 2,
+            timestamp:Date.now()
+        })
+    }
+    function placePath(){
+        RaidController.placeOnMap({
+            player: playerNumber,
+            type: "path",
+            path: ["200,200", "202,203"],
+            timestamp:Date.now()
+        })
     }
 
     return (
