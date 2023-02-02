@@ -176,39 +176,39 @@ export const Tags = ({
 }
 
 
-const toggleDiv2 = () => {
-    skullPos1.x.set(0);
-    skullPos1.y.set(0);
-}
-const toggleDiv3 = () => {
-    skullPos2.x.set(0);
-    skullPos2.y.set(0);
-}
-const toggleDiv4 = () => {
-    skullPos3.x.set(0);
-    skullPos3.y.set(0);
-}
-const toggleDiv5 = () => {
-    skullPos4.x.set(0);
-    skullPos4.y.set(0);
-}
-const toggleDiv6 = () => {
-    skullPos5.x.set(0);
-    skullPos5.y.set(0);
-}
-const toggleDiv7 = () => {
-    skullPos6.x.set(0);
-    skullPos6.y.set(0);
-}
-const toggleDiv8 = () => {
-    skullPos7.x.set(0);
-    skullPos7.y.set(0);
-}
+    const toggleDiv2 = () => {
+        skullPos1.x.set(0);
+        skullPos1.y.set(0);
+    }
+    const toggleDiv3 = () => {
+        skullPos2.x.set(0);
+        skullPos2.y.set(0);
+    }
+    const toggleDiv4 = () => {
+        skullPos3.x.set(0);
+        skullPos3.y.set(0);
+    }
+    const toggleDiv5 = () => {
+        skullPos4.x.set(0);
+        skullPos4.y.set(0);
+    }
+    const toggleDiv6 = () => {
+        skullPos5.x.set(0);
+        skullPos5.y.set(0);
+    }
+    const toggleDiv7 = () => {
+        skullPos6.x.set(0);
+        skullPos6.y.set(0);
+    }
+    const toggleDiv8 = () => {
+        skullPos7.x.set(0);
+        skullPos7.y.set(0);
+    }
 
-const toggleDiv9 = () => {
-    skullPos8.x.set(0);
-    skullPos8.y.set(0);
-}
+    const toggleDiv9 = () => {
+        skullPos8.x.set(0);
+        skullPos8.y.set(0);
+    }
 
     return (
 
