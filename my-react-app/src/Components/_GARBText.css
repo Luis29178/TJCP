@@ -1,8 +1,19 @@
+:root{
+
+    --font-size: 450%;
+}
+
+
 .container {
+    
+    position: relative;
+    
     height: auto;
     width: auto;
-    margin-left: 15%;
-    margin-bottom: 20px;
+    margin-left: 50px;
+
+    column-gap: 5px;
+   
     
     display: grid;
     grid-template-columns: 4fr 3fr 2fr 3fr 2fr 3fr;
@@ -13,10 +24,11 @@
 
 .SpacerA {
 
+
     color: white;
     user-select: none;
     justify-self: center;
-    font-size: 10vh;
+    font-size: var(--font-size);
     
 
     grid-area: spacerA;
@@ -27,7 +39,7 @@
     color: white;
     user-select: none;
     justify-self: center;
-    font-size: 10vh;
+    font-size: var(--font-size);
 
     
 
@@ -37,7 +49,8 @@
 
 .garb-user{
     color: white;
-    font-size: 10vh;
+    font-size: var(--font-size);
+    margin-right: 15px;
 
     grid-area: user;
     justify-self: center;
@@ -50,7 +63,7 @@
     color: green;
     user-select: none;
     justify-self: center;
-    font-size: 10vh;
+    font-size: var(--font-size);
 
     grid-area: ammo;
 
@@ -60,7 +73,7 @@
     color: darkgoldenrod;
     user-select: none;
     justify-self: center;
-    font-size: 10vh;
+    font-size: var(--font-size);
 
     grid-area: ammo;
 
@@ -70,7 +83,7 @@
     color: red;
     user-select: none;
     justify-self: center;
-    font-size: 10vh;
+    font-size: var(--font-size);
 
     grid-area: ammo;
 
@@ -80,7 +93,7 @@
     color: black;
     user-select: none;
     justify-self: center;
-    font-size: 10vh;
+    font-size: var(--font-size);
 
     grid-area: ammo;
 
@@ -90,7 +103,7 @@
     color: green;
     user-select: none;
     justify-self: center;
-    font-size: 10vh;
+    font-size: var(--font-size);
 
     grid-area: health;
 
@@ -100,7 +113,7 @@
     color: darkgoldenrod;
     user-select: none;
     justify-self: center;
-    font-size: 10vh;
+    font-size: var(--font-size);
 
     grid-area: health;
 
@@ -110,7 +123,7 @@
     color: red;
     user-select: none;
     justify-self: center;
-    font-size: 10vh;
+    font-size: var(--font-size);
 
 
     grid-area: health;
@@ -121,7 +134,7 @@
     color: black;
     user-select: none;
     justify-self: center;
-    font-size: 10vh;
+    font-size: var(--font-size);
 
     grid-area: health;
 
@@ -131,7 +144,7 @@
     color: green;
     user-select: none;
     justify-self: center;
-    font-size: 10vh;
+    font-size: var(--font-size);
 
     grid-area: armor;
 
@@ -141,7 +154,7 @@
     color: darkgoldenrod;
     user-select: none;
     justify-self: center;
-    font-size: 10vh;
+    font-size: var(--font-size);
 
     grid-area: armor;
 
@@ -151,7 +164,7 @@
     color: red;
     user-select: none;
     justify-self: center;
-    font-size: 10vh;
+    font-size: var(--font-size);
 
     grid-area: armor;
 
@@ -161,7 +174,7 @@
     color: black;
     user-select: none;
     justify-self: center;
-    font-size: 10vh;
+    font-size: var(--font-size);
 
     grid-area: armor;
 
