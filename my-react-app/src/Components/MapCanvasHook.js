@@ -7,6 +7,19 @@ import { RaidContext } from "..";
 var prevduple = true;
 var lineRef = [];
 
+
+    function ClearMap() {
+
+
+        if (prevduple) {
+            prevduple = !prevduple;
+            RaidController.clearMap();
+        } else {
+            prevduple = !prevduple
+        }
+
+    }
+    
 export function useOnDraw(onDraw, clear, clearKey) {
 
     const RaidController = React.useContext(RaidContext);
@@ -76,17 +89,7 @@ export function useOnDraw(onDraw, clear, clearKey) {
 
     }
 
-    function ClearMap() {
 
-
-        if (prevduple) {
-            prevduple = !prevduple;
-            RaidController.clearMap();
-        } else {
-            prevduple = !prevduple
-        }
-
-    }
 
 
 

@@ -8,14 +8,15 @@ border: #161616;
 height: 100%;
 width: 100%;
 
+overflow: hidden;
+
 
 
 }
 
 
 .ToolsBorder{
-    
-
+    position: absolute;
     height: 100%;
     width: 100%;
 
@@ -60,5 +61,7 @@ width: 100%;
 
 .theTool{
 
-    
+    margin-left: 25%;
+    padding-top: 25%;
+
 }
