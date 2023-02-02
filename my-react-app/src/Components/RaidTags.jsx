@@ -131,6 +131,9 @@ export const Tags = ({
 
     useEffect(() => {
         document.addEventListener('keydown', detectKeyDown, true)
+        return () => {
+            document.removeEventListener('keydown', detectKeyDown, true)
+        }
     }, [])
 
     const detectKeyDown = (e) => {
@@ -210,11 +213,13 @@ export const Tags = ({
         skullPos8.y.set(0);
     }
 
+    var playerNumber = localStorage.getItem("playerNumber");
+
     function placeTag(){
         RaidController.placeOnMap({
             player: playerNumber,
             type: "tag",
-            post: "200,453",
+            post: `${skullPos0.x._value},${skullPos0.y._value}`,
             tag : 2,
             timestamp:Date.now()
         })
@@ -227,6 +232,8 @@ export const Tags = ({
             timestamp:Date.now()
         })
     }
+
+
 
     return (
 
@@ -243,10 +250,12 @@ export const Tags = ({
                     <button style={{fontSize: '0.8rem'}} onClick={toggleDiv7}>remove M</button>
                     <button style={{fontSize: '0.8rem'}} onClick={toggleDiv8}>remove G</button>
                     <button style={{fontSize: '0.8rem'}} onClick={toggleDiv9}>remove C</button>
+                    <button style={{ fontSize: '0.8rem' }} onClick={placeTag}>Place Tag </button>
 
 
 
                     <animated.div {...bindSkullPos0()} className='tag' style={{x: skullPos0.x, y: skullPos0.y}}>       
+                    
                     <canvas ref={ref} style=
                         {{
                             backgroundImage:`url(${src})`, backgroundSize: "cover", height: "50px", width: "50px",
@@ -255,8 +264,11 @@ export const Tags = ({
                         onClick={() => {if(image === true){document.getElementById('item0').style.backgroundImage = `url(${images[currentIndex0]})`; currentIndex0 = currentIndex0 + 1; if(currentIndex0 === 5){currentIndex0=0};}}}
                         id="item0"
                         >
-                        </canvas>               
+                            {placeTag}
+                        </canvas>
+               
                         <RaidTagKeybinds keyBind={keyBinds[0]} tagID="tag1"></RaidTagKeybinds>    
+                        
                     </animated.div>
 
 
