@@ -65,6 +65,12 @@ class ItemList extends React.Component {
 
     }
 
+    GetIco(_UID) {
+        var temp = new File(`./ItemImages/${_UID}.png`)
+
+
+    }
+
     getAll() {
         const dbRef = ref(this.state.db);
 
@@ -87,11 +93,14 @@ class ItemList extends React.Component {
                     }
                     else {
                         let Name = childSnap.val().Name;
+                        let UID = childSnap.val().UId;
+
+                        GetIco(UID);
 
 
                         itemsRef.push({ "imgSrc": LL, "iCount": 0, "iName": Name });
 
-                        fbRef.set(`${Name}`, { "Name": Name, "Count": 0 });
+                        fbRef.set(`${Name}`, { "Name": Name, "Count": 0, UID});
 
                     }
                 }
