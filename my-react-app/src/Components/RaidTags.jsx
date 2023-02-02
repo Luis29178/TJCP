@@ -13,6 +13,8 @@ import { useEffect, useState, useRef} from 'react';
 import { red } from '@mui/material/colors';
 import RaidTagKeybinds from './RaidTagKeybinds';
 import RaidController from '../raidController';
+import { RaidContext } from "..";
+
 
 const Styles = [
     "raid--tg--basic",
@@ -31,6 +33,9 @@ export const Tags = ({
 }) => {
 
     
+    const RaidController = React.useContext(RaidContext); 
+    var mapStateDb = localStorage.getItem("mapState");
+    var playerNumber = localStorage.getItem("playerNumber");
     const [image, setImage] = useState(false);
     const ref = useRef()
     const checkbtnStyle =
@@ -219,7 +224,7 @@ export const Tags = ({
         RaidController.placeOnMap({
             player: playerNumber,
             type: "tag",
-            post: `${skullPos0.x._value},${skullPos0.y._value}`,
+            post: `${skullPos0.x},${skullPos0.y}`,
             tag : 2,
             timestamp:Date.now()
         })
