@@ -95,8 +95,7 @@ class ItemList extends React.Component {
                         let Name = childSnap.val().Name;
                         let UID = childSnap.val().UId;
 
-                        GetIco(UID);
-
+                        
 
                         itemsRef.push({ "imgSrc": LL, "iCount": 0, "iName": Name });
 
