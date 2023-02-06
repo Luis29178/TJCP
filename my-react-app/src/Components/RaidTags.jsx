@@ -6,13 +6,10 @@ import loot from './Tags/loot_icon.png';
 import money from './Tags/money_icon.png';
 import redlight from './Tags/red_light.png';
 import './_RaidTags.css'
-//import useSpring, useDrag, animate
 import {useSpring, animated} from "react-spring"
 import {useDrag} from "react-use-gesture"
-import { useEffect, useState, useRef} from 'react';
-import { red } from '@mui/material/colors';
+import { useEffect, useState} from 'react';
 import RaidTagKeybinds from './RaidTagKeybinds';
-import RaidController from '../raidController';
 import { RaidContext } from "..";
 
 
@@ -31,61 +28,39 @@ export const Tags = ({
     tagList,
     keybinds
 }) => {
-
-    
-    const RaidController = React.useContext(RaidContext); 
-    var mapStateDb = localStorage.getItem("mapState");
-    var playerNumber = localStorage.getItem("playerNumber");
+    const images = [tag1, greenlight, money, redlight , loot];
     const [image, setImage] = useState(false);
-    const ref = useRef()
-    const checkbtnStyle =
-        /* checks if passed in _buttonStyle is included in List [Styles] */
-        Styles.includes(style)
-            /* if it exsists set to _buttonStyle  */
-            ? style
-            /* else set to a style in list ie. default */
-            : Styles[0];
-
-
-    const checkbtnSize = Sizes.includes(size) ? size : Sizes[0]
+    const RaidController = React.useContext(RaidContext); 
+    var playerNumber = localStorage.getItem("playerNumber");
+    var mapStateDb = localStorage.getItem("mapState");
     var canvasStyle = {
-
         backgroundImage: `url(${tag1})`,
         backgroundSize: "cover",
         height: "50px",
         width: "50px",
         top: "50px",
         left: "50px"
-        
-
     }
-
     let keyBinds = ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"];
-
     if(keybinds == undefined)
     {
     }
     else{
-
         keyBinds = keybinds;
-
     }
 
+    let currentIndex0 = 1;
     const skullPos0 = useSpring({x: 0, y:0});
-
     const bindSkullPos0 = useDrag((params) => {
-        skullPos0.x.set(params.offset[0]);
-        skullPos0.y.set(params.offset[1]);
-        // document.addEventListener('mouseup', (e) => {
-        //     placeTag0(e);
-        // })
-        // return () => {
-        //     document.removeEventListener('mouseup', placeTag0, true)
-        // }
+        // if component is dragging then set the x and y to the mouse position
+        if(params.active){
+            skullPos0.x.set(params.offset[0]);
+            skullPos0.y.set(params.offset[1]);
+        }
+        else{
+            placeTag0();
+        }
     })
-
-    var playerNumber = localStorage.getItem("playerNumber");
-
     function placeTag0(){
         RaidController.placeOnMap({
             player: playerNumber,
@@ -95,7 +70,25 @@ export const Tags = ({
             timestamp:Date.now()
         })
     }
+    const toggleDiv0 = () => {
+        skullPos0.x = skullPos0.x.set(0);
+        skullPos0.y = skullPos0.y.set(0);
+        // document.getElementById('item0').style.x = "0px";
+        // document.getElementById('item0').style.y = "0px";
+}
 
+    let currentIndex1 = 1;
+    const skullPos1 = useSpring({x: 0, y:0});
+    const bindSkullPos1 = useDrag((params) => {
+        if(params.active){
+            skullPos1.x.set(params.offset[0]);
+            skullPos1.y.set(params.offset[1]);
+        }
+        else{
+            placeTag1();
+        }
+
+    })
     function placeTag1(){
         RaidController.placeOnMap({
             player: playerNumber,
@@ -105,7 +98,22 @@ export const Tags = ({
             timestamp:Date.now()
         })
     }
+    const toggleDiv1 = () => {
+        skullPos1.x.set(0);
+        skullPos1.y.set(0);
+    }
 
+    let currentIndex2 = 1;
+    const skullPos2 = useSpring({x: 0, y:0});
+    const bindSkullPos2 = useDrag((params) => {
+        if(params.active){
+            skullPos2.x.set(params.offset[0]);
+            skullPos2.y.set(params.offset[1]);
+        }
+        else{
+            placeTag2();
+        }
+    })
     function placeTag2(){
         RaidController.placeOnMap({
             player: playerNumber,
@@ -115,7 +123,22 @@ export const Tags = ({
             timestamp:Date.now()
         })
     }
+    const toggleDiv2 = () => {
+        skullPos2.x.set(0);
+        skullPos2.y.set(0);
+    }
 
+    let currentIndex3 = 1;
+    const skullPos3 = useSpring({x: 0, y:0});
+    const bindSkullPos3 = useDrag((params) => {
+        if(params.active){
+            skullPos3.x.set(params.offset[0]);
+            skullPos3.y.set(params.offset[1]);
+        }
+        else{
+            placeTag3();
+        }
+    })
     function placeTag3(){
         RaidController.placeOnMap({
             player: playerNumber,
@@ -125,7 +148,22 @@ export const Tags = ({
             timestamp:Date.now()
         })
     }
+    const toggleDiv3 = () => {
+        skullPos3.x.set(0);
+        skullPos3.y.set(0);
+    }
 
+    let currentIndex4= 1;
+    const skullPos4 = useSpring({x: 0, y:0});
+    const bindSkullPos4 = useDrag((params) => {
+        if(params.active){
+            skullPos4.x.set(params.offset[0]);
+            skullPos4.y.set(params.offset[1]);
+        }
+        else{
+            placeTag4();
+        }
+    })
     function placeTag4(){
         RaidController.placeOnMap({
             player: playerNumber,
@@ -135,7 +173,22 @@ export const Tags = ({
             timestamp:Date.now()
         })
     }
+    const toggleDiv4 = () => {
+        skullPos4.x.set(0);
+        skullPos4.y.set(0);
+    }
 
+    let currentIndex5 = 1;
+    const skullPos5 = useSpring({x: 0, y:0});
+    const bindSkullPos5 = useDrag((params) => {
+        if(params.active){
+            skullPos5.x.set(params.offset[0]);
+            skullPos5.y.set(params.offset[1]);
+        }
+        else{
+            placeTag5();
+        }
+    })
     function placeTag5(){
         RaidController.placeOnMap({
             player: playerNumber,
@@ -145,7 +198,22 @@ export const Tags = ({
             timestamp:Date.now()
         })
     }
+    const toggleDiv5 = () => {
+        skullPos5.x.set(0);
+        skullPos5.y.set(0);
+    }
 
+    let currentIndex6 = 1;
+    const skullPos6 = useSpring({x: 0, y:0});
+    const bindSkullPos6 = useDrag((params) => {
+        if(params.active){
+            skullPos6.x.set(params.offset[0]);
+            skullPos6.y.set(params.offset[1]);
+        }
+        else{
+            placeTag6();
+        }
+    })
     function placeTag6(){
         RaidController.placeOnMap({
             player: playerNumber,
@@ -155,7 +223,22 @@ export const Tags = ({
             timestamp:Date.now()
         })
     }
+    const toggleDiv6 = () => {
+        skullPos6.x.set(0);
+        skullPos6.y.set(0);
+    }
 
+    let currentIndex7 = 1;
+    const skullPos7 = useSpring({x: 0, y:0});
+    const bindSkullPos7 = useDrag((params) => {
+        if(params.active){
+            skullPos7.x.set(params.offset[0]);
+            skullPos7.y.set(params.offset[1]);
+        }
+        else{
+            placeTag7();
+        }
+    })
     function placeTag7(){
         RaidController.placeOnMap({
             player: playerNumber,
@@ -165,7 +248,22 @@ export const Tags = ({
             timestamp:Date.now()
         })
     }
+    const toggleDiv7 = () => {
+        skullPos7.x.set(0);
+        skullPos7.y.set(0);
+    }
 
+    let currentIndex8 = 1;
+    const skullPos8 = useSpring({x: 0, y:0});
+    const bindSkullPos8 = useDrag((params) => {
+        if(params.active){
+            skullPos8.x.set(params.offset[0]);
+            skullPos8.y.set(params.offset[1]);
+        }
+        else{
+            placeTag8();
+        }
+    })
     function placeTag8(){
         RaidController.placeOnMap({
             player: playerNumber,
@@ -175,65 +273,11 @@ export const Tags = ({
             timestamp:Date.now()
         })
     }
+    const toggleDiv8 = () => {
+        skullPos8.x.set(0);
+        skullPos8.y.set(0);
+    }
     
-
-    const skullPos1 = useSpring({x: 0, y:0});
-
-    const bindSkullPos1 = useDrag((params) => {
-        skullPos1.x.set(params.offset[0]);
-        skullPos1.y.set(params.offset[1]);
-
-    })
-
-    const skullPos2 = useSpring({x: 0, y:0});
-
-    const bindSkullPos2 = useDrag((params) => {
-        skullPos2.x.set(params.offset[0]);
-        skullPos2.y.set(params.offset[1]);
-    })
-
-    const skullPos3 = useSpring({x: 0, y:0});
-
-    const bindSkullPos3 = useDrag((params) => {
-        skullPos3.x.set(params.offset[0]);
-        skullPos3.y.set(params.offset[1]);
-    })
-
-    const skullPos4 = useSpring({x: 0, y:0});
-
-    const bindSkullPos4 = useDrag((params) => {
-        skullPos4.x.set(params.offset[0]);
-        skullPos4.y.set(params.offset[1]);
-    })
-
-    const skullPos5 = useSpring({x: 0, y:0});
-
-    const bindSkullPos5 = useDrag((params) => {
-        skullPos5.x.set(params.offset[0]);
-        skullPos5.y.set(params.offset[1]);
-    })
-
-    const skullPos6 = useSpring({x: 0, y:0});
-
-    const bindSkullPos6 = useDrag((params) => {
-        skullPos6.x.set(params.offset[0]);
-        skullPos6.y.set(params.offset[1]);
-    })
-
-    const skullPos7 = useSpring({x: 0, y:0});
-
-    const bindSkullPos7 = useDrag((params) => {
-        skullPos7.x.set(params.offset[0]);
-        skullPos7.y.set(params.offset[1]);
-    })
-
-    const skullPos8 = useSpring({x: 0, y:0});
-
-    const bindSkullPos8 = useDrag((params) => {
-        skullPos8.x.set(params.offset[0]);
-        skullPos8.y.set(params.offset[1]);
-    })
-
     useEffect(() => {
         document.addEventListener('keydown', detectKeyDown, true)
         return () => {
@@ -250,117 +294,38 @@ export const Tags = ({
             const customEvent = new CustomEvent('build', { detail: { keyP: e.key } });
             document.dispatchEvent(customEvent);
         }
-        if(e.key === "w"){
+        else if(e.key === "w"){
             console.log('pressed: W')
             const customEvent = new CustomEvent('build', { detail: { keyP: e.key } });
             document.dispatchEvent(customEvent);
-        }        
-
-
+        }    
+        else if(e.key === " "){  
+            setImage(!image);
+        }
     }
-    const [src, setSrc] = useState(tag1);
-    const images = [tag1, greenlight, money, redlight , loot];
-    let currentIndex0 = 1;
-    let currentIndex1 = 1;
-    let currentIndex2 = 1;
-    let currentIndex3 = 1;
-    let currentIndex4= 1;
-    let currentIndex5 = 1;
-    let currentIndex6 = 1;
-    let currentIndex7 = 1;
-    let currentIndex8 = 1;
-
-    const toggleDiv1 = () => {
-        skullPos0.x = skullPos0.x.set(0);
-        skullPos0.y = skullPos0.y.set(0);
-        skullPos0 = skullPos0.x.set(0);
-        skullPos0 = skullPos0.y.set(0);
-        document.getElementById('item0').style.x = "0px";
-        document.getElementById('item0').style.y = "0px";
-}
-
-
-    const toggleDiv2 = () => {
-        skullPos1.x.set(0);
-        skullPos1.y.set(0);
-    }
-    const toggleDiv3 = () => {
-        skullPos2.x.set(0);
-        skullPos2.y.set(0);
-    }
-    const toggleDiv4 = () => {
-        skullPos3.x.set(0);
-        skullPos3.y.set(0);
-    }
-    const toggleDiv5 = () => {
-        skullPos4.x.set(0);
-        skullPos4.y.set(0);
-    }
-    const toggleDiv6 = () => {
-        skullPos5.x.set(0);
-        skullPos5.y.set(0);
-    }
-    const toggleDiv7 = () => {
-        skullPos6.x.set(0);
-        skullPos6.y.set(0);
-    }
-    const toggleDiv8 = () => {
-        skullPos7.x.set(0);
-        skullPos7.y.set(0);
-    }
-
-    const toggleDiv9 = () => {
-        skullPos8.x.set(0);
-        skullPos8.y.set(0);
-    }
-
-
-
     return (
 
         
             <Grid container spacing={2}>
                 <Grid container item spacing={3}>
-
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv1}>remove L</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv2}>remove T</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv3}>remove Q</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv4}>remove A</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv5}>remove H</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv6}>remove D</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv7}>remove M</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv8}>remove G</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv9}>remove C</button>
-                    <button style={{ fontSize: '0.8rem' }} onClick={placeTag0}>Place Tag </button>
-
-
-
-                    <animated.div {...bindSkullPos0()} className='tag' style={{x: skullPos0.x, y: skullPos0.y}}>
-                        {document.addEventListener('mouseup', (e) => {
-                            placeTag0(e);
-                            document.removeEventListener('mouseup', placeTag0, true)
-                        })}
-
-                    
-                    <canvas ref={ref} style=
-                        {{
-                            backgroundImage:`url(${src})`, backgroundSize: "cover", height: "50px", width: "50px",
-                            top: "50px", left: "50px", zIndex: "10px", backgroundColor: "transparent" 
-                        }} 
-                        onClick={() => {if(image === true){document.getElementById('item0').style.backgroundImage = `url(${images[currentIndex0]})`; currentIndex0 = currentIndex0 + 1; if(currentIndex0 === 5){currentIndex0=0};}}}
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv0}>remove L</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv1}>remove T</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv2}>remove Q</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv3}>remove A</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv4}>remove H</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv5}>remove D</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv6}>remove M</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv7}>remove G</button>
+                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv8}>remove C</button>
+                    <animated.div {...bindSkullPos0()} className='tag' style={{x: skullPos0.x, y: skullPos0.y}}>   
+                    <canvas style={canvasStyle} onClick={() => {if(image === true){document.getElementById('item0').style.backgroundImage = `url(${images[currentIndex0]})`; currentIndex0 = currentIndex0 + 1; if(currentIndex0 === 5){currentIndex0=0};}}}
                         id="item0"
                         >
                         </canvas>
-               
                         <RaidTagKeybinds keyBind={keyBinds[0]} tagID="tag1"></RaidTagKeybinds>    
-                        
                     </animated.div>
-
-
-                    <animated.div {...bindSkullPos1()} className='tag' style={{x: skullPos1.x, y: skullPos1.y}}>  
-                                        
+                    <animated.div {...bindSkullPos1()} className='tag' style={{x: skullPos1.x, y: skullPos1.y}}>                      
                         <canvas style={canvasStyle} onClick={() => {if(image === true){document.getElementById('item1').style.backgroundImage = `url(${images[currentIndex1]})`; currentIndex1 = currentIndex1 + 1; if(currentIndex1 === 5){currentIndex1=0};}}}
- 
                         id="item1"
                         ></canvas>
                         <RaidTagKeybinds keyBind={keyBinds[1]} tagID="tag2" ></RaidTagKeybinds>     
@@ -406,9 +371,5 @@ export const Tags = ({
                     </animated.div>
                 </Grid>
             </Grid>
-           
-       
     );
-
-
 };
