@@ -76,7 +76,105 @@ export const Tags = ({
     const bindSkullPos0 = useDrag((params) => {
         skullPos0.x.set(params.offset[0]);
         skullPos0.y.set(params.offset[1]);
+        // document.addEventListener('mouseup', (e) => {
+        //     placeTag0(e);
+        // })
+        // return () => {
+        //     document.removeEventListener('mouseup', placeTag0, true)
+        // }
     })
+
+    var playerNumber = localStorage.getItem("playerNumber");
+
+    function placeTag0(){
+        RaidController.placeOnMap({
+            player: playerNumber,
+            type: "item0",
+            post: `${skullPos0.x.get()},${skullPos0.y.get()}`,
+            tag : 0,
+            timestamp:Date.now()
+        })
+    }
+
+    function placeTag1(){
+        RaidController.placeOnMap({
+            player: playerNumber,
+            type: "item1",
+            post: `${skullPos1.x.get()},${skullPos1.y.get()}`,
+            tag : 1,
+            timestamp:Date.now()
+        })
+    }
+
+    function placeTag2(){
+        RaidController.placeOnMap({
+            player: playerNumber,
+            type: "item2",
+            post: `${skullPos2.x.get()},${skullPos2.y.get()}`,
+            tag : 2,
+            timestamp:Date.now()
+        })
+    }
+
+    function placeTag3(){
+        RaidController.placeOnMap({
+            player: playerNumber,
+            type: "item3",
+            post: `${skullPos3.x.get()},${skullPos3.y.get()}`,
+            tag : 3,
+            timestamp:Date.now()
+        })
+    }
+
+    function placeTag4(){
+        RaidController.placeOnMap({
+            player: playerNumber,
+            type: "item4",
+            post: `${skullPos4.x.get()},${skullPos4.y.get()}`,
+            tag : 4,
+            timestamp:Date.now()
+        })
+    }
+
+    function placeTag5(){
+        RaidController.placeOnMap({
+            player: playerNumber,
+            type: "item5",
+            post: `${skullPos5.x.get()},${skullPos5.y.get()}`,
+            tag : 5,
+            timestamp:Date.now()
+        })
+    }
+
+    function placeTag6(){
+        RaidController.placeOnMap({
+            player: playerNumber,
+            type: "item6",
+            post: `${skullPos6.x.get()},${skullPos6.y.get()}`,
+            tag : 6,
+            timestamp:Date.now()
+        })
+    }
+
+    function placeTag7(){
+        RaidController.placeOnMap({
+            player: playerNumber,
+            type: "item7",
+            post: `${skullPos7.x.get()},${skullPos7.y.get()}`,
+            tag : 7,
+            timestamp:Date.now()
+        })
+    }
+
+    function placeTag8(){
+        RaidController.placeOnMap({
+            player: playerNumber,
+            type: "item8",
+            post: `${skullPos8.x.get()},${skullPos8.y.get()}`,
+            tag : 8,
+            timestamp:Date.now()
+        })
+    }
     
 
     const skullPos1 = useSpring({x: 0, y:0});
@@ -84,6 +182,7 @@ export const Tags = ({
     const bindSkullPos1 = useDrag((params) => {
         skullPos1.x.set(params.offset[0]);
         skullPos1.y.set(params.offset[1]);
+
     })
 
     const skullPos2 = useSpring({x: 0, y:0});
@@ -157,11 +256,7 @@ export const Tags = ({
             document.dispatchEvent(customEvent);
         }        
 
-        if(e.key === " "){
-            setImage(!image);
-            const customEvent = new CustomEvent('build', { detail: { keyP: e.key } });
-            document.dispatchEvent(customEvent);
-        }
+
     }
     const [src, setSrc] = useState(tag1);
     const images = [tag1, greenlight, money, redlight , loot];
@@ -219,26 +314,6 @@ export const Tags = ({
         skullPos8.y.set(0);
     }
 
-    var playerNumber = localStorage.getItem("playerNumber");
-
-    function placeTag(){
-        RaidController.placeOnMap({
-            player: playerNumber,
-            type: "tag",
-            post: `${skullPos0.x.get()},${skullPos0.y.get()}`,
-            tag : 2,
-            timestamp:Date.now()
-        })
-    }
-    function placePath(){
-        RaidController.placeOnMap({
-            player: playerNumber,
-            type: "path",
-            path: ["200,200", "202,203"],
-            timestamp:Date.now()
-        })
-    }
-
 
 
     return (
@@ -256,11 +331,16 @@ export const Tags = ({
                     <button style={{fontSize: '0.8rem'}} onClick={toggleDiv7}>remove M</button>
                     <button style={{fontSize: '0.8rem'}} onClick={toggleDiv8}>remove G</button>
                     <button style={{fontSize: '0.8rem'}} onClick={toggleDiv9}>remove C</button>
-                    <button style={{ fontSize: '0.8rem' }} onClick={placeTag}>Place Tag </button>
+                    <button style={{ fontSize: '0.8rem' }} onClick={placeTag0}>Place Tag </button>
 
 
 
-                    <animated.div {...bindSkullPos0()} className='tag' style={{x: skullPos0.x, y: skullPos0.y}}>       
+                    <animated.div {...bindSkullPos0()} className='tag' style={{x: skullPos0.x, y: skullPos0.y}}>
+                        {document.addEventListener('mouseup', (e) => {
+                            placeTag0(e);
+                            document.removeEventListener('mouseup', placeTag0, true)
+                        })}
+
                     
                     <canvas ref={ref} style=
                         {{
@@ -270,7 +350,6 @@ export const Tags = ({
                         onClick={() => {if(image === true){document.getElementById('item0').style.backgroundImage = `url(${images[currentIndex0]})`; currentIndex0 = currentIndex0 + 1; if(currentIndex0 === 5){currentIndex0=0};}}}
                         id="item0"
                         >
-                            {placeTag}
                         </canvas>
                
                         <RaidTagKeybinds keyBind={keyBinds[0]} tagID="tag1"></RaidTagKeybinds>    
@@ -278,7 +357,8 @@ export const Tags = ({
                     </animated.div>
 
 
-                    <animated.div {...bindSkullPos1()} className='tag' style={{x: skullPos1.x, y: skullPos1.y}}>                      
+                    <animated.div {...bindSkullPos1()} className='tag' style={{x: skullPos1.x, y: skullPos1.y}}>  
+                                        
                         <canvas style={canvasStyle} onClick={() => {if(image === true){document.getElementById('item1').style.backgroundImage = `url(${images[currentIndex1]})`; currentIndex1 = currentIndex1 + 1; if(currentIndex1 === 5){currentIndex1=0};}}}
  
                         id="item1"
