@@ -77,6 +77,7 @@ export const Tags = ({
         skullPos0.x.set(params.offset[0]);
         skullPos0.y.set(params.offset[1]);
     })
+    
 
     const skullPos1 = useSpring({x: 0, y:0});
 
@@ -224,7 +225,7 @@ export const Tags = ({
         RaidController.placeOnMap({
             player: playerNumber,
             type: "tag",
-            post: `${skullPos0.x},${skullPos0.y}`,
+            post: `${skullPos0.x.get()},${skullPos0.y.get()}`,
             tag : 2,
             timestamp:Date.now()
         })
