@@ -15,15 +15,12 @@ class RaidMap extends React.Component{
 
         this.changeCursor = this.changeCursor.bind(this);
 
-        document.addEventListener('build', function({ detail }) {
-            let changeCursor = cursor;
-            switch(detail.tag){
-                case "tag1":   
-                    changeCursor = this.state.cursor === cursor? "wait" : cursor;
-                    break;
-                case "tag2":
-                    changeCursor = this.state.cursor === cursor2? "wait" : cursor2;
-                    break;
+        document.addEventListener('ActivateKeyBind', function({ detail }) {
+            
+            let changeCursor = "wait";
+
+            if(this.state.cursor != detail.tagImg){
+                changeCursor = detail.tagImg;
             }
 
             this.setState(
