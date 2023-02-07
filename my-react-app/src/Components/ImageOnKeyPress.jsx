@@ -32,9 +32,6 @@ const ImageOnKeyPress = () => {
 
 
   useEffect(() => {
-    if (!mount) {
-      return;
-    }
     const updatePosition = (e) => {
       setPosition({
         x: e.clientX,
