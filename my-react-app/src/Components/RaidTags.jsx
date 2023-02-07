@@ -370,15 +370,6 @@ export const Tags = ({
                        <RaidTagKeybinds keyBind={keyBinds[8]} tagID="tag9"></RaidTagKeybinds>    
                     </animated.div>
                 </Grid>
-                <button style={{fontSize: '0.8rem'}} onClick={toggleDiv1}>remove Q</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv2}>remove W</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv3}>remove E</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv4}>remove A</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv5}>remove S</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv6}>remove D</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv7}>remove Z</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv8}>remove X</button>
-                    <button style={{fontSize: '0.8rem'}} onClick={toggleDiv9}>remove C</button>
             </Grid>
     );
 };
