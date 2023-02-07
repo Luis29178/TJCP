@@ -15,7 +15,7 @@ class RaidTagKeybinds extends React.Component{
         }
         this.keybindClick = this.keybindClick.bind(this);
 
-        console.log(this.props.tagImg);
+        //console.log(this.props.tagImg);
 
         document.addEventListener('keyBindEditing', function({ detail }) {
             this.setState({editingKeybind: detail.key})

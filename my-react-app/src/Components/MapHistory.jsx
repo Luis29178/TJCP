@@ -19,8 +19,8 @@ function MapHistory(){
 
              var doc = snapshot.docs;
              setMapHist(doc)
-             doc.map(info => console.log(info.id))
-             const event = new CustomEvent('mapStateUpdated', {state: doc});
+             //doc.map(info => console.log(info.id))
+             const event = new CustomEvent('mapStateUpdated', {detail: {mapState : doc}});
              document.dispatchEvent(event);
 
              //console.log(doc[0].data().player)

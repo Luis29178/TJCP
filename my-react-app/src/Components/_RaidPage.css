@@ -37,8 +37,8 @@
     padding-top: 40px;
 }
 .raidMap{
-    margin-top:25px;
-    margin-right: 25px;
+    /* margin-top:25px;
+    margin-right: 25px; */
     position:relative;
     left: 265px;
     float: left;
