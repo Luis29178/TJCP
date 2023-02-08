@@ -10,9 +10,6 @@ import 'firebase/compat/firestore';
 import ItemDB from './ItemImages/UidCorr.json'
 import corr from './ItemImages/correlation.json'
 
-import { ref, set, get, update, remove, child, onValue } from "firebase/database"
-
-
 const firebaseConfig = {
     apiKey: "AIzaSyC4hztlkCki_2pnq93Rgf7cgncHC1V61N0",
     authDomain: "capstone-eeab2.firebaseapp.com",
@@ -71,18 +68,12 @@ class ItemList extends React.Component {
 
     }
 
-    GetIco(_UID) {
-        var temp = new File(`./ItemImages/${_UID}.png`)
-
-
-    }
-
     getAllLocal() {
 
         let itemsRef = [];
         let namebank = corr
         var counter = 0
-        var limit = 10
+        var limit = 9000
 
 
 
@@ -127,53 +118,53 @@ class ItemList extends React.Component {
 
 
     }
-
-    getAll() {
-        const dbRef = ref(this.state.db);
-
-
-
-        get(child(dbRef, "/")).then((snapshot) => {
-            let itemsRef = [];
-            let fbRef = new Map();
-            let infoSkip = true;
-            var count = 0;
-            if (snapshot.exists()) {
-
-
-                snapshot.forEach(childSnap => {
-
-                    if (count <= 10) {
-
-                        if (infoSkip) {
-                            infoSkip = !infoSkip
-                        }
-                        else {
-                            let Name = childSnap.val().Name;
-                            let UID = childSnap.val().UId;
+    // depreciated Function pulling from Firebase
+    // getAll() {
+    //     const dbRef = ref(this.state.db);
 
 
 
-                            itemsRef.push({ "imgSrc": LL, "iCount": 0, "iName": Name });
-
-                            fbRef.set(`${Name}`, { "Name": Name, "Count": 0, UID });
-
-                        }
-                    }
-                    count = count + 1;
-
-
-                });
-                this.setState({ items: itemsRef })
-                this.setState({ fireBaseRef: fbRef })
-
-            }
+    //     get(child(dbRef, "/")).then((snapshot) => {
+    //         let itemsRef = [];
+    //         let fbRef = new Map();
+    //         let infoSkip = true;
+    //         var count = 0;
+    //         if (snapshot.exists()) {
 
 
-        });
+    //             snapshot.forEach(childSnap => {
+
+    //                 if (count <= 10) {
+
+    //                     if (infoSkip) {
+    //                         infoSkip = !infoSkip
+    //                     }
+    //                     else {
+    //                         let Name = childSnap.val().Name;
+    //                         let UID = childSnap.val().UId;
 
 
-    }
+
+    //                         itemsRef.push({ "imgSrc": LL, "iCount": 0, "iName": Name });
+
+    //                         fbRef.set(`${Name}`, { "Name": Name, "Count": 0, UID });
+
+    //                     }
+    //                 }
+    //                 count = count + 1;
+
+
+    //             });
+    //             this.setState({ items: itemsRef })
+    //             this.setState({ fireBaseRef: fbRef })
+
+    //         }
+
+
+    //     });
+
+
+    // }
 
 
 
