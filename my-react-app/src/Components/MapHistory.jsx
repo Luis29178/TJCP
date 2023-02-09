@@ -15,6 +15,12 @@ function MapHistory(){
 
     useEffect(() => {
 
+        document.addEventListener('placeTagOnMap', function({ detail }) {
+            console.log("Place tag on map event received");
+            placeTag(detail.tag, detail.x, detail.y)
+        
+        });
+
         const unsubscribe = onSnapshot(infoSnap, async snapshot => {
 
              var doc = snapshot.docs;
@@ -49,11 +55,11 @@ function MapHistory(){
         return string;
     }
 
-    function placeTag(){
-        var x = Math.floor(Math.random() * 500) + 1;
-        var y = Math.floor(Math.random() * 1000) + 1;
-        RaidController.placeTagOnMap(Math.floor(Math.random() * 8),`${x},${y}`)
+    function placeTag(tagID, x, y){
+
+        RaidController.placeTagOnMap(tagID,`${x},${y}`)
     }
+
     function placePath(){
         RaidController.placePathOnMap(["200,200", "202,203"])
     }

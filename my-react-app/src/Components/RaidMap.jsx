@@ -21,13 +21,15 @@ class RaidMap extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            cursor: cursor2,
-            mapState: []
+            cursor: "",
+            mapState: [],
+            currentTagID:undefined,
 
         }
 
         this.changeCursor = this.changeCursor.bind(this);
         this.createMapTag = this.createMapTag.bind(this);
+        this.onClick = this.onClick.bind(this);
 
         document.addEventListener('ActivateKeyBind', function({ detail }) {
             
@@ -38,7 +40,8 @@ class RaidMap extends React.Component{
             }
 
             this.setState(
-                {cursor: changeCursor}
+                {cursor: changeCursor,
+                currentTagID:parseInt(detail.tag.split("tag")[1])}
             )
         }.bind(this));
 
@@ -74,7 +77,7 @@ class RaidMap extends React.Component{
                 tagImg = cursor2;
                 break;
             case 3:
-                tagImg = cursor4;
+                tagImg = cursor3;
                 break;
             case 4:
                 tagImg = cursor4;
@@ -130,10 +133,27 @@ class RaidMap extends React.Component{
 
     
     onClick(event) {
-        const bounds = event.currentTarget.getBoundingClientRect();
-        const x = event.clientX - bounds.left;
-        const y = event.clientY - bounds.top
-        console.log('ON CLICK, clientX:', x)
+
+        if(this.state.currentTagID != undefined){
+            const bounds = event.currentTarget.getBoundingClientRect();
+            console.log(event.currentTarget.scrollTop);
+            const x = (event.clientX - bounds.left) + event.currentTarget.scrollLeft - 30;
+            const y = (event.clientY - bounds.top) + event.currentTarget.scrollTop - 30
+            console.log('ON CLICK, clientX:', x)
+            console.log('ON CLICK, clientY:', y)
+    
+            //console.log('tag id '+ this.state.currentTagID);
+    
+            const cEvent = new CustomEvent('placeTagOnMap', {detail: {tag: this.state.currentTagID, x:y, y:x}});
+            document.dispatchEvent(cEvent);
+
+            this.setState({
+                cursor: "",
+                currentTagID: undefined
+            }
+            )
+        }
+
     }
 
     render(){
