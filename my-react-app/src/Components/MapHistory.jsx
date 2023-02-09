@@ -50,7 +50,9 @@ function MapHistory(){
     }
 
     function placeTag(){
-        RaidController.placeTagOnMap(5,"200,453")
+        var x = Math.floor(Math.random() * 500) + 1;
+        var y = Math.floor(Math.random() * 1000) + 1;
+        RaidController.placeTagOnMap(Math.floor(Math.random() * 8),`${x},${y}`)
     }
     function placePath(){
         RaidController.placePathOnMap(["200,200", "202,203"])
