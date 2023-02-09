@@ -42,6 +42,7 @@ class Raid extends React.Component {
 
 
         }
+        this.popUpStateOpen = this.popUpStateOpen.bind(this)
 
     }
 
@@ -105,16 +106,16 @@ class Raid extends React.Component {
                         <div className="UserWheelGroup">
                             <div className="User1cont">
 
-                                <UserWheel onClick={() => { this.popUpStateOpen().bind(this) }}></UserWheel>
+                                <UserWheel player="1" onClick={() => { this.popUpStateOpen() }}></UserWheel>
                             </div>
                             <div className="User2cont">
-                                <UserWheel onClick={() => { this.popUpStateOpen().bind(this) }}></UserWheel>
+                                <UserWheel player="2" onClick={() => { this.popUpStateOpen() }}></UserWheel>
                             </div>
                             <div className="User3cont">
-                                <UserWheel onClick={() => { this.popUpStateOpen().bind(this) }}></UserWheel>
+                                <UserWheel player="3" onClick={() => { this.popUpStateOpen() }}></UserWheel>
                             </div>
                             <div className="User4cont">
-                                <UserWheel onClick={() => { this.popUpStateOpen().bind(this) }}></UserWheel>
+                                <UserWheel player="4" onClick={() => { this.popUpStateOpen() }}></UserWheel>
                             </div>
 
                         </div>

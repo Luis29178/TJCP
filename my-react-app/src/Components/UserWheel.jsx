@@ -17,9 +17,11 @@ export const UserWheel = ({
     const RaidController = React.useContext(RaidContext); 
     const [playerInfo, setPlayerInfo] = useState([])
     const [playerNames, setPlayerNames] = useState([])
+    
     var raidPath = localStorage.getItem("raidCol");
     var wheelName = localStorage.getItem("userNames");
     var playerNumber = localStorage.getItem("playerNumber");
+
     const [infoSnap, setInfoSnap] = useState(collection(firebase.firestore(), raidPath))
     const [userNamesSnap, setUserNamesSnap] = useState(firebase.firestore().collection("Raids").where(firebase.firestore.FieldPath.documentId(), "==", wheelName)) //collection(firebase.firestore(), 'Raids/'+ "zx14tOGVttsAzbLCCs0A" + '/playerStatus'))
 
@@ -40,6 +42,7 @@ export const UserWheel = ({
              setPlayerInfo([{id:doc.id, data:doc.data()}])
         
         });
+
         const uunsubscribe = onSnapshot(userNamesSnap, async snapshot => {
             console.log("HERE IS THE USERNAME SNAPSHOT");
             var doc = snapshot.docs[0].data();
@@ -47,7 +50,7 @@ export const UserWheel = ({
             var playerName = [];
             detectRaidState(doc.raidState)
             Object.keys(doc).forEach((key, index) => {
-                //console.log(key)
+                console.log(key)
                 switch(String(key)){
                     case "p1_name":
                         if(player == 1){
@@ -118,7 +121,7 @@ export const UserWheel = ({
             
             <div className="ContainerBorder">
                 
-                <div className="Container">
+                <div className="WheelContainer">
                     <div id={"player" + player} className={player == playerNumber? "MyCenterDot" : "CenterDot"}></div>
                     <div className="Sectioner"></div>
                     {
