@@ -15,6 +15,8 @@ class RaidTagKeybinds extends React.Component{
         }
         this.keybindClick = this.keybindClick.bind(this);
 
+        //console.log(this.props.tagImg);
+
         document.addEventListener('keyBindEditing', function({ detail }) {
             this.setState({editingKeybind: detail.key})
 
@@ -73,8 +75,8 @@ class RaidTagKeybinds extends React.Component{
                 
             }else{
                 if(e.key == this.state.currentKeyBind.toLowerCase()){
-                    console.log('clicked: ' + e.key);
-                    const customEvent = new CustomEvent('build', { detail: { tag: this.state.tagID } });
+                    console.log('KeyBind Activated: ' + e.key);
+                    const customEvent = new CustomEvent('ActivateKeyBind', { detail: { tag: this.state.tagID, tagImg: this.props.tagImg } });
                     document.dispatchEvent(customEvent);
                 }
             }
@@ -110,7 +112,7 @@ class RaidTagKeybinds extends React.Component{
 
 
     render(){
-        return <a onClick={this.keybindClick}>
+        return <a onClick={this.keybindClick} id={this.props.tagID}>
 
         <p style={ {color: (this.state.isEditing && this.state.editingKeybind == this.state.currentKeyBind) && "red"}} className='tagbind'>{this.state.currentKeyBindDisplay.toUpperCase()}</p> 
         </a>

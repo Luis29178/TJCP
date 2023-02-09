@@ -19,8 +19,8 @@ function MapHistory(){
 
              var doc = snapshot.docs;
              setMapHist(doc)
-             doc.map(info => console.log(info.id))
-             const event = new CustomEvent('mapStateUpdated', {state: doc});
+             //doc.map(info => console.log(info.id))
+             const event = new CustomEvent('mapStateUpdated', {detail: {mapState : doc}});
              document.dispatchEvent(event);
 
              //console.log(doc[0].data().player)
@@ -50,21 +50,12 @@ function MapHistory(){
     }
 
     function placeTag(){
-        RaidController.placeOnMap({
-            player: playerNumber,
-            type: "tag",
-            post: "200,453",
-            tag : 2,
-            timestamp:Date.now()
-        })
+        var x = Math.floor(Math.random() * 500) + 1;
+        var y = Math.floor(Math.random() * 1000) + 1;
+        RaidController.placeTagOnMap(Math.floor(Math.random() * 8),`${x},${y}`)
     }
     function placePath(){
-        RaidController.placeOnMap({
-            player: playerNumber,
-            type: "path",
-            path: ["200,200", "202,203"],
-            timestamp:Date.now()
-        })
+        RaidController.placePathOnMap(["200,200", "202,203"])
     }
 
     

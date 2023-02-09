@@ -1,6 +1,5 @@
 import { DialogContent, Grid } from '@mui/material';
 import React from 'react'
-import tag1 from './Tags/SkullTag.png';
 import greenlight from './Tags/green_light.png';
 import loot from './Tags/loot_icon.png';
 import money from './Tags/money_icon.png';
@@ -8,9 +7,21 @@ import redlight from './Tags/red_light.png';
 import './_RaidTags.css'
 import {useSpring, animated} from "react-spring"
 import {useDrag} from "react-use-gesture"
-import { useEffect, useState} from 'react';
+import { useEffect, useRef, useState} from 'react';
 import RaidTagKeybinds from './RaidTagKeybinds';
 import { RaidContext } from "..";
+
+// Cursor Tags
+import cursor from "./Tags/cursor.png";
+import cursor1 from "./Tags/cursor1.png";
+import cursor2 from "./Tags/cursor2.png";
+import cursor3 from "./Tags/cursor3.png";
+import cursor4 from "./Tags/cursor4.png";
+import cursor5 from "./Tags/cursor5.png";
+import cursor6 from "./Tags/cursor6.png";
+import cursor7 from "./Tags/cursor7.png";
+import cursor8 from "./Tags/cursor8.png";
+
 
 
 const Styles = [
@@ -28,19 +39,38 @@ export const Tags = ({
     tagList,
     keybinds
 }) => {
-    const images = [tag1, greenlight, money, redlight , loot];
+    const images = [cursor, greenlight, money, redlight , loot];
     const [image, setImage] = useState(false);
+    //const ref = useRef()
+    const checkbtnStyle =
+        /* checks if passed in _buttonStyle is included in List [Styles] */
+        Styles.includes(style)
+            /* if it exsists set to _buttonStyle  */
+            ? style
+            /* else set to a style in list ie. default */
+            : Styles[0];
+
+
+    const checkbtnSize = Sizes.includes(size) ? size : Sizes[0]
+
+    var getTagStyle = (tagID) => {
+        return {
+
+            backgroundImage: `url(${tagID})`,
+            backgroundSize: "cover",
+            height: "50px",
+            width: "50px",
+            top: "50px",
+            left: "50px"
+            
+    
+        }
+    }
+
+
     const RaidController = React.useContext(RaidContext); 
     var playerNumber = localStorage.getItem("playerNumber");
     var mapStateDb = localStorage.getItem("mapState");
-    var canvasStyle = {
-        backgroundImage: `url(${tag1})`,
-        backgroundSize: "cover",
-        height: "50px",
-        width: "50px",
-        top: "50px",
-        left: "50px"
-    }
     let keyBinds = ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"];
     if(keybinds == undefined)
     {
@@ -62,13 +92,7 @@ export const Tags = ({
         }
     })
     function placeTag0(){
-        RaidController.placeOnMap({
-            player: playerNumber,
-            type: "item0",
-            post: `${skullPos0.x.get()},${skullPos0.y.get()}`,
-            tag : 0,
-            timestamp:Date.now()
-        })
+        RaidController.placeTagOnMap(0,`${skullPos0.x.get()},${skullPos0.y.get()}`)
     }
     const toggleDiv0 = () => {
         skullPos0.x = skullPos0.x.set(0);
@@ -89,14 +113,10 @@ export const Tags = ({
         }
 
     })
+
     function placeTag1(){
-        RaidController.placeOnMap({
-            player: playerNumber,
-            type: "item1",
-            post: `${skullPos1.x.get()},${skullPos1.y.get()}`,
-            tag : 1,
-            timestamp:Date.now()
-        })
+        RaidController.placeTagOnMap(1,`${skullPos1.x.get()},${skullPos1.y.get()}`)
+
     }
     const toggleDiv1 = () => {
         skullPos1.x.set(0);
@@ -115,13 +135,7 @@ export const Tags = ({
         }
     })
     function placeTag2(){
-        RaidController.placeOnMap({
-            player: playerNumber,
-            type: "item2",
-            post: `${skullPos2.x.get()},${skullPos2.y.get()}`,
-            tag : 2,
-            timestamp:Date.now()
-        })
+        RaidController.placeTagOnMap(2,`${skullPos2.x.get()},${skullPos2.y.get()}`)
     }
     const toggleDiv2 = () => {
         skullPos2.x.set(0);
@@ -140,13 +154,9 @@ export const Tags = ({
         }
     })
     function placeTag3(){
-        RaidController.placeOnMap({
-            player: playerNumber,
-            type: "item3",
-            post: `${skullPos3.x.get()},${skullPos3.y.get()}`,
-            tag : 3,
-            timestamp:Date.now()
-        })
+
+        RaidController.placeTagOnMap(3,`${skullPos3.x.get()},${skullPos3.y.get()}`)
+
     }
     const toggleDiv3 = () => {
         skullPos3.x.set(0);
@@ -165,13 +175,8 @@ export const Tags = ({
         }
     })
     function placeTag4(){
-        RaidController.placeOnMap({
-            player: playerNumber,
-            type: "item4",
-            post: `${skullPos4.x.get()},${skullPos4.y.get()}`,
-            tag : 4,
-            timestamp:Date.now()
-        })
+        RaidController.placeTagOnMap(4,`${skullPos4.x.get()},${skullPos4.y.get()}`)
+
     }
     const toggleDiv4 = () => {
         skullPos4.x.set(0);
@@ -190,13 +195,8 @@ export const Tags = ({
         }
     })
     function placeTag5(){
-        RaidController.placeOnMap({
-            player: playerNumber,
-            type: "item5",
-            post: `${skullPos5.x.get()},${skullPos5.y.get()}`,
-            tag : 5,
-            timestamp:Date.now()
-        })
+        RaidController.placeTagOnMap(5,`${skullPos5.x.get()},${skullPos5.y.get()}`)
+
     }
     const toggleDiv5 = () => {
         skullPos5.x.set(0);
@@ -215,13 +215,7 @@ export const Tags = ({
         }
     })
     function placeTag6(){
-        RaidController.placeOnMap({
-            player: playerNumber,
-            type: "item6",
-            post: `${skullPos6.x.get()},${skullPos6.y.get()}`,
-            tag : 6,
-            timestamp:Date.now()
-        })
+        RaidController.placeTagOnMap(6,`${skullPos6.x.get()},${skullPos6.y.get()}`)
     }
     const toggleDiv6 = () => {
         skullPos6.x.set(0);
@@ -240,13 +234,8 @@ export const Tags = ({
         }
     })
     function placeTag7(){
-        RaidController.placeOnMap({
-            player: playerNumber,
-            type: "item7",
-            post: `${skullPos7.x.get()},${skullPos7.y.get()}`,
-            tag : 7,
-            timestamp:Date.now()
-        })
+        RaidController.placeTagOnMap(7,`${skullPos7.x.get()},${skullPos7.y.get()}`)
+
     }
     const toggleDiv7 = () => {
         skullPos7.x.set(0);
@@ -265,13 +254,8 @@ export const Tags = ({
         }
     })
     function placeTag8(){
-        RaidController.placeOnMap({
-            player: playerNumber,
-            type: "item8",
-            post: `${skullPos8.x.get()},${skullPos8.y.get()}`,
-            tag : 8,
-            timestamp:Date.now()
-        })
+        RaidController.placeTagOnMap(8,`${skullPos8.x.get()},${skullPos8.y.get()}`)
+
     }
     const toggleDiv8 = () => {
         skullPos8.x.set(0);
@@ -318,56 +302,56 @@ export const Tags = ({
                     <button style={{fontSize: '0.8rem'}} onClick={toggleDiv7}>remove G</button>
                     <button style={{fontSize: '0.8rem'}} onClick={toggleDiv8}>remove C</button>
                     <animated.div {...bindSkullPos0()} className='tag' style={{x: skullPos0.x, y: skullPos0.y}}>   
-                    <canvas style={canvasStyle} onClick={() => {if(image === true){document.getElementById('item0').style.backgroundImage = `url(${images[currentIndex0]})`; currentIndex0 = currentIndex0 + 1; if(currentIndex0 === 5){currentIndex0=0};}}}
+                    <canvas style={getTagStyle(cursor)} onClick={() => {if(image === true){document.getElementById('item0').style.backgroundImage = `url(${images[currentIndex0]})`; currentIndex0 = currentIndex0 + 1; if(currentIndex0 === 5){currentIndex0=0};}}}
                         id="item0"
                         >
                         </canvas>
-                        <RaidTagKeybinds keyBind={keyBinds[0]} tagID="tag1"></RaidTagKeybinds>    
+                        <RaidTagKeybinds keyBind={keyBinds[0]} tagImg={cursor} tagID="tag1"></RaidTagKeybinds>    
                     </animated.div>
                     <animated.div {...bindSkullPos1()} className='tag' style={{x: skullPos1.x, y: skullPos1.y}}>                      
-                        <canvas style={canvasStyle} onClick={() => {if(image === true){document.getElementById('item1').style.backgroundImage = `url(${images[currentIndex1]})`; currentIndex1 = currentIndex1 + 1; if(currentIndex1 === 5){currentIndex1=0};}}}
+                        <canvas style={getTagStyle(cursor1)} onClick={() => {if(image === true){document.getElementById('item1').style.backgroundImage = `url(${images[currentIndex1]})`; currentIndex1 = currentIndex1 + 1; if(currentIndex1 === 5){currentIndex1=0};}}}
                         id="item1"
                         ></canvas>
-                        <RaidTagKeybinds keyBind={keyBinds[1]} tagID="tag2" ></RaidTagKeybinds>     
+                        <RaidTagKeybinds keyBind={keyBinds[1]}  tagImg={cursor1} tagID="tag2" ></RaidTagKeybinds>     
                     </animated.div>
                     <animated.div {...bindSkullPos2()} className='tag' style={{x: skullPos2.x, y: skullPos2.y}}>                      
-                    <canvas style={canvasStyle} onClick={() => {if(image === true){document.getElementById('item2').style.backgroundImage = `url(${images[currentIndex2]})`; currentIndex2 = currentIndex2 + 1;  if(currentIndex2 === 5){currentIndex2=0};}}}
+                    <canvas style={getTagStyle(cursor2)} onClick={() => {if(image === true){document.getElementById('item2').style.backgroundImage = `url(${images[currentIndex2]})`; currentIndex2 = currentIndex2 + 1;  if(currentIndex2 === 5){currentIndex2=0};}}}
                         id="item2"></canvas>
-                        <RaidTagKeybinds keyBind={keyBinds[2]} tagID="tag3"></RaidTagKeybinds>   
+                        <RaidTagKeybinds keyBind={keyBinds[2]}  tagImg={cursor2} tagID="tag3"></RaidTagKeybinds>   
                     </animated.div>
                 </Grid>
                 <Grid container item spacing={3}>
                 <animated.div {...bindSkullPos3()} className='tag' style={{x: skullPos3.x, y: skullPos3.y}}>                      
-                <canvas style={canvasStyle} onClick={() => {if(image === true){document.getElementById('item3').style.backgroundImage = `url(${images[currentIndex3]})`; currentIndex3 = currentIndex3 + 1;  if(currentIndex3 === 5){currentIndex3=0};}}}
+                <canvas style={getTagStyle(cursor3)} onClick={() => {if(image === true){document.getElementById('item3').style.backgroundImage = `url(${images[currentIndex3]})`; currentIndex3 = currentIndex3 + 1;  if(currentIndex3 === 5){currentIndex3=0};}}}
                         id="item3"></canvas>
-                        <RaidTagKeybinds keyBind={keyBinds[3]} tagID="tag4"></RaidTagKeybinds>   
+                        <RaidTagKeybinds keyBind={keyBinds[3]} tagImg={cursor3} tagID="tag4"></RaidTagKeybinds>   
                     </animated.div>
                     <animated.div {...bindSkullPos4()} className='tag' style={{x: skullPos4.x, y: skullPos4.y}}>                      
-                    <canvas style={canvasStyle} onClick={() => {if(image === true){document.getElementById('item4').style.backgroundImage = `url(${images[currentIndex4]})`; currentIndex4 = currentIndex4 + 1;  if(currentIndex4 === 5){currentIndex4=0};}}}
+                    <canvas style={getTagStyle(cursor4)} onClick={() => {if(image === true){document.getElementById('item4').style.backgroundImage = `url(${images[currentIndex4]})`; currentIndex4 = currentIndex4 + 1;  if(currentIndex4 === 5){currentIndex4=0};}}}
                         id="item4"></canvas>
-                        <RaidTagKeybinds keyBind={keyBinds[4]} tagID="tag5"></RaidTagKeybinds>   
+                        <RaidTagKeybinds keyBind={keyBinds[4]} tagImg={cursor4} tagID="tag5"></RaidTagKeybinds>   
                     </animated.div>
                     <animated.div {...bindSkullPos5()} className='tag' style={{x: skullPos5.x, y: skullPos5.y}}>                      
-                    <canvas style={canvasStyle} onClick={() => {if(image === true){document.getElementById('item5').style.backgroundImage = `url(${images[currentIndex5]})`; currentIndex5 = currentIndex5 + 1;  if(currentIndex5 === 5){currentIndex5=0};}}}
+                    <canvas style={getTagStyle(cursor5)} onClick={() => {if(image === true){document.getElementById('item5').style.backgroundImage = `url(${images[currentIndex5]})`; currentIndex5 = currentIndex5 + 1;  if(currentIndex5 === 5){currentIndex5=0};}}}
                         id="item5"></canvas>
-                        <RaidTagKeybinds keyBind={keyBinds[5]} tagID="tag6"></RaidTagKeybinds>    
+                        <RaidTagKeybinds keyBind={keyBinds[5]} tagImg={cursor5} tagID="tag6"></RaidTagKeybinds>    
                     </animated.div>
                 </Grid>
                 <Grid container item spacing={3}>
                 <animated.div {...bindSkullPos6()} className='tag' style={{x: skullPos6.x, y: skullPos6.y}}>                      
-                <canvas style={canvasStyle} onClick={() => {if(image === true){document.getElementById('item6').style.backgroundImage = `url(${images[currentIndex6]})`; currentIndex6 = currentIndex6 + 1;  if(currentIndex6 === 5){currentIndex6=0};}}}
+                <canvas style={getTagStyle(cursor6)} onClick={() => {if(image === true){document.getElementById('item6').style.backgroundImage = `url(${images[currentIndex6]})`; currentIndex6 = currentIndex6 + 1;  if(currentIndex6 === 5){currentIndex6=0};}}}
                         id="item6"></canvas>
-                        <RaidTagKeybinds keyBind={keyBinds[6]} tagID="tag7"></RaidTagKeybinds>   
+                        <RaidTagKeybinds keyBind={keyBinds[6]} tagImg={cursor6} tagID="tag7"></RaidTagKeybinds>   
                     </animated.div>
                     <animated.div {...bindSkullPos7()} className='tag' style={{x: skullPos7.x, y: skullPos7.y}}>                      
-                    <canvas style={canvasStyle} onClick={() => {if(image === true){document.getElementById('item7').style.backgroundImage = `url(${images[currentIndex7]})`; currentIndex7 = currentIndex7 + 1;  if(currentIndex7 === 5){currentIndex7=0};}}}
+                    <canvas style={getTagStyle(cursor7)} onClick={() => {if(image === true){document.getElementById('item7').style.backgroundImage = `url(${images[currentIndex7]})`; currentIndex7 = currentIndex7 + 1;  if(currentIndex7 === 5){currentIndex7=0};}}}
                         id="item7"></canvas>
-                        <RaidTagKeybinds keyBind={keyBinds[7]} tagID="tag8"></RaidTagKeybinds>  
+                        <RaidTagKeybinds keyBind={keyBinds[7]} tagImg={cursor7} tagID="tag8"></RaidTagKeybinds>  
                     </animated.div>
                     <animated.div {...bindSkullPos8()} className='tag' style={{x: skullPos8.x, y: skullPos8.y}}>                      
-                    <canvas style={canvasStyle} onClick={() => {if(image === true){document.getElementById('item8').style.backgroundImage = `url(${images[currentIndex8]})`; currentIndex8 = currentIndex8 + 1;  if(currentIndex8 === 5){currentIndex8=0};}}}
+                    <canvas style={getTagStyle(cursor8)} onClick={() => {if(image === true){document.getElementById('item8').style.backgroundImage = `url(${images[currentIndex8]})`; currentIndex8 = currentIndex8 + 1;  if(currentIndex8 === 5){currentIndex8=0};}}}
                         id="item8"></canvas>
-                       <RaidTagKeybinds keyBind={keyBinds[8]} tagID="tag9"></RaidTagKeybinds>    
+                       <RaidTagKeybinds keyBind={keyBinds[8]} tagImg={cursor8} tagID="tag9"></RaidTagKeybinds>    
                     </animated.div>
                 </Grid>
             </Grid>

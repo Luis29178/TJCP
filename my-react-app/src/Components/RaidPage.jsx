@@ -1,5 +1,6 @@
 import React from "react";
 import "./_RaidPage.css";
+import RaidMap from "./RaidMap";
 import MapCanvas from "./MapCanvas.js";
 import { Tags } from "./RaidTags.jsx";
 import { UserWheel } from "./UserWheel.jsx";
@@ -90,8 +91,8 @@ class Raid extends React.Component {
 
                         </Tags>
                     </div>
-                    {/*<RaidMap />*/}
-                    <div className="raidMap">
+                    <RaidMap />
+                    {/* <div className="raidMap">
 
                         <MapCanvas
                             height={2142}
@@ -99,7 +100,7 @@ class Raid extends React.Component {
                             map={Customs}
                             className={"Canvas"}>
                         </MapCanvas>
-                    </div>
+                    </div> */}
                     <div className="raidUsers">
                         <div className="UserWheelGroup">
                             <div className="User1cont">
