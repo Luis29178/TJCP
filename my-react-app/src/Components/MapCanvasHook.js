@@ -31,6 +31,11 @@ export function useOnDraw(onDraw, clear, clearKey) {
 
     const prevPointRef = useRef(null);
 
+
+
+
+    
+
     function UploadPath() {
 
         function retunComp() {

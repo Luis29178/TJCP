@@ -28,6 +28,15 @@ const MapCanvas = ({
 
     }
 
+    var canvasStyle = {
+
+        backgroundImage: `url(${map})`,
+        border: "1px solid black",
+        backgroundSize: "cover",
+
+
+    }
+
 
     const setCanvasRef = useOnDraw(onDraw, clear, "k");
 
@@ -56,22 +65,16 @@ const MapCanvas = ({
         ctx.arc(start.x, start.y, 2, 0, 2 * Math.PI);
         ctx.fill();
 
-
-
     }
 
+    
+    
 
 
 
 
-    var canvasStyle = {
 
-        backgroundImage: `url(${map})`,
-        border: "1px solid black",
-        backgroundSize: "cover",
-
-
-    }
+    
 
 
 
@@ -81,6 +84,7 @@ const MapCanvas = ({
 
 
         <canvas
+            id="CanvaseToBeSaved"
             tabIndex="0"
             height={2142}
             width={4097}

@@ -31,6 +31,7 @@ export default class RaidController {
       raidID: ""
 
     };
+    this.UploadPath = this.UploadPath.bind(this);
     this.placeLineOnMap = this.placeLineOnMap.bind(this);
     this.createRaid = this.createRaid.bind(this);
     this.joinRaid = this.joinRaid.bind(this);
@@ -42,6 +43,49 @@ export default class RaidController {
 
 
   };
+
+  UploadPath = (imgURI, map) => {
+    var user = firebase.auth().currentUser;
+    var ImgUrl;
+
+    //uploded picture to Firebase Storage
+    var uploadTask = firebase.storage().ref(`${user.uid}/${map}/tempImgpath.png`).put(imgURI);
+    // checks Upload progress
+    uploadTask.on('state_changed', function (snapshot) {
+      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+
+      if (progress < 100) {
+        document.getElementById("PathUploadProgress").innerHTML = `Progress: ${progress}%`
+      } else {
+        document.getElementById("PathUploadProgress").innerHTML = ""
+      }
+
+
+
+    }, 
+    
+    //Error Handling
+    function (error) {
+      alert("Upload Failed!!");
+    },
+    //Submitting the image to firestore
+    function () {
+      uploadTask.snapshot.ref.getDownloadURL.then(function (url) {
+        ImgUrl = url
+      });
+      var input = document.getElementById("PathName")
+
+      firebase.firestore.collection(`${user.uid}/Paths/${input.value}`).set({
+        Name: input.value,
+        URL: ImgUrl
+      })
+      alert("Uploaded Path")
+    })
+
+
+
+
+  }
 
   clearMap = () => {
     var mapStatePath = localStorage.getItem("mapState")
