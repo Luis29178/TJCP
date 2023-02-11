@@ -12,15 +12,10 @@ import Shoreline from '../Images/shorelinemap.png';
 import Woods from '../Images/woodsmap.png';
 import "./_PathPage.css"
 import { RaidTools } from "./RaidTool.jsx";
-import { Buttonnew } from "./newButton.jsx";
 
-import { PathHooks } from "./PathPageHooks.jsx";
 
-import 'firebase/compat/auth';
-import { RaidContext } from "..";
 
-import { initializeApp } from "firebase/app";
-import { getStorage } from "firebase/storage";
+import {PathMenuBtns} from "./PathsBtnGrp.jsx"
 
 
 
@@ -95,18 +90,7 @@ class PathPage extends React.Component {
                                 <input id="PathName" className="PathNameInput"></input>
                                 <div id="PathUploadProgress" className="UploadProgress"></div>
                             </>}
-                            btnGroup={<>
-
-                                <div className="btn1">
-                                    <Buttonnew borderStyle={"ttRaid"} onClick={() => { console.log("to Raid") }}> Take To Raid</Buttonnew>
-                                </div>
-                                <div className="btn2">
-                                    <Buttonnew borderStyle={"save"} onClick={this.UploadPath.bind(this)}> Save</Buttonnew>
-                                </div>
-                                <div className="btn3">
-                                    <Buttonnew borderStyle={"discard"} onClick={() => { console.log("discard") }}> Discard</Buttonnew>
-                                </div>
-                            </>
+                            btnGroup={<></>
                             }>
 
                         </SideBar>
