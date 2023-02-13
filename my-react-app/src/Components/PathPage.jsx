@@ -90,8 +90,7 @@ class PathPage extends React.Component {
                                 <input id="PathName" className="PathNameInput"></input>
                                 <div id="PathUploadProgress" className="UploadProgress"></div>
                             </>}
-                            btnGroup={<></>
-                            }>
+                            btnGroup={<><PathMenuBtns></PathMenuBtns></>}>
 
                         </SideBar>
                     </div>

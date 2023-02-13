@@ -2,6 +2,7 @@
 import React from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
+import "firebase/storage";
 import { collection, doc } from 'firebase/firestore';
 import { renderMatches } from 'react-router-dom';
 import { create } from '@mui/material/styles/createTransitions';
