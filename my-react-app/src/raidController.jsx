@@ -32,6 +32,7 @@ export default class RaidController {
       raidID: ""
 
     };
+    this.getUID = this.getUID.bind(this);
     this.UploadPath = this.UploadPath.bind(this);
     this.placeLineOnMap = this.placeLineOnMap.bind(this);
     this.createRaid = this.createRaid.bind(this);
@@ -45,46 +46,20 @@ export default class RaidController {
 
   };
 
-  UploadPath = (imgURI, map) => {
+
+  getUID = () =>{
     var user = firebase.auth().currentUser;
-    var ImgUrl;
+    return user.uid;
+  }
+  UploadPath = (pathName, ImgUrl, map) => {
+    var user = firebase.auth().currentUser;
 
-    //uploded picture to Firebase Storage
-    var uploadTask = firebase.storage().ref(`${user.uid}/${map}/tempImgpath.png`).put(imgURI);
-    // checks Upload progress
-    uploadTask.on('state_changed', function (snapshot) {
-      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+    var doc =  firebase.firestore().collection(`Users/${user.uid}/Paths/${map}/Saved`).doc(pathName);
 
-      if (progress < 100) {
-        document.getElementById("PathUploadProgress").innerHTML = `Progress: ${progress}%`
-      } else {
-        document.getElementById("PathUploadProgress").innerHTML = ""
-      }
-
-
-
-    }, 
-    
-    //Error Handling
-    function (error) {
-      alert("Upload Failed!!");
-    },
-    //Submitting the image to firestore
-    function () {
-      uploadTask.snapshot.ref.getDownloadURL.then(function (url) {
-        ImgUrl = url
-      });
-      var input = document.getElementById("PathName")
-
-      firebase.firestore.collection(`${user.uid}/Paths/${input.value}`).set({
-        Name: input.value,
-        URL: ImgUrl
-      })
-      alert("Uploaded Path")
-    })
-
-
-
+    doc.set({ 
+      Name: pathName,
+      url: ImgUrl
+     })
 
   }
 
@@ -134,7 +109,8 @@ export default class RaidController {
     //playerStatusCollection = collection(db, 'Raids/'+ doc.id + '/playerStatus');
 
     console.log(doc.id.slice(0, 4))
-    doc.set({ leader: user, p1: user, p1_name: username, p2: "", p2_name: "", p3: "", p3_name: "", p4: "", p4_name: "", raid_map: map }).then(async () => {
+    doc.set({ leader: user, p1: user, p1_name: username, p2: "", p2_name: "", p3: "", p3_name: "", p4: "", p4_name: "", raid_map: map })
+    .then(async () => {
       window.localStorage.setItem("joinCode", doc.id.slice(0, 4));
       window.localStorage.setItem("raidCol", 'Raids/' + doc.id + '/playerStatus');
       window.localStorage.setItem("mapState", 'Raids/' + doc.id + '/mapState');
