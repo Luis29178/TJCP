@@ -1,5 +1,5 @@
 import React from "react";
-import PathList from "./DDPathList"
+import {PathList} from "./DDPathList"
 import "./_DropDownBar_improved.css"
 
 class DropDownBar extends React.Component {
@@ -49,7 +49,7 @@ class DropDownBar extends React.Component {
         return(
             <>
         <div className={this.state.container} >
-        <div className="sPath">{`Path: ${this.state.SelectedPath}`}</div>
+        <div id={"dropdownSelectedPath"} className="sPath">{`Path: ${this.state.SelectedPath}`}</div>
 
         <div className= {this.state.pathList} ><PathList map={"Customs"}></PathList></div>
 

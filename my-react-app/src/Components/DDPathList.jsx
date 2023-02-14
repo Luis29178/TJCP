@@ -1,116 +1,117 @@
+import { async } from "@firebase/util";
 import React from "react";
 import './_TrackerPage.css'
 
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/firestore';
+import DDPathItem from "./DDPathItem";
 
-import { getFirestore, collection, CollectionReference , query, orderBy, limit, getDocs} from "firebase/firestore";
+import {user} from "../FirebaseStorageController.jsx"
 
-import DDPathItem from "./DDPathItem.jsx"
-
-const firebaseConfig = {
-    apiKey: "AIzaSyC4hztlkCki_2pnq93Rgf7cgncHC1V61N0",
-    authDomain: "capstone-eeab2.firebaseapp.com",
-    projectId: "capstone-eeab2",
-    storageBucket: "capstone-eeab2.appspot.com",
-    messagingSenderId: "779758566575",
-    appId: "1:779758566575:web:fa8755a005fed7dd23a85a",
-    measurementId: "G-55B1P13PP9"
-};
-
-const fb = firebase.initializeApp(firebaseConfig);
+import firebase from "firebase/compat/app";
 
 
 
 
-class PathList extends React.Component {
+export class PathList extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
-            dbf: firebase.firestore(fb),
-            Paths: [],
-        }
+            paths: [],
+            map: props.map,
 
+
+        };
+
+
+    }
+    
+
+
+
+    async componentDidMount() {
+        
+        const firestore = firebase.firestore();
+        const _user = await firebase.auth().currentUser;
+        
+
+        await firestore.collection(`Users/${_user.uid}/Paths/${this.state.map}/Saved`).get().then((querySnapshot) => {
+            querySnapshot.forEach(doc => {
+                var tempArr = this.state.paths;
+
+                tempArr.push(doc.id);
+
+
+                this.setState({
+                    //      paths is set to paths plus the new data from fb ie [...[x1,x2,x3],x4] = [x1,x2,x3,x4]
+                    paths: [...this.state.paths, doc.data().Name]
+
+
+                });
+                console.log(this.state.paths)
+            });
+        });
 
 
     }
 
-
-    componentDidMount() {
-
-        this.getAll();
-
-
-    }
-  
 
 
     render() {
+
         return (
+
             <>
-                {this.state.Paths.map(Path => (
-                    //path item
-                    <>
-                    <DDPathItem path = {Path}></DDPathItem>
-                    </>
-
-                ))}
-
-
-            </>
-        )
-
-    }
-
-    getAll() {
-
-        const collect = new CollectionReference(this.state.dbf, `TestPath/${this.props.map}/Paths`);
-        const q = query(collect);
-
-        const getingData = async() => {
-            const docs = await getDocs(q);
-            docs.forEach(doc => {
-                console.log(doc.data())
-            });
-        }
-
-        getingData();
+                {
+                    this.state.paths.map(Path => (
+                        //path item
+                        <>
+                            <DDPathItem path={Path}></DDPathItem>
+                        </>
+                    ))
+                }
 
 
 
-
-        // const dbPaths = this.state.dbf.collection(`TestPath/${this.props.map}/Paths`);
-        // let pathsRef = [];
-
-        // await dbPaths.get().then(snap =>{
-
-            
-
-        //     snap.docs.forEach(doc => {
-        //         pathsRef.push(doc.data());
-        //         console.log("doc Id: ", doc.id, "Doc Data:", doc.data());
-    
-        //     });
-        // });
-
-
-
-        // const dbPaths = this.state.dbf.collection(`TestPath/${this.props.map}/Paths`);
-        // let pathsRef = [];
-        
-        // let snap = await dbPaths.get()
-        //     snap.docs.forEach(doc => {
-        //         pathsRef.push(doc.data());
-        //         console.log("doc Id: ", doc.id, "Doc Data:", doc.data());
-        //     });
-        // 
-
-
-        
-
+            </>)
     }
 
 
 }
-export default PathList;
+
+
+
+
+
+
+
+
+// export function PathList() {
+//     const [pathList, setPathList] = React.useState(["path1", "path2", "path3",]);
+
+//     const raidController = React.useContext(RaidContext);
+
+//     async function updatePathList() {
+//         const pathListfb = await raidController.getPathsOnMap();
+//         setPathList(pathListfb);
+//     }
+
+
+
+
+
+
+//     // return (
+
+//     //     <>
+//     //         {pathList.map(Path => (
+//     //             //path item
+//     //             <>
+//     //                 <DDPathItem path={Path}></DDPathItem>
+//     //             </>
+//     //         ))}
+//     //     </>
+//     // )
+
+
+
+// }
+// export default PathList;

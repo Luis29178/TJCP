@@ -19,6 +19,8 @@ export function PathMenuBtns() {
         RaidController.UploadPath(pathName, ImgUrl, map);
     }
 
+    
+
 
     const uploadImage = (imgUrl, mapName) => {
         if (imgUrl == null) return;

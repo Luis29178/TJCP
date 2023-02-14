@@ -1,6 +1,6 @@
 import React from "react";
 import { MapDisplay } from "./MapDisplay";
-import { DropDown } from "./DropDownBar";
+import  DropDownBar  from "./DropDownBar_improved";
 import './_EFTmaps.css';
 import { MapList } from "./MapList"
 import { Button } from "./Button";
@@ -105,7 +105,7 @@ class EFTmapsTest extends React.Component {
 
 
                 <div className="eftDropDown">
-                    <DropDown ddstyle={"dd--eft--basic"}></DropDown>
+                    <DropDownBar ddstyle={"dd--eft--basic"}></DropDownBar>
                 </div>
 
                 

@@ -29,10 +29,11 @@ export default class RaidController {
       raidDB: "Raids",
       playerNumber: 0,
       playerStatusCollection: "",
-      raidID: ""
+      raidID: "",
+
 
     };
-    this.getUID = this.getUID.bind(this);
+    this.getPathsOnMap = this.getPathsOnMap.bind(this);
     this.UploadPath = this.UploadPath.bind(this);
     this.placeLineOnMap = this.placeLineOnMap.bind(this);
     this.createRaid = this.createRaid.bind(this);
@@ -46,10 +47,26 @@ export default class RaidController {
 
   };
 
-
-  getUID = () =>{
+  getPathsOnMap = (map) => {
     var user = firebase.auth().currentUser;
+    var paths = [];
+    
+    const pathsRef = firebase.firestore().collection(`Users/${user.uid}/Paths/${map}/Saved`);
+    
+    pathsRef.onSnapshots((snapshot) => {
+      snapshot.forEach((doc) => {
+        paths.push(doc.data().Name);
+      });
+    });
+    
+    return paths;
+  }
+   asyncgetUID =  () =>{
+    var user = firebase.auth().currentUser;
+
     return user.uid;
+    
+
   }
   UploadPath = (pathName, ImgUrl, map) => {
     var user = firebase.auth().currentUser;
