@@ -1,9 +1,6 @@
 .ddpathsContainer {
     height: 10vh;
     width: 95%;
-     border-style: solid;
-     border-width: 10px;
-     border-color: black;
 
     display: grid;
     grid-template-columns: 1fr 9fr;

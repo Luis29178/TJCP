@@ -1,6 +1,6 @@
 .container-Closed{
-    height: 100px;
-    width: 1200px;
+    height: 100%;
+    width: 100%;
     background: #2c2c2c;
     --bpx: 25px;
     pointer-events: none;
@@ -64,14 +64,14 @@
 
     grid-area: Arrow;
 
-    border: rgb(0, 0, 255);
+    border: rgb(0, 0, 0);
     border-style: solid;
 
-    margin-top: 35px;
+    margin-top: 30px;
     margin-left: 25px;
 
 
-    background-color: rgb(0, 0, 255) ;
+    background-color:rgb(0, 0, 0)  ;
 
     transform: rotate(90deg);
 
@@ -108,8 +108,8 @@
 
 
 .container-Open{
-    height: 700px;
-    width: 1200px;
+    height: 90vh;
+    width: 100%;
     background: #2c2c2c;
     --bpx: 25px;
     clip-path: polygon(

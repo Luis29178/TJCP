@@ -49,6 +49,10 @@
     width: 100%;
 }
 .eftDropDown {
+    justify-self: center;
+    margin-left:35px ;
+    margin-right:5px ;
+
     grid-area: dropbar;
 
 }
