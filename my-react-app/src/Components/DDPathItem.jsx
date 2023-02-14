@@ -6,9 +6,7 @@ class ItemDisplay extends React.Component {
 
     setPath = () => {
         var selected = document.getElementById("dropdownSelectedPath");
-        var self = document.getElementById("PathNameSelected");
-
-
+        selected.innerHTML = `Path: ${this.props.path}`;
     }
 
 
@@ -16,7 +14,7 @@ class ItemDisplay extends React.Component {
     render() {
         return (
             <>
-            <div className="ddpathsContainer" onClick={this.setPath.bind(this)}>
+            <div className="ddpathsContainer">
                 <div className="ddpathsBpoint" onClick={this.setPath.bind(this)}></div>
                 <div id={"PathNameSelected"} className="ddpathsPathName" onClick={this.setPath.bind(this)}>{this.props.path}</div>
             </div>

@@ -12,7 +12,6 @@ import Lighthouse from '../Images/lighthousemap.png';
 import Reserve from '../Images/reservemap.png';
 import Shoreline from '../Images/shorelinemap.png';
 import Woods from '../Images/woodsmap.png';
-import { Grid } from "@mui/material";
 import { Buttonnew } from "./newButton";
 import InputBar from "./InputBar.jsx"
 import RaidController from "../raidController";

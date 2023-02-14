@@ -30,10 +30,10 @@ export class PathList extends React.Component {
     async componentDidMount() {
         
         const firestore = firebase.firestore();
-        const _user = await firebase.auth().currentUser;
+        const userId = window.localStorage.getItem('uid')
         
 
-        await firestore.collection(`Users/${_user.uid}/Paths/${this.state.map}/Saved`).get().then((querySnapshot) => {
+        await firestore.collection(`Users/${userId}/Paths/${this.state.map}/Saved`).get().then((querySnapshot) => {
             querySnapshot.forEach(doc => {
                 var tempArr = this.state.paths;
 
