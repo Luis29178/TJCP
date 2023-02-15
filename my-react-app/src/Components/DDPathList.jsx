@@ -20,38 +20,33 @@ export class PathList extends React.Component {
 
 
         };
-
-
-    }
-    
-
-
-
-    async componentDidMount() {
-        
         const firestore = firebase.firestore();
         const userId = window.localStorage.getItem('uid')
         
 
-        await firestore.collection(`Users/${userId}/Paths/${this.state.map}/Saved`).get().then((querySnapshot) => {
+        firestore.collection(`Users/${userId}/Paths/${this.state.map}/Saved`).get().then((querySnapshot) => {
             querySnapshot.forEach(doc => {
                 var tempArr = this.state.paths;
 
                 tempArr.push(doc.id);
 
-
+                console.log(1+this.state.paths)
                 this.setState({
                     //      paths is set to paths plus the new data from fb ie [...[x1,x2,x3],x4] = [x1,x2,x3,x4]
-                    paths: [...this.state.paths, doc.data().Name]
+                    paths: [...this.state.paths, doc.id]
+                    
 
 
                 });
-                console.log(this.state.paths)
+                console.log(2+this.state.paths)
             });
+            console.log(3+this.state.paths)
         });
+        console.log(4+this.state.paths)
 
 
     }
+    
 
 
 
