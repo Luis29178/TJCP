@@ -28,7 +28,7 @@ export default class RaidController {
       userPreferencesDB: "userPreferences",
       raidDB: "Raids",
       playerNumber: 0,
-      playerStatusCollection: "",
+      playerStatusCollection: "", 
       raidID: "",
 
 

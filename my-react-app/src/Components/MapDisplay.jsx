@@ -10,7 +10,8 @@ const Styles =[
 
 export const MapDisplay = ({
     Imgsorce,
-    mdstyle
+    mdstyle,
+    path
 }) => {
     const checkbtnStyle = 
     /* checks if passed in _buttonStyle is included in List [Styles] */
@@ -21,7 +22,8 @@ export const MapDisplay = ({
     : Styles[0];
 
     return (
-        <div className={`dd ${checkbtnStyle} `}>
+        <div className={`dd ${checkbtnStyle}`}>
+            <div className="mapDisplayOverlay">{path}</div>
             <img className="mapImg" src={Imgsorce}></img>
         </div>
     );

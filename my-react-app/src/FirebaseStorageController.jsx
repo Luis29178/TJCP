@@ -1,7 +1,5 @@
-import { FirebaseError, initializeApp } from "firebase/app"
-import { getFirestore } from "firebase/firestore";
+import { initializeApp } from "firebase/app"
 import { getStorage } from "firebase/storage";
-import firebase from "firebase/compat/app";
 
 
 
@@ -18,7 +16,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const storage = getStorage(app);
-
-export const user = firebase.auth().currentUser;
-
 
