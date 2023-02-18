@@ -2,8 +2,10 @@
 import React from "react";
 import MapCanvas from "./MapCanvas.js"
 import Customs from '../Images/custumsmapog.png';
-
-
+import firebase from 'firebase/compat/app';
+import { collection, query, orderBy } from 'firebase/firestore';
+import {onSnapshot} from 'firebase/firestore';
+import { doc, deleteDoc } from "firebase/firestore";
 
 // Cursor Tags
 import cursor from "./Tags/cursor.png";
@@ -24,12 +26,15 @@ class RaidMap extends React.Component{
             cursor: "",
             mapState: [],
             currentTagID:undefined,
+            deleteMode: false,
 
         }
 
         this.changeCursor = this.changeCursor.bind(this);
         this.createMapTag = this.createMapTag.bind(this);
         this.onClick = this.onClick.bind(this);
+        this.setToDeleteMode = this.setToDeleteMode.bind(this); // bind setToDeleteMode to this component
+
 
         document.addEventListener('ActivateKeyBind', function({ detail }) {
             
@@ -118,17 +123,32 @@ class RaidMap extends React.Component{
                 string = "Placed tag "+ action.tag //+ " at: " + mark.pos
                 var tagX = parseInt(action.point.split(",")[0])
                 var tagY = parseInt(action.point.split(",")[1])
-                return <canvas key={hist.id} style={this.getTagStyle(action.tag, tagX, tagY)}> </canvas>
-                break;
-            // case "path":
-            //     string = "Drew a line";
-            //     return <div key={hist.id}>
-            //     Path {string}
-            //      </div>;
-            //     break;
-
+                return(<> <canvas onClick={this.setToDeleteMode} key={hist.id} style={this.getTagStyle(action.tag, tagX, tagY)}> </canvas>
+                {this.state.deleteMode && <p1 onClick={() => {
+                    const db = firebase.firestore();
+                    db.collection("mapState").doc(hist.id).delete().then(() => {
+                        console.log("Document successfully deleted!");
+                    }).catch((error) => {
+                        console.error("Error removing document: ", error);
+                    });
+                }} style={{position: 'absolute', left: tagY, top: tagX, backgroundColor: 'white', borderRadius: "5px", paddingLeft: '2px',paddingRight: '2px'}}>X</p1>}
+            </>
+        );
+        break;
+            
         }
+    }
+
+    handleClick(event){
+        console.log(this.key);
         
+    }
+
+    setToDeleteMode(event){
+        // set delete mode to true when button is clicked and set it to false when button is clicked again
+        this.setState({deleteMode: !this.state.deleteMode});
+
+
     }
 
     
