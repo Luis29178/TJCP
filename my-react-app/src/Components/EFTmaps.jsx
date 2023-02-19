@@ -24,7 +24,7 @@ class EFTmapsTest extends React.Component {
     state = {
         map: 'Customs',
         userName: "",
-        PathVis: "pathImageDisplay",
+        PathVis: "pathImageDisplayVisable",
         pathimgURL: "",
         pathList: [],
         mapName: "Customs"
@@ -40,15 +40,16 @@ class EFTmapsTest extends React.Component {
         const firestore = firebase.firestore();
         const userId = window.localStorage.getItem('uid')
         var tempArr = [];
-
+        
+        //todo: change this to use user id
         await firestore.collection(`Users/pa0GJM08JMhOxkEFPiHt8h8X0G62/Paths/${this.state.mapName}/Saved`).get().then((querySnapshot) => {
             querySnapshot.forEach(doc => {
                 
                 
-                    tempArr.push(doc.id);
-                
-                
-                
+                    tempArr.push({
+                        id:doc.id,
+                        url: doc.data().url
+                    });
             });
             
         });
@@ -180,12 +181,7 @@ class EFTmapsTest extends React.Component {
                     <MapList style={"ls--map--display"} func={this.mapChange.bind(this)} ></MapList>
                 </div>
                 <div className="eftmapDisplay">
-                    <MapDisplay mdstyle={"map--menu--display"} Imgsorce={this.state.map} path= {
-                        <div id="PathDisplaySelect" visability ={this.state.PathVis}>
-                            <div id="PathDisplaySelect-pathImageDisplay" className={this.state.PathVis}  src= {this.state.pathimgURL}></div>
-                        </div>                                                    
-                    }
-                    ></MapDisplay>
+                    <MapDisplay mdstyle={"map--menu--display"} Imgsorce={this.state.map} PathVis={this.state.PathVis} pathimgURL={this.state.pathimgURL}></MapDisplay>
                 </div>
                 //#endregion
 
@@ -207,7 +203,12 @@ class EFTmapsTest extends React.Component {
             <InputBar handleChange={this.handleNameChange}></InputBar>
 
             
-            <Buttonnew borderStyle="join" onClick={(val)=> {this.Raid.createRaid(this.state.userName, this.state.map)}}>Start Raid</Buttonnew>
+            <Buttonnew borderStyle="join" onClick={(val)=> {
+                this.Raid.createRaid(
+                    this.state.userName,
+                    this.state.map,
+                    this.state.pathimgURL,
+                )}}>Start Raid</Buttonnew>
             </div>
             //#endregion
 

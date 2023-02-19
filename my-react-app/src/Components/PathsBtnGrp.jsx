@@ -15,7 +15,7 @@ export function PathMenuBtns() {
 
 
 
-    async function UploadPath(pathName, ImgUrl, map) {
+    function UploadPath(pathName, ImgUrl, map) {
         RaidController.UploadPath(pathName, ImgUrl, map);
     }
 

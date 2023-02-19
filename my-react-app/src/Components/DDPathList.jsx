@@ -35,7 +35,7 @@ export class PathList extends React.Component {
                     this.props.PathList.map(Path => (
                         //path item
                         <>
-                            <DDPathItem path={Path}  baseParent = {this.props.baseParent}></DDPathItem>
+                            <DDPathItem path={Path.id}  baseParent = {this.props.baseParent} pathURL ={Path.url}></DDPathItem>
                         </>
                     ))
                 }

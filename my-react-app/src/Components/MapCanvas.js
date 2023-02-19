@@ -16,6 +16,7 @@ const MapCanvas = ({
     width,
     height,
     map,
+    PathVis,
 
 }) => {
 
@@ -30,7 +31,6 @@ const MapCanvas = ({
 
     var canvasStyle = {
 
-        backgroundImage: `url(${map})`,
         border: "1px solid black",
         backgroundSize: "cover",
 
@@ -38,7 +38,7 @@ const MapCanvas = ({
     }
 
 
-    const setCanvasRef = useOnDraw(onDraw, clear, "k");
+    const setCanvasRef = useOnDraw(onDraw, clear, "k", window.localStorage.getItem('pathSrc'));
 
 
     function onDraw(ctx, point, prevPoint) {
@@ -67,23 +67,26 @@ const MapCanvas = ({
 
     }
 
-    
-    
 
 
 
 
 
-    
 
 
 
 
 
-    return (
+
+
+
+    return (<>{
+
+    }
 
 
         <canvas
+            className="MapCanvas"
             id="CanvaseToBeSaved"
             tabIndex="0"
             height={2142}
@@ -94,7 +97,24 @@ const MapCanvas = ({
         />
 
 
-    );
+        <div className="PathContainer">
+            <img
+                className={PathVis}
+                src={window.localStorage.getItem('pathSrc')}
+            >
+            </img>
+        </div>
+        <img
+            src={map}
+        >
+        </img>
+
+
+
+
+
+
+    </>);
 
 
 

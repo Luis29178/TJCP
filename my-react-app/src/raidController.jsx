@@ -117,7 +117,7 @@ export default class RaidController {
     return this.state.playerStatusCollection;
   }
 
-  createRaid = (username, map) => {
+  createRaid = (username, map, pathSrc) => {
     //var user = firebase.auth().currentUser;
     var user = window.localStorage.getItem('uid')
     console.log(user.uid)
@@ -126,7 +126,7 @@ export default class RaidController {
     //playerStatusCollection = collection(db, 'Raids/'+ doc.id + '/playerStatus');
 
     console.log(doc.id.slice(0, 4))
-    doc.set({ leader: user, p1: user, p1_name: username, p2: "", p2_name: "", p3: "", p3_name: "", p4: "", p4_name: "", raid_map: map })
+    doc.set({ leader: user, p1: user, p1_name: username, p2: "", p2_name: "", p3: "", p3_name: "", p4: "", p4_name: "", raid_map: map,  raid_path: pathSrc })
     .then(async () => {
       window.localStorage.setItem("joinCode", doc.id.slice(0, 4));
       window.localStorage.setItem("raidCol", 'Raids/' + doc.id + '/playerStatus');
@@ -134,6 +134,7 @@ export default class RaidController {
       window.localStorage.setItem("userNames", doc.id);
       window.localStorage.setItem("playerNumber", "1");
       window.localStorage.setItem("raidLeader", user)
+      window.localStorage.setItem("pathSrc", pathSrc)
 
       await firebase.firestore().collection('Raids/' + doc.id + '/playerStatus').doc("1").set(
         { ammo: 3, armor: 3, health: 3 }
@@ -173,6 +174,8 @@ export default class RaidController {
         window.localStorage.setItem("mapState", 'Raids/' + docID + '/mapState');
         window.localStorage.setItem("raidMap", raidState.raid_map)
         window.localStorage.setItem("raidLeader", raidState.leader)
+        window.localStorage.setItem("pathSrc", raidState.raid_path)
+        
         //window.localStorage.setItem("mapState", 'Raids/'+ docID + '/mapState');
 
         console.log("status");

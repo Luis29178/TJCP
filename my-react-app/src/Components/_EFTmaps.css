@@ -75,16 +75,4 @@
 .pathImageDisplay{
     display: none;
 }
-.pathImageDisplayVisible{
-    position: absolute;
-    display: none;
-    width: 100%;
 
-
-}
-.PathDisplaySelect{
-    height:100%;
-    width:100%;
-    border: none;
-    background-color: transparent;
-}

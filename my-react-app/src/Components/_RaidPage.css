@@ -91,3 +91,13 @@
     position: absolute;
 
 }
+.PathExternalCont{
+    position:absolute;
+    pointer-events: none;
+    
+    
+}
+.RaidPathVisable{
+    pointer-events: none;
+
+}
