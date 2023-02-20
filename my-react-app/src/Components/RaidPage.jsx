@@ -33,7 +33,6 @@ class Raid extends React.Component {
 
             GarbState: false,
             garbClass: "GARBpopUpClosed",
-            VisabilityState: true,
             Visability: "Hidden",
 
 

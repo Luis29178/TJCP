@@ -33,6 +33,7 @@ import { UserListTrackerPage } from './Components/UserListTrackerPage';
 import { SpectatorSideBar } from './Components/SpectatorSideBar';
 import RaidMap from './Components/RaidMap';
 import { RaidMapDisplay } from './Components/RaidMapDisplay';
+import { SpectatorView } from './Components/SpectatorRaidView';
 
 export const RaidContext = React.createContext(new RaidController())
 
@@ -79,7 +80,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/test",
-    element: <RaidMapDisplay/>
+    element: <SpectatorView/>
   },
 
 

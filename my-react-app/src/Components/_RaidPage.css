@@ -73,11 +73,7 @@
     grid-area: sidebar;
 }
 
-.position {
-    width: 100px;
-    height: 10;
-    background-color: #00ff00;
-}
+
 .GARBpopUp{
     
     z-index: 50;

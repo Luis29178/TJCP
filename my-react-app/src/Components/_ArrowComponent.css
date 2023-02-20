@@ -1,0 +1,17 @@
+:root{
+    --howThicc: 20%
+
+}
+
+.arrow-gen{
+    height:50%;
+    width: 50%;
+ 
+    clip-path: polygon(100% 0, calc(50% + var(--howThicc)) 50%, 100% 100%, calc(100% - var(--howThicc)) 100%, 50% 50%, calc(100% - var(--howThicc)) 0);
+    background-color: black;
+
+    transform: rotate(90deg);
+
+    margin-bottom: 20%;
+    margin-left: 22%;
+}

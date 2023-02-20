@@ -1,0 +1,73 @@
+:root {
+    --cornercutd: .5em;
+    --green: #00ff00;
+    --amber: #ffee00;
+    --gray: #2c2c2c;
+    --red: #ff0000;
+    --black: #000000;
+    --white: #ffffff;
+
+    
+}
+
+.SpectatorContainer{
+    height: 100vh;
+    width:100vw;
+
+    display: grid;
+
+    grid-template-columns: 1fr 10fr;
+    grid-template-rows: 10fr 1fr;
+
+    grid-template-areas: 
+    "map map"
+    "sidebar users";
+
+}
+
+.SpectatorraidMap{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: scroll;
+    
+
+
+
+    grid-area: map;
+}
+.SpectatorraidUsers{
+  
+
+
+
+    grid-area: users;
+}
+.SpectatorSideBar{
+    z-index: 300;
+    grid-area: sidebar;
+}
+
+.position {
+    width: 100px;
+    height: 10;
+    background-color: #00ff00;
+}
+.SpectatorSideBarpopUpVisable{
+    
+    z-index: 50;
+    position: absolute;
+    pointer-events: all;
+}
+.SpectatorSideBarpopUpHidden{
+    
+    display: none;
+    z-index: 50;
+    position: absolute;
+
+}
+.SpectatorPathExternalCont{
+    position:absolute;
+    pointer-events: none;
+    
+    
+}
