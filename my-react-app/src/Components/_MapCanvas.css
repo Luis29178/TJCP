@@ -3,3 +3,12 @@
     pointer-events: all;
     z-index: 120;
 }
+.RaidPathVisable{
+    pointer-events: none;
+    display: block;
+
+}
+.RaidPathHidden{
+    display: none;
+
+}

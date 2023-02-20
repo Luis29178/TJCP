@@ -15,6 +15,7 @@ export class RaidMapDisplay extends React.Component {
                 <MapCanvas
                             height={2142}
                             width={4097}
+                            PathVis={this.props.PathVis}
                             map={this.props.map}
                             className={"Canvas"}>
                 </MapCanvas>

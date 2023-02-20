@@ -33,7 +33,9 @@ class Raid extends React.Component {
 
             GarbState: false,
             garbClass: "GARBpopUpClosed",
-            Visability: "Visable"
+            VisabilityState: true,
+            Visability: "Hidden",
+
 
 
 
@@ -57,6 +59,20 @@ class Raid extends React.Component {
             GarbState: false,
             garbClass: "GARBpopUpClosed"
         })
+
+    }
+
+    togglePath = () =>{
+        if(this.state.Visability === "Visable"){
+            this.setState({
+                Visability: "Hidden"
+            })
+        }else{
+
+            this.setState({
+                Visability: "Visable"
+            })
+        }
 
     }
 
@@ -109,7 +125,7 @@ class Raid extends React.Component {
 
 
                     </div>
-                    <div className="raidExtra">wtf
+                    <div className="raidExtra" onClick={() =>{ this.togglePath().bind(this)}}>wtf
 
                     </div>
                     <div className="SideBar">
