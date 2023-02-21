@@ -17,8 +17,6 @@ import cursor6 from "./Tags/cursor6.png";
 import cursor7 from "./Tags/cursor7.png";
 import cursor8 from "./Tags/cursor8.png";
 
-import FirestoreDelete from "./FirebaseDelete.jsx";
-
 class RaidMap extends React.Component{
 
     constructor(props){
