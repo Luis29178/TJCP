@@ -47,6 +47,21 @@ export default class RaidController {
 
   };
 
+  setTeamGarb = (GarbArr)=>{
+    var doc = firebase.firestore().collection(localStorage.getItem("raidCol")).doc()
+    
+        doc.onSnapshot((snapShot)=>{
+          
+          snapShot.forEach(user => {
+
+          });
+
+
+        });
+        
+    
+
+  }
   getPathsOnMap = (map) => {
     var user = firebase.auth().currentUser;
     var paths = [];
