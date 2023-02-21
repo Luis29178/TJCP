@@ -5,26 +5,28 @@ import { JoinGroup } from "./spectatorSideBarJoinNew";
 
 import "./_SpectatorSideBar.css"
 
-export function SpectatorSideBar() {
+export class SpectatorSideBar extends React.Component{
 
-    const JoinNewRaid = (RaidCode) => {
+
+    JoinNewRaid(RaidCode) {
 
         console.log("switched Raids")
 
     }
 
-    const JoinPrevRaid = (RaidToJoin)  => {
+    JoinPrevRaid(RaidToJoin){
         console.log("pull selected Raid");
-
+        
         this.JoinNewRaid("theCode");
 
     }
 
-    return (
-        <>
+    render(){
+        return(
+            <>
             <div className="containerSideBar">
                 <div className="minzButton">
-                    <Buttonnew borderStyle="back" onClick={() => { this.props.MinMiz().bind(this) }}>{'-'}</Buttonnew>
+                <Buttonnew borderStyle="back" onClick={() => {this.props.MinMiz().bind(this)}}>{'-'}</Buttonnew>
 
                 </div>
                 <div className="JoinNew">
@@ -35,10 +37,10 @@ export function SpectatorSideBar() {
                     <MapPrev></MapPrev>
                 </div>
                 <div className="Leavebtn">
-                    <Buttonnew borderStyle="specLeave" onClick={() => { console.log("leave Spectate") }}>Leave</Buttonnew>
+                    <Buttonnew borderStyle="specLeave" onClick ={() => {console.log("leave Spectate")}}>Leave</Buttonnew>
                 </div>
             </div>
-        </>
-    );
-
+            </>
+        );
+    }
 }

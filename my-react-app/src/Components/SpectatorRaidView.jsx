@@ -102,7 +102,7 @@ export class SpectatorView extends React.Component {
 
                     </div>
 
-                    <div className="SpectatorSideBar">
+                    <div className={`SpectatorSideBar`}>
                         <Buttonnew borderStyle='SpectatorSideBarButton' onClick={() => { this.SpectatorSideBarToggle().bind(this) }}>{<>
 
                             <ArrowGen></ArrowGen>

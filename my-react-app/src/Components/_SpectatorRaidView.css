@@ -43,7 +43,7 @@
     grid-area: users;
 }
 .SpectatorSideBar{
-    z-index: 300;
+    z-index: 0;
     grid-area: sidebar;
 }
 

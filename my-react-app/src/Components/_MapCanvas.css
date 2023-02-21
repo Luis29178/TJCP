@@ -1,7 +1,7 @@
 .MapCanvas{
     position: absolute;
     pointer-events: all;
-    z-index: 0;
+    z-index: 1;
 }
 .RaidPathVisable{
     pointer-events: none;
