@@ -127,7 +127,8 @@ class RaidMap extends React.Component{
                 return(<> <canvas onClick={this.setToDeleteMode} key={hist.id} style={this.getTagStyle(action.tag, tagX, tagY)}> </canvas>
                 {this.state.deleteMode && <p1 onClick={() => {
                     const db = firebase.firestore();
-                    db.collection("Raids/h9ZJBKNwiqB6RtSP5kBt/mapState").doc(hist.id).delete().then(() => {
+                    var mapStateDb = localStorage.getItem("mapState");
+                    db.collection(mapStateDb).doc(hist.id).delete().then(() => {
                         console.log("Document successfully deleted!");
                     }).catch((error) => {
                         console.error("Error removing document: ", error);
