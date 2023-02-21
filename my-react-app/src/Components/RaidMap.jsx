@@ -3,9 +3,8 @@ import React from "react";
 import MapCanvas from "./MapCanvas.js"
 import Customs from '../Images/custumsmapog.png';
 import firebase from 'firebase/compat/app';
-import { collection, query, orderBy } from 'firebase/firestore';
-import {onSnapshot} from 'firebase/firestore';
-import { doc, deleteDoc } from "firebase/firestore";
+import 'firebase/compat/firestore';
+
 
 // Cursor Tags
 import cursor from "./Tags/cursor.png";
@@ -17,6 +16,8 @@ import cursor5 from "./Tags/cursor5.png";
 import cursor6 from "./Tags/cursor6.png";
 import cursor7 from "./Tags/cursor7.png";
 import cursor8 from "./Tags/cursor8.png";
+
+import FirestoreDelete from "./FirebaseDelete.jsx";
 
 class RaidMap extends React.Component{
 
@@ -126,7 +127,7 @@ class RaidMap extends React.Component{
                 return(<> <canvas onClick={this.setToDeleteMode} key={hist.id} style={this.getTagStyle(action.tag, tagX, tagY)}> </canvas>
                 {this.state.deleteMode && <p1 onClick={() => {
                     const db = firebase.firestore();
-                    db.collection("mapState").doc(hist.id).delete().then(() => {
+                    db.collection("Raids/h9ZJBKNwiqB6RtSP5kBt/mapState").doc(hist.id).delete().then(() => {
                         console.log("Document successfully deleted!");
                     }).catch((error) => {
                         console.error("Error removing document: ", error);
@@ -182,6 +183,7 @@ class RaidMap extends React.Component{
 {this.state.mapState.map(hist =>(
             this.createMapTag(hist)
         ))}
+        {/* <FirestoreDelete docId="ZyhV6ocV9sTNWTpSNLwQ" /> */}
 <MapCanvas
     height={2142}
     width={4097}
