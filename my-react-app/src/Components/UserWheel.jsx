@@ -50,12 +50,12 @@ export const UserWheel = ({
             var playerName = [];
             detectRaidState(doc.raidState)
             Object.keys(doc).forEach((key, index) => {
-                console.log(key)
+                //console.log(key)
                 switch(String(key)){
                     case "p1_name":
                         if(player == 1){
                             playerName.push(doc.p1_name)
-                            console.log(doc.p1_name);
+                            //console.log(doc.p1_name);
                         }
                         
                         break;
@@ -90,7 +90,7 @@ export const UserWheel = ({
         const customEvent = new CustomEvent('raidStateChanged', { detail: { newState: raidState } });
         document.dispatchEvent(customEvent);
         console.log('RAID STATE');
-        console.log(raidState);
+        //console.log(raidState);
     }
 
     function parseStatus(statusInfo){
