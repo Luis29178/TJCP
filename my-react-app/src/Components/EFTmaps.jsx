@@ -1,6 +1,6 @@
 import React from "react";
 import { MapDisplay } from "./MapDisplay";
-import  DropDownBar  from "./DropDownBar_improved";
+import  DropDownBar  from "./DropDownBar_improved.jsx";
 import './_EFTmaps.css';
 import { MapList } from "./MapList"
 import { Button } from "./Button";

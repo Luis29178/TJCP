@@ -40,7 +40,7 @@ class Raid extends React.Component {
 
             GarbState: false,
             garbClass: "GARBpopUpClosed",
-            Visability: "Hidden",
+            Visability: "Visable",
 
 
 
@@ -112,7 +112,7 @@ class Raid extends React.Component {
                     </div>
                     {/*<RaidMap />*/}
                     <div className="raidMap">
-                        <RaidMapDisplay PathVis={`RaidPath${this.state.Visability}`} map={Customs} />
+                        <RaidMap PathVis={`RaidPath${this.state.Visability}`} />
                     </div>
                     <div className="raidUsers">
                         <div className="UserWheelGroup">
