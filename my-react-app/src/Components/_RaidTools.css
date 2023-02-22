@@ -1,7 +1,26 @@
-.ToolsBorder{
+.toolCont{
+position: relative;
 
-    height: 100vh;
-    width: 100vh;
+border-style: solid;
+border: #161616;
+
+
+height: 100%;
+width: 100%;
+
+overflow: hidden;
+
+
+
+}
+
+
+.ToolsBorder{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    background-color: #161616;
 
     --xpx: 25px;
     --ypx: 5px;
@@ -38,4 +57,11 @@
             calc(0% + var(--xpx)) calc(100% - var(--ypx)),
             /*9*/
             50% calc(100% - var(--ypx)));
+}
+
+.theTool{
+
+    margin-left: 25%;
+    padding-top: 25%;
+
 }

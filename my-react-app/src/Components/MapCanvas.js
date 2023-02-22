@@ -20,16 +20,16 @@ const MapCanvas = ({
 }) => {
 
     var canvasStyle = {
-    
+
         border: "1px solid black",
         backgroundImage: `url(${window.localStorage.getItem("raidMap")})`,
         backgroundSize: "cover",
-        
-        
+
+
     }
 
 
-    const setCanvasRef = useOnDraw(onDraw, clear);
+    const setCanvasRef = useOnDraw(onDraw, clear, "k");
 
 
     function onDraw(ctx, point, prevPoint) {
@@ -37,6 +37,7 @@ const MapCanvas = ({
     }
 
     function clear(ctx) {
+
         ctx.clearRect(0, 0, width, height)
     }
 
@@ -61,34 +62,34 @@ const MapCanvas = ({
 
 
 
-    
+
 
     var canvasStyle = {
 
         backgroundImage: `url(${map})`,
         border: "1px solid black",
         backgroundSize: "cover",
-    
-    
+
+
     }
-    
+
 
 
 
 
     return (
-    
-     
-            <canvas
-                
-                height={2142}
-                width={4097}
-                style={canvasStyle}
-                ref={setCanvasRef}
 
-            />
-     
-        
+
+        <canvas
+            tabIndex="0"
+            height={2142}
+            width={4097}
+            style={canvasStyle}
+            ref={setCanvasRef}
+
+        />
+
+
     );
 
 
