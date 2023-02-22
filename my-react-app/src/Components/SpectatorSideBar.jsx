@@ -6,14 +6,7 @@ import { JoinGroup } from "./spectatorSideBarJoinNew";
 import "./_SpectatorSideBar.css"
 
 export class SpectatorSideBar extends React.Component{
-    constructor(props){
-        super(props)
 
-        this.state = {
-
-        }
-
-    }
 
     JoinNewRaid(RaidCode) {
 
@@ -33,7 +26,7 @@ export class SpectatorSideBar extends React.Component{
             <>
             <div className="containerSideBar">
                 <div className="minzButton">
-                <Buttonnew borderStyle="back" onClick={() => {window.location.href = "/"}}>{'-'}</Buttonnew>
+                <Buttonnew borderStyle="back" onClick={() => {this.props.MinMiz().bind(this)}}>{'-'}</Buttonnew>
 
                 </div>
                 <div className="JoinNew">

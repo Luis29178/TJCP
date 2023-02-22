@@ -2,6 +2,7 @@
 import React from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
+import "firebase/storage";
 import { collection, doc } from 'firebase/firestore';
 import { renderMatches } from 'react-router-dom';
 import { create } from '@mui/material/styles/createTransitions';
@@ -27,10 +28,13 @@ export default class RaidController {
       userPreferencesDB: "userPreferences",
       raidDB: "Raids",
       playerNumber: 0,
-      playerStatusCollection: "",
-      raidID: ""
+      playerStatusCollection: "", 
+      raidID: "",
+
 
     };
+    this.getPathsOnMap = this.getPathsOnMap.bind(this);
+    this.UploadPath = this.UploadPath.bind(this);
     this.placeLineOnMap = this.placeLineOnMap.bind(this);
     this.createRaid = this.createRaid.bind(this);
     this.joinRaid = this.joinRaid.bind(this);
@@ -42,6 +46,54 @@ export default class RaidController {
 
 
   };
+
+  setTeamGarb = (GarbArr)=>{
+    var doc = firebase.firestore().collection(localStorage.getItem("raidCol")).doc()
+    
+        doc.onSnapshot((snapShot)=>{
+          
+          snapShot.forEach(user => {
+
+          });
+
+
+        });
+        
+    
+
+  }
+  getPathsOnMap = (map) => {
+    var user = firebase.auth().currentUser;
+    var paths = [];
+    
+    const pathsRef = firebase.firestore().collection(`Users/${user.uid}/Paths/${map}/Saved`);
+    
+    pathsRef.onSnapshots((snapshot) => {
+      snapshot.forEach((doc) => {
+        paths.push(doc.data().Name);
+      });
+    });
+    
+    return paths;
+  }
+   asyncgetUID =  () =>{
+    var user = firebase.auth().currentUser;
+
+    return user.uid;
+    
+
+  }
+  UploadPath = (pathName, ImgUrl, map) => {
+    var user = firebase.auth().currentUser;
+
+    var doc =  firebase.firestore().collection(`Users/${user.uid}/Paths/${map}/Saved`).doc(pathName);
+
+    doc.set({ 
+      Name: pathName,
+      url: ImgUrl
+     })
+
+  }
 
   clearMap = () => {
     var mapStatePath = localStorage.getItem("mapState")
@@ -133,7 +185,7 @@ export default class RaidController {
     return this.state.playerStatusCollection;
   }
 
-  createRaid = (username, map) => {
+  createRaid = (username, map, pathSrc) => {
     //var user = firebase.auth().currentUser;
     var user = window.localStorage.getItem('uid')
     console.log(user.uid)
@@ -142,7 +194,7 @@ export default class RaidController {
     //playerStatusCollection = collection(db, 'Raids/'+ doc.id + '/playerStatus');
 
     console.log(doc.id.slice(0,4))
-    doc.set({leader: user, p1:user, p1_name: username, p2:"", p2_name:"", p3:"", p3_name:"",p4:"", p4_name:"", raid_map: map, raidState : "0"}).then(async ()=>{
+    doc.set({leader: user, p1:user, p1_name: username, p2:"", p2_name:"", p3:"", p3_name:"",p4:"", p4_name:"", raid_map: map, raidState : "0", raid_path: pathSrc}).then(async ()=>{
       window.localStorage.setItem("joinCode", doc.id.slice(0,4));
       window.localStorage.setItem("raidCol", 'Raids/'+ doc.id + '/playerStatus');
       window.localStorage.setItem("mapState", 'Raids/'+ doc.id + '/mapState');
@@ -150,6 +202,7 @@ export default class RaidController {
       window.localStorage.setItem("playerNumber", "1");
       window.localStorage.setItem("raidLeader", user )
       window.localStorage.setItem("raidState", "0" )
+      window.localStorage.setItem("pathSrc", pathSrc)
 
       await firebase.firestore().collection('Raids/' + doc.id + '/playerStatus').doc("1").set(
         { ammo: 3, armor: 3, health: 3 }
@@ -190,6 +243,7 @@ export default class RaidController {
         window.localStorage.setItem("raidMap", raidState.raid_map )
         window.localStorage.setItem("raidLeader", raidState.leader )
         window.localStorage.setItem("raidState", raidState.raidState )
+        window.localStorage.setItem("pathSrc", raidState.raid_path)
         //window.localStorage.setItem("mapState", 'Raids/'+ docID + '/mapState');
 
         console.log("status");

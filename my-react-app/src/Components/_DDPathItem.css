@@ -1,16 +1,43 @@
-.Container{
-height: 40px;
-width: auto;
+.ddpathsContainer {
+    height: 10vh;
+    width: 95%;
+
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+
+    grid-template-rows: auto;
+    grid-template-areas: "Bullet Path";
+
+    pointer-events: all;
 
 }
-.Bpoint {
-height: 40px;
-/* create round Circle*/
+
+.ddpathsBpoint {
+    padding-top: 23%;
+    height: 10vh;
+    width: 10vh;
+    pointer-events: all;
+
+    justify-self: center;
+    align-self: center;
+    
+
+    grid-area: Bullet;
+    background-color: black;
+
+    /* create round Circle*/
+    clip-path: circle(13% at 50% 50%);
 
 }
 
-.PathName {
-height: 40px;
+.ddpathsPathName {
+    height: 7vh;
+    width: auto;
+    grid-area: Path;
+    pointer-events: all;
+
+    font-size: 7vh;
+    color: black;
 
 
 }

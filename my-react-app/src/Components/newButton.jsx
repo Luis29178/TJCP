@@ -11,6 +11,7 @@ const Styles =[
     "eft--join",
     "eft--spectate",
     "specLeave",
+    "SpectatorSideBarButton"
 ]
 
 

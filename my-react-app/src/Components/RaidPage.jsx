@@ -1,5 +1,5 @@
 import React from "react";
-import "./_RaidPage.css";
+
 import RaidMap from "./RaidMap";
 import MapCanvas from "./MapCanvas.js";
 import { Tags } from "./RaidTags.jsx";
@@ -16,12 +16,13 @@ import Woods from '../Images/woodsmap.png';
 
 import SideBar from "./SideBar";
 
-import { useDrag } from "react-use-gesture";
-
+import "./_RaidPage.css";
 import "./_UserWheelGroup.css"
+
 import { GARBpopUp } from "./GarbPopUp";
 
 import { PopUpWindow } from "./PopUpComponent";
+import { RaidMapDisplay } from "./RaidMapDisplay.jsx";
 
 import cursor from "./Tags/cursor.png";
 import ImageOnKeyPress from "./ImageOnKeyPress";
@@ -38,7 +39,10 @@ class Raid extends React.Component {
         this.state = {
 
             GarbState: false,
-            garbClass: "GARBpopUpClosed"
+            garbClass: "GARBpopUpClosed",
+            Visability: "Hidden",
+
+
 
 
         }
@@ -67,6 +71,20 @@ class Raid extends React.Component {
 
     }
 
+    togglePath = () =>{
+        if(this.state.Visability === "Visable"){
+            this.setState({
+                Visability: "Hidden"
+            })
+        }else{
+
+            this.setState({
+                Visability: "Visable"
+            })
+        }
+
+    }
+
 
 
 
@@ -92,16 +110,10 @@ class Raid extends React.Component {
 
                         </Tags>
                     </div>
-                    <RaidMap />
-                    {/* <div className="raidMap">
-
-                        <MapCanvas
-                            height={2142}
-                            width={4097}
-                            map={Customs}
-                            className={"Canvas"}>
-                        </MapCanvas>
-                    </div> */}
+                    {/*<RaidMap />*/}
+                    <div className="raidMap">
+                        <RaidMapDisplay PathVis={`RaidPath${this.state.Visability}`} map={Customs} />
+                    </div>
                     <div className="raidUsers">
                         <div className="UserWheelGroup">
                             <div className="User1cont">

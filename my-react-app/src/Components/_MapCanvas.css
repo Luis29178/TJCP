@@ -1,7 +1,14 @@
-.mapCont{
-    height: 100%;
-    width:100%;
-    overflow: scroll;
-    
+.MapCanvas{
+    position: absolute;
     pointer-events: all;
+    z-index: 1;
+}
+.RaidPathVisable{
+    pointer-events: none;
+    display: block;
+
+}
+.RaidPathHidden{
+    display: none;
+
 }

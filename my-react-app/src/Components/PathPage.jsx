@@ -12,35 +12,41 @@ import Shoreline from '../Images/shorelinemap.png';
 import Woods from '../Images/woodsmap.png';
 import "./_PathPage.css"
 import { RaidTools } from "./RaidTool.jsx";
-import { Buttonnew } from "./newButton.jsx";
+
+
+
+import {PathMenuBtns} from "./PathsBtnGrp.jsx"
 
 
 
 
 class PathPage extends React.Component {
     constructor(props) {
-        super(props)
-
+        super(props)      
         this.state = {
             height: 1200,
             width: "auto",
-            map: ""
+            map: "",
         }
 
 
+    }
+    
+    
 
 
+    UploadPath = () => {
+
+        
 
 
     }
 
 
-
-
-
-
-
     render() {
+        
+
+
 
 
 
@@ -61,6 +67,7 @@ class PathPage extends React.Component {
                     {/*<RaidMap />*/}
                     <div className="pathMap">
                         <MapCanvas
+                            id={"pathMap"}
                             height={2142}
                             width={4097}
                             map={Customs}
@@ -68,30 +75,21 @@ class PathPage extends React.Component {
                         </MapCanvas>
                     </div>
                     <div className="pathExtra">
-                        <RaidTools tool = {<Tags style={"raid--tg--basic"} size={"raid--tg-medium"}>
+                        <RaidTools tool={<Tags style={"raid--tg--basic"} size={"raid--tg-medium"}>
 
 
-</Tags>}>
+                        </Tags>}>
 
                         </RaidTools>
                     </div>
                     <div className="pathSideBar">
                         <SideBar
                             title={"Path Creator"}
-                            info={"Path Name: Smaple"}
-                            btnGroup={<>
-
-                                <div className="btn1">
-                                    <Buttonnew borderStyle={"ttRaid"} onClick={() => { console.log("to Raid") }}> Take To Raid</Buttonnew>
-                                </div>
-                                <div className="btn2">
-                                    <Buttonnew borderStyle={"save"} onClick={() => { console.log("save") }}> Save</Buttonnew>
-                                </div>
-                                <div className="btn3">
-                                    <Buttonnew borderStyle={"discard"} onClick={() => { console.log("discard") }}> Discard</Buttonnew>
-                                </div>
-                            </>
-                            }>
+                            info={<>
+                                <div className="PathMenutitle">Path Name: </div>
+                                <input id="PathName" className="PathNameInput"></input>
+                            </>}
+                            btnGroup={<PathMenuBtns></PathMenuBtns>}>
 
                         </SideBar>
                     </div>
@@ -103,6 +101,7 @@ class PathPage extends React.Component {
         );
     }
     componentDidMount() {
+        
         var elmnt = document.getElementsByClassName("pathMap")[0];
         console.log(elmnt.offsetHeight);
         console.log(elmnt.offsetWidth);

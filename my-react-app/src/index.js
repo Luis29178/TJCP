@@ -31,6 +31,9 @@ import { GarbCircle } from './Components/GarbCircle';
 import { ItemInfoDisplay } from './Components/ItemInfoDisplay';
 import { UserListTrackerPage } from './Components/UserListTrackerPage';
 import { SpectatorSideBar } from './Components/SpectatorSideBar';
+import RaidMap from './Components/RaidMap';
+import { RaidMapDisplay } from './Components/RaidMapDisplay';
+import { SpectatorView } from './Components/SpectatorRaidView';
 
 export const RaidContext = React.createContext(new RaidController())
 
@@ -76,26 +79,10 @@ const router = createBrowserRouter([
     element: <JoinRaid player={false}/>
   },
   {
-    path: "/test2",
-    element: <GARBAdvanced></GARBAdvanced>
-  },
-  {
-    path: "/test3",
-    element: <GarbCircle></GarbCircle>
-  },
-  {
     path: "/test",
-    element: <ItemInfoDisplay></ItemInfoDisplay>
+    element: <SpectatorView/>
   },
-  {
-    path: "/test1",
-    element: <UserListTrackerPage/>
-  },
-  {
-    path: "/test5",
-    element: <Buttonnew borderStyle={"ttRaid"} onClick={() => { console.log("to Raid") }}> Take To Raid</Buttonnew>
 
-  }
 
   
   // to create a new path add an object like the below one to this Router.
