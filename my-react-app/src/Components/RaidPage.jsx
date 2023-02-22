@@ -38,7 +38,7 @@ class Raid extends React.Component {
         this.state = {
 
             GarbState: false,
-            garbClass:"GARBpopUpClosed"
+            garbClass: "GARBpopUpClosed"
 
 
         }
@@ -47,26 +47,26 @@ class Raid extends React.Component {
     }
 
     popUpStateOpen() {
-       
-            this.setState({
-                GarbState:true,
-                garbClass:"GARBpopUp"
-            })
+
+        this.setState({
+            GarbState: true,
+            garbClass: "GARBpopUp"
+        })
 
 
 
     }
 
-    popUpStateClose = () =>{
+    popUpStateClose = () => {
 
-        
+
         this.setState({
-            GarbState:false,
-            garbClass:"GARBpopUpClosed"
+            GarbState: false,
+            garbClass: "GARBpopUpClosed"
         })
 
     }
-    
+
 
 
 
@@ -77,8 +77,8 @@ class Raid extends React.Component {
     render() {
         return (
             <>
-            <div className={this.state.garbClass}>
-                <PopUpWindow Window ={<GARBpopUp OnClick={()=> this.popUpStateClose()}></GARBpopUp>}></PopUpWindow>
+                <div className={this.state.garbClass}>
+                    <PopUpWindow Window={<GARBpopUp OnClick={() => this.popUpStateClose()}></GARBpopUp>}></PopUpWindow>
                 </div>
 
                 <div className="raidContainer">
@@ -121,17 +121,19 @@ class Raid extends React.Component {
                         </div>
 
 
-            </div>
-            <div className="raidExtra">
-            <MapHistory></MapHistory>
-            <RaidStateButton/>
-            </div>
-
+                    </div>
+                    <div className="raidExtra">
+                        <MapHistory></MapHistory>
+                        <RaidStateButton />
+                    </div>
+                    <div className="SideBar">
+                        <SideBar></SideBar>
+                    </div>
 
 
                 </div>
 
-                
+
             </>
 
         );
