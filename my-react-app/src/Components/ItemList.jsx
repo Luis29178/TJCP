@@ -82,7 +82,7 @@ class ItemList extends React.Component {
         let itemsRef = [];
         let namebank = corr
         var counter = 0
-        var limit = 10
+        var limit = 9000
 
 
 
