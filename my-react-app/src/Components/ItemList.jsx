@@ -7,6 +7,9 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
 import 'firebase/compat/firestore';
 
+import ItemDB from './ItemImages/UidCorr.json'
+import corr from './ItemImages/correlation.json'
+
 import { ref, set, get, update, remove, child, onValue } from "firebase/database"
 
 
@@ -45,23 +48,83 @@ class ItemList extends React.Component {
 
     componentDidMount() {
 
-        this.getAll();
+
+        this.getAllLocal();
+
+
 
 
     }
-  
+
 
 
     render() {
         return (
             <>
                 {this.state.items.map(item => (
-                    <ItemDisplay OnClick={() => this.props.OnClick(item.iName)} imgSrc={item.imgSrc} iCount={item.iCount} iName={item.iName} />
+                    <ItemDisplay OnClick={() => this.props.OnClick(item.name)} imgSrc={item.imgSrc} iCount={item.iCount} iName={item.name} />
                 ))}
 
 
             </>
         )
+
+    }
+
+    GetIco(_UID) {
+        var temp = new File(`./ItemImages/${_UID}.png`)
+
+
+    }
+
+    getAllLocal() {
+
+        let itemsRef = [];
+        let namebank = corr
+        var counter = 0
+        var limit = 10
+
+
+
+        ItemDB.map(item => {
+            if (counter <= limit) {
+                try {
+
+
+                    var imgref = item.uid + ".png"
+
+
+                    itemsRef.push({
+                        uid: item.uid,
+                        name: namebank[item.uid].name,
+                        shortname: namebank[item.uid].shortName,
+                        imgSrc: imgref,
+                        iCount: 0
+
+                    })
+
+                    console.log(namebank[item.uid].name)
+                    console.log(namebank[item.uid].shortName)
+                    console.log(item.uid)
+                    console.log(imgref)
+
+
+
+
+                }
+                catch {
+                    console.log("Unkown error with:" + item.uid)
+
+                }
+            }
+            counter = counter +1 ;
+        })
+
+
+
+        this.setState({ items: itemsRef })
+
+
 
     }
 
@@ -74,28 +137,30 @@ class ItemList extends React.Component {
             let itemsRef = [];
             let fbRef = new Map();
             let infoSkip = true;
-            var count= 0;
+            var count = 0;
             if (snapshot.exists()) {
-                
+
 
                 snapshot.forEach(childSnap => {
 
-                    if(count <= 10){
+                    if (count <= 10) {
 
-                    if (infoSkip) {
-                        infoSkip = !infoSkip
+                        if (infoSkip) {
+                            infoSkip = !infoSkip
+                        }
+                        else {
+                            let Name = childSnap.val().Name;
+                            let UID = childSnap.val().UId;
+
+
+
+                            itemsRef.push({ "imgSrc": LL, "iCount": 0, "iName": Name });
+
+                            fbRef.set(`${Name}`, { "Name": Name, "Count": 0, UID });
+
+                        }
                     }
-                    else {
-                        let Name = childSnap.val().Name;
-
-
-                        itemsRef.push({ "imgSrc": LL, "iCount": 0, "iName": Name });
-
-                        fbRef.set(`${Name}`, { "Name": Name, "Count": 0 });
-
-                    }
-                }
-                count = count +1;
+                    count = count + 1;
 
 
                 });
@@ -115,7 +180,7 @@ class ItemList extends React.Component {
 
 
 
-    
+
 
 
 
