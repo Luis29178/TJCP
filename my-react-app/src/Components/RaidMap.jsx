@@ -48,6 +48,10 @@ class RaidMap extends React.Component {
 
         return <div className="raidMap" style={{ cursor: `url(${this.state.cursor}) 60 60, auto` }}>
             <MapCanvas
+                height={2142}
+                width={4097}
+                PathVis={this.props.PathVis}
+                map={this.props.map}
                 className={"Canvas"}>
             </MapCanvas>
         </div>
