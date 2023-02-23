@@ -30,7 +30,7 @@ class RaidMap extends React.Component {
             deleteMode: false,
             LinesArr: [],
             newLinesTD: false,
-            
+
 
         }
 
@@ -139,7 +139,7 @@ class RaidMap extends React.Component {
                         }).catch((error) => {
                             console.error("Error removing document: ", error);
                         });
-                    }} style={{ position: 'absolute', left: tagY, top: tagX, backgroundColor: 'white', borderRadius: "5px", paddingLeft: '2px', paddingRight: '2px' }}>X</p1>}
+                    }} style={{ position: 'absolute', left: tagY, top: tagX, backgroundColor: 'white', borderRadius: "5px", paddingLeft: '2px', paddingRight: '2px', zIndex: 80 }}>X</p1>}
                 </>
                 );
             case "line":
@@ -154,7 +154,7 @@ class RaidMap extends React.Component {
                     incoming.push(point)
                     incomingLen++;
                 })
-                if(tempArr.length <= 0){
+                if (tempArr.length <= 0) {
                     tempArr.push(incoming)
                 }
 
@@ -174,33 +174,33 @@ class RaidMap extends React.Component {
                     })
 
                     if (lineRefLen === incomingLen) {
-                        var count=0;
+                        var count = 0;
                         lineRef.forEach(point => {
-                            if(point.x === incoming[count].x && point.y === incoming[count].y){
+                            if (point.x === incoming[count].x && point.y === incoming[count].y) {
 
                             }
-                            else{
+                            else {
                                 Ucheck = true;
                             }
                             count++;
 
                         })
 
-                    }else{
+                    } else {
                         Ucheck = true;
 
-                        
+
                     }
-                    
-                    if(Ucheck){
+
+                    if (Ucheck) {
                         UniqueScore++;
                     }
                 })
 
-              
 
 
-                
+
+
 
 
                 // action.linePath.lineRef.forEach(point => {
@@ -262,7 +262,7 @@ class RaidMap extends React.Component {
                     this.setState({ LinesArr: tempArr })
                     console.log(this.state.LinesArr)
 
-                    this.drawLines(this.state.LinesArr);
+                    this.drawLines(action.linePath.lineRef);
                 }
 
 
@@ -318,11 +318,11 @@ class RaidMap extends React.Component {
     //         })
 
 
-            
+
     //     });
 
     // }
-    
+
     // drawLine(start, end, ctx, color, width) {
     //     start = start ?? end;
     //     ctx.beginPath();
@@ -339,7 +339,7 @@ class RaidMap extends React.Component {
 
     // }
 
- 
+
 
 
 
@@ -366,55 +366,52 @@ class RaidMap extends React.Component {
         }
 
     }
-    drawLines(LinesArray) {
+    drawLine(start, end, ctx, color, width) {
+        start = start ?? end;
+        ctx.beginPath();
+        ctx.lineWidth = width;
+        ctx.strokeStyle = color;
+        ctx.moveTo(start.x, start.y);
+        ctx.lineTo(end.x, end.y);
+        ctx.stroke();
 
-        function drawLine(start, end, ctx, color, width) {
-            start = start ?? end;
-            ctx.beginPath();
-            ctx.lineWidth = width;
-            ctx.strokeStyle = color;
-            ctx.moveTo(start.x, start.y);
-            ctx.lineTo(end.x, end.y);
-            ctx.stroke();
-    
-            ctx.fillStyle = color;
-            ctx.beginPath();
-            ctx.arc(start.x, start.y, 2, 0, 2 * Math.PI);
-            ctx.fill();
-    
-        }
-    
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.arc(start.x, start.y, 2, 0, 2 * Math.PI);
+        ctx.fill();
 
+    }
+    drawLines(Line) {
+        var pointStart = 0
+        var pointEnd = 0
+        var lineLen = 0
+        var count = 0
+        const ctx = document.getElementById('CanvaseToBeSaved').getContext('2d');
+        
 
-        LinesArray.forEach(Line => {
-            var pointStart = undefined
-            var lineLen = 0
-            var count = 0
-            const ctx = document.getElementById('CanvaseToBeSaved').getContext('2d');
+        Line.forEach(Point => {
+            if (lineLen < 1) {
+                pointStart = Point;
+            }
+            lineLen++;
 
+        })
 
-            Line.forEach(Point => {
-                if(lineLen < 1){
-                    pointStart = Point;
-                }
-                lineLen++;
-
-            })
-
-            Line.forEach(Pointend => {
-                if(count > 0){
-                    drawLine(pointStart, Pointend, ctx, '#000000', 5);
-                    pointStart = Pointend;
-
-                }
-                count++;
-
-
-            })
-
-
+        Line.forEach(Point => {
+            pointEnd = Point;
             
-        });
+            if (count > 0 && count !== lineLen) {
+                this.drawLine(pointStart, pointEnd, ctx, '#000000', 5);
+                pointStart = pointEnd;
+
+            }
+            count++;
+
+
+        })
+
+
+
 
 
 
@@ -433,6 +430,7 @@ class RaidMap extends React.Component {
                 width={4097}
                 PathVis={this.props.PathVis}
                 LinesArray={this.props.LinesArray}
+
                 map={Customs}
                 className={"Canvas"}>
             </MapCanvas>
