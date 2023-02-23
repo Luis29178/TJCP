@@ -26,7 +26,7 @@ import { PopUpWindow } from "./PopUpComponent";
 import cursor from "./Tags/cursor.png";
 import ImageOnKeyPress from "./ImageOnKeyPress";
 import MapHistory from "./MapHistory";
-import { readKeybinds } from "../preferenceHandler";
+import { readKeybinds, createKeyBinds } from "../preferenceHandler";
 import firebase from 'firebase/compat/app';
 import RaidStateButton from "./raidStateButton";
 
@@ -51,12 +51,22 @@ class Raid extends React.Component {
             const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
             
                 var data = readKeybinds().then((snapshot) => {
-                    console.log(snapshot.data())
-                    var keyBinds = snapshot.data()
-                    var keyArray = [keyBinds.tag1, keyBinds.tag2, keyBinds.tag3, keyBinds.tag4,keyBinds.tag5,keyBinds.tag6,keyBinds.tag7,keyBinds.tag8,keyBinds.tag9];
-                    console.log(keyArray);
-                    this.setState({keyBindArray: keyArray})
-                    this.setState({showKeys: true})
+                    if(snapshot.data() == undefined){
+                        console.log("NO USER SNAPSHOT");
+                        createKeyBinds()
+
+                        this.setState({keyBindArray: ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"]})
+                        this.setState({showKeys: true})
+
+                    }else{
+                        console.log(snapshot.data())
+                        var keyBinds = snapshot.data()
+                        var keyArray = [keyBinds.tag1, keyBinds.tag2, keyBinds.tag3, keyBinds.tag4,keyBinds.tag5,keyBinds.tag6,keyBinds.tag7,keyBinds.tag8,keyBinds.tag9];
+                        console.log(keyArray);
+                        this.setState({keyBindArray: keyArray})
+                        this.setState({showKeys: true})
+                    }
+
                   }).catch((e) => e)
               });
         }

@@ -33,6 +33,11 @@ const userPreferencesDB = "userPreferences";
     var user = firebase.auth().currentUser;
     firebase.firestore().collection(userPreferencesDB).doc(user.uid).update(updated_keyBind).then(()=>console.log("Edited"));
   }
+  function createKeyBinds(){
+    console.log("CREATING KEYBINDS");
+    var user = firebase.auth().currentUser;
+    firebase.firestore().collection(userPreferencesDB).doc(user.uid).set({tag1:"q", tag2:"w", tag3:"e", tag4:"a", tag5:"s", tag6:"d", tag7:"z", tag8:"x", tag9:"c"})
+  }
 
-export { readKeybinds, updateKeybinds, playerStatusCollection }
+export { readKeybinds, updateKeybinds, playerStatusCollection, createKeyBinds }
 
