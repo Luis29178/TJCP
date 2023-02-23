@@ -18,6 +18,7 @@ import cursor7 from "./Tags/cursor7.png";
 import cursor8 from "./Tags/cursor8.png";
 
 import "./_RaidMap.css";
+import zIndex from "@mui/material/styles/zIndex.js";
 
 class RaidMap extends React.Component {
 
@@ -114,6 +115,8 @@ class RaidMap extends React.Component {
             left: tY + "px",
             height: "70px",
             width: "70px",
+            zIndex: 2,
+            
 
 
         }
@@ -139,7 +142,7 @@ class RaidMap extends React.Component {
                         }).catch((error) => {
                             console.error("Error removing document: ", error);
                         });
-                    }} style={{ position: 'absolute', left: tagY, top: tagX, backgroundColor: 'white', borderRadius: "5px", paddingLeft: '2px', paddingRight: '2px', zIndex: 80 }}>X</p1>}
+                    }} style={{ position: 'absolute', left: tagY, top: tagX, backgroundColor: 'white', borderRadius: "5px", paddingLeft: '2px', paddingRight: '2px', zIndex:3}}>X</p1>}
                 </>
                 );
             case "line":
@@ -418,7 +421,7 @@ class RaidMap extends React.Component {
     }
 
     render() {
-        return <div onClick={this.onClick} style={{ cursor: `url(${this.state.cursor}) 60 60, auto`, position: "relative" }} className="raidMap" >
+        return <div onClick={this.onClick} style={{ cursor: `url(${this.state.cursor}) 60 60, auto`, position: "relative", zindex:2}} zIndex={2} className="raidMap" >
             {
                 this.state.mapState.map(hist => (
                     this.createMapTag(hist)
