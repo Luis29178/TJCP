@@ -28,6 +28,9 @@ class RaidMap extends React.Component {
             mapState: [],
             currentTagID: undefined,
             deleteMode: false,
+            LinesArr: [],
+            newLinesTD: false,
+            
 
         }
 
@@ -126,7 +129,8 @@ class RaidMap extends React.Component {
                 string = "Placed tag " + action.tag //+ " at: " + mark.pos
                 var tagX = parseInt(action.point.split(",")[0])
                 var tagY = parseInt(action.point.split(",")[1])
-                return (<> <canvas onClick={this.setToDeleteMode} key={hist.id} style={this.getTagStyle(action.tag, tagX, tagY)}> </canvas>
+                return (<> <canvas
+                    onClick={this.setToDeleteMode} key={hist.id} style={this.getTagStyle(action.tag, tagX, tagY)}> </canvas>
                     {this.state.deleteMode && <p1 onClick={() => {
                         const db = firebase.firestore();
                         var mapStateDb = localStorage.getItem("mapState");
@@ -138,7 +142,135 @@ class RaidMap extends React.Component {
                     }} style={{ position: 'absolute', left: tagY, top: tagX, backgroundColor: 'white', borderRadius: "5px", paddingLeft: '2px', paddingRight: '2px' }}>X</p1>}
                 </>
                 );
+            case "line":
+                string = `Placed tag ${action.linePath}`
+                var pointArr = []
+                var tempArr = this.state.LinesArr;
+                var check = false;
+                var incoming = [];
+                var incomingLen = 0;
+
+                action.linePath.lineRef.forEach(point => {
+                    incoming.push(point)
+                    incomingLen++;
+                })
+                if(tempArr.length <= 0){
+                    tempArr.push(incoming)
+                }
+
+                var UniqueScore = 0;
+
+
+                tempArr.forEach(Line => {
+                    var lineRef = []
+                    var lineRefLen = 0
+                    var Ucheck = false;
+
+
+
+                    Line.forEach(point => {
+                        lineRef.push(point)
+                        lineRefLen++;
+                    })
+
+                    if (lineRefLen === incomingLen) {
+                        var count=0;
+                        lineRef.forEach(point => {
+                            if(point.x === incoming[count].x && point.y === incoming[count].y){
+
+                            }
+                            else{
+                                Ucheck = true;
+                            }
+                            count++;
+
+                        })
+
+                    }else{
+                        Ucheck = true;
+
+                        
+                    }
+                    
+                    if(Ucheck){
+                        UniqueScore++;
+                    }
+                })
+
+              
+
+
+                
+
+
+                // action.linePath.lineRef.forEach(point => {
+
+                //     pointArr.push(point)
+
+
+
+                // })
+
+
+
+                // action.linePath.lineRef.forEach(Line => {
+                //     var thisSize = 0
+                //     var count = 0
+
+                //     Line.forEach(point => {
+                //         thisSize++;
+
+                //     })
+
+
+
+
+
+                //     if (pointArr.length === thisSize) {
+                //         Line.forEach(point => {
+
+                //             var refPoint = pointArr[count]
+
+
+                //             if (point.x === refPoint.x && point.y === refPoint.y) {
+                //                 check = false;
+
+                //             }
+                //             else {
+                //                 check = true
+                //             }
+                //             count++;
+
+
+
+                //         })
+                //     }
+                //     else {
+                //         check = true
+                //     }
+                // });
+
+
+
+
+
+
+
+                if (UniqueScore === tempArr.length) {
+
+                    tempArr.push(action.linePath.lineRef)
+                    this.setState({ LinesArr: tempArr })
+                    console.log(this.state.LinesArr)
+
+                    this.drawLines(this.state.LinesArr);
+                }
+
+
+
+
+
                 break;
+
 
         }
     }
@@ -154,6 +286,61 @@ class RaidMap extends React.Component {
 
 
     }
+
+
+
+    // drawLines(ctx) {
+
+
+    //     LinesArray.forEach(Line => {
+    //         var pointStart = undefined
+    //         var lineLen = 0
+    //         var count = 0
+
+
+    //         Line.forEach(Point => {
+    //             if(lineLen < 1){
+    //                 pointStart = Point;
+    //             }
+    //             lineLen++;
+
+    //         })
+
+    //         Line.forEach(Pointend => {
+    //             if(count > 0){
+    //                 drawLine(pointStart, Pointend, ctx, '#000000', 5);
+    //                 pointStart = Pointend;
+
+    //             }
+    //             count++;
+
+
+    //         })
+
+
+            
+    //     });
+
+    // }
+    
+    // drawLine(start, end, ctx, color, width) {
+    //     start = start ?? end;
+    //     ctx.beginPath();
+    //     ctx.lineWidth = width;
+    //     ctx.strokeStyle = color;
+    //     ctx.moveTo(start.x, start.y);
+    //     ctx.lineTo(end.x, end.y);
+    //     ctx.stroke();
+
+    //     ctx.fillStyle = color;
+    //     ctx.beginPath();
+    //     ctx.arc(start.x, start.y, 2, 0, 2 * Math.PI);
+    //     ctx.fill();
+
+    // }
+
+ 
+
 
 
     onClick(event) {
@@ -179,25 +366,79 @@ class RaidMap extends React.Component {
         }
 
     }
+    drawLines(LinesArray) {
+
+        function drawLine(start, end, ctx, color, width) {
+            start = start ?? end;
+            ctx.beginPath();
+            ctx.lineWidth = width;
+            ctx.strokeStyle = color;
+            ctx.moveTo(start.x, start.y);
+            ctx.lineTo(end.x, end.y);
+            ctx.stroke();
+    
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(start.x, start.y, 2, 0, 2 * Math.PI);
+            ctx.fill();
+    
+        }
+    
+
+
+        LinesArray.forEach(Line => {
+            var pointStart = undefined
+            var lineLen = 0
+            var count = 0
+            const ctx = document.getElementById('CanvaseToBeSaved').getContext('2d');
+
+
+            Line.forEach(Point => {
+                if(lineLen < 1){
+                    pointStart = Point;
+                }
+                lineLen++;
+
+            })
+
+            Line.forEach(Pointend => {
+                if(count > 0){
+                    drawLine(pointStart, Pointend, ctx, '#000000', 5);
+                    pointStart = Pointend;
+
+                }
+                count++;
+
+
+            })
+
+
+            
+        });
+
+
+
+    }
 
     render() {
-    return<div onClick = {this.onClick} style = {{ cursor: `url(${this.state.cursor}) 60 60, auto`, position: "relative" }} className = "raidMap" >
-    {
-        this.state.mapState.map(hist => (
-            this.createMapTag(hist)
-        ))
-    }
-{/* <FirestoreDelete docId="ZyhV6ocV9sTNWTpSNLwQ" /> */ }
-<MapCanvas
-    height={2142}
-    width={4097}
-    PathVis={this.props.PathVis}
-    map={Customs}
-    className={"Canvas"}>
-</MapCanvas>
-</div >
+        return <div onClick={this.onClick} style={{ cursor: `url(${this.state.cursor}) 60 60, auto`, position: "relative" }} className="raidMap" >
+            {
+                this.state.mapState.map(hist => (
+                    this.createMapTag(hist)
+                ))
+            }
+            {/* <FirestoreDelete docId="ZyhV6ocV9sTNWTpSNLwQ" /> */}
+            <MapCanvas
+                height={2142}
+                width={4097}
+                PathVis={this.props.PathVis}
+                LinesArray={this.props.LinesArray}
+                map={Customs}
+                className={"Canvas"}>
+            </MapCanvas>
+        </div >
 
-    
+
     }
 }
 

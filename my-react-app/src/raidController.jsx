@@ -142,26 +142,26 @@ export default class RaidController {
 
   }
 
-  placePathOnMap = (pathArray) =>{
+  // placePathOnMap = (pathArray) =>{
 
-    var mapStatePath = localStorage.getItem("mapState")
-    var canPlace = localStorage.getItem("raidState")
-    var playerNumber = localStorage.getItem("playerNumber");
+  //   var mapStatePath = localStorage.getItem("mapState")
+  //   var canPlace = localStorage.getItem("raidState")
+  //   var playerNumber = localStorage.getItem("playerNumber");
 
-    var tagState = {
-      player: playerNumber,
-      type: "path",
-      point: pathArray,
-      timestamp:Date.now()
-  }
+  //   var tagState = {
+  //     player: playerNumber,
+  //     type: "path",
+  //     point: pathArray,
+  //     timestamp:Date.now()
+  // }
 
-  if(canPlace == "1"){
-    firebase.firestore().collection(mapStatePath).doc().set(tagState)
-  }else{
-    console.log('RAID NOT STARTED CANT PLACE ANYTHING ON MAP');
-  }
+  // if(canPlace == "1"){
+  //   firebase.firestore().collection(mapStatePath).doc().set(tagState)
+  // }else{
+  //   console.log('RAID NOT STARTED CANT PLACE ANYTHING ON MAP');
+  // }
 
-  }
+  // }
 
 
   setPlayerInfo = (info) =>{
@@ -178,9 +178,7 @@ export default class RaidController {
     firebase.firestore().collection("Raids").doc(localStorage.getItem("userNames")).update({raidState : state})
   }
 
-  setPlayerInfo = (info) => {
-    firebase.firestore().collection(localStorage.getItem("raidCol")).doc(localStorage.getItem("playerNumber")).update(info)
-  }
+
   readKeybinds = () => {
     var user = firebase.auth().currentUser;
     firebase.firestore().collection(this.state.userPreferencesDB).doc(user.uid).get().then((snapshot) => {
