@@ -47,6 +47,11 @@ export default class RaidController {
 
   };
 
+  getDrawnLines(map){
+    var line = [];
+    
+  }
+
   setTeamGarb = (GarbArr)=>{
     var doc = firebase.firestore().collection(localStorage.getItem("raidCol")).doc()
     
@@ -103,7 +108,16 @@ export default class RaidController {
 
   placeLineOnMap = (linePath) => {
     var mapStatePath = localStorage.getItem("mapState")
-    firebase.firestore().collection(mapStatePath).doc(`Line-${Date.now()}`).set(linePath)
+    var playerNumber = localStorage.getItem("playerNumber");
+    var canPlace = localStorage.getItem("raidState")
+
+    var tagState = {
+      player: playerNumber,
+      type: "line",
+      linePath: linePath,
+      timestamp:Date.now()
+    }
+    firebase.firestore().collection(mapStatePath).doc().set(tagState)
   }
 
   placeTagOnMap =(tagID, point) => {
