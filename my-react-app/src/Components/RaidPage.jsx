@@ -45,17 +45,22 @@ class Raid extends React.Component {
 
         }
         this.popUpStateOpen = this.popUpStateOpen.bind(this)
-        const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
+        
+        
+        if(localStorage.getItem("isAnon") == "false"){
+            const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
             
-            var data = readKeybinds().then((snapshot) => {
-                console.log(snapshot.data())
-                var keyBinds = snapshot.data()
-                var keyArray =[keyBinds.tag1, keyBinds.tag2, keyBinds.tag3, keyBinds.tag4,keyBinds.tag5,keyBinds.tag6,keyBinds.tag7,keyBinds.tag8,keyBinds.tag9];
-                console.log(keyArray);
-                this.setState({keyBindArray: keyArray})
-                this.setState({showKeys: true})
-              }).catch((e) => e)
-          });
+                var data = readKeybinds().then((snapshot) => {
+                    console.log(snapshot.data())
+                    var keyBinds = snapshot.data()
+                    var keyArray = [keyBinds.tag1, keyBinds.tag2, keyBinds.tag3, keyBinds.tag4,keyBinds.tag5,keyBinds.tag6,keyBinds.tag7,keyBinds.tag8,keyBinds.tag9];
+                    console.log(keyArray);
+                    this.setState({keyBindArray: keyArray})
+                    this.setState({showKeys: true})
+                  }).catch((e) => e)
+              });
+        }
+
 
     }
 
@@ -100,8 +105,15 @@ class Raid extends React.Component {
 
             </div> */}
                     <div className="raidTags">
+
                     {this.state.showKeys && <Tags  style={"raid--tg--basic"} size={"raid--tg-medium"} keybinds={this.state.keyBindArray}>
+
                     </Tags>}
+
+                    {localStorage.getItem("isAnon") == "true" && <Tags  style={"raid--tg--basic"} size={"raid--tg-medium"} keybinds={["Q", "W", "E", "A", "S", "D", "Z", "X", "C"]}>
+
+                    </Tags>}
+
                     </div>
                     <RaidMap />
                     {/* <div className="raidMap">

@@ -16,7 +16,10 @@ function HomePage() {
         setIsSignedIn(!!user);
         var email = user.email;
         window.localStorage.setItem('uid', user.uid)
-        console.log(email === null ? true : false);
+        console.log("USER STATUS");
+        //console.log(email === null ? true : false);
+        setIsAnon(email == null ? true : false)
+        window.localStorage.setItem('isAnon', email == null ? true : false)
         //setIsAnon()
         //console.log(isAnon)
       });
