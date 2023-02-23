@@ -10,7 +10,7 @@ var lineRef = [];
 
   
 
-export function useOnDraw(onDraw, clear, clearKey) {
+export function useOnDraw(onDraw, clear, clearKey, src) {
 
     const RaidController = React.useContext(RaidContext);
 
@@ -30,6 +30,9 @@ export function useOnDraw(onDraw, clear, clearKey) {
     const handleClearKeyRef = useRef(null);
 
     const prevPointRef = useRef(null);
+
+    
+    
 
 
 

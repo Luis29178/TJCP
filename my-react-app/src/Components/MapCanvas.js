@@ -17,6 +17,7 @@ const MapCanvas = ({
     height,
     map,
     PathVis,
+    LinesArray,
 
 }) => {
 
@@ -41,9 +42,12 @@ const MapCanvas = ({
     const setCanvasRef = useOnDraw(onDraw, clear, "k", window.localStorage.getItem('pathSrc'));
 
 
+
     function onDraw(ctx, point, prevPoint) {
         drawLine(prevPoint, point, ctx, '#000000', 5);
     }
+
+
 
     function clear(ctx) {
 
@@ -66,6 +70,7 @@ const MapCanvas = ({
         ctx.fill();
 
     }
+
 
 
 

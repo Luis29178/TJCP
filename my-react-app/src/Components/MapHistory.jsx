@@ -45,9 +45,9 @@ function MapHistory(){
             case "tag":
                 string = "Placed tag "+ mark.tag //+ " at: " + mark.pos
                 break;
-            case "path":
+            case "line":
                 string = "Drew a line";
-                console.log("Line drawn from:"+ mark.path);
+                console.log("Line drawn from:"+ mark.linePath);
                 break;
 
         }
