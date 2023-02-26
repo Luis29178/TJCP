@@ -3,7 +3,7 @@ import React from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import "firebase/storage";
-import { collection, doc } from 'firebase/firestore';
+import { collection, doc, deleteDoc, } from 'firebase/firestore';
 import { renderMatches } from 'react-router-dom';
 import { create } from '@mui/material/styles/createTransitions';
 
@@ -102,7 +102,20 @@ export default class RaidController {
 
   clearMap = () => {
     var mapStatePath = localStorage.getItem("mapState")
-    firebase.firestore().collection(mapStatePath).doc(`Clear-${Date.now()}`).set({ Clear: "today" })
+    
+
+    const tempRef = firebase.firestore().collection(mapStatePath);
+
+
+    tempRef.onSnapshot((snapshot) => {
+
+      snapshot.forEach((doc) => {
+        doc.ref.delete();
+
+      });
+    })
+
+    
 
   }
 

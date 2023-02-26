@@ -4,11 +4,9 @@ import React, { useEffect, useRef } from 'react'
 import { RaidContext } from "..";
 
 
-var prevduple = true;
-var lineRef = [];
 
 
-  
+
 
 export function useOnDraw(onDraw, clear, clearKey, src) {
 
@@ -20,6 +18,9 @@ export function useOnDraw(onDraw, clear, clearKey, src) {
     const isDrawingRef = useRef(false);
 
     var line = [];
+    var prevduple = true;
+    var lineRef = [];
+
 
 
 
@@ -31,13 +32,13 @@ export function useOnDraw(onDraw, clear, clearKey, src) {
 
     const prevPointRef = useRef(null);
 
-    
-    
 
 
 
 
-    
+
+
+
 
     function UploadPath() {
 
@@ -86,15 +87,12 @@ export function useOnDraw(onDraw, clear, clearKey, src) {
         }
 
     }
-      function ClearMap() {
+    function ClearMap() {
 
+        //RaidController.clearMap();
+        console.log(`cleard`);
+        
 
-        if (prevduple) {
-            prevduple = !prevduple;
-            RaidController.clearMap();
-        } else {
-            prevduple = !prevduple
-        }
 
     }
 
@@ -145,12 +143,13 @@ export function useOnDraw(onDraw, clear, clearKey, src) {
             if (isDrawingRef.current) {
 
                 const point = Compointcanvas(e.clientX, e.clientY);
+                line.push(point);
                 const ctx = canRef.current.getContext('2d');
                 if (onDraw) onDraw(ctx, point, prevPointRef.current);
                 prevPointRef.current = point;
 
 
-                line.push(point);
+
 
             }
 
@@ -168,10 +167,8 @@ export function useOnDraw(onDraw, clear, clearKey, src) {
 
             isDrawingRef.current = true;
 
-            if (line.length > 0) {
-                line = []
+            line = []
 
-            }
 
         }
         mouseDownListenerRef.current = mdListener;
