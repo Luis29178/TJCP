@@ -56,6 +56,7 @@ class Raid extends React.Component {
                         createKeyBinds()
 
                         this.setState({keyBindArray: ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"]})
+
                         this.setState({showKeys: true})
 
                     }else{
@@ -69,6 +70,12 @@ class Raid extends React.Component {
 
                   }).catch((e) => e)
               });
+        }else{
+            let anonKeybinds = JSON.parse(localStorage.getItem('AnonKeybinds'))
+            console.log(anonKeybinds);
+            this.setState({keyBindArray: anonKeybinds})
+
+            this.setState({showKeys: true})
         }
 
 
@@ -120,7 +127,7 @@ class Raid extends React.Component {
 
                     </Tags>}
 
-                    {localStorage.getItem("isAnon") == "true" && <Tags  style={"raid--tg--basic"} size={"raid--tg-medium"} keybinds={["Q", "W", "E", "A", "S", "D", "Z", "X", "C"]}>
+                    {localStorage.getItem("isAnon") == "true" && <Tags  style={"raid--tg--basic"} size={"raid--tg-medium"} keybinds={JSON.parse(localStorage.getItem('AnonKeybinds'))}>
 
                     </Tags>}
 
