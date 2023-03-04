@@ -42,7 +42,7 @@ class EFTmapsTest extends React.Component {
         var tempArr = [];
         
         //todo: change this to use user id
-        await firestore.collection(`Users/pa0GJM08JMhOxkEFPiHt8h8X0G62/Paths/${this.state.mapName}/Saved`).get().then((querySnapshot) => {
+        await firestore.collection(`Users/${userId}/Paths/${this.state.mapName}/Saved`).get().then((querySnapshot) => {
             querySnapshot.forEach(doc => {
                 
                 

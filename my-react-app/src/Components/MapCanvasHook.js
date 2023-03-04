@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 
 import { RaidContext } from "..";
@@ -20,6 +20,7 @@ export function useOnDraw(onDraw, clear, clearKey, src) {
     var line = [];
     var prevduple = true;
     var lineRef = [];
+    const [uploaded, setUploaded] = useState(false)
 
 
 
@@ -166,7 +167,7 @@ export function useOnDraw(onDraw, clear, clearKey, src) {
         const mdListener = () => {
 
             isDrawingRef.current = true;
-
+            setUploaded(false)
             line = []
 
 
@@ -180,11 +181,19 @@ export function useOnDraw(onDraw, clear, clearKey, src) {
     function initMouseuUpListener() {
         if (!canRef.current) return;
 
-        const muListener = () => {
+        
+
+        const muListener = (e) => {
 
             isDrawingRef.current = false;
             prevPointRef.current = null;
-            UploadPath();
+
+            if(uploaded === false){
+
+                UploadPath();
+                setUploaded(true);
+                e.stopImmediatePropagation();
+            }
 
 
 
@@ -192,7 +201,7 @@ export function useOnDraw(onDraw, clear, clearKey, src) {
 
 
         mouseUpListenerRef.current = muListener;
-        window.addEventListener("mouseup", muListener);
+        window.addEventListener("mouseup", muListener, "once");
 
 
 

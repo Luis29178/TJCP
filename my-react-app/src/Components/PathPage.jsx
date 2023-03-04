@@ -16,6 +16,8 @@ import { RaidTools } from "./RaidTool.jsx";
 
 
 import {PathMenuBtns} from "./PathsBtnGrp.jsx"
+import { Hidden } from "@mui/material";
+import RaidMap from "./RaidMap.jsx";
 
 
 
@@ -66,13 +68,7 @@ class PathPage extends React.Component {
                     </div>
                     {/*<RaidMap />*/}
                     <div className="pathMap">
-                        <MapCanvas
-                            id={"pathMap"}
-                            height={2142}
-                            width={4097}
-                            map={Customs}
-                            className={"Canvas"}>
-                        </MapCanvas>
+                    <RaidMap PathVis={`RaidPath${"Hidden"}`} />
                     </div>
                     <div className="pathExtra">
                         <RaidTools tool={<Tags style={"raid--tg--basic"} size={"raid--tg-medium"}>
