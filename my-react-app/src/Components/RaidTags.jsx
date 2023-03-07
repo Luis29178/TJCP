@@ -303,54 +303,54 @@ export const Tags = ({
                     <button style={{fontSize: '0.8rem'}} onClick={toggleDiv7}>remove G</button>
                     <button style={{fontSize: '0.8rem'}} onClick={toggleDiv8}>remove C</button> */}
                     <animated.div className='tag'>   
-                    <canvas style={{...getTagStyle(cursor), border: '2px solid green', padding: '5px'}} onClick={() => {if(image === true){document.getElementById('item0').style.backgroundImage = `url(${images[currentIndex0]})`; currentIndex0 = currentIndex0 + 1; if(currentIndex0 === 5){currentIndex0=0};}}}
+                    <canvas style={{...getTagStyle(cursor), border: '2px solid green', padding: '5px'}}
                         id="item0"
                         >
                         </canvas>
                         <RaidTagKeybinds keyBind={keyBinds[0]} tagImg={cursor} tagID="tag0"></RaidTagKeybinds>    
                     </animated.div>
                     <animated.div className='tag'>                      
-                        <canvas style={{...getTagStyle(cursor1), border: '2px solid green', marginLeft: '2px', padding: '5px'}} onClick={() => {if(image === true){document.getElementById('item1').style.backgroundImage = `url(${images[currentIndex1]})`; currentIndex1 = currentIndex1 + 1; if(currentIndex1 === 5){currentIndex1=0};}}}
+                        <canvas style={{...getTagStyle(cursor1), border: '2px solid green', marginLeft: '2px', padding: '5px'}} 
                         id="item1"
                         ></canvas>
                         <RaidTagKeybinds keyBind={keyBinds[1]}  tagImg={cursor1} tagID="tag1" ></RaidTagKeybinds>     
                     </animated.div>
                     <animated.div className='tag'>                      
-                    <canvas style={{...getTagStyle(cursor2), border: '2px solid green', marginLeft: '2px', padding: '5px'}} onClick={() => {if(image === true){document.getElementById('item2').style.backgroundImage = `url(${images[currentIndex2]})`; currentIndex2 = currentIndex2 + 1;  if(currentIndex2 === 5){currentIndex2=0};}}}
+                    <canvas style={{...getTagStyle(cursor2), border: '2px solid green', marginLeft: '2px', padding: '5px'}} 
                         id="item2"></canvas>
                         <RaidTagKeybinds keyBind={keyBinds[2]}  tagImg={cursor2} tagID="tag2"></RaidTagKeybinds>   
                     </animated.div>
                 </Grid>
                 <Grid container item spacing={3}>
                 <animated.div className='tag'>                      
-                <canvas style={{...getTagStyle(cursor3), border: '2px solid green', marginLeft: '2px', padding: '5px'}} onClick={() => {if(image === true){document.getElementById('item3').style.backgroundImage = `url(${images[currentIndex3]})`; currentIndex3 = currentIndex3 + 1;  if(currentIndex3 === 5){currentIndex3=0};}}}
+                <canvas style={{...getTagStyle(cursor3), border: '2px solid green', marginLeft: '2px', padding: '5px'}} 
                         id="item3"></canvas>
                         <RaidTagKeybinds keyBind={keyBinds[3]} tagImg={cursor3} tagID="tag3"></RaidTagKeybinds>   
                     </animated.div>
                     <animated.div className='tag'>                      
-                    <canvas style={{...getTagStyle(cursor4), border: '2px solid green', marginLeft: '2px', padding: '5px'}} onClick={() => {if(image === true){document.getElementById('item4').style.backgroundImage = `url(${images[currentIndex4]})`; currentIndex4 = currentIndex4 + 1;  if(currentIndex4 === 5){currentIndex4=0};}}}
+                    <canvas style={{...getTagStyle(cursor4), border: '2px solid green', marginLeft: '2px', padding: '5px'}} 
                         id="item4"></canvas>
                         <RaidTagKeybinds keyBind={keyBinds[4]} tagImg={cursor4} tagID="tag4"></RaidTagKeybinds>   
                     </animated.div>
                     <animated.div className='tag'>                      
-                    <canvas style={{...getTagStyle(cursor5), border: '2px solid green', marginLeft: '2px', padding: '5px'}} onClick={() => {if(image === true){document.getElementById('item5').style.backgroundImage = `url(${images[currentIndex5]})`; currentIndex5 = currentIndex5 + 1;  if(currentIndex5 === 5){currentIndex5=0};}}}
+                    <canvas style={{...getTagStyle(cursor5), border: '2px solid green', marginLeft: '2px', padding: '5px'}} 
                         id="item5"></canvas>
                         <RaidTagKeybinds keyBind={keyBinds[5]} tagImg={cursor5} tagID="tag5"></RaidTagKeybinds>    
                     </animated.div>
                 </Grid>
                 <Grid container item spacing={3}>
                 <animated.div className='tag'>                      
-                <canvas style={{...getTagStyle(cursor6), border: '2px solid green', marginLeft: '2px', padding: '5px'}} onClick={() => {if(image === true){document.getElementById('item6').style.backgroundImage = `url(${images[currentIndex6]})`; currentIndex6 = currentIndex6 + 1;  if(currentIndex6 === 5){currentIndex6=0};}}}
+                <canvas style={{...getTagStyle(cursor6), border: '2px solid green', marginLeft: '2px', padding: '5px'}} 
                         id="item6"></canvas>
                         <RaidTagKeybinds keyBind={keyBinds[6]} tagImg={cursor6} tagID="tag6"></RaidTagKeybinds>   
                     </animated.div>
                     <animated.div className='tag'>                      
-                    <canvas style={{...getTagStyle(cursor7), border: '2px solid green', marginLeft: '2px', padding: '5px'}} onClick={() => {if(image === true){document.getElementById('item7').style.backgroundImage = `url(${images[currentIndex7]})`; currentIndex7 = currentIndex7 + 1;  if(currentIndex7 === 5){currentIndex7=0};}}}
+                    <canvas style={{...getTagStyle(cursor7), border: '2px solid green', marginLeft: '2px', padding: '5px'}} 
                         id="item7"></canvas>
                         <RaidTagKeybinds keyBind={keyBinds[7]} tagImg={cursor7} tagID="tag7"></RaidTagKeybinds>  
                     </animated.div>
                     <animated.div className='tag'>                      
-                    <canvas style={{...getTagStyle(cursor8), border: '2px solid green', marginLeft: '2px', padding: '5px'}} onClick={() => {if(image === true){document.getElementById('item8').style.backgroundImage = `url(${images[currentIndex8]})`; currentIndex8 = currentIndex8 + 1;  if(currentIndex8 === 5){currentIndex8=0};}}}
+                    <canvas style={{...getTagStyle(cursor8), border: '2px solid green', marginLeft: '2px', padding: '5px'}} 
                         id="item8"></canvas>
                        <RaidTagKeybinds keyBind={keyBinds[8]} tagImg={cursor8} tagID="tag8"></RaidTagKeybinds>    
                     </animated.div>
