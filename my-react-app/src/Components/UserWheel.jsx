@@ -31,6 +31,7 @@ export const UserWheel = ({
         document.addEventListener('userInfoChanged', function({ detail }) {
 
             var doc = detail.snapshot.docs[player - 1];
+console.log(doc.data());
             setPlayerInfo([{id:doc.id, data:doc.data()}])
             //console.log(detail.snapshot);
         })

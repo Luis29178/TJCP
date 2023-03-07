@@ -75,6 +75,7 @@ class RaidTagKeybinds extends React.Component{
                 }else{
                     console.log('GHANGE KEYS FOR ANON');
                     let keyBinds = JSON.parse(localStorage.getItem('AnonKeybinds'));
+                    console.log(keyBinds);
                     var canUpdate = false;
                     var updateKey = 0;
 
@@ -88,6 +89,7 @@ class RaidTagKeybinds extends React.Component{
                         keyBinds[i] = pressedKey;
                             break;
                     }
+                    console.log(keyBinds);
 
                     if(!canUpdate){
                         this.setState({

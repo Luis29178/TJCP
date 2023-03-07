@@ -233,7 +233,7 @@ export default class RaidController {
       window.localStorage.setItem("pathSrc", pathSrc)
 
       await firebase.firestore().collection('Raids/' + doc.id + '/playerStatus').doc("1").set(
-        { ammo: 3, armor: 3, health: 3 }
+        { ammo: 3, armor: 3, health: 3, username: username}
       );
       await firebase.firestore().collection('Raids/' + doc.id + '/playerStatus').doc("2").set(
         { ammo: 3, armor: 3, health: 3 }
@@ -299,6 +299,9 @@ export default class RaidController {
           this.state.playerNumber = 2
           window.localStorage.setItem("playerNumber", "2");
           await firebase.firestore().collection(raidDB).doc(docID).update({ p2: user.uid, p2_name: username })
+          await firebase.firestore().collection('Raids/' + doc.id + '/playerStatus').doc("2").update(
+            { username: username}
+          );
           window.location.href = "/tempRaid"
 
 
@@ -309,6 +312,9 @@ export default class RaidController {
           this.state.playerNumber = 3
           window.localStorage.setItem("playerNumber", "3");
           await firebase.firestore().collection(raidDB).doc(docID).update({ p3: user.uid, p3_name: username })
+          await firebase.firestore().collection('Raids/' + doc.id + '/playerStatus').doc("3").update(
+            { username: username}
+          );
           window.location.href = "/tempRaid"
 
 
@@ -319,6 +325,9 @@ export default class RaidController {
           this.state.playerNumber = 4
           window.localStorage.setItem("playerNumber", "4");
           await firebase.firestore().collection(raidDB).doc(docID).update({ p4: user.uid }, { p4_name: username })
+          await firebase.firestore().collection('Raids/' + doc.id + '/playerStatus').doc("4").update(
+            { username: username}
+          );
           window.location.href = "/tempRaid"
 
 
