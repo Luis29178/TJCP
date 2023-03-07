@@ -16,7 +16,13 @@ function HomePage() {
         setIsSignedIn(!!user);
         var email = user.email;
         window.localStorage.setItem('uid', user.uid)
-        console.log(email === null ? true : false);
+        console.log("USER STATUS");
+        //console.log(email === null ? true : false);
+        setIsAnon(email == null ? true : false)
+        window.localStorage.setItem('isAnon', email == null ? true : false)
+        if(email == null ? true : false == false){
+            localStorage.setItem('AnonKeybinds', JSON.stringify(["Q", "W", "D", "A", "K", "J", "Z", "X", "C"]))
+        }
         //setIsAnon()
         //console.log(isAnon)
       });

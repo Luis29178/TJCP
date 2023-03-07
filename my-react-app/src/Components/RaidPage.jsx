@@ -28,7 +28,7 @@ import { RaidMapDisplay } from "./RaidMapDisplay.jsx";
 import cursor from "./Tags/cursor.png";
 import ImageOnKeyPress from "./ImageOnKeyPress";
 import MapHistory from "./MapHistory";
-import { readKeybinds } from "../preferenceHandler";
+import { readKeybinds, createKeyBinds } from "../preferenceHandler";
 import firebase from 'firebase/compat/app';
 import RaidStateButton from "./raidStateButton";
 
@@ -42,12 +42,45 @@ class Raid extends React.Component {
             GarbState: false,
             garbClass: "GARBpopUpClosed",
             Visability: "Visable",
-
-
+            keyBindArray: [],
+            showKeys: false
 
 
         }
         this.popUpStateOpen = this.popUpStateOpen.bind(this)
+        
+        
+        if(localStorage.getItem("isAnon") == "false"){
+            const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
+            
+                var data = readKeybinds().then((snapshot) => {
+                    if(snapshot.data() == undefined){
+                        console.log("NO USER SNAPSHOT");
+                        createKeyBinds()
+
+                        this.setState({keyBindArray: ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"]})
+
+                        this.setState({showKeys: true})
+
+                    }else{
+                        console.log(snapshot.data())
+                        var keyBinds = snapshot.data()
+                        var keyArray = [keyBinds.tag1, keyBinds.tag2, keyBinds.tag3, keyBinds.tag4,keyBinds.tag5,keyBinds.tag6,keyBinds.tag7,keyBinds.tag8,keyBinds.tag9];
+                        console.log(keyArray);
+                        this.setState({keyBindArray: keyArray})
+                        this.setState({showKeys: true})
+                    }
+
+                  }).catch((e) => e)
+              });
+        }else{
+            let anonKeybinds = JSON.parse(localStorage.getItem('AnonKeybinds'))
+            console.log(anonKeybinds);
+            this.setState({keyBindArray: anonKeybinds})
+
+            this.setState({showKeys: true})
+        }
+
 
     }
 
@@ -106,15 +139,21 @@ class Raid extends React.Component {
 
             </div> */}
                     <div className="raidTags">
-                        <Tags style={"raid--tg--basic"} size={"raid--tg-medium"}>
 
+                    {this.state.showKeys && <Tags  style={"raid--tg--basic"} size={"raid--tg-medium"} keybinds={this.state.keyBindArray}>
 
-                        </Tags>
+                    </Tags>}
+
+                    {localStorage.getItem("isAnon") == "true" && <Tags  style={"raid--tg--basic"} size={"raid--tg-medium"} keybinds={JSON.parse(localStorage.getItem('AnonKeybinds'))}>
+
+                    </Tags>}
+
+                        
                     </div>
-                    {/*<RaidMap />*/}
                     <div className="raidMap">
                         <RaidMap PathVis={`RaidPath${this.state.Visability}`} />
                     </div>
+                    
                     <div className="raidUsers">
 
                         <InfoWheelContainer popUpStateOpen={this.popUpStateOpen}></InfoWheelContainer>

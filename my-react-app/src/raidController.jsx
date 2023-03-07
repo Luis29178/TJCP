@@ -195,6 +195,9 @@ export default class RaidController {
   readKeybinds = () => {
     var user = firebase.auth().currentUser;
     firebase.firestore().collection(this.state.userPreferencesDB).doc(user.uid).get().then((snapshot) => {
+      if(snapshot.empty){
+        console.log('----KEYBIND SNAPSHOT IS EMPTY');
+      }
       console.log(snapshot.data())
     }).catch((e) => console.log(e))
   }

@@ -25,6 +25,7 @@ function App() {
       //console.log(user.email);
       //console.log(email == null ? true : false)
       setIsAnon(email == null ? false : true)
+      window.localStorage.setItem('isAnon', isAnon)
       //console.log(isAnon)
     });
     return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
