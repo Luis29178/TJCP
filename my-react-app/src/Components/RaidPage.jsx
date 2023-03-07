@@ -13,6 +13,7 @@ import Lighthouse from '../Images/lighthousemap.png';
 import Reserve from '../Images/reservemap.png';
 import Shoreline from '../Images/shorelinemap.png';
 import Woods from '../Images/woodsmap.png';
+import {InfoWheelContainer} from './InfoWheelContainer.jsx'
 
 import SideBar from "./SideBar";
 
@@ -115,22 +116,9 @@ class Raid extends React.Component {
                         <RaidMap PathVis={`RaidPath${this.state.Visability}`} />
                     </div>
                     <div className="raidUsers">
-                        <div className="UserWheelGroup">
-                            <div className="User1cont">
 
-                                <UserWheel player="1" onClick={() => { this.popUpStateOpen() }}></UserWheel>
-                            </div>
-                            <div className="User2cont">
-                                <UserWheel player="2" onClick={() => { this.popUpStateOpen() }}></UserWheel>
-                            </div>
-                            <div className="User3cont">
-                                <UserWheel player="3" onClick={() => { this.popUpStateOpen() }}></UserWheel>
-                            </div>
-                            <div className="User4cont">
-                                <UserWheel player="4" onClick={() => { this.popUpStateOpen() }}></UserWheel>
-                            </div>
+                        <InfoWheelContainer popUpStateOpen={this.popUpStateOpen}></InfoWheelContainer>
 
-                        </div>
 
 
                     </div>

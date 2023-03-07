@@ -28,6 +28,13 @@ export const UserWheel = ({
 
     useEffect(() => {
 
+        document.addEventListener('userInfoChanged', function({ detail }) {
+
+            var doc = detail.snapshot.docs[player - 1];
+            setPlayerInfo([{id:doc.id, data:doc.data()}])
+            //console.log(detail.snapshot);
+        })
+
         document.getElementById('player' + player).addEventListener('click', function(e){
             if(player == playerNumber){
                 RaidController.setPlayerInfo({armor:1});
@@ -35,18 +42,11 @@ export const UserWheel = ({
             }
             
         })
-        const unsubscribe = onSnapshot(infoSnap, async snapshot => {
 
-             var doc = snapshot.docs[player - 1];
-             console.log({id:doc.id, data:doc.data()})
-             setPlayerInfo([{id:doc.id, data:doc.data()}])
-        
-        });
+        document.addEventListener('userJoinedRaid', function({ detail }) {
 
-        const uunsubscribe = onSnapshot(userNamesSnap, async snapshot => {
-            console.log("HERE IS THE USERNAME SNAPSHOT");
-            var doc = snapshot.docs[0].data();
-            
+            var doc = detail.snapshot.docs[0].data();
+
             var playerName = [];
             detectRaidState(doc.raidState)
             Object.keys(doc).forEach((key, index) => {
@@ -77,12 +77,12 @@ export const UserWheel = ({
                 }
             })
             setPlayerNames(playerName)
-            //console.log(doc[0].data())
-       });
+            
+            //console.log(detail.snapshot);
+        })
+
 
         return () => {
-            unsubscribe()
-            uunsubscribe()
         }
     },[])
 
