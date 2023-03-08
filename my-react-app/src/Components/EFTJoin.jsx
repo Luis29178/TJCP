@@ -82,9 +82,9 @@ function JoinRaid(props) {
     
     
                     <div className="ImputGroup">
-                        <div className="Prompt">Enter Code: </div>
+                        <div className="PromptSpec">Enter Code: </div>
                         <InputBar handleChange={handleJoinCodeChange} ></InputBar>
-                        <div className="joinbtn">
+                        <div className="joinbtnSpec">
                         <Buttonnew borderStyle="join" onClick={onJoinSpectator}>Join</Buttonnew>
                         </div>
     

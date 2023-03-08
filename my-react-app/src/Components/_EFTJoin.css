@@ -22,19 +22,34 @@
 .ImputGroup{
     width: fit-content;
     justify-self: center;
-    align-self: center;
+    
 
     grid-area: body;
    
 
 }
 
+
 .Prompt{
+    
      font-size: 42px;
      color: aliceblue;
+}
+
+.PromptSpec{
+    margin-top: -35vh;
+    
+    font-size: 42px;
+    color: aliceblue;
 }
 .joinbtn{
     margin-top: 75px;
     margin-left: 400px;
     float: right;
 }
+.joinbtnSpec{
+    margin-top: -200px;
+    margin-left: 400px;
+    float: right;
+}
+
