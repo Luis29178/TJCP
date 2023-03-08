@@ -85,7 +85,7 @@ export const GARBAdvanced = ({
 
             </div>
 
-            <div className="GARBoverall"><GarbCircle></GarbCircle></div>
+            <div className="GARBoverall"  ><GarbCircle playerDoc={[PlayerDoc[0], PlayerDoc[1],PlayerDoc[2],PlayerDoc[3]]}></GarbCircle></div>
 
         </div>
 

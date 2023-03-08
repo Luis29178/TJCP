@@ -42,7 +42,9 @@ export default class RaidController {
     this.readKeybinds = this.readKeybinds.bind(this);
     this.updateKeybinds = this.updateKeybinds.bind(this);
     this.setPlayerInfo = this.setPlayerInfo.bind(this);
+    this.changeRaidState=  this.changeRaidState.bind(this);
     firebase.initializeApp(this.state.config);
+
 
 
   };
@@ -50,6 +52,9 @@ export default class RaidController {
   getDrawnLines(map){
     var line = [];
     
+  }
+  changeRaidState = (state) =>{
+    firebase.firestore().collection("Raids").doc(localStorage.getItem("userNames")).update({raidState : state})
   }
 
   setTeamGarb = (GarbArr)=>{
@@ -241,13 +246,13 @@ export default class RaidController {
         { ammo: 3, armor: 3, health: 3, username: username}
       );
       await firebase.firestore().collection('Raids/' + doc.id + '/playerStatus').doc("2").set(
-        { ammo: 3, armor: 3, health: 3 }
+        { ammo: 3, armor: 3, health: 3, username: "unset"}
       );
       await firebase.firestore().collection('Raids/' + doc.id + '/playerStatus').doc("3").set(
-        { ammo: 3, armor: 3, health: 3 }
+        { ammo: 3, armor: 3, health: 3, username: "unset" }
       );
       await firebase.firestore().collection('Raids/' + doc.id + '/playerStatus').doc("4").set(
-        { ammo: 3, armor: 3, health: 3 }
+        { ammo: 3, armor: 3, health: 3, username: "unset" }
       );
 
 
