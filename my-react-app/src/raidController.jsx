@@ -177,18 +177,23 @@ export default class RaidController {
   // }
 
 
-  setPlayerInfo = (info) =>{
+  setPlayerInfo = (info, playerNum) =>{
     var canPlace = localStorage.getItem("raidState")
+
+    var uploadDoc = {
+      ammo: info.ammo,
+      armor: info.armor,
+      health: info.health,
+      username: info.username,
+    }
+
     if(canPlace == "1"){
-      firebase.firestore().collection(localStorage.getItem("raidCol")).doc(localStorage.getItem("playerNumber")).update(info)
+      var playerNumber = localStorage.getItem("playerNumber");
+      firebase.firestore().collection(localStorage.getItem("raidCol")).doc(`${playerNum}`).set(uploadDoc)
     }else{
       console.log('RAID NOT STARTED CANT EDIT PLAYER INFO');
     }
    
-  }
-
-  changeRaidState = (state) =>{
-    firebase.firestore().collection("Raids").doc(localStorage.getItem("userNames")).update({raidState : state})
   }
 
 

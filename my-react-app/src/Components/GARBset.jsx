@@ -43,14 +43,18 @@ export const GARBAdvanced = ({
         document.addEventListener('userInfoChanged', function ({ detail }) {
 
             var playerInfo = [];
+            var id = "GarbPlayerInfo-"
+            var count = 0;
             detail.snapshot.docs.forEach(player => {
                 var playerStats = {
                     ammo: player.data().ammo,
                     armor: player.data().armor,
                     health: player.data().health,
-                    user: player.data().username
+                    user: player.data().username,
+                    playerNum: count
                 }
                 playerInfo.push(playerStats);
+                count = count + 1;
             });
             setPlayerInfo(playerInfo);
             console.log(playerInfo);

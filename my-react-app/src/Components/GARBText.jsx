@@ -1,24 +1,27 @@
 import React from "react";
 import "./_GARBText.css";
 
-export const GARBText= ({
+import { RaidContext } from "..";
+
+export const GARBText = ({
     Player
 }) => {
-
-    
-
+    const RaidController = React.useContext(RaidContext);
 
 
-    function statConverter (statValue) {
+
+
+
+    function statConverter(statValue) {
 
         switch (statValue) {
             case 0:
                 return "black"
-             case 1:
+            case 1:
                 return "red"
-             case 2:
+            case 2:
                 return "amber"
-             case 3:
+            case 3:
                 return "green"
         }
 
@@ -26,68 +29,149 @@ export const GARBText= ({
 
 
     function changeAmmoColor() {
-        // switch (this.state.ammo) {
-        //     case "green": this.setState({ ammo: "amber" });
-        //         break;
-        //     case "amber": this.setState({ ammo: "red" });
-        //         break;
-        //     case "red": this.setState({ ammo: "black" });
-        //         break;
-        //     case "black": this.setState({ ammo: "green" });
-        //         break;
-        //     default: console.log("GARB : Ammo : String Error");
-        //         break;
+        switch (statConverter(Player.ammo)) {
+            case "green":
+                var temInfo = {
+                    ammo: 2,
+                    armor: Player.armor,
+                    health: Player.health,
+                    username: Player.user
+                }
+                RaidController.setPlayerInfo(temInfo, Player.playerNum);
+                break;
+            case "amber":
+                var temInfo = {
+                    ammo: 1,
+                    armor: Player.armor,
+                    health: Player.health,
+                    username: Player.user
+                }
+                RaidController.setPlayerInfo(temInfo, Player.playerNum);
 
-        // }
+                break;
+            case "red":
+                var temInfo = {
+                    ammo: 0,
+                    armor: Player.armor,
+                    health: Player.health,
+                    username: Player.user
+                }
+                RaidController.setPlayerInfo(temInfo, Player.playerNum);
+
+                break;
+            case "black":
+                var temInfo = {
+                    ammo: 3,
+                    armor: Player.armor,
+                    health: Player.health,
+                    username: Player.user
+                }
+                RaidController.setPlayerInfo(temInfo, Player.playerNum);
+
+                break;
+            default:
+                console.log("FireBase Error");
+                break;
+
+        }
 
 
     }
     function changeHealthColor() {
-        // switch (this.state.health) {
-        //     case "green": this.setState({ health: "amber" });
-        //         break;
-        //     case "amber": this.setState({ health: "red" });
-        //         break;
-        //     case "red": this.setState({ health: "black" });
-        //         break;
-        //     case "black": this.setState({ health: "green" });
-        //         break;
-        //     default: console.log("GARB : Health : String Error");
-        //         break;
+        switch (statConverter(Player.health)) {
+            case "green":
+                var temInfo = {
+                    ammo: Player.ammo,
+                    armor: Player.armor,
+                    health: 2,
+                    username: Player.user
+                }
+                RaidController.setPlayerInfo(temInfo, Player.playerNum);
+                break;
+            case "amber":
+                var temInfo = {
+                    ammo: Player.ammo,
+                    armor: Player.armor,
+                    health: 1,
+                    username: Player.user
+                }
+                RaidController.setPlayerInfo(temInfo, Player.playerNum);
 
-        // }
+                break;
+            case "red":
+                var temInfo = {
+                    ammo: Player.ammo,
+                    armor: Player.armor,
+                    health: 0,
+                    username: Player.user
+                }
+                RaidController.setPlayerInfo(temInfo, Player.playerNum);
+
+                break;
+            case "black":
+                var temInfo = {
+                    ammo: Player.ammo,
+                    armor: Player.armor,
+                    health: 3,
+                    username: Player.user
+                }
+                RaidController.setPlayerInfo(temInfo, Player.playerNum);
+
+                break;
+            default:
+                console.log("FireBase Error");
+                break;
+
+        }
 
 
     }
     function changeArmorColor() {
-        // switch (this.state.armor) {
-        //     case "green":
-        //         this.setState({ armor: "amber" });
+        switch (statConverter(Player.armor)) {
+            case "green":
+                var temInfo = {
+                    ammo: Player.ammo,
+                    armor: 2,
+                    health: Player.health,
+                    username: Player.user
+                }
+                RaidController.setPlayerInfo(temInfo, Player.playerNum);
+                break;
+            case "amber":
+                var temInfo = {
+                    ammo: Player.ammo,
+                    armor: 1,
+                    health: Player.health,
+                    username: Player.user
+                }
+                RaidController.setPlayerInfo(temInfo, Player.playerNum);
 
-        //         break;
-        //     case "amber":
+                break;
+            case "red":
+                var temInfo = {
+                    ammo: Player.ammo,
+                    armor: 0,
+                    health: Player.health,
+                    username: Player.user
+                }
+                RaidController.setPlayerInfo(temInfo, Player.playerNum);
 
-        //         this.setState({ armor: "red" });
+                break;
+            case "black":
+                var temInfo = {
+                    ammo: Player.ammo,
+                    armor: 3,
+                    health: Player.health,
+                    username: Player.user
+                }
+                RaidController.setPlayerInfo(temInfo, Player.playerNum);
 
-        //         break;
-        //     case "red":
+                break;
+            default:
+                console.log("FireBase Error");
+                break;
 
-        //         this.setState({ armor: "black" });
-
-        //         break;
-        //     case "black":
-
-        //         this.setState({ armor: "green" });
-                
-        //         break;
-        //     default:
-
-        //         console.log("GARB : Armor : String Error");
-        //         break;
-
-        // }
-
-
+        }
     }
 
 
@@ -141,11 +225,11 @@ export class GARBText2 extends React.Component {
         switch (statValue) {
             case 0:
                 return "black"
-             case 1:
+            case 1:
                 return "red"
-             case 2:
+            case 2:
                 return "amber"
-             case 3:
+            case 3:
                 return "green"
         }
 
@@ -205,7 +289,7 @@ export class GARBText2 extends React.Component {
             case "black":
 
                 this.setState({ armor: "green" });
-                
+
                 break;
             default:
 
