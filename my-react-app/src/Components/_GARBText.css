@@ -16,7 +16,7 @@
    
     
     display: grid;
-    grid-template-columns: 4fr 3fr 2fr 3fr 2fr 3fr;
+    grid-template-columns: 250px 3fr 2fr 3fr 2fr 3fr;
     grid-template-areas: "user ammo spacerA health spacerB armor";
     
 }
@@ -48,9 +48,12 @@
 }
 
 .garb-user{
+    width: 250px;
     color: white;
     font-size: var(--font-size);
     margin-right: 15px;
+    overflow-x: hidden;
+
 
     grid-area: user;
     justify-self: center;
