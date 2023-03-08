@@ -1,15 +1,134 @@
 import React from "react";
 import "./_GARBText.css";
 
-export class GARBText extends React.Component {
+export const GARBText= ({
+    Player
+}) => {
+
+    
+
+
+
+    function statConverter (statValue) {
+
+        switch (statValue) {
+            case 0:
+                return "black"
+             case 1:
+                return "red"
+             case 2:
+                return "amber"
+             case 3:
+                return "green"
+        }
+
+    }
+
+
+    function changeAmmoColor() {
+        // switch (this.state.ammo) {
+        //     case "green": this.setState({ ammo: "amber" });
+        //         break;
+        //     case "amber": this.setState({ ammo: "red" });
+        //         break;
+        //     case "red": this.setState({ ammo: "black" });
+        //         break;
+        //     case "black": this.setState({ ammo: "green" });
+        //         break;
+        //     default: console.log("GARB : Ammo : String Error");
+        //         break;
+
+        // }
+
+
+    }
+    function changeHealthColor() {
+        // switch (this.state.health) {
+        //     case "green": this.setState({ health: "amber" });
+        //         break;
+        //     case "amber": this.setState({ health: "red" });
+        //         break;
+        //     case "red": this.setState({ health: "black" });
+        //         break;
+        //     case "black": this.setState({ health: "green" });
+        //         break;
+        //     default: console.log("GARB : Health : String Error");
+        //         break;
+
+        // }
+
+
+    }
+    function changeArmorColor() {
+        // switch (this.state.armor) {
+        //     case "green":
+        //         this.setState({ armor: "amber" });
+
+        //         break;
+        //     case "amber":
+
+        //         this.setState({ armor: "red" });
+
+        //         break;
+        //     case "red":
+
+        //         this.setState({ armor: "black" });
+
+        //         break;
+        //     case "black":
+
+        //         this.setState({ armor: "green" });
+                
+        //         break;
+        //     default:
+
+        //         console.log("GARB : Armor : String Error");
+        //         break;
+
+        // }
+
+
+    }
+
+
+
+    return (<>
+        <div className="container">
+
+            <div className={`garb-user`} onClick={changeAmmoColor.bind(this)}>{Player.user}</div>
+
+            <div className={`Ammo-${statConverter(Player.ammo)}`} onClick={changeAmmoColor.bind(this)}>A</div>
+
+            <div className="SpacerA">:</div>
+
+            <div className={`Health-${statConverter(Player.health)}`} onClick={changeHealthColor.bind(this)}>H</div>
+
+            <div className="SpacerB">:</div>
+
+            <div className={`Armor-${statConverter(Player.armor)}`} onClick={changeArmorColor.bind(this)}>AR</div>
+
+
+
+        </div>
+
+
+    </>)
+
+
+
+
+}
+
+export class GARBText2 extends React.Component {
 
     constructor(props) {
         super(props);
 
+
         this.state = {
-            ammo: this.props.Player.ammo,
-            health: this.props.Player.health,
-            armor: this.props.Player.armor,
+            ammo: this.statConverter(this.props.Player.ammo),
+            health: this.statConverter(this.props.Player.health),
+            armor: this.statConverter(this.props.Player.armor),
             user: this.props.Player.user
         }
 
@@ -17,81 +136,109 @@ export class GARBText extends React.Component {
 
     }
 
+    statConverter(statValue) {
 
-    changeAmmoColor(){
-        switch(this.state.ammo){
-            case "green": this.setState({ammo: "amber"});
-            break;
-            case "amber": this.setState({ammo: "red"});
-            break;
-            case "red": this.setState({ammo: "black"});
-            break;
-            case "black": this.setState({ammo: "green"});
-            break;
+        switch (statValue) {
+            case 0:
+                return "black"
+             case 1:
+                return "red"
+             case 2:
+                return "amber"
+             case 3:
+                return "green"
+        }
+
+    }
+
+
+    changeAmmoColor() {
+        switch (this.state.ammo) {
+            case "green": this.setState({ ammo: "amber" });
+                break;
+            case "amber": this.setState({ ammo: "red" });
+                break;
+            case "red": this.setState({ ammo: "black" });
+                break;
+            case "black": this.setState({ ammo: "green" });
+                break;
             default: console.log("GARB : Ammo : String Error");
-            break;
-            
+                break;
+
         }
 
 
     }
-    changeHealthColor(){
-        switch(this.state.health){
-            case "green": this.setState({health: "amber"});
-            break;
-            case "amber": this.setState({health: "red"});
-            break;
-            case "red": this.setState({health: "black"});
-            break;
-            case "black": this.setState({health: "green"});
-            break;
+    changeHealthColor() {
+        switch (this.state.health) {
+            case "green": this.setState({ health: "amber" });
+                break;
+            case "amber": this.setState({ health: "red" });
+                break;
+            case "red": this.setState({ health: "black" });
+                break;
+            case "black": this.setState({ health: "green" });
+                break;
             default: console.log("GARB : Health : String Error");
-            break;
-            
+                break;
+
         }
 
 
     }
-    changeArmorColor(){
-        switch(this.state.armor){
-            case "green": this.setState({armor: "amber"});
-            break;
-            case "amber": this.setState({armor: "red"});
-            break;
-            case "red": this.setState({armor: "black"});
-            break;
-            case "black": this.setState({armor: "green"});
-            break;
-            default: console.log("GARB : Armor : String Error");
-            break;
-            
+    changeArmorColor() {
+        switch (this.state.armor) {
+            case "green":
+                this.setState({ armor: "amber" });
+
+                break;
+            case "amber":
+
+                this.setState({ armor: "red" });
+
+                break;
+            case "red":
+
+                this.setState({ armor: "black" });
+
+                break;
+            case "black":
+
+                this.setState({ armor: "green" });
+                
+                break;
+            default:
+
+                console.log("GARB : Armor : String Error");
+                break;
+
         }
 
 
     }
-    
+
 
     render() {
 
         return (
             <>
-            <div className="container">
+                <div className="container">
 
-            <div className={`garb-user`} onClick={this.changeAmmoColor.bind(this)}>{this.state.user}</div>
+                    <div className={`garb-user`} onClick={this.changeAmmoColor.bind(this)}>{this.state.user}</div>
 
-            <div className={`Ammo-${this.state.ammo}`} onClick={this.changeAmmoColor.bind(this)}>A</div>
+                    <div className={`Ammo-${this.state.ammo}`} onClick={this.changeAmmoColor.bind(this)}>A</div>
 
-            <div className="SpacerA">:</div>
+                    <div className="SpacerA">:</div>
 
-            <div className={`Health-${this.state.health}`} onClick={this.changeHealthColor.bind(this)}>H</div>
+                    <div className={`Health-${this.state.health}`} onClick={this.changeHealthColor.bind(this)}>H</div>
 
-            <div className="SpacerB">:</div>
+                    <div className="SpacerB">:</div>
 
-            <div className={`Armor-${this.state.armor}`} onClick={this.changeArmorColor.bind(this)}>AR</div>
+                    <div className={`Armor-${this.state.armor}`} onClick={this.changeArmorColor.bind(this)}>AR</div>
 
-            
 
-            </div>
+
+                </div>
 
 
             </>

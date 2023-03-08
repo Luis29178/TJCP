@@ -1,6 +1,6 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./_UserWheel.css"
-import {onSnapshot} from 'firebase/firestore';
+import { onSnapshot } from 'firebase/firestore';
 import { RaidContext } from "..";
 import firebase from 'firebase/compat/app';
 import { collection, doc } from 'firebase/firestore';
@@ -14,10 +14,10 @@ export const UserWheel = ({
 
 }) => {
 
-    const RaidController = React.useContext(RaidContext); 
+    const RaidController = React.useContext(RaidContext);
     const [playerInfo, setPlayerInfo] = useState([])
     const [playerNames, setPlayerNames] = useState([])
-    
+
     var raidPath = localStorage.getItem("raidCol");
     var wheelName = localStorage.getItem("userNames");
     var playerNumber = localStorage.getItem("playerNumber");
@@ -28,23 +28,23 @@ export const UserWheel = ({
 
     useEffect(() => {
 
-        document.addEventListener('userInfoChanged', function({ detail }) {
+        document.addEventListener('userInfoChanged', function ({ detail }) {
 
             var doc = detail.snapshot.docs[player - 1];
-console.log(doc.data());
-            setPlayerInfo([{id:doc.id, data:doc.data()}])
+            console.log(doc.data());
+            setPlayerInfo([{ id: doc.id, data: doc.data() }])
             //console.log(detail.snapshot);
         })
 
-        document.getElementById('player' + player).addEventListener('click', function(e){
-            if(player == playerNumber){
-                RaidController.setPlayerInfo({armor:1});
+        document.getElementById('player' + player).addEventListener('click', function (e) {
+            if (player == playerNumber) {
+                RaidController.setPlayerInfo({ armor: 1 });
                 console.log("Changed info for Player " + playerNumber)
             }
-            
+
         })
 
-        document.addEventListener('userJoinedRaid', function({ detail }) {
+        document.addEventListener('userJoinedRaid', function ({ detail }) {
 
             var doc = detail.snapshot.docs[0].data();
 
@@ -52,52 +52,52 @@ console.log(doc.data());
             detectRaidState(doc.raidState)
             Object.keys(doc).forEach((key, index) => {
                 //console.log(key)
-                switch(String(key)){
+                switch (String(key)) {
                     case "p1_name":
-                        if(player == 1){
+                        if (player == 1) {
                             playerName.push(doc.p1_name)
                             //console.log(doc.p1_name);
                         }
-                        
+
                         break;
                     case "p2_name":
-                        if(player == 2){
+                        if (player == 2) {
                             playerName.push(doc.p2_name)
                         }
                         break;
                     case "p3_name":
-                        if(player == 3){
+                        if (player == 3) {
                             playerName.push(doc.p3_name)
                         }
                         break;
                     case "p4_name":
-                        if(player == 4){
+                        if (player == 4) {
                             playerName.push(doc.p4_name)
                         }
                         break;
                 }
             })
             setPlayerNames(playerName)
-            
+
             //console.log(detail.snapshot);
         })
 
 
         return () => {
         }
-    },[])
+    }, [])
 
-    function detectRaidState(raidState){
+    function detectRaidState(raidState) {
         const customEvent = new CustomEvent('raidStateChanged', { detail: { newState: raidState } });
         document.dispatchEvent(customEvent);
         console.log('RAID STATE');
         //console.log(raidState);
     }
 
-    function parseStatus(statusInfo){
+    function parseStatus(statusInfo) {
         let status = "lowStatus";
 
-        switch(String(statusInfo)){
+        switch (String(statusInfo)) {
             case "1":
                 status = "outStatus"
                 break;
@@ -115,27 +115,27 @@ console.log(doc.data());
 
     return (
         <button onClick={onClick}>
-            {playerNames.map( name => (
+            {playerNames.map(name => (
                 <div className="playerName">{name}</div>
             ))
             }
-            
+
             <div className="ContainerBorder">
-                
+
                 <div className="WheelContainer">
-                    <div id={"player" + player} className={player == playerNumber? "MyCenterDot" : "CenterDot"}></div>
+                    <div id={"player" + player} className={player == playerNumber ? "MyCenterDot" : "CenterDot"}></div>
                     <div className="Sectioner"></div>
                     {
                         playerInfo.map(info => (
                             <div key="status">
                                 <div className={"Health " + parseStatus(info.data.health)}></div>
-                                
+
                                 <div className={"Ammo " + parseStatus(info.data.ammo)}></div>
                                 <div className={"Armor " + parseStatus(info.data.armor)}></div>
                             </div>
                         ))
                     }
-                    
+
                 </div>
 
             </div>

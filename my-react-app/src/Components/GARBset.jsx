@@ -1,77 +1,94 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { GARBText } from "./GARBText.jsx"
 import { Button } from "./Button";
 import { GarbCircle } from "./GarbCircle.jsx";
 
 
-
 import "./_GARBset.css";
 
+export const GARBAdvanced = ({
+    OnClick,
+}) => {
 
-export class GARBAdvanced extends React.Component {
-    state = {
-        tempPlayers: [
-            {
-                armor: "black",
-                health: "green",
-                ammo: "amber",
-                user: "user1"
-            },
-            {
-                armor: "green",
-                health: "green",
-                ammo: "amber",
-                user: "user2"
-            },
-            {
-                armor: "black",
-                health: "red",
-                ammo: "red",
-                user: "user3"
-            },
-            {
-                armor: "amber",
-                health: "green",
-                ammo: "amber",
-                user: "user4"
-            },
-        ]
+    const [PlayerDoc, setPlayerInfo] = useState([
+        {
+            ammo: 0,
+            armor: 0,
+            health: 0,
+            user: 0
+        },
+        {
+            ammo: 0,
+            armor: 0,
+            health: 0,
+            user: 0
+        },
+        {
+            ammo: 0,
+            armor: 0,
+            health: 0,
+            user: 0
+        },
+        {
+            ammo: 0,
+            armor: 0,
+            health: 0,
+            user: 0
+        },])
+
+    useEffect(() => {
 
 
-    }
 
-    render() {
+        document.addEventListener('userInfoChanged', function ({ detail }) {
 
-        return (
+            var playerInfo = [];
+            detail.snapshot.docs.forEach(player => {
+                var playerStats = {
+                    ammo: player.data().ammo,
+                    armor: player.data().armor,
+                    health: player.data().health,
+                    user: player.data().username
+                }
+                playerInfo.push(playerStats);
+            });
+            setPlayerInfo(playerInfo);
+            console.log(playerInfo);
+        })
 
-            <div className="containerA">
-                <div className="xbtn">
-                    <Button onClick={() => this.props.OnClick().bind(this)}
-                        type="button"
-                        buttonStyle="btn--x--basic"
-                        size="btn--x--basic">{"<"}</Button>
-                </div>
 
-                    <div className="GARBList">
-                        {this.state.tempPlayers.map(player => (
-                            <GARBText Player={player}></GARBText>
-                        ))}
-                    </div>
-                
-                <div className="GARBoverall"><GarbCircle></GarbCircle></div>
+    })
+
+
+
+
+    return (
+
+        <div className="containerA">
+            <div className="xbtn">
+                <Button onClick={() => OnClick().bind(this)}
+                    type="button"
+                    buttonStyle="btn--x--basic"
+                    size="btn--x--basic">{"<"}</Button>
+            </div>
+
+            <div className="GARBList">
+
+                <GARBText key={"player1Garb"} Player={PlayerDoc[0]}></GARBText>
+                <GARBText key={"player2Garb"} Player={PlayerDoc[1]}></GARBText>
+                <GARBText key={"player3Garb"} Player={PlayerDoc[2]}></GARBText>
+                <GARBText key={"player4Garb"} Player={PlayerDoc[3]}></GARBText>
 
             </div>
 
+            <div className="GARBoverall"><GarbCircle></GarbCircle></div>
 
-        );
-
-
-    }
+        </div>
 
 
-
-
+    );
 }
+
 
 
 
