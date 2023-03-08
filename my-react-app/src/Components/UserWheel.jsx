@@ -98,14 +98,17 @@ export const UserWheel = ({
         let status = "lowStatus";
 
         switch (String(statusInfo)) {
+            case "0":
+                status = "black"
+                break;
             case "1":
-                status = "outStatus"
+                status = "red"
                 break;
             case "2":
-                status = "lowStatus"
+                status = "amber"
                 break;
             case "3":
-                status = "fullStatus"
+                status = "green"
                 break;
         }
 
