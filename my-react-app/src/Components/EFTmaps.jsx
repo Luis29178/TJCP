@@ -1,6 +1,6 @@
 import React from "react";
 import { MapDisplay } from "./MapDisplay";
-import  DropDownBar  from "./DropDownBar_improved.jsx";
+import DropDownBar from "./DropDownBar_improved.jsx";
 import './_EFTmaps.css';
 import { MapList } from "./MapList"
 import { Button } from "./Button";
@@ -16,6 +16,10 @@ import { Buttonnew } from "./newButton";
 import InputBar from "./InputBar.jsx"
 import RaidController from "../raidController";
 import firebase from "firebase/compat/app";
+import PrismaZoom from 'react-prismazoom'
+
+
+
 
 class EFTmapsTest extends React.Component {
 
@@ -28,41 +32,41 @@ class EFTmapsTest extends React.Component {
         pathimgURL: "",
         pathList: [],
         mapName: "Customs"
-        
 
-        
-        
+
+
+
     }
 
     Raid = new RaidController();
 
-    async getList () {
+    async getList() {
         const firestore = firebase.firestore();
         const userId = window.localStorage.getItem('uid')
         var tempArr = [];
-        
+
         //todo: change this to use user id
         await firestore.collection(`Users/${userId}/Paths/${this.state.mapName}/Saved`).get().then((querySnapshot) => {
             querySnapshot.forEach(doc => {
-                
-                
-                    tempArr.push({
-                        id:doc.id,
-                        url: doc.data().url
-                    });
+
+
+                tempArr.push({
+                    id: doc.id,
+                    url: doc.data().url
+                });
             });
-            
+
         });
         console.log(`before ${this.state.pathList}`)
         this.setState({ pathList: tempArr })
         console.log(`after ${this.state.pathList}`)
-        
+
 
 
 
     }
-    
-    
+
+
 
 
     async mapChange(_map) {
@@ -80,7 +84,7 @@ class EFTmapsTest extends React.Component {
                 this.setState({
                     mapName: "Factory",
                     pathList: [],
-   
+
                 });
                 newMap = Factory;
                 break;
@@ -131,91 +135,92 @@ class EFTmapsTest extends React.Component {
                 newMap = Woods;
 
                 break;
-            default :
-            newMap = ""
+            default:
+                newMap = ""
                 break;
         }
 
-        
-        
+
+
         await this.getList()
         await this.getList()
 
         this.setState({
-            map:newMap,
-            PathVis:"pathImageDisplay",
+            map: newMap,
+            PathVis: "pathImageDisplay",
         })
-        
 
-        window.localStorage.setItem("raidMap", newMap )
+
+        window.localStorage.setItem("raidMap", newMap)
 
     }
 
-    handleNameChange = (e) =>{
-        this.setState({userName: e.target.value})
+    handleNameChange = (e) => {
+        this.setState({ userName: e.target.value })
         console.log(e.target.value)
     }
+
 
     render() {
 
         return (
             <>
 
-            <div className="eftpage">
-                //#region TopBar
+                <div className="eftpage">
 
-                <div className="eftxbtn">
-                    <Button onClick={() => { window.location.href = "/SelectMode" }}
-                        type="button"
-                        buttonStyle="btn--x--basic"
-                        size="btn--x">{"<"}</Button>
+                    <div className="eftxbtn">
+                        <Button onClick={() => { window.location.href = "/SelectMode" }}
+                            type="button"
+                            buttonStyle="btn--x--basic"
+                            size="btn--x">{"<"}</Button>
+                    </div>
+
+                    <div className="efttitle">Maps</div>
+
+
+
+
+
+                    <div className="eftmapList">
+                        <MapList style={"ls--map--display"} func={this.mapChange.bind(this)} ></MapList>
+                    </div>
+                    <div className="eftmapDisplay">
+                        <PrismaZoom allowZoom ={true} allowPan={true}>
+                            <MapDisplay mdstyle={"map--menu--display"} Imgsorce={this.state.map} PathVis={this.state.PathVis} pathimgURL={this.state.pathimgURL}></MapDisplay>
+                        </PrismaZoom>
+                    </div>
+
+
+
+                    <div className="eftDropDown">
+                        <DropDownBar ddstyle={"dd--eft--basic"} map={this.state.map} baseParent={this} PathList={this.state.pathList}></DropDownBar>
+                    </div>
+
+
+
                 </div>
 
-                <div className="efttitle">Maps</div>
 
-                
-                //#endregion
+                <div className="bottomF">
 
-                //#region  MapDisplay
-                <div className="eftmapList">
-                    <MapList style={"ls--map--display"} func={this.mapChange.bind(this)} ></MapList>
+
+                    <div className="Prompt">Name</div>
+
+                    <InputBar handleChange={this.handleNameChange}></InputBar>
+
+
+                    <Buttonnew borderStyle="join" onClick={(val) => {
+                        this.Raid.createRaid(
+                            this.state.userName,
+                            this.state.map,
+                            this.state.pathimgURL,
+                        )
+                    }}>Start Raid</Buttonnew>
                 </div>
-                <div className="eftmapDisplay">
-                    <MapDisplay mdstyle={"map--menu--display"} Imgsorce={this.state.map} PathVis={this.state.PathVis} pathimgURL={this.state.pathimgURL}></MapDisplay>
-                </div>
-                //#endregion
 
-                //#region DropDownBar
-                <div className="eftDropDown">
-                    <DropDownBar ddstyle={"dd--eft--basic"} map= {this.state.map} baseParent={this} PathList={this.state.pathList}></DropDownBar>
-                </div>
-                //#endregion
 
-                
-            </div>
+            </>
 
-            //#region Footer
-            <div className="bottomF">
-
-                
-            <div className="Prompt">Pick your username</div>
-
-            <InputBar handleChange={this.handleNameChange}></InputBar>
-
-            
-            <Buttonnew borderStyle="join" onClick={(val)=> {
-                this.Raid.createRaid(
-                    this.state.userName,
-                    this.state.map,
-                    this.state.pathimgURL,
-                )}}>Start Raid</Buttonnew>
-            </div>
-            //#endregion
-
-            
-
-        </>
-    
         );
 
 
