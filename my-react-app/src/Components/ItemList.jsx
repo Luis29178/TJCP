@@ -56,14 +56,20 @@ class ItemList extends React.Component {
 
 
     render() {
-        return (
-            <>
-                {this.state.items.map(item => (
-                    <ItemDisplay OnClick={() => this.props.OnClick(item.name)} imgSrc={item.imgSrc} iCount={item.iCount} iName={item.name} />
-                ))}
-
-
-            </>
+        const filteredItems = this.state.items.filter((item) =>
+        item.name.toLowerCase().includes(this.props.query.toLowerCase())
+      );
+      return (
+        <>
+          {filteredItems.map((item) => (
+            <ItemDisplay
+              OnClick={() => this.props.OnClick(item.name)}
+              imgSrc={item.imgSrc}
+              iCount={item.iCount}
+              iName={item.name}
+            />
+          ))}
+        </>
         )
 
     }
