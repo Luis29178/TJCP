@@ -62,7 +62,7 @@ export const Tags = ({
             height: "50px",
             width: "50px",
             top: "50px",
-            left: "50px"
+            left: "50px",
             
     
         }
@@ -262,6 +262,12 @@ export const Tags = ({
         skullPos8.x.set(0);
         skullPos8.y.set(0);
     }
+
+
+    const activateKeyBind = (tagID, tagSrc) => {
+        const customEvent = new CustomEvent('ActivateKeyBind', { detail: { tag: tagID, tagImg: tagSrc } });
+        document.dispatchEvent(customEvent);
+    }
     
     useEffect(() => {
         document.addEventListener('keydown', detectKeyDown, true)
@@ -303,54 +309,54 @@ export const Tags = ({
                     <button style={{fontSize: '0.8rem'}} onClick={toggleDiv7}>remove G</button>
                     <button style={{fontSize: '0.8rem'}} onClick={toggleDiv8}>remove C</button> */}
                     <animated.div className='tag'>   
-                    <canvas style={{...getTagStyle(cursor), border: '2px solid green', padding: '5px'}}
+                    <canvas style={{...getTagStyle(cursor), border: '2px solid green', padding: '5px'}} onClick={() => activateKeyBind('tag0', cursor)}
                         id="item0"
                         >
                         </canvas>
                         <RaidTagKeybinds keyBind={keyBinds[0]} tagImg={cursor} tagID="tag0"></RaidTagKeybinds>    
                     </animated.div>
                     <animated.div className='tag'>                      
-                        <canvas style={{...getTagStyle(cursor1), border: '2px solid green', marginLeft: '2px', padding: '5px'}} 
+                        <canvas style={{...getTagStyle(cursor1), border: '2px solid green', marginLeft: '2px', padding: '5px'}} onClick={() => activateKeyBind('tag1', cursor1)}
                         id="item1"
                         ></canvas>
                         <RaidTagKeybinds keyBind={keyBinds[1]}  tagImg={cursor1} tagID="tag1" ></RaidTagKeybinds>     
                     </animated.div>
                     <animated.div className='tag'>                      
-                    <canvas style={{...getTagStyle(cursor2), border: '2px solid green', marginLeft: '2px', padding: '5px'}} 
+                    <canvas style={{...getTagStyle(cursor2), border: '2px solid green', marginLeft: '2px', padding: '5px'}} onClick={() => activateKeyBind('tag2', cursor2)}
                         id="item2"></canvas>
                         <RaidTagKeybinds keyBind={keyBinds[2]}  tagImg={cursor2} tagID="tag2"></RaidTagKeybinds>   
                     </animated.div>
                 </Grid>
                 <Grid container item spacing={3}>
                 <animated.div className='tag'>                      
-                <canvas style={{...getTagStyle(cursor3), border: '2px solid green', marginLeft: '2px', padding: '5px'}} 
+                <canvas style={{...getTagStyle(cursor3), border: '2px solid green', marginLeft: '2px', padding: '5px'}} onClick={() => activateKeyBind('tag3', cursor3)}
                         id="item3"></canvas>
                         <RaidTagKeybinds keyBind={keyBinds[3]} tagImg={cursor3} tagID="tag3"></RaidTagKeybinds>   
                     </animated.div>
                     <animated.div className='tag'>                      
-                    <canvas style={{...getTagStyle(cursor4), border: '2px solid green', marginLeft: '2px', padding: '5px'}} 
+                    <canvas style={{...getTagStyle(cursor4), border: '2px solid green', marginLeft: '2px', padding: '5px'}} onClick={() => activateKeyBind('tag4', cursor4)}
                         id="item4"></canvas>
                         <RaidTagKeybinds keyBind={keyBinds[4]} tagImg={cursor4} tagID="tag4"></RaidTagKeybinds>   
                     </animated.div>
                     <animated.div className='tag'>                      
-                    <canvas style={{...getTagStyle(cursor5), border: '2px solid green', marginLeft: '2px', padding: '5px'}} 
+                    <canvas style={{...getTagStyle(cursor5), border: '2px solid green', marginLeft: '2px', padding: '5px'}} onClick={() => activateKeyBind('tag5', cursor5)}
                         id="item5"></canvas>
                         <RaidTagKeybinds keyBind={keyBinds[5]} tagImg={cursor5} tagID="tag5"></RaidTagKeybinds>    
                     </animated.div>
                 </Grid>
                 <Grid container item spacing={3}>
                 <animated.div className='tag'>                      
-                <canvas style={{...getTagStyle(cursor6), border: '2px solid green', marginLeft: '2px', padding: '5px'}} 
+                <canvas style={{...getTagStyle(cursor6), border: '2px solid green', marginLeft: '2px', padding: '5px'}} onClick={() => activateKeyBind('tag6', cursor6)}
                         id="item6"></canvas>
                         <RaidTagKeybinds keyBind={keyBinds[6]} tagImg={cursor6} tagID="tag6"></RaidTagKeybinds>   
                     </animated.div>
                     <animated.div className='tag'>                      
-                    <canvas style={{...getTagStyle(cursor7), border: '2px solid green', marginLeft: '2px', padding: '5px'}} 
+                    <canvas style={{...getTagStyle(cursor7), border: '2px solid green', marginLeft: '2px', padding: '5px'}} onClick={() => activateKeyBind('tag7', cursor7)}
                         id="item7"></canvas>
                         <RaidTagKeybinds keyBind={keyBinds[7]} tagImg={cursor7} tagID="tag7"></RaidTagKeybinds>  
                     </animated.div>
                     <animated.div className='tag'>                      
-                    <canvas style={{...getTagStyle(cursor8), border: '2px solid green', marginLeft: '2px', padding: '5px'}} 
+                    <canvas style={{...getTagStyle(cursor8), border: '2px solid green', marginLeft: '2px', padding: '5px'}} onClick={() => activateKeyBind('tag8', cursor8)}
                         id="item8"></canvas>
                        <RaidTagKeybinds keyBind={keyBinds[8]} tagImg={cursor8} tagID="tag8"></RaidTagKeybinds>    
                     </animated.div>
