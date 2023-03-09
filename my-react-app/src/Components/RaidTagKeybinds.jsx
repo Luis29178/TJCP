@@ -75,7 +75,8 @@ class RaidTagKeybinds extends React.Component{
                 }else{
                     console.log('GHANGE KEYS FOR ANON');
                     let keyBinds = JSON.parse(localStorage.getItem('AnonKeybinds'));
-                    console.log(keyBinds);
+                    console.log(keyBinds.length);
+                    console.log(this.state.tagID.split("tag")[1]);
                     var canUpdate = false;
                     var updateKey = 0;
 
@@ -83,15 +84,20 @@ class RaidTagKeybinds extends React.Component{
                         
                         var pressedKey = String(e.key).toUpperCase();
 
+                        console.log('RUNNING: ' + i);
+
                         canUpdate = (keyBinds[i] == pressedKey);
-                        console.log(keyBinds[i]);
-                        if(canUpdate)
-                        keyBinds[i] = pressedKey;
-                            break;
+
+                        console.log(keyBinds[i] + " " + canUpdate);
+                        
+                    
                     }
                     console.log(keyBinds);
 
                     if(!canUpdate){
+                        keyBinds[this.state.tagID.split("tag")[1]] = pressedKey;
+                    
+
                         this.setState({
                             isEditing: false,
                             currentKeyBind: e.key,
@@ -100,10 +106,12 @@ class RaidTagKeybinds extends React.Component{
                         })
                         console.log(keyBinds);
                         localStorage.setItem('AnonKeybinds', JSON.stringify(keyBinds))
+                        console.log();
     
                         const customEvent = new CustomEvent('keyBindEditing', { detail: { task : "Finished", key: ""} });
           
                         document.dispatchEvent(customEvent);
+
                     }else{
                         console.log('key already exists');
                     }
