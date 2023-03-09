@@ -61,17 +61,3 @@
 .tagbind {
     margin-left: 20px;
 }
-
-canvas {
-    height: 1px;
-    border: 3px solid #fff;
-    box-shadow: 0 0 10px 0 #fff;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  canvas:focus,
-  canvas:hover {
-    border-color: #0f0;
-    box-shadow: 0 0 10px 0 #0f0;
-  }

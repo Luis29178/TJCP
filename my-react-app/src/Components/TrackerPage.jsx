@@ -13,24 +13,35 @@ class TrackerPage extends React.Component {
         this.state = {
             Title: "All",
             InfoState: "InfoPopUpClosed",
+
             ItemSelected: "",
-            searchQuery: "",
+
+
+
         }
         this.RequestInfo = this.RequestInfo.bind(this)
-        this.handleSearch = this.handleSearch.bind(this)
+
     }
+
+
+
+
+
     RequestInfo(name) {
         this.setState({
             InfoState: "InfoPopUp",
-            ItemSelected: name,
+            ItemSelected: name
         });
+
     }
+
     OnReturn() {
+
         this.setState({ InfoState: "InfoPopUpClosed" })
     }
-    handleSearch(query) {
-        this.setState({ searchQuery: query })
-    }
+
+
+
     render() {
         return (
             <>
@@ -43,6 +54,8 @@ class TrackerPage extends React.Component {
                     </PopUpWindow>
                 </div>
                 <div className="Tpage">
+
+
                     <div className="backButton">
                         <Button
                             onClick={() => { window.location.href = "/" }}
@@ -58,12 +71,11 @@ class TrackerPage extends React.Component {
                     <div className="Ttitle">{this.state.Title}</div>
 
                     <div className="Tserchbar">
-                        <SerchBar placeholder="Search Item"
-                        onChange={this.handleSearch} />
+                        <SerchBar placeholder="Search Item" />
                     </div>
 
                     <div className="Titemlist">
-                    <ItemList OnClick={this.RequestInfo} query={this.state.searchQuery} />
+                        <ItemList OnClick={this.RequestInfo} />
                     </div>
 
 

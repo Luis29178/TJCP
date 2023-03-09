@@ -132,18 +132,17 @@ class RaidMap extends React.Component {
                 string = "Placed tag " + action.tag //+ " at: " + mark.pos
                 var tagX = parseInt(action.point.split(",")[0])
                 var tagY = parseInt(action.point.split(",")[1])
-                return (<> <div
-                    onClick={this.setToDeleteMode} key={hist.id} style={this.getTagStyle(action.tag, tagX, tagY)}> </div>
+                return (<> <canvas
+                    onClick={this.setToDeleteMode} key={hist.id} style={this.getTagStyle(action.tag, tagX, tagY)}> </canvas>
                     {this.state.deleteMode && <p1 onClick={() => {
                         const db = firebase.firestore();
                         var mapStateDb = localStorage.getItem("mapState");
                         db.collection(mapStateDb).doc(hist.id).delete().then(() => {
-                            this.setToDeleteMode();
                             console.log("Document successfully deleted!");
                         }).catch((error) => {
                             console.error("Error removing document: ", error);
                         });
-                    }} style={{ position: 'absolute', left: tagY, top: tagX, backgroundColor: 'red', borderRadius: "5px", paddingLeft: '2px', paddingRight: '2px', zIndex:3}}>X</p1>}
+                    }} style={{ position: 'absolute', left: tagY, top: tagX, backgroundColor: 'white', borderRadius: "5px", paddingLeft: '2px', paddingRight: '2px', zIndex:3}}>X</p1>}
                 </>
                 );
             case "line":
