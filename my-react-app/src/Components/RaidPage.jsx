@@ -1,6 +1,6 @@
 import React from "react";
 
-import RaidMap from "./RaidMap";
+
 import MapCanvas from "./MapCanvas.js";
 import { Tags } from "./RaidTags.jsx";
 import { UserWheel } from "./UserWheel.jsx";
@@ -13,9 +13,10 @@ import Lighthouse from '../Images/lighthousemap.png';
 import Reserve from '../Images/reservemap.png';
 import Shoreline from '../Images/shorelinemap.png';
 import Woods from '../Images/woodsmap.png';
-import {InfoWheelContainer} from './InfoWheelContainer.jsx'
+import { InfoWheelContainer } from './InfoWheelContainer.jsx'
 
 import SideBar from "./SideBar";
+
 
 import "./_RaidPage.css";
 import "./_UserWheelGroup.css"
@@ -31,6 +32,12 @@ import MapHistory from "./MapHistory";
 import { readKeybinds, createKeyBinds } from "../preferenceHandler";
 import firebase from 'firebase/compat/app';
 import RaidStateButton from "./raidStateButton";
+import { RaidTools } from "./RaidTool";
+import { ZoomableRaidMap } from "./RaidMapZoomableContainer";
+import PrismaZoom from "react-prismazoom";
+import RaidMap from "./RaidMap.jsx";
+
+
 
 
 class Raid extends React.Component {
@@ -43,42 +50,44 @@ class Raid extends React.Component {
             garbClass: "GARBpopUpClosed",
             Visability: "Visable",
             keyBindArray: [],
-            showKeys: false
+            showKeys: false,
+            zooming: true,
+            drawing: false
 
 
         }
         this.popUpStateOpen = this.popUpStateOpen.bind(this)
-        
-        
-        if(localStorage.getItem("isAnon") == "false"){
+
+
+        if (localStorage.getItem("isAnon") == "false") {
             const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
-            
+
                 var data = readKeybinds().then((snapshot) => {
-                    if(snapshot.data() == undefined){
+                    if (snapshot.data() == undefined) {
                         console.log("NO USER SNAPSHOT");
                         createKeyBinds()
 
-                        this.setState({keyBindArray: ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"]})
+                        this.setState({ keyBindArray: ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"] })
 
-                        this.setState({showKeys: true})
+                        this.setState({ showKeys: true })
 
-                    }else{
+                    } else {
                         console.log(snapshot.data())
                         var keyBinds = snapshot.data()
-                        var keyArray = [keyBinds.tag1, keyBinds.tag2, keyBinds.tag3, keyBinds.tag4,keyBinds.tag5,keyBinds.tag6,keyBinds.tag7,keyBinds.tag8,keyBinds.tag9];
+                        var keyArray = [keyBinds.tag1, keyBinds.tag2, keyBinds.tag3, keyBinds.tag4, keyBinds.tag5, keyBinds.tag6, keyBinds.tag7, keyBinds.tag8, keyBinds.tag9];
                         console.log(keyArray);
-                        this.setState({keyBindArray: keyArray})
-                        this.setState({showKeys: true})
+                        this.setState({ keyBindArray: keyArray })
+                        this.setState({ showKeys: true })
                     }
 
-                  }).catch((e) => e)
-              });
-        }else{
+                }).catch((e) => e)
+            });
+        } else {
             let anonKeybinds = JSON.parse(localStorage.getItem('AnonKeybinds'))
             console.log(anonKeybinds);
-            this.setState({keyBindArray: anonKeybinds})
+            this.setState({ keyBindArray: anonKeybinds })
 
-            this.setState({showKeys: true})
+            this.setState({ showKeys: true })
         }
 
 
@@ -105,12 +114,12 @@ class Raid extends React.Component {
 
     }
 
-    togglePath = () =>{
-        if(this.state.Visability === "Visable"){
+    togglePath = () => {
+        if (this.state.Visability === "Visable") {
             this.setState({
                 Visability: "Hidden"
             })
-        }else{
+        } else {
 
             this.setState({
                 Visability: "Visable"
@@ -118,6 +127,26 @@ class Raid extends React.Component {
         }
 
     }
+    toggleTools = () => {
+
+        if (this.state.drawing === true) {
+
+
+            this.setState({
+                zooming: true,
+                drawing: false
+            })
+        }
+        else{
+            this.setState({
+                zooming: false,
+                drawing: true
+            })
+
+        }
+
+    }
+
 
 
 
@@ -140,20 +169,49 @@ class Raid extends React.Component {
             </div> */}
                     <div className="raidTags">
 
-                    {this.state.showKeys && <Tags  style={"raid--tg--basic"} size={"raid--tg-medium"} keybinds={this.state.keyBindArray}>
+                        {this.state.showKeys && <Tags style={"raid--tg--basic"} size={"raid--tg-medium"} keybinds={this.state.keyBindArray}>
 
-                    </Tags>}
+                        </Tags>}
 
-                    {localStorage.getItem("isAnon") == "true" && <Tags  style={"raid--tg--basic"} size={"raid--tg-medium"} keybinds={JSON.parse(localStorage.getItem('AnonKeybinds'))}>
+                        {localStorage.getItem("isAnon") == "true" && <Tags style={"raid--tg--basic"} size={"raid--tg-medium"} keybinds={JSON.parse(localStorage.getItem('AnonKeybinds'))}>
 
-                    </Tags>}
+                        </Tags>}
 
-                        
+
                     </div>
-                    <div className="raidMap">
-                        <RaidMap PathVis={`RaidPath${this.state.Visability}`} />
+                    <div id="mapRef" className="raidMap">
+                        <PrismaZoom
+                            className="ZoomContainer"
+                            style={{
+                                height: 2142,
+                                width: 4097
+
+                            }}
+                            allowPan={this.state.zooming}
+                            allowWheel={this.state.zooming}
+                            allowZoom={this.state.zooming}
+                            allowTouchEvents={this.state.drawing}
+
+                            onPanChange={() => {
+                                console.log(this.state.zooming);
+                            }}
+
+                        >
+                            <div style={{
+                                height: 2142,
+                                width: 4097
+
+                            }}>
+
+                                <RaidMap
+                                    drawing={this.state.drawing} PathVis={`RaidPath${this.state.Visability}`} />
+                            </div>
+
+
+                        </PrismaZoom>
+
                     </div>
-                    
+
                     <div className="raidUsers">
 
                         <InfoWheelContainer popUpStateOpen={this.popUpStateOpen}></InfoWheelContainer>
@@ -162,7 +220,18 @@ class Raid extends React.Component {
 
                     </div>
                     <div className="raidExtra">
-                        <MapHistory></MapHistory>
+                        <RaidTools
+                            tool={<>
+                                <div>
+                                    <input type="checkbox"
+                                        checked={this.state.zooming}
+                                        onChange={this.toggleTools.bind(this)} />
+                                    {`\tZooming`}
+                                </div>
+
+                            </>}>
+                        </RaidTools>
+                        <div style={{ display: "none" }}><MapHistory /></div>
                         <RaidStateButton />
                     </div>
                     <div className="SideBar">

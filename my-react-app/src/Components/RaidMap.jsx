@@ -18,7 +18,8 @@ import cursor7 from "./Tags/cursor7.png";
 import cursor8 from "./Tags/cursor8.png";
 
 import "./_RaidMap.css";
-import zIndex from "@mui/material/styles/zIndex.js";
+
+
 
 class RaidMap extends React.Component {
 
@@ -31,6 +32,8 @@ class RaidMap extends React.Component {
             deleteMode: false,
             LinesArr: [],
             newLinesTD: false,
+           
+
 
 
         }
@@ -421,7 +424,10 @@ class RaidMap extends React.Component {
     }
 
     render() {
-        return <div onClick={this.onClick} style={{ cursor: `url(${this.state.cursor}) 60 60, auto`, position: "relative", zindex:2}} zIndex={2} className="raidMap" >
+        return( 
+            
+        
+        <div onClick={this.onClick} style={{ cursor: `url(${this.state.cursor}) 60 60, auto`, position: "relative", zindex:2}} zIndex={2} className="raidMap" >
             {
                 this.state.mapState.map(hist => (
                     this.createMapTag(hist)
@@ -433,11 +439,12 @@ class RaidMap extends React.Component {
                 width={4097}
                 PathVis={this.props.PathVis}
                 LinesArray={this.props.LinesArray}
-
+                drawing={this.props.drawing}
                 map={Customs}
                 className={"Canvas"}>
             </MapCanvas>
         </div >
+        )
 
 
     }

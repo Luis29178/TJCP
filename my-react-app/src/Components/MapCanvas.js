@@ -8,6 +8,7 @@ import Reserve from '../Images/reservemap.png';
 import Shoreline from '../Images/shorelinemap.png';
 import Woods from '../Images/woodsmap.png';
 
+
 import "./_MapCanvas.css"
 
 
@@ -17,7 +18,7 @@ const MapCanvas = ({
     height,
     map,
     PathVis,
-    LinesArray,
+    drawing
 
 }) => {
 
@@ -39,7 +40,7 @@ const MapCanvas = ({
     }
 
 
-    const setCanvasRef = useOnDraw(onDraw, clear, "k", window.localStorage.getItem('pathSrc'));
+    const setCanvasRef = useOnDraw(onDraw, clear, "k", window.localStorage.getItem('pathSrc'), drawing);
 
 
 
@@ -85,34 +86,31 @@ const MapCanvas = ({
 
 
 
-    return (<>{
+    return (<>
+        
+            <canvas
+                className="MapCanvas"
+                id="CanvaseToBeSaved"
+                tabIndex="0"
+                height={2142}
+                width={4097}
+                style={canvasStyle}
+                ref={setCanvasRef}
 
-    }
-
-
-        <canvas
-            className="MapCanvas"
-            id="CanvaseToBeSaved"
-            tabIndex="0"
-            height={2142}
-            width={4097}
-            style={canvasStyle}
-            ref={setCanvasRef}
-
-        />
+            />
 
 
-        <div className="PathContainer">
+            <div className="PathContainer">
+                <img
+                    className={PathVis}
+                    src={window.localStorage.getItem('pathSrc')}
+                >
+                </img>
+            </div>
             <img
-                className={PathVis}
-                src={window.localStorage.getItem('pathSrc')}
+                src={map}
             >
             </img>
-        </div>
-        <img
-            src={map}
-        >
-        </img>
 
 
 
