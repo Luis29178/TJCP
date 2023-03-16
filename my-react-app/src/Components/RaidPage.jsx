@@ -148,7 +148,6 @@ class Raid extends React.Component {
                     {localStorage.getItem("isAnon") == "true" && <Tags  style={"raid--tg--basic"} size={"raid--tg-medium"} keybinds={JSON.parse(localStorage.getItem('AnonKeybinds'))}>
 
                     </Tags>}
-                    <RGBColorSlider/>
                         
                     </div>
                     <div className="raidMap">

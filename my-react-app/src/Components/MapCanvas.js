@@ -18,6 +18,7 @@ const MapCanvas = ({
     map,
     PathVis,
     LinesArray,
+    lineColor,
 }) => {
 
     var canvasStyle = {
@@ -43,7 +44,7 @@ const MapCanvas = ({
 
 
     function onDraw(ctx, point, prevPoint) {
-        drawLine(prevPoint, point, ctx, '#000000', 5);
+        drawLine(prevPoint, point, ctx, "Ff0000", 5);
     }
 
 

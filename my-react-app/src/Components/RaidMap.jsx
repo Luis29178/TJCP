@@ -438,9 +438,7 @@ class RaidMap extends React.Component {
             <div>
         <ColorContext.Provider value={this.state.color}>
           <RGBColorSlider setColor={this.setColor} />
-        </ColorContext.Provider>
-      </div>
-            <MapCanvas
+          <MapCanvas
                 height={2142}
                 width={4097}
                 PathVis={this.props.PathVis}
@@ -449,6 +447,9 @@ class RaidMap extends React.Component {
                 map={Customs}
                 className={"Canvas"}>
             </MapCanvas>
+        </ColorContext.Provider>
+      </div>
+
         </div >
 
 
