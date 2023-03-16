@@ -1,5 +1,4 @@
 
-import React from "react";
 import MapCanvas from "./MapCanvas.js"
 import Customs from '../Images/custumsmapog.png';
 import firebase from 'firebase/compat/app';
@@ -19,6 +18,9 @@ import cursor8 from "./Tags/cursor8.png";
 
 import "./_RaidMap.css";
 import zIndex from "@mui/material/styles/zIndex.js";
+import React, { createContext, Component } from 'react';
+import RGBColorSlider from './RGBColorSlider';
+export const ColorContext = createContext();
 
 class RaidMap extends React.Component {
 
@@ -31,10 +33,11 @@ class RaidMap extends React.Component {
             deleteMode: false,
             LinesArr: [],
             newLinesTD: false,
+            color: '#000000',
 
 
         }
-
+        this.setColor = this.setColor.bind(this);
         this.changeCursor = this.changeCursor.bind(this);
         this.createMapTag = this.createMapTag.bind(this);
         this.onClick = this.onClick.bind(this);
@@ -405,7 +408,7 @@ class RaidMap extends React.Component {
             pointEnd = Point;
             
             if (count > 0 && count !== lineLen) {
-                this.drawLine(pointStart, pointEnd, ctx, '#000000', 5);
+                this.drawLine(pointStart, pointEnd, ctx, this.state.color, 5);
                 pointStart = pointEnd;
 
             }
@@ -420,6 +423,9 @@ class RaidMap extends React.Component {
 
 
     }
+    setColor(color) {
+        this.setState({ color });
+      }
 
     render() {
         return <div onClick={this.onClick} style={{ cursor: `url(${this.state.cursor}) 60 60, auto`, position: "relative", zindex:2}} zIndex={2} className="raidMap" >
@@ -429,12 +435,17 @@ class RaidMap extends React.Component {
                 ))
             }
             {/* <FirestoreDelete docId="ZyhV6ocV9sTNWTpSNLwQ" /> */}
+            <div>
+        <ColorContext.Provider value={this.state.color}>
+          <RGBColorSlider setColor={this.setColor} />
+        </ColorContext.Provider>
+      </div>
             <MapCanvas
                 height={2142}
                 width={4097}
                 PathVis={this.props.PathVis}
                 LinesArray={this.props.LinesArray}
-
+                lineColor = {this.state.color}
                 map={Customs}
                 className={"Canvas"}>
             </MapCanvas>
