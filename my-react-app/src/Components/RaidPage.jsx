@@ -31,6 +31,7 @@ import MapHistory from "./MapHistory";
 import { readKeybinds, createKeyBinds } from "../preferenceHandler";
 import firebase from 'firebase/compat/app';
 import RaidStateButton from "./raidStateButton";
+import RGBColorSlider from "./RGBColorSlider";
 
 
 class Raid extends React.Component {
@@ -147,7 +148,7 @@ class Raid extends React.Component {
                     {localStorage.getItem("isAnon") == "true" && <Tags  style={"raid--tg--basic"} size={"raid--tg-medium"} keybinds={JSON.parse(localStorage.getItem('AnonKeybinds'))}>
 
                     </Tags>}
-
+                    <RGBColorSlider/>
                         
                     </div>
                     <div className="raidMap">
