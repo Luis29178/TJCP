@@ -1,7 +1,8 @@
+import { flexbox, width } from "@mui/system";
 import React, { useState } from "react";
 import MapCanvas from "./MapCanvas";
 
-function RGBColorSlider(props) {
+function RGBColorSlider() {
   const [color, setColor] = useState("#000000");
 
   const handleSliderChange = (event) => {
@@ -23,9 +24,9 @@ function RGBColorSlider(props) {
   };
 
   return (
-    <div>
+    <div style={{display: 'flex', alignItems: 'center'}}>
       <input type="range" min="0" max="16777215" onChange={handleSliderChange} />
-      <div style={divStyle}></div>
+      <div style={{...divStyle, width: 20, height: 20}}></div>
       {/* <p>{color}</p> */}
     </div>
   );
