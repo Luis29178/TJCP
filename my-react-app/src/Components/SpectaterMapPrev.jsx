@@ -1,5 +1,5 @@
 import React from "react";
-import MapCanvas from "./MapCanvas";
+import  MapCanvas from "./MapCanvas";
 import { SpectDropBar } from "./SpctMatchDropBar";
 
 import "./_SpectatorMapPrev.css"

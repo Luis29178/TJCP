@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { createRef } from "react";
 import MapCanvas from "./MapCanvas.js"
 import Customs from '../Images/custumsmapog.png';
 import firebase from 'firebase/compat/app';
@@ -25,6 +25,8 @@ class RaidMap extends React.Component {
 
     constructor(props) {
         super(props);
+        this.mapCan = createRef();
+
         this.state = {
             cursor: "",
             mapState: [],
@@ -32,7 +34,7 @@ class RaidMap extends React.Component {
             deleteMode: false,
             LinesArr: [],
             newLinesTD: false,
-           
+
 
 
 
@@ -42,6 +44,8 @@ class RaidMap extends React.Component {
         this.createMapTag = this.createMapTag.bind(this);
         this.onClick = this.onClick.bind(this);
         this.setToDeleteMode = this.setToDeleteMode.bind(this); // bind setToDeleteMode to this component
+        this.removeEvents = this.removeEvents.bind(this);
+        this.reEstablishEvents = this.reEstablishEvents.bind(this);
 
 
         document.addEventListener('ActivateKeyBind', function ({ detail }) {
@@ -119,10 +123,26 @@ class RaidMap extends React.Component {
             height: "70px",
             width: "70px",
             zIndex: 2,
-            
+
 
 
         }
+    }
+
+    removeEvents() {
+        var CanRef = this.mapCan.current.getCanRef()
+        
+        
+
+        
+
+
+
+    }
+    reEstablishEvents() {
+       var CanRef = this.mapCan.current.getCanRef()
+        
+      
     }
 
 
@@ -145,7 +165,7 @@ class RaidMap extends React.Component {
                         }).catch((error) => {
                             console.error("Error removing document: ", error);
                         });
-                    }} style={{ position: 'absolute', left: tagY, top: tagX, backgroundColor: 'white', borderRadius: "5px", paddingLeft: '2px', paddingRight: '2px', zIndex:3}}>X</p1>}
+                    }} style={{ position: 'absolute', left: tagY, top: tagX, backgroundColor: 'white', borderRadius: "5px", paddingLeft: '2px', paddingRight: '2px', zIndex: 3 }}>X</p1>}
                 </>
                 );
             case "line":
@@ -393,7 +413,7 @@ class RaidMap extends React.Component {
         var lineLen = 0
         var count = 0
         const ctx = document.getElementById('CanvaseToBeSaved').getContext('2d');
-        
+
 
         Line.forEach(Point => {
             if (lineLen < 1) {
@@ -405,7 +425,7 @@ class RaidMap extends React.Component {
 
         Line.forEach(Point => {
             pointEnd = Point;
-            
+
             if (count > 0 && count !== lineLen) {
                 this.drawLine(pointStart, pointEnd, ctx, '#000000', 5);
                 pointStart = pointEnd;
@@ -424,26 +444,30 @@ class RaidMap extends React.Component {
     }
 
     render() {
-        return( 
-            
-        
-        <div onClick={this.onClick} style={{ cursor: `url(${this.state.cursor}) 60 60, auto`, position: "relative", zindex:2}} zIndex={2} className="raidMap" >
-            {
-                this.state.mapState.map(hist => (
-                    this.createMapTag(hist)
-                ))
-            }
-            {/* <FirestoreDelete docId="ZyhV6ocV9sTNWTpSNLwQ" /> */}
-            <MapCanvas
-                height={2142}
-                width={4097}
-                PathVis={this.props.PathVis}
-                LinesArray={this.props.LinesArray}
-                drawing={this.props.drawing}
-                map={Customs}
-                className={"Canvas"}>
-            </MapCanvas>
-        </div >
+        return (
+
+
+            <div onClick={this.onClick} style={{ cursor: `url(${this.state.cursor}) 60 60, auto`, position: "relative", zindex: 2 }} zIndex={2} className="raidMap" >
+                {
+                    this.state.mapState.map(hist => (
+                        this.createMapTag(hist)
+                    ))
+                }
+                {/* <FirestoreDelete docId="ZyhV6ocV9sTNWTpSNLwQ" /> */}
+              
+
+                    <MapCanvas
+                        ref={this.mapCan}
+                        height={2142}
+                        width={4097}
+                        PathVis={this.props.PathVis}
+                        LinesArray={this.props.LinesArray}
+                        drawing={this.props.drawing}
+                        map={Customs}
+                        className={"Canvas"}>
+                    </MapCanvas>
+
+            </div >
         )
 
 

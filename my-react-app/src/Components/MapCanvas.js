@@ -10,18 +10,23 @@ import Woods from '../Images/woodsmap.png';
 
 
 import "./_MapCanvas.css"
+import React,{ useEffect, useImperativeHandle, useRef,createRef } from "react";
 
 
+const MapCanvas = React.forwardRef((props, ref) => {
+    useImperativeHandle(ref, () => ({
+        log(){
+            console.log("MapCanvas Imparative Fireing")
+        },
+        getCanRef () {
 
-const MapCanvas = ({
-    width,
-    height,
-    map,
-    PathVis,
-    drawing
+            return setCanvasRef
+        }
 
-}) => {
 
+    }))
+
+    
     var canvasStyle = {
 
         border: "1px solid black",
@@ -40,7 +45,9 @@ const MapCanvas = ({
     }
 
 
-    const setCanvasRef = useOnDraw(onDraw, clear, "k", window.localStorage.getItem('pathSrc'), drawing);
+
+    const setCanvasRef = useOnDraw(onDraw, clear, "k", window.localStorage.getItem('pathSrc'), props.drawing);
+
 
 
 
@@ -52,7 +59,7 @@ const MapCanvas = ({
 
     function clear(ctx) {
 
-        ctx.clearRect(0, 0, width, height)
+        ctx.clearRect(0, 0, props.width, props.height)
     }
 
 
@@ -74,54 +81,59 @@ const MapCanvas = ({
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     return (<>
         
-            <canvas
-                className="MapCanvas"
-                id="CanvaseToBeSaved"
-                tabIndex="0"
-                height={2142}
-                width={4097}
-                style={canvasStyle}
-                ref={setCanvasRef}
+        <canvas
+            className="MapCanvas"
+            id="CanvaseToBeSaved"
+            tabIndex="0"
+            height={2142}
+            width={4097}
+            style={canvasStyle}
+            ref={setCanvasRef}
 
-            />
+        />
 
 
-            <div className="PathContainer">
-                <img
-                    className={PathVis}
-                    src={window.localStorage.getItem('pathSrc')}
-                >
-                </img>
-            </div>
+        <div className="PathContainer">
             <img
-                src={map}
+                className={props.PathVis}
+                src={window.localStorage.getItem('pathSrc')}
             >
             </img>
+        </div>
+        <img
+            src={props.map}
+        >
+        </img>
 
 
 
 
 
 
-    </>);
+</>);
+    
+});
 
 
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default MapCanvas;
 

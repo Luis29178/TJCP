@@ -8,7 +8,7 @@ import { RaidContext } from "..";
 
 
 
-export function useOnDraw(onDraw, clear, clearKey, src , drawing) {
+export function useOnDraw(onDraw, clear, clearKey, src, drawing, passRef ) {
 
     const RaidController = React.useContext(RaidContext);
 
@@ -105,12 +105,12 @@ export function useOnDraw(onDraw, clear, clearKey, src , drawing) {
         if (drawing) {
             if (!ref) return;
             if (canRef.current) {
-
                 canRef.current.removeEventListener("mousedown", mouseDownListenerRef.current);
                 canRef.current.removeEventListener("mouseup", mouseUpListenerRef.current);
                 canRef.current.removeEventListener("mousemove", mouseMoveListenerRef.current);
                 canRef.current.removeEventListener("keydown", handleClearKeyRef.current);
 
+              
             }
 
             canRef.current = ref
@@ -120,10 +120,21 @@ export function useOnDraw(onDraw, clear, clearKey, src , drawing) {
             initMouseuUpListener();
             inithandleClearKey();
         }
+        else{
+            if (!ref) return;
+            canRef.current = ref
+            
+            canRef.current.removeEventListener("mousedown", mouseDownListenerRef.current);
+            canRef.current.removeEventListener("mouseup", mouseUpListenerRef.current);
+            canRef.current.removeEventListener("mousemove", mouseMoveListenerRef.current);
+            canRef.current.removeEventListener("keydown", handleClearKeyRef.current);
+            
+        }
     }
 
     function inithandleClearKey() {
         const handleClearKey = (e) => {
+            
             var key = e.key;
             const ctx = canRef.current.getContext('2d');
             if (key === clearKey) {
@@ -141,6 +152,7 @@ export function useOnDraw(onDraw, clear, clearKey, src , drawing) {
 
     function initMouseMoveListener() {
         const mouseMoveListener = (e) => {
+            e.preventDefault();
 
             if (isDrawingRef.current) {
 
@@ -165,13 +177,14 @@ export function useOnDraw(onDraw, clear, clearKey, src , drawing) {
 
     function initMouseDownListener() {
         if (!canRef.current) return;
-        const mdListener = () => {
+        const mdListener = (e) => {
+            e.preventDefault();
 
-            if(drawing){
+            if (drawing) {
                 isDrawingRef.current = true;
-            setUploaded(false)
-            line = []
-}
+                setUploaded(false)
+                line = []
+            }
 
         }
         mouseDownListenerRef.current = mdListener;
@@ -186,6 +199,7 @@ export function useOnDraw(onDraw, clear, clearKey, src , drawing) {
 
 
         const muListener = (e) => {
+            e.preventDefault();
 
             isDrawingRef.current = false;
             prevPointRef.current = null;
@@ -195,7 +209,9 @@ export function useOnDraw(onDraw, clear, clearKey, src , drawing) {
                 UploadPath();
                 setUploaded(true);
                 e.stopImmediatePropagation();
+                
             }
+
 
 
 
@@ -204,8 +220,6 @@ export function useOnDraw(onDraw, clear, clearKey, src , drawing) {
 
         mouseUpListenerRef.current = muListener;
         window.addEventListener("mouseup", muListener, "once");
-
-
 
     }
 

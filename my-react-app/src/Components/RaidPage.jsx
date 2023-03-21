@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 
 import MapCanvas from "./MapCanvas.js";
@@ -33,9 +33,10 @@ import { readKeybinds, createKeyBinds } from "../preferenceHandler";
 import firebase from 'firebase/compat/app';
 import RaidStateButton from "./raidStateButton";
 import { RaidTools } from "./RaidTool";
-import { ZoomableRaidMap } from "./RaidMapZoomableContainer";
-import PrismaZoom from "react-prismazoom";
+import OmniPrismaZoom from "./OmniPrismaZoom.tsx"
 import RaidMap from "./RaidMap.jsx";
+import { getEventListeners } from "events";
+import { RaidMapZoom } from "./RaidMapZoomCont.jsx";
 
 
 
@@ -43,6 +44,8 @@ import RaidMap from "./RaidMap.jsx";
 class Raid extends React.Component {
     constructor(props) {
         super(props)
+        this.ZoomElement = React.createRef();
+        this.CanvasElement = React.createRef();
 
         this.state = {
 
@@ -51,8 +54,8 @@ class Raid extends React.Component {
             Visability: "Visable",
             keyBindArray: [],
             showKeys: false,
-            zooming: true,
-            drawing: false
+            drawing: true,
+
 
 
         }
@@ -93,6 +96,8 @@ class Raid extends React.Component {
 
     }
 
+
+
     popUpStateOpen() {
 
         this.setState({
@@ -132,16 +137,30 @@ class Raid extends React.Component {
         if (this.state.drawing === true) {
 
 
+
             this.setState({
-                zooming: true,
                 drawing: false
             })
+            this.ZoomElement.current.reEstablishEvents()
+            this.CanvasElement.current.reEstablishEvents()
+
+
+            
+
+            
+
         }
-        else{
+        else {
+
+
+
+
             this.setState({
-                zooming: false,
                 drawing: true
             })
+            this.ZoomElement.current.removeAllListeners()
+            this.CanvasElement.current.reEstablishEvents()
+                    
 
         }
 
@@ -179,36 +198,32 @@ class Raid extends React.Component {
 
 
                     </div>
-                    <div id="mapRef" className="raidMap">
-                        <PrismaZoom
+                    <div className="raidMap">
+
+                        <OmniPrismaZoom
+                            ref={this.ZoomElement}
+                            id="zoomContRef"
                             className="ZoomContainer"
                             style={{
                                 height: 2142,
-                                width: 4097
+                                width: 4097,
+                                pointerEvents: 'box-none'
 
                             }}
-                            allowPan={this.state.zooming}
-                            allowWheel={this.state.zooming}
-                            allowZoom={this.state.zooming}
-                            allowTouchEvents={this.state.drawing}
-
-                            onPanChange={() => {
-                                console.log(this.state.zooming);
-                            }}
-
+                            allowTouchEvents={true}
+                            
                         >
                             <div style={{
                                 height: 2142,
-                                width: 4097
-
+                                width: 4097,
                             }}>
 
-                                <RaidMap
+                                <RaidMap ref={this.CanvasElement} id="mapRef"
                                     drawing={this.state.drawing} PathVis={`RaidPath${this.state.Visability}`} />
                             </div>
 
 
-                        </PrismaZoom>
+                        </OmniPrismaZoom>
 
                     </div>
 
@@ -224,7 +239,7 @@ class Raid extends React.Component {
                             tool={<>
                                 <div>
                                     <input type="checkbox"
-                                        checked={this.state.zooming}
+                                        checked={!this.state.drawing}
                                         onChange={this.toggleTools.bind(this)} />
                                     {`\tZooming`}
                                 </div>
