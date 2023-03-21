@@ -5,6 +5,10 @@ import { RaidContext } from "..";
 import firebase from 'firebase/compat/app';
 import { collection, doc } from 'firebase/firestore';
 
+import ammo from "./GARB_assets/ammo_mini.png";
+import armor from "./GARB_assets/armor_mini.png";
+import health from "./GARB_assets/health_mini.png";
+
 
 export const UserWheel = ({
     onClick,
@@ -128,10 +132,10 @@ console.log(doc.data());
                     {
                         playerInfo.map(info => (
                             <div key="status">
-                                <div className={"Health " + parseStatus(info.data.health)}></div>
+                                <div className={"Health " + parseStatus(info.data.health)}><span style={{position: "relative", fontSize:"15px", right:"37px"}}><canvas width="20" height="20" style={{backgroundImage: `url(${health})`, backgroundRepeat:"no-repeat"}} ></canvas></span></div>
                                 
-                                <div className={"Ammo " + parseStatus(info.data.ammo)}></div>
-                                <div className={"Armor " + parseStatus(info.data.armor)}></div>
+                                <div className={"Ammo " + parseStatus(info.data.ammo)}><span style={{position: "relative", top: "-55px", fontSize:"20px"}} ><canvas width="20" height="20" style={{backgroundImage: `url(${ammo})`, backgroundRepeat:"no-repeat"}} ></canvas></span></div>
+                                <div className={"Armor " + parseStatus(info.data.armor)}><span style={{position: "relative", fontSize:"15px", left:"35px"}}><canvas width="20" height="20" style={{backgroundImage: `url(${armor})`, backgroundRepeat:"no-repeat"}} ></canvas></span></div>
                             </div>
                         ))
                     }

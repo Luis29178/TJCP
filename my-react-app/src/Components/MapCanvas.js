@@ -18,7 +18,6 @@ const MapCanvas = ({
     map,
     PathVis,
     LinesArray,
-
 }) => {
 
     var canvasStyle = {
