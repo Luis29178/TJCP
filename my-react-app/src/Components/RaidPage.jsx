@@ -31,6 +31,7 @@ import MapHistory from "./MapHistory";
 import { readKeybinds, createKeyBinds } from "../preferenceHandler";
 import firebase from 'firebase/compat/app';
 import RaidStateButton from "./raidStateButton";
+import { RaidMenuBtns } from "./RaidBtnGrp";
 
 
 class Raid extends React.Component {
@@ -162,11 +163,22 @@ class Raid extends React.Component {
 
                     </div>
                     <div className="raidExtra">
-                        <MapHistory></MapHistory>
-                        <RaidStateButton />
+                        
+                        
                     </div>
                     <div className="SideBar">
-                        <SideBar></SideBar>
+                        <SideBar
+                        title={"Raid Info"}
+                        info={<>
+                        <MapHistory></MapHistory>
+                        </>}
+                        btnGroup={<>
+                        <RaidStateButton />
+                        <RaidMenuBtns
+                        ></RaidMenuBtns>
+                        </>}>
+
+                        </SideBar>
                     </div>
 
 
